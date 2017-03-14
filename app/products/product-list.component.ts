@@ -15,6 +15,8 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
 })
 export class ProductListComponent implements OnInit {
     constructor (private _productService: ProductService) {
+        console.log("X-AUTH-TOKEN in Products");
+        console.log(sessionStorage.getItem("authToken"));
     }
     pageTitle: string = 'Product List';
     imageWidth: number = 50;

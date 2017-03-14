@@ -19,6 +19,7 @@ export class LoginComponent {
             (res) => {
                 let headers = res.headers;
                 this._authToken = headers.get("X-AUTH-TOKEN");
+                sessionStorage.setItem("authToken", this._authToken);
                 if (this._authToken) {
                     this._router.navigate(['Products']);
                 }

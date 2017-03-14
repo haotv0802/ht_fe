@@ -39,6 +39,7 @@ System.register(['angular2/core', './login.service', "./credential", 'angular2/r
                     this.loginService.login(this.credential).subscribe(function (res) {
                         var headers = res.headers;
                         _this._authToken = headers.get("X-AUTH-TOKEN");
+                        sessionStorage.setItem("authToken", _this._authToken);
                         if (_this._authToken) {
                             _this._router.navigate(['Products']);
                         }

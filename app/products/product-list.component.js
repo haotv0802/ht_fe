@@ -38,6 +38,8 @@ System.register(['angular2/core', './product-filter.pipe', './../shared/star.com
                     this.imageMargin = 2;
                     this.imageState = true;
                     this.listFilter = '';
+                    console.log("X-AUTH-TOKEN in Products");
+                    console.log(sessionStorage.getItem("authToken"));
                 }
                 ProductListComponent.prototype.toggleImage = function () {
                     this.imageState = !this.imageState;
