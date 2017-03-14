@@ -1,8 +1,30 @@
 import { Component } from 'angular2/core';
+import { WelcomeService } from './welcome.service';
 
 @Component({
     templateUrl: 'app/home/welcome.component.html'
 })
 export class WelcomeComponent {
     public pageTitle: string = "Welcome";
+    private _authToken: string;
+
+    constructor(private _welcomeService: WelcomeService) {
+        this._welcomeService.login("admin", "admin")
+            .subscribe((res) => {
+            // let payload = res.json();
+            let headers = res.headers;
+            // console.log("headers: ");
+            // console.log(headers);
+            // console.log(headers.get("X-AUTH-TOKEN"));
+            this._authToken = headers.get("X-AUTH-TOKEN");
+            // console.log("X-AUTH-TOKEN: " + this._authToken);
+            this._welcomeService.getRoles(this._authToken)
+                .subscribe((res) => {
+                    console.log("response from get Roles: ");
+                    console.log(res);
+                });
+        })
+        ;
+
+    }
 }

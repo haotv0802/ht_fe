@@ -1,4 +1,4 @@
-System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.component', 'angular2/http', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.service', './home/welcome.component', 'angular2/http', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './products/product-list.component', './produc
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_component_1, http_1, router_1, router_2;
+    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_service_1, welcome_component_1, http_1, router_1, router_2;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', './products/product-list.component', './produc
             },
             function (product_service_1_1) {
                 product_service_1 = product_service_1_1;
+            },
+            function (welcome_service_1_1) {
+                welcome_service_1 = welcome_service_1_1;
             },
             function (welcome_component_1_1) {
                 welcome_component_1 = welcome_component_1_1;
@@ -51,7 +54,7 @@ System.register(['angular2/core', './products/product-list.component', './produc
                         // directives: [ProductListComponent],
                         templateUrl: 'app/app.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, product_service_1.ProductService]
+                        providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, product_service_1.ProductService, welcome_service_1.WelcomeService]
                     }),
                     router_2.RouteConfig([
                         { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent, useAsDefault: true },

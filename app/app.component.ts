@@ -2,6 +2,7 @@ import { Component } from 'angular2/core';
 import { ProductListComponent } from './products/product-list.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { ProductService } from './products/product.service';
+import { WelcomeService } from './home/welcome.service';
 import { WelcomeComponent } from './home/welcome.component';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from 'angular2/router';
@@ -16,7 +17,7 @@ import { RouteConfig } from 'angular2/router';
     // directives: [ProductListComponent],
     templateUrl:'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, ProductService]
+    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, ProductService, WelcomeService]
 })
 @RouteConfig([
     { path: '/welcome', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},

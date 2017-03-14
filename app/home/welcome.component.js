@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './welcome.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,43 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, welcome_service_1;
     var WelcomeComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (welcome_service_1_1) {
+                welcome_service_1 = welcome_service_1_1;
             }],
         execute: function() {
             WelcomeComponent = (function () {
-                function WelcomeComponent() {
+                function WelcomeComponent(_welcomeService) {
+                    var _this = this;
+                    this._welcomeService = _welcomeService;
                     this.pageTitle = "Welcome";
+                    this._welcomeService.login("admin", "admin")
+                        .subscribe(function (res) {
+                        // let payload = res.json();
+                        var headers = res.headers;
+                        // console.log("headers: ");
+                        // console.log(headers);
+                        // console.log(headers.get("X-AUTH-TOKEN"));
+                        _this._authToken = headers.get("X-AUTH-TOKEN");
+                        // console.log("X-AUTH-TOKEN: " + this._authToken);
+                        _this._welcomeService.getRoles(_this._authToken)
+                            .subscribe(function (res) {
+                            console.log("response from get Roles: ");
+                            console.log(res);
+                        });
+                    });
                 }
                 WelcomeComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/home/welcome.component.html'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [welcome_service_1.WelcomeService])
                 ], WelcomeComponent);
                 return WelcomeComponent;
             }());
