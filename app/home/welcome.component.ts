@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
 import { WelcomeService } from './welcome.service';
+import { IRole } from "./role";
 
 @Component({
     templateUrl: 'app/home/welcome.component.html'
@@ -7,6 +8,7 @@ import { WelcomeService } from './welcome.service';
 export class WelcomeComponent {
     public pageTitle: string = "Welcome";
     private _authToken: string;
+    private _roles: IRole[];
 
     constructor(private _welcomeService: WelcomeService) {
         this._welcomeService.login("admin", "admin")
@@ -19,9 +21,15 @@ export class WelcomeComponent {
             this._authToken = headers.get("X-AUTH-TOKEN");
             // console.log("X-AUTH-TOKEN: " + this._authToken);
             this._welcomeService.getRoles(this._authToken)
-                .subscribe((res) => {
+                .subscribe((roles) => {
                     console.log("response from get Roles: ");
-                    console.log(res);
+                    console.log(roles);
+                    this._roles = roles;
+                    console.log(this._roles);
+                    for (let i = 0; i < this._roles.length; i++) {
+                        console.log(this._roles[i].id);
+                        console.log(this._roles[i].name);
+                    }
                 });
         })
         ;

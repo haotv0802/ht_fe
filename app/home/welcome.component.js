@@ -36,9 +36,15 @@ System.register(['angular2/core', './welcome.service'], function(exports_1, cont
                         _this._authToken = headers.get("X-AUTH-TOKEN");
                         // console.log("X-AUTH-TOKEN: " + this._authToken);
                         _this._welcomeService.getRoles(_this._authToken)
-                            .subscribe(function (res) {
+                            .subscribe(function (roles) {
                             console.log("response from get Roles: ");
-                            console.log(res);
+                            console.log(roles);
+                            _this._roles = roles;
+                            console.log(_this._roles);
+                            for (var i = 0; i < _this._roles.length; i++) {
+                                console.log(_this._roles[i].id);
+                                console.log(_this._roles[i].name);
+                            }
                         });
                     });
                 }

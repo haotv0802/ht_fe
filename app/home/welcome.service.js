@@ -41,8 +41,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', "angular2/
                     return this._http.get(this._roleURL, {
                         headers: headers
                     })
-                        .map(function (res) { return res.text(); })
-                        .do(function (data) { console.log("get roles data: "); console.log(data); })
+                        .map(function (res) { return res.json(); })
+                        .do(function (data) { console.log("get roles data: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                     ;
                 };

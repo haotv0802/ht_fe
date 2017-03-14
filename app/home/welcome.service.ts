@@ -23,8 +23,8 @@ export class WelcomeService {
         return this._http.get(this._roleURL, {
             headers : headers
         })
-            .map((res:Response) => res.text())
-            .do(data => {console.log("get roles data: "); console.log(data)})
+            .map((res:Response) => <IRole[]>res.json())
+            .do(data => {console.log("get roles data: " + JSON.stringify(data));})
             .catch(this.handleError);
         ;
     }
