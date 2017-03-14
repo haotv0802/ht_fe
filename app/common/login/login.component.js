@@ -33,6 +33,9 @@ System.register(['angular2/core', './login.service', "./credential", 'angular2/r
                     this._router = _router;
                     this.pageTitle = "Login";
                     this.credential = new credential_1.Credential();
+                    if (sessionStorage.getItem("authToken")) {
+                        this._router.navigate(['Products']);
+                    }
                 }
                 LoginComponent.prototype.login = function () {
                     var _this = this;

@@ -12,6 +12,9 @@ export class LoginComponent {
     credential: Credential = new Credential();
 
     constructor(private loginService: LoginService, private _router: Router) {
+        if (sessionStorage.getItem("authToken")) {
+            this._router.navigate(['Products']);
+        }
     }
 
     login() {
