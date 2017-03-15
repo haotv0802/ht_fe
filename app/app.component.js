@@ -1,4 +1,4 @@
-System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.service', './common/login/login.service', './home/welcome.component', './common/login/login.component', 'angular2/http', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.service', './common/login/login.service', './home/welcome.component', './common/login/login.component', './staff/staff.component', 'angular2/http', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './products/product-list.component', './produc
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_service_1, login_service_1, welcome_component_1, login_component_1, http_1, router_1, router_2;
+    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_service_1, login_service_1, welcome_component_1, login_component_1, staff_component_1, http_1, router_1, router_2;
     var AppComponent;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['angular2/core', './products/product-list.component', './produc
             },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
+            },
+            function (staff_component_1_1) {
+                staff_component_1 = staff_component_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -66,7 +69,8 @@ System.register(['angular2/core', './products/product-list.component', './produc
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent, useAsDefault: true },
                         { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent },
                         { path: '/products', name: 'Products', component: product_list_component_1.ProductListComponent },
-                        { path: '/products/:id', name: 'ProductDetail', component: product_detail_component_1.ProductDetailComponent }
+                        { path: '/products/:id', name: 'ProductDetail', component: product_detail_component_1.ProductDetailComponent },
+                        { path: '/staff', name: 'Staff', component: staff_component_1.StaffComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

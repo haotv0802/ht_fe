@@ -49,7 +49,7 @@ System.register(['angular2/core', './login.service', "./credential", 'angular2/r
                     }, function (error) {
                         console.log("Unauthorized:");
                         console.log(error);
-                        _this._router.navigate(['Welcome']);
+                        _this._router.navigate(['Staff']);
                     });
                 };
                 LoginComponent = __decorate([

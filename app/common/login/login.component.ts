@@ -30,7 +30,7 @@ export class LoginComponent {
             (error) => {
                 console.log("Unauthorized:");
                 console.log(error);
-                this._router.navigate(['Welcome']);
+                this._router.navigate(['Staff']);
             }
         );
     }
