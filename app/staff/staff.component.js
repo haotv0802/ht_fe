@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../products/product-detail.component', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,19 +10,15 @@ System.register(['angular2/core', './../products/product-detail.component', 'ang
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_detail_component_1, router_1, router_2;
+    var core_1, router_1;
     var StaffComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (product_detail_component_1_1) {
-                product_detail_component_1 = product_detail_component_1_1;
-            },
             function (router_1_1) {
                 router_1 = router_1_1;
-                router_2 = router_1_1;
             },
             function (_1) {}],
         execute: function() {
@@ -34,12 +30,7 @@ System.register(['angular2/core', './../products/product-detail.component', 'ang
                     core_1.Component({
                         templateUrl: 'app/staff/staff.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                    }),
-                    router_2.RouteConfig([
-                        //     // { path: '/login', name: 'Login', component: LoginComponent, useAsDefault: true},
-                        //     // { path: '/welcome', name: 'Welcome', component: WelcomeComponent},
-                        { path: '/products', name: 'Products', component: product_detail_component_1.ProductDetailComponent },
-                    ]), 
+                    }), 
                     __metadata('design:paramtypes', [])
                 ], StaffComponent);
                 return StaffComponent;
