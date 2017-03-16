@@ -16,12 +16,6 @@ import { RouteConfig } from 'angular2/router';
     templateUrl:'app/staff/staff.component.html',
     directives: [ROUTER_DIRECTIVES],
 })
-@RouteConfig([
-//     // { path: '/login', name: 'Login', component: LoginComponent, useAsDefault: true},
-//     // { path: '/welcome', name: 'Welcome', component: WelcomeComponent},
-    { path: '/products', name: 'Products', component: ProductDetailComponent},
-//     // { path: '/products/:id', name: 'ProductDetail', component: ProductDetailComponent}
-])
 export class StaffComponent {
     public pageTitle: string = "Welcome to Staff";
 

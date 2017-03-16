@@ -6,7 +6,7 @@ import { IRole } from "./role";
     templateUrl: 'app/home/welcome.component.html'
 })
 export class WelcomeComponent {
-    public pageTitle: string = "Welcome";
+    public pageTitle: string = "Welcome to the Page";
     private _authToken: string;
     private _roles: IRole[];
 

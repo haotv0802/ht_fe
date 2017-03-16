@@ -24,7 +24,7 @@ System.register(['angular2/core', './welcome.service'], function(exports_1, cont
             WelcomeComponent = (function () {
                 function WelcomeComponent(_welcomeService) {
                     this._welcomeService = _welcomeService;
-                    this.pageTitle = "Welcome";
+                    this.pageTitle = "Welcome to the Page";
                     // this._welcomeService.login("admin", "admin")
                     //     .subscribe((res) => {
                     //     // let payload = res.json();
