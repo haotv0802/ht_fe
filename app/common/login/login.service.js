@@ -20,22 +20,18 @@ var LoginService = (function () {
     }
     LoginService.prototype.displayLoginPage = function () {
     };
-    // login(credential: Credential): Observable<any> {
-    //   console.log('perform login');
-    //   console.log(credential.user);
-    //   console.log(credential.pass);
-    //   let headers = new Headers();
-    //
-    //   headers.append("Accept-Language", "en");
-    //   headers.append("Content-Type", "application/json");
-    //
-    //   return this._http.post(this._loginURL,
-    //     JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
-    //       headers: headers
-    //     })
-    //   // .do(data => {console.log("All: login: "); console.log(data)})
-    //     .catch(this.handleError);
-    // }
+    LoginService.prototype.login = function (credential) {
+        console.log('perform login');
+        console.log(credential.user);
+        console.log(credential.pass);
+        var headers = new http_1.Headers();
+        headers.append("Accept-Language", "en");
+        headers.append("Content-Type", "application/json");
+        return this._http.post(this._loginURL, JSON.stringify({ "userName": credential.user, "userPass": credential.pass }), {
+            headers: headers
+        })
+            .catch(this.handleError);
+    };
     LoginService.prototype.handleError = function (error) {
         console.error("Error happned in WelcomeService: ");
         console.error(error);

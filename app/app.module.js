@@ -12,8 +12,8 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
-var login_component_1 = require("./common/login/login.component");
-// import {LoginModule} from './common/login/login.module';
+// import {LoginService} from './common/login/login.service';
+var login_module_1 = require("./common/login/login.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var AppModule = (function () {
@@ -26,22 +26,23 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
-            router_1.RouterModule.forRoot([
-                { path: 'login', component: login_component_1.LoginComponent },
-                { path: '', redirectTo: 'login', pathMatch: 'full' },
-                { path: '**', redirectTo: 'login', pathMatch: 'full' }
-            ]),
             // RouterModule.forRoot([
-            //   {path: 'welcome', component: WelcomeComponent},
-            //   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
-            //   {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+            //   {path: 'login', component: LoginComponent},
+            //   {path: '', redirectTo: 'login', pathMatch: 'full'},
+            //   {path: '**', redirectTo: 'login', pathMatch: 'full'}
             // ]),
+            router_1.RouterModule.forRoot([
+                { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+            ]),
+            // RouterModule.forChild([
+            //   {path: 'login', component: LoginComponent}
+            // ]),
+            login_module_1.LoginModule,
             product_module_1.ProductModule
         ],
         declarations: [
             app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent,
-            login_component_1.LoginComponent
+            welcome_component_1.WelcomeComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

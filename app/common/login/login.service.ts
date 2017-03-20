@@ -16,22 +16,22 @@ export class LoginService {
 
   }
 
-  // login(credential: Credential): Observable<any> {
-  //   console.log('perform login');
-  //   console.log(credential.user);
-  //   console.log(credential.pass);
-  //   let headers = new Headers();
-  //
-  //   headers.append("Accept-Language", "en");
-  //   headers.append("Content-Type", "application/json");
-  //
-  //   return this._http.post(this._loginURL,
-  //     JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
-  //       headers: headers
-  //     })
-  //   // .do(data => {console.log("All: login: "); console.log(data)})
-  //     .catch(this.handleError);
-  // }
+  login(credential: Credential): Observable<any> {
+    console.log('perform login');
+    console.log(credential.user);
+    console.log(credential.pass);
+    let headers = new Headers();
+
+    headers.append("Accept-Language", "en");
+    headers.append("Content-Type", "application/json");
+
+    return this._http.post(this._loginURL,
+      JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
+        headers: headers
+      })
+    // .do(data => {console.log("All: login: "); console.log(data)})
+      .catch(this.handleError);
+  }
 
   private handleError(error: Response) {
     console.error("Error happned in WelcomeService: ");
