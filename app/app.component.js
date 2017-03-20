@@ -1,4 +1,4 @@
-System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.component', 'angular2/http', 'angular2/router', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', './products/product-list.component', './products/product-detail.component', './products/product.service', './home/welcome.component', 'angular2/http', 'angular2/router', 'rxjs/Rx', './app2.component', 'angular2/platform/browser'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './products/product-list.component', './produc
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_component_1, http_1, router_1, router_2;
+    var core_1, product_list_component_1, product_detail_component_1, product_service_1, welcome_component_1, http_1, router_1, router_2, app2_component_1, browser_1;
     var AppComponent;
     return {
         setters:[
@@ -36,12 +36,22 @@ System.register(['angular2/core', './products/product-list.component', './produc
                 router_1 = router_1_1;
                 router_2 = router_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (app2_component_1_1) {
+                app2_component_1 = app2_component_1_1;
+            },
+            function (browser_1_1) {
+                browser_1 = browser_1_1;
+            }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.pageTitle = "ACME Product Management";
                 }
+                AppComponent.prototype.clickProduct = function () {
+                    console.log('clicking product at App 1');
+                    browser_1.bootstrap(app2_component_1.App2Component);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "pm-app",
@@ -54,9 +64,9 @@ System.register(['angular2/core', './products/product-list.component', './produc
                         providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS, product_service_1.ProductService]
                     }),
                     router_2.RouteConfig([
-                        { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent, useAsDefault: true },
-                        { path: '/products', name: 'Products', component: product_list_component_1.ProductListComponent },
-                        { path: '/products/:id', name: 'ProductDetail', component: product_detail_component_1.ProductDetailComponent }
+                        { path: '/app1/welcome', name: 'Welcome1', component: welcome_component_1.WelcomeComponent, useAsDefault: true },
+                        { path: '/app1/products', name: 'Products1', component: product_list_component_1.ProductListComponent },
+                        { path: '/app1/products/:id', name: 'ProductDetail1', component: product_detail_component_1.ProductDetailComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

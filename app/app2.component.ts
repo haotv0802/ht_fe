@@ -1,6 +1,5 @@
 import { Component } from 'angular2/core';
-import { ProductListComponent } from './products/product-list.component';
-import { ProductDetailComponent } from './products/product-detail.component';
+import { ProductListComponent2 } from './products2/product-list.component2';
 import { ProductService } from './products/product.service';
 import { WelcomeComponent } from './home/welcome.component';
 import { HTTP_PROVIDERS } from 'angular2/http';
@@ -11,7 +10,7 @@ import { bootstrap } from 'angular2/platform/browser';
 import { AppComponent } from './app.component';
 
 @Component({
-    selector: "pm-app",
+    selector: "pm-app2",
     // template: `<div><h1>{{pageTitle}}</h1></div>
     //     <pm-products></pm-products>
     // `,
@@ -21,16 +20,15 @@ import { AppComponent } from './app.component';
     providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, ProductService]
 })
 @RouteConfig([
-    { path: '/welcome', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
-    { path: '/products', name: 'Products', component: ProductListComponent},
-    { path: '/products/:id', name: 'ProductDetail', component: ProductDetailComponent}
+    { path: '/app2/welcome', name: 'Welcome2', component: WelcomeComponent, useAsDefault: true},
+    { path: '/app2/products', name: 'Products2', component: ProductListComponent2},
 ])
 export class App2Component {
 
     pageTitle: string = "ACME Product Management 222222222222";
 
     clickProduct() {
-        // console.log('clicking product');
+        console.log('clicking product at App 2');
         bootstrap(AppComponent);
     }
 }
