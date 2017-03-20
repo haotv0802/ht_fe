@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
+var login_component_1 = require("./common/login/login.component");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var AppModule = (function () {
@@ -25,15 +26,21 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             router_1.RouterModule.forRoot([
-                { path: 'welcome', component: welcome_component_1.WelcomeComponent },
-                { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-                { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+                { path: 'login', component: login_component_1.LoginComponent },
+                { path: '', redirectTo: 'login', pathMatch: 'full' },
+                { path: '**', redirectTo: 'login', pathMatch: 'full' }
             ]),
+            // RouterModule.forRoot([
+            //   {path: 'welcome', component: WelcomeComponent},
+            //   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+            //   {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+            // ]),
             product_module_1.ProductModule
         ],
         declarations: [
             app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent
+            welcome_component_1.WelcomeComponent,
+            login_component_1.LoginComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })
