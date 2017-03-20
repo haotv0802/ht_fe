@@ -5,5 +5,5 @@ import { AppComponent } from './app.component';
 import { App2Component } from './app2.component';
 
 
-// bootstrap(App2Component);
-bootstrap(AppComponent);
+bootstrap(App2Component);
+// bootstrap(AppComponent);

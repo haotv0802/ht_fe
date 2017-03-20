@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 import { ProductListComponent2 } from './products2/product-list.component2';
 import { ProductService } from './products/product.service';
-import { WelcomeComponent } from './home/welcome.component';
+import { WelcomeComponent } from './home2/welcome.component';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from 'angular2/router';
 import 'rxjs/Rx'; // Load all features
