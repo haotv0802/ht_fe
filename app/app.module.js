@@ -13,6 +13,7 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
 var login_component_1 = require("./common/login/login.component");
+// import {LoginModule} from './common/login/login.module';
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var AppModule = (function () {
