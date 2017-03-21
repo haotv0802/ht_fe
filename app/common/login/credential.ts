@@ -3,7 +3,7 @@ export class Credential {
     pass: string;
     lang: string;
     constructor() {
-        this.user = "admin123";
+        this.user = "admin";
         this.pass = "admin";
         this.lang = "en";
     }

@@ -17,6 +17,7 @@ var staff_component_1 = require("./staff/staff.component");
 var login_module_1 = require("./common/login/login.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
+var app_service_1 = require("./app.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -45,7 +46,8 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             welcome_component_1.WelcomeComponent,
-            staff_component_1.StaffComponent
+            staff_component_1.StaffComponent,
+            app_service_1.AppService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

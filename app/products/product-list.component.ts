@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
     products: IProduct[];
 
     constructor(private _productService: ProductService) {
-
+        // console.log("authority" + sessionStorage.getItem("authority"));
     }
 
     toggleImage(): void {

@@ -13,6 +13,7 @@ import {LoginModule} from './common/login/login.module';
 
 /* Feature Modules */
 import {ProductModule} from './products/product.module';
+import {AppService} from './app.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {ProductModule} from './products/product.module';
   declarations: [
     AppComponent,
     WelcomeComponent,
-    StaffComponent
+    StaffComponent,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

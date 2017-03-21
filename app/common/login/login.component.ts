@@ -14,14 +14,19 @@ export class LoginComponent {
   credential: Credential = new Credential();
 
   constructor(private loginService: LoginService, private _router: Router) {
-    if (sessionStorage.getItem("authToken")) {
-      this._router.navigate(['products']);
-    }
+    // if (sessionStorage.getItem("authToken")) {
+    //   this._router.navigate(['products']);
+    // }
   }
 
   login() {
     this.loginService.login(this.credential).subscribe(
       (res) => {
+        // console.log("response");
+        // console.log(res);
+        // console.log(res.json()[0].authority);
+        let authority = res.json()[0].authority;
+        sessionStorage.setItem("authority", authority);
         let headers = res.headers;
         this._authToken = headers.get("X-AUTH-TOKEN");
         sessionStorage.setItem("authToken", this._authToken);

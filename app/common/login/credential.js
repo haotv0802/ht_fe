@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Credential = (function () {
     function Credential() {
-        this.user = "admin123";
+        this.user = "admin";
         this.pass = "admin";
         this.lang = "en";
     }

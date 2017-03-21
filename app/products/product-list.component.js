@@ -18,6 +18,7 @@ var ProductListComponent = (function () {
         this.imageWidth = 50;
         this.imageMargin = 2;
         this.showImage = false;
+        // console.log("authority" + sessionStorage.getItem("authority"));
     }
     ProductListComponent.prototype.toggleImage = function () {
         this.showImage = !this.showImage;

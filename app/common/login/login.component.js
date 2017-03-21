@@ -21,13 +21,18 @@ var LoginComponent = (function () {
         this._router = _router;
         this.pageTitle = "Login";
         this.credential = new credential_1.Credential();
-        if (sessionStorage.getItem("authToken")) {
-            this._router.navigate(['products']);
-        }
+        // if (sessionStorage.getItem("authToken")) {
+        //   this._router.navigate(['products']);
+        // }
     }
     LoginComponent.prototype.login = function () {
         var _this = this;
         this.loginService.login(this.credential).subscribe(function (res) {
+            // console.log("response");
+            // console.log(res);
+            // console.log(res.json()[0].authority);
+            var authority = res.json()[0].authority;
+            sessionStorage.setItem("authority", authority);
             var headers = res.headers;
             _this._authToken = headers.get("X-AUTH-TOKEN");
             sessionStorage.setItem("authToken", _this._authToken);
