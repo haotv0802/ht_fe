@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
+var staff_component_1 = require("./staff/staff.component");
 // import {LoginService} from './common/login/login.service';
 var login_module_1 = require("./common/login/login.module");
 /* Feature Modules */
@@ -34,15 +35,16 @@ AppModule = __decorate([
             router_1.RouterModule.forRoot([
                 { path: 'welcome', component: welcome_component_1.WelcomeComponent },
             ]),
-            // RouterModule.forChild([
-            //   {path: 'login', component: LoginComponent}
-            // ]),
+            router_1.RouterModule.forChild([
+                { path: 'staff', component: staff_component_1.StaffComponent }
+            ]),
             login_module_1.LoginModule,
             product_module_1.ProductModule
         ],
         declarations: [
             app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent
+            welcome_component_1.WelcomeComponent,
+            staff_component_1.StaffComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

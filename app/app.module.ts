@@ -6,6 +6,8 @@ import {RouterModule} from '@angular/router';
 import {AppComponent}  from './app.component';
 import {WelcomeComponent} from './home/welcome.component';
 import {LoginComponent} from './common/login/login.component';
+import {StaffComponent} from './staff/staff.component';
+
 // import {LoginService} from './common/login/login.service';
 import {LoginModule} from './common/login/login.module';
 
@@ -26,15 +28,16 @@ import {ProductModule} from './products/product.module';
       // {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       // {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
-    // RouterModule.forChild([
-    //   {path: 'login', component: LoginComponent}
-    // ]),
+    RouterModule.forChild([
+      {path: 'staff', component: StaffComponent}
+    ]),
     LoginModule,
     ProductModule
   ],
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    StaffComponent
   ],
   bootstrap: [AppComponent]
 })
