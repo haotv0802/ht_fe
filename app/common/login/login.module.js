@@ -10,6 +10,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var login_service_1 = require("./login.service");
 var login_component_1 = require("./login.component");
+var forms_1 = require("@angular/forms");
+var common_1 = require("@angular/common");
 var LoginModule = (function () {
     function LoginModule() {
     }
@@ -20,7 +22,9 @@ LoginModule = __decorate([
         imports: [
             router_1.RouterModule.forChild([
                 { path: 'login', component: login_component_1.LoginComponent }
-            ])
+            ]),
+            forms_1.FormsModule,
+            common_1.CommonModule
         ],
         declarations: [
             login_component_1.LoginComponent

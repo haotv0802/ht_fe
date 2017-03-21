@@ -22,7 +22,7 @@ var LoginComponent = (function () {
         this.pageTitle = "Login";
         this.credential = new credential_1.Credential();
         if (sessionStorage.getItem("authToken")) {
-            this._router.navigate(['Products']);
+            this._router.navigate(['products']);
         }
     }
     LoginComponent.prototype.login = function () {
@@ -32,7 +32,7 @@ var LoginComponent = (function () {
             _this._authToken = headers.get("X-AUTH-TOKEN");
             sessionStorage.setItem("authToken", _this._authToken);
             if (_this._authToken) {
-                _this._router.navigate(['Products']);
+                _this._router.navigate(['products']);
             }
         }, function (error) {
             console.log("Unauthorized:");

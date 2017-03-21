@@ -15,7 +15,7 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private _router: Router) {
     if (sessionStorage.getItem("authToken")) {
-      this._router.navigate(['Products']);
+      this._router.navigate(['products']);
     }
   }
 
@@ -26,7 +26,7 @@ export class LoginComponent {
         this._authToken = headers.get("X-AUTH-TOKEN");
         sessionStorage.setItem("authToken", this._authToken);
         if (this._authToken) {
-          this._router.navigate(['Products']);
+          this._router.navigate(['products']);
         }
       },
       (error) => {
