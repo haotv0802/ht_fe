@@ -34,6 +34,7 @@ AppModule = __decorate([
             // ]),
             router_1.RouterModule.forRoot([
                 { path: 'welcome', component: welcome_component_1.WelcomeComponent },
+                { path: '', redirectTo: 'welcome', pathMatch: 'full' },
             ]),
             router_1.RouterModule.forChild([
                 { path: 'staff', component: staff_component_1.StaffComponent }
