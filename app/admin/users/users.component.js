@@ -17,11 +17,14 @@ var UsersComponent = (function () {
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {
+        // this.getUsers();
     };
     UsersComponent.prototype.getUsers = function () {
-        this._usersService.getUsers().subscribe(function (res) {
-            console.log("get users: ----");
-            console.log(res);
+        var _this = this;
+        this._usersService.getUsers().subscribe(function (users) {
+            // console.log("get users: ----");
+            // console.log(res);
+            _this.users = users;
         }, function (error) {
             console.log(error);
         });

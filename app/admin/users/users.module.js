@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var users_component_1 = require("./users.component");
 var users_service_1 = require("./users.service");
+var common_1 = require("@angular/common");
 var UsersModule = (function () {
     function UsersModule() {
     }
@@ -20,7 +21,8 @@ UsersModule = __decorate([
         imports: [
             router_1.RouterModule.forChild([
                 { path: 'admin/users', component: users_component_1.UsersComponent }
-            ])
+            ]),
+            common_1.CommonModule
         ],
         declarations: [users_component_1.UsersComponent],
         providers: [users_service_1.UsersService]

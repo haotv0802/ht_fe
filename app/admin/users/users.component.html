@@ -9,7 +9,7 @@
             <th>Name</th>
             <th>Role</th>
         </thead>
-        <tr *ngFor="let user of getUsers(); let i = index; trackBy: trackByFn">
+        <tr *ngFor="let user of users">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.role}}</td>
