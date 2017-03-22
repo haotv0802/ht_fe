@@ -15,7 +15,8 @@ import {LogoutModule} from './common/logout/logout.module';
 
 /* Feature Modules */
 import {ProductModule} from './products/product.module';
-import {AppService} from './app.service';
+
+import {Constants} from './common/constant';
 
 @NgModule({
   imports: [
@@ -42,8 +43,10 @@ import {AppService} from './app.service';
     AppComponent,
     WelcomeComponent,
     StaffComponent,
-    // AppService,
     NavComponent
+  ],
+  providers: [
+    Constants
   ],
   bootstrap: [AppComponent]
 })

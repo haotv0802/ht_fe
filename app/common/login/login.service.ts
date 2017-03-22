@@ -2,14 +2,15 @@ import {Injectable} from '@angular/core';
 import {Credential} from "./credential";
 import {Http, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {Constants} from './../constant';
 
 @Injectable()
 export class LoginService {
 
-  private _loginURL = 'http://localhost:8880/ht-be/svc/login';
-  private _roleURL = 'http://localhost:8880/ht-be/svc/testing';
+  // private _loginURL = 'http://localhost:8880/ht-be/svc/login';
+  // private _roleURL = 'http://localhost:8880/ht-be/svc/testing';
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http, private _constants: Constants) {
   }
 
   displayLoginPage() {
@@ -25,7 +26,7 @@ export class LoginService {
     headers.append("Accept-Language", "en");
     headers.append("Content-Type", "application/json");
 
-    return this._http.post(this._loginURL,
+    return this._http.post(this._constants.LOGIN_SERVICE_URL,
       JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
         headers: headers
       })

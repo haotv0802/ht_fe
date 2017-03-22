@@ -22,5 +22,5 @@ import { Component } from '@angular/core';
     templateUrl: 'app/app.component.html'
 })
 export class AppComponent {
-    pageTitle: string = 'Acme Product Management';
+    // pageTitle: string = 'Acme Product Management';
 }

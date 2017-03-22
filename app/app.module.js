@@ -19,6 +19,7 @@ var login_module_1 = require("./common/login/login.module");
 var logout_module_1 = require("./common/logout/logout.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
+var constant_1 = require("./common/constant");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -49,8 +50,10 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             welcome_component_1.WelcomeComponent,
             staff_component_1.StaffComponent,
-            // AppService,
             nav_component_1.NavComponent
+        ],
+        providers: [
+            constant_1.Constants
         ],
         bootstrap: [app_component_1.AppComponent]
     })

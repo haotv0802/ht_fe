@@ -11,20 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var constant_1 = require("./common/constant");
 var NavComponent = (function () {
     // public authority: string;
-    function NavComponent(_router) {
+    function NavComponent(_router, _constants) {
         this._router = _router;
+        this._constants = _constants;
         // this.authority = sessionStorage.getItem("authority");
         // console.log("Authority: " + this.authority);
     }
     NavComponent.prototype.authority = function () {
         // console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
-        return sessionStorage.getItem("authority");
+        return sessionStorage.getItem(this._constants.AUTHORITY);
     };
     NavComponent.prototype.logout = function () {
-        sessionStorage.setItem("authority", null);
-        sessionStorage.setItem("authToken", null);
+        sessionStorage.setItem(this._constants.AUTHORITY, null);
+        sessionStorage.setItem(this._constants.AUTH_TOKEN, null);
         this._router.navigate(["welcome"]);
     };
     return NavComponent;
@@ -34,7 +36,7 @@ NavComponent = __decorate([
         selector: 'app-nav',
         templateUrl: 'app/nav.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router, constant_1.Constants])
 ], NavComponent);
 exports.NavComponent = NavComponent;
 //# sourceMappingURL=nav.component.js.map
