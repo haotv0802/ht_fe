@@ -10,15 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var NavComponent = (function () {
     // public authority: string;
-    function NavComponent() {
+    function NavComponent(_router) {
+        this._router = _router;
         // this.authority = sessionStorage.getItem("authority");
         // console.log("Authority: " + this.authority);
     }
     NavComponent.prototype.authority = function () {
-        console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
+        // console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
         return sessionStorage.getItem("authority");
+    };
+    NavComponent.prototype.logout = function () {
+        sessionStorage.setItem("authority", null);
+        sessionStorage.setItem("authToken", null);
+        this._router.navigate(["welcome"]);
     };
     return NavComponent;
 }());
@@ -27,7 +34,7 @@ NavComponent = __decorate([
         selector: 'app-nav',
         templateUrl: 'app/nav.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.Router])
 ], NavComponent);
 exports.NavComponent = NavComponent;
 //# sourceMappingURL=nav.component.js.map
