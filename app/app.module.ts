@@ -12,6 +12,7 @@ import {NavComponent} from './nav.component';
 // import {LoginService} from './common/login/login.service';
 import {LoginModule} from './common/login/login.module';
 import {LogoutModule} from './common/logout/logout.module';
+import {UsersModule} from './admin/users/users.module';
 
 /* Feature Modules */
 import {ProductModule} from './products/product.module';
@@ -37,7 +38,8 @@ import {Constants} from './common/constant';
     ]),
     LoginModule,
     LogoutModule,
-    ProductModule
+    ProductModule,
+    UsersModule
   ],
   declarations: [
     AppComponent,

@@ -17,6 +17,7 @@ var nav_component_1 = require("./nav.component");
 // import {LoginService} from './common/login/login.service';
 var login_module_1 = require("./common/login/login.module");
 var logout_module_1 = require("./common/logout/logout.module");
+var users_module_1 = require("./admin/users/users.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
@@ -44,7 +45,8 @@ AppModule = __decorate([
             ]),
             login_module_1.LoginModule,
             logout_module_1.LogoutModule,
-            product_module_1.ProductModule
+            product_module_1.ProductModule,
+            users_module_1.UsersModule
         ],
         declarations: [
             app_component_1.AppComponent,
