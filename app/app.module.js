@@ -13,11 +13,11 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
 var staff_component_1 = require("./staff/staff.component");
+var nav_component_1 = require("./nav.component");
 // import {LoginService} from './common/login/login.service';
 var login_module_1 = require("./common/login/login.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
-var app_service_1 = require("./app.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -47,7 +47,8 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             welcome_component_1.WelcomeComponent,
             staff_component_1.StaffComponent,
-            app_service_1.AppService
+            // AppService,
+            nav_component_1.NavComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

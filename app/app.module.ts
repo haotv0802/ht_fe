@@ -7,6 +7,7 @@ import {AppComponent}  from './app.component';
 import {WelcomeComponent} from './home/welcome.component';
 import {LoginComponent} from './common/login/login.component';
 import {StaffComponent} from './staff/staff.component';
+import {NavComponent} from './nav.component';
 
 // import {LoginService} from './common/login/login.service';
 import {LoginModule} from './common/login/login.module';
@@ -39,7 +40,8 @@ import {AppService} from './app.service';
     AppComponent,
     WelcomeComponent,
     StaffComponent,
-    AppService
+    // AppService,
+    NavComponent
   ],
   bootstrap: [AppComponent]
 })

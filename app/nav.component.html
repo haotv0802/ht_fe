@@ -1,0 +1,27 @@
+<div>
+    <h1>hello</h1>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a class="navbar-brand">{{pageTitle}}</a>
+            <ul class="nav navbar-nav"  *ngIf="authority() == 'ADMIN'">
+                <li><a [routerLink]="['/welcome']">Home Admin</a></li>
+                <li><a [routerLink]="['/products']">Products</a></li>
+                <li><a [routerLink]="['/logout']">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav"  *ngIf="authority() == 'CUSTOMER'">
+                <li><a [routerLink]="['/welcome']">Home Customer</a></li>
+                <li><a [routerLink]="['/products']">Products</a></li>
+                <li><a [routerLink]="['/logout']">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav"  *ngIf="authority() == 'STAFF'">
+                <li><a [routerLink]="['/welcome']">Home Staff</a></li>
+                <li><a [routerLink]="['/products']">Products</a></li>
+                <li><a [routerLink]="['/logout']">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav" *ngIf="!authority()">
+                <li><a [routerLink]="['/welcome']">Home</a></li>
+                <li><a [routerLink]="['/login']">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
