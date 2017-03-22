@@ -11,6 +11,7 @@ import {NavComponent} from './nav.component';
 
 // import {LoginService} from './common/login/login.service';
 import {LoginModule} from './common/login/login.module';
+import {LogoutModule} from './common/logout/logout.module';
 
 /* Feature Modules */
 import {ProductModule} from './products/product.module';
@@ -34,6 +35,7 @@ import {AppService} from './app.service';
       {path: 'staff', component: StaffComponent}
     ]),
     LoginModule,
+    LogoutModule,
     ProductModule
   ],
   declarations: [

@@ -16,6 +16,7 @@ var staff_component_1 = require("./staff/staff.component");
 var nav_component_1 = require("./nav.component");
 // import {LoginService} from './common/login/login.service';
 var login_module_1 = require("./common/login/login.module");
+var logout_module_1 = require("./common/logout/logout.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var AppModule = (function () {
@@ -41,6 +42,7 @@ AppModule = __decorate([
                 { path: 'staff', component: staff_component_1.StaffComponent }
             ]),
             login_module_1.LoginModule,
+            logout_module_1.LogoutModule,
             product_module_1.ProductModule
         ],
         declarations: [
