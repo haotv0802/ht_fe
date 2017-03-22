@@ -11,11 +11,15 @@ var Constants = (function () {
     function Constants() {
         this._host = 'http://localhost:8880/ht-be/svc';
         this.LOGIN_SERVICE_URL = this._host + '/login';
-        this.ROLE_SERVICE_URL = this._host + '/testing';
+        // Services URLs for Admin
+        this.ADMIN_USERS_SERVICE_URL = this._host + '/admin/users';
+        // Services URLs for Staff
+        // Services URLs for Customer
+        // Constants
         this.X_AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
         this.AUTH_TOKEN = "AUTH_TOKEN";
         this.AUTHORITY = "AUTHORITY";
-        // URLs to Components or Pages
+        // Names of Components
         this.WELCOME_URL = 'welcome';
     }
     return Constants;

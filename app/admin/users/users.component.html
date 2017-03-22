@@ -2,5 +2,17 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
-
+    <button (click)="getUsers()" style="width: 150px; height: 50px;">click get users</button>
+    <table style="width: 800px;">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+        </thead>
+        <tr *ngFor="let user of getUsers(); let i = index; trackBy: trackByFn">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.role}}</td>
+        </tr>
+    </table>
 </div>

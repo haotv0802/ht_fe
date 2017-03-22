@@ -10,13 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var users_service_1 = require("./users.service");
 var UsersComponent = (function () {
-    function UsersComponent() {
+    function UsersComponent(_usersService) {
+        this._usersService = _usersService;
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {
     };
-    UsersComponent.prototype.onRatingClicked = function (message) {
+    UsersComponent.prototype.getUsers = function () {
+        this._usersService.getUsers().subscribe(function (res) {
+            console.log("get users: ----");
+            console.log(res);
+        }, function (error) {
+            console.log(error);
+        });
     };
     return UsersComponent;
 }());
@@ -25,7 +33,7 @@ UsersComponent = __decorate([
         templateUrl: 'app/admin/users/users.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersComponent);
 exports.UsersComponent = UsersComponent;
 //# sourceMappingURL=users.component.js.map

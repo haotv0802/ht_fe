@@ -5,11 +5,20 @@ export class Constants {
 
   private _host = 'http://localhost:8880/ht-be/svc';
   public LOGIN_SERVICE_URL: string = this._host + '/login';
-  public ROLE_SERVICE_URL: string = this._host + '/testing';
+
+  // Services URLs for Admin
+  public ADMIN_USERS_SERVICE_URL: string = this._host + '/admin/users';
+
+  // Services URLs for Staff
+  // Services URLs for Customer
+
+  // Constants
   public X_AUTH_TOKEN_HEADER: string = "X-AUTH-TOKEN";
   public AUTH_TOKEN: string = "AUTH_TOKEN";
   public AUTHORITY: string = "AUTHORITY";
 
-  // URLs to Components or Pages
+  // Names of Components
   public WELCOME_URL: string = 'welcome';
+
+
 }

@@ -14,10 +14,7 @@ var app_component_1 = require("./app.component");
 var welcome_component_1 = require("./home/welcome.component");
 var staff_component_1 = require("./staff/staff.component");
 var nav_component_1 = require("./nav.component");
-// import {LoginService} from './common/login/login.service';
 var login_module_1 = require("./common/login/login.module");
-var logout_module_1 = require("./common/logout/logout.module");
-// import {UsersModule} from './admin/users/users.module';
 var admin_module_1 = require("./admin/admin.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
@@ -32,11 +29,6 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
-            // RouterModule.forRoot([
-            //   {path: 'login', component: LoginComponent},
-            //   {path: '', redirectTo: 'login', pathMatch: 'full'},
-            //   {path: '**', redirectTo: 'login', pathMatch: 'full'}
-            // ]),
             router_1.RouterModule.forRoot([
                 { path: 'welcome', component: welcome_component_1.WelcomeComponent },
                 { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -45,7 +37,6 @@ AppModule = __decorate([
                 { path: 'staff', component: staff_component_1.StaffComponent }
             ]),
             login_module_1.LoginModule,
-            logout_module_1.LogoutModule,
             product_module_1.ProductModule,
             admin_module_1.AdminModule
         ],

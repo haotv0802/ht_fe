@@ -1,17 +1,32 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-
+import {Http, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
+import {User} from "./user";
+import {Constants} from "../../common/constant";
 
 @Injectable()
 export class UsersService {
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http, private _constants: Constants) {
 
   }
 
+  getUsers(): Observable<User> {
+    let headers = new Headers();
+
+    headers.append("Accept-Language", "en");
+    headers.append("Content-Type", "application/json");
+    headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
+
+    return this._http.get(this._constants.ADMIN_USERS_SERVICE_URL, {headers: headers})
+      .map((res) => { return res.json(); })
+      .catch(this.handleError)
+    ;
+  }
+
+  private handleError(error: Response) {
+    console.error("Error happned in WelcomeService: ");
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
+  }
 }

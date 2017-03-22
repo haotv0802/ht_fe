@@ -11,19 +11,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
+var Observable_1 = require("rxjs/Observable");
+var constant_1 = require("../../common/constant");
 var UsersService = (function () {
-    function UsersService(_http) {
+    function UsersService(_http, _constants) {
         this._http = _http;
+        this._constants = _constants;
     }
+    UsersService.prototype.getUsers = function () {
+        var headers = new http_1.Headers();
+        headers.append("Accept-Language", "en");
+        headers.append("Content-Type", "application/json");
+        headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
+        return this._http.get(this._constants.ADMIN_USERS_SERVICE_URL, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    UsersService.prototype.handleError = function (error) {
+        console.error("Error happned in WelcomeService: ");
+        console.error(error);
+        return Observable_1.Observable.throw(error.json().error || 'Server error');
+    };
     return UsersService;
 }());
 UsersService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, constant_1.Constants])
 ], UsersService);
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map
