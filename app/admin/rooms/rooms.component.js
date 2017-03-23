@@ -15,6 +15,7 @@ var RoomsComponent = (function () {
     function RoomsComponent(_roomService) {
         this._roomService = _roomService;
         this.pageTitle = 'Room component';
+        this.getRoomTypes();
     }
     RoomsComponent.prototype.ngOnInit = function () {
         // this.getUsers();

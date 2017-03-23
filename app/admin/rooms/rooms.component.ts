@@ -11,6 +11,7 @@ export class RoomsComponent implements OnInit {
   roomTypes: RoomType[];
   constructor(private _roomService: RoomsService) {
     this.pageTitle = 'Room component';
+    this.getRoomTypes();
   }
 
   ngOnInit(): void {

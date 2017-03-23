@@ -6,13 +6,18 @@
     <table style="width: 800px;">
         <thead>
             <th>Name</th>
-            <th>Image URL</th>
+            <th></th>
             <th>Image Info</th>
             <th>Image Id</th>
         </thead>
         <tr *ngFor="let roomType of roomTypes">
             <td>{{roomType.name}}</td>
-            <td>{{roomType.imageURL}}</td>
+            <td>
+                <img [src]='./app/assets/images/logo.jpg'
+                     [style.width.px]='50'
+                     [style.margin.px]='20'>
+            </td>
+
             <td>{{roomType.imageInfo}}</td>
             <td>{{roomType.imageId}}</td>
         </tr>
