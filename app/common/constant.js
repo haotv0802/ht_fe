@@ -13,6 +13,7 @@ var Constants = (function () {
         this.LOGIN_SERVICE_URL = this._host + '/login';
         // Services URLs for Admin
         this.ADMIN_USERS_SERVICE_URL = this._host + '/admin/users';
+        this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this._host + '/admin/rooms/roomTypes';
         // Services URLs for Staff
         // Services URLs for Customer
         // Constants

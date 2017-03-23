@@ -7,22 +7,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var users_module_1 = require("./users/users.module");
-var rooms_module_1 = require("./rooms/rooms.module");
-var AdminModule = (function () {
-    function AdminModule() {
+var router_1 = require("@angular/router");
+var rooms_component_1 = require("./rooms.component");
+var rooms_service_1 = require("./rooms.service");
+var common_1 = require("@angular/common");
+var RoomsModule = (function () {
+    function RoomsModule() {
     }
-    return AdminModule;
+    return RoomsModule;
 }());
-AdminModule = __decorate([
+RoomsModule = __decorate([
     core_1.NgModule({
         imports: [
-            users_module_1.UsersModule,
-            rooms_module_1.RoomsModule
+            router_1.RouterModule.forChild([
+                { path: 'admin/rooms', component: rooms_component_1.RoomsComponent }
+            ]),
+            common_1.CommonModule
         ],
-        declarations: [],
-        providers: []
+        declarations: [rooms_component_1.RoomsComponent],
+        providers: [rooms_service_1.RoomsService]
     })
-], AdminModule);
-exports.AdminModule = AdminModule;
-//# sourceMappingURL=admin.module.js.map
+], RoomsModule);
+exports.RoomsModule = RoomsModule;
+//# sourceMappingURL=rooms.module.js.map

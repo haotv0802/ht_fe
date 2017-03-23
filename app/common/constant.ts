@@ -8,6 +8,7 @@ export class Constants {
 
   // Services URLs for Admin
   public ADMIN_USERS_SERVICE_URL: string = this._host + '/admin/users';
+  public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this._host + '/admin/rooms/roomTypes';
 
   // Services URLs for Staff
   // Services URLs for Customer

@@ -1,0 +1,20 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle}}
+    </div>
+    <button (click)="getRoomTypes()" style="width: 150px; height: 50px;">click get room Types</button>
+    <table style="width: 800px;">
+        <thead>
+            <th>Name</th>
+            <th>Image URL</th>
+            <th>Image Info</th>
+            <th>Image Id</th>
+        </thead>
+        <tr *ngFor="let roomType of roomTypes">
+            <td>{{roomType.name}}</td>
+            <td>{{roomType.imageURL}}</td>
+            <td>{{roomType.imageInfo}}</td>
+            <td>{{roomType.imageId}}</td>
+        </tr>
+    </table>
+</div>

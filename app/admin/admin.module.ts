@@ -1,8 +1,10 @@
 import {NgModule} from '@angular/core';
 import {UsersModule} from './users/users.module';
+import {RoomsModule} from './rooms/rooms.module';
 @NgModule({
   imports: [
-    UsersModule
+    UsersModule,
+    RoomsModule
   ],
   declarations: [],
   providers: []

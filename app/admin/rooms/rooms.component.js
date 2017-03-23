@@ -10,34 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var users_service_1 = require("./users.service");
-var UsersComponent = (function () {
-    function UsersComponent(_usersService) {
-        this._usersService = _usersService;
-        this.pageTitle = 'User component';
+var rooms_service_1 = require("./rooms.service");
+var RoomsComponent = (function () {
+    function RoomsComponent(_roomService) {
+        this._roomService = _roomService;
+        this.pageTitle = 'Room component';
     }
-    UsersComponent.prototype.ngOnInit = function () {
+    RoomsComponent.prototype.ngOnInit = function () {
         // this.getUsers();
     };
-    UsersComponent.prototype.getUsers = function () {
+    RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
-        console.log("get users");
-        this._usersService.getUsers().subscribe(function (users) {
+        console.log("get room Types");
+        this._roomService.getRoomTypes().subscribe(function (roomTypes) {
             // console.log("get users: ----");
             // console.log(res);
-            _this.users = users;
+            _this.roomTypes = roomTypes;
+            console.log(_this.roomTypes);
         }, function (error) {
             console.log(error);
         });
     };
-    return UsersComponent;
+    return RoomsComponent;
 }());
-UsersComponent = __decorate([
+RoomsComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/admin/users/users.component.html'
+        templateUrl: 'app/admin/rooms/rooms.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
-], UsersComponent);
-exports.UsersComponent = UsersComponent;
-//# sourceMappingURL=users.component.js.map
+    __metadata("design:paramtypes", [rooms_service_1.RoomsService])
+], RoomsComponent);
+exports.RoomsComponent = RoomsComponent;
+//# sourceMappingURL=rooms.component.js.map
