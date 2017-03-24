@@ -13,13 +13,14 @@
         <tr *ngFor="let roomType of roomTypes">
             <td>{{roomType.name}}</td>
             <td>
-                <img [src]='./app/assets/images/logo.jpg'
-                     [style.width.px]='50'
+                <img *ngIf="roomType.images[0]" [src]='roomType.images[0].imageURL'
+                     [style.width.px]='100'
+                     [style.height.px]='50'
                      [style.margin.px]='20'>
             </td>
 
-            <td>{{roomType.imageInfo}}</td>
-            <td>{{roomType.imageId}}</td>
+            <td>{{roomType.images[0] ? roomType.images[0].imageInfo : ''}}</td>
+            <td>{{roomType.images[0].id}}</td>
         </tr>
     </table>
 </div>

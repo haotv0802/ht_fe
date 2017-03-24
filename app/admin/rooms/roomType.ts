@@ -1,6 +1,6 @@
+import {Image} from "./image";
 export class RoomType {
+  id: number;
   name: string;
-  imageURL: string;
-  imageInfo: string;
-  imageId: string;
+  images: Image[];
 }
