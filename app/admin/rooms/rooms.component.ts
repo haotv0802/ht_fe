@@ -1,6 +1,9 @@
 import {Component, OnInit}  from '@angular/core';
 import {RoomType} from "./roomType";
 import {RoomsService} from "./rooms.service";
+import {Image} from "./image";
+import {RoomImagesService} from "./roomImages.service";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: 'app/admin/rooms/rooms.component.html'
@@ -9,7 +12,7 @@ import {RoomsService} from "./rooms.service";
 export class RoomsComponent implements OnInit {
   pageTitle: string;
   roomTypes: RoomType[];
-  constructor(private _roomService: RoomsService) {
+  constructor(private _roomService: RoomsService, private _roomImagesService: RoomImagesService, private _router: Router) {
     this.pageTitle = 'Room component';
     this.getRoomTypes();
   }
@@ -19,7 +22,7 @@ export class RoomsComponent implements OnInit {
   }
 
   getRoomTypes(): void {
-    console.log("get room Types");
+    // console.log("get room Types");
     this._roomService.getRoomTypes().subscribe(
       (roomTypes) => {
         // console.log("get users: ----");
@@ -31,5 +34,10 @@ export class RoomsComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  displayImages(images: Image[]): void {
+    this._roomImagesService.images = images;
+    this._router.navigate(['admin/roomImages']);
   }
 }

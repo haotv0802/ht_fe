@@ -11,9 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var rooms_service_1 = require("./rooms.service");
+var roomImages_service_1 = require("./roomImages.service");
+var router_1 = require("@angular/router");
 var RoomsComponent = (function () {
-    function RoomsComponent(_roomService) {
+    function RoomsComponent(_roomService, _roomImagesService, _router) {
         this._roomService = _roomService;
+        this._roomImagesService = _roomImagesService;
+        this._router = _router;
         this.pageTitle = 'Room component';
         this.getRoomTypes();
     }
@@ -22,7 +26,7 @@ var RoomsComponent = (function () {
     };
     RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
-        console.log("get room Types");
+        // console.log("get room Types");
         this._roomService.getRoomTypes().subscribe(function (roomTypes) {
             // console.log("get users: ----");
             // console.log(res);
@@ -32,6 +36,10 @@ var RoomsComponent = (function () {
             console.log(error);
         });
     };
+    RoomsComponent.prototype.displayImages = function (images) {
+        this._roomImagesService.images = images;
+        this._router.navigate(['admin/roomImages']);
+    };
     return RoomsComponent;
 }());
 RoomsComponent = __decorate([
@@ -39,7 +47,7 @@ RoomsComponent = __decorate([
         templateUrl: 'app/admin/rooms/rooms.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [rooms_service_1.RoomsService])
+    __metadata("design:paramtypes", [rooms_service_1.RoomsService, roomImages_service_1.RoomImagesService, router_1.Router])
 ], RoomsComponent);
 exports.RoomsComponent = RoomsComponent;
 //# sourceMappingURL=rooms.component.js.map

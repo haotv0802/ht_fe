@@ -19,7 +19,11 @@
                      [style.margin.px]='20'>
             </td>
 
-            <td>{{roomType.images[0] ? roomType.images[0].imageInfo : ''}}</td>
+            <td>
+                <a (click)="displayImages(roomType.images)">
+                    {{roomType.images[0] ? roomType.images[0].imageInfo : ''}}
+                </a>
+            </td>
             <td>{{roomType.images[0].id}}</td>
         </tr>
     </table>

@@ -9,7 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var rooms_component_1 = require("./rooms.component");
+var roomImages_component_1 = require("./roomImages.component");
 var rooms_service_1 = require("./rooms.service");
+var roomImages_service_1 = require("./roomImages.service");
 var common_1 = require("@angular/common");
 var RoomsModule = (function () {
     function RoomsModule() {
@@ -22,10 +24,13 @@ RoomsModule = __decorate([
             router_1.RouterModule.forChild([
                 { path: 'admin/rooms', component: rooms_component_1.RoomsComponent }
             ]),
+            router_1.RouterModule.forChild([
+                { path: 'admin/roomImages', component: roomImages_component_1.RoomImagesComponent }
+            ]),
             common_1.CommonModule
         ],
-        declarations: [rooms_component_1.RoomsComponent],
-        providers: [rooms_service_1.RoomsService]
+        declarations: [rooms_component_1.RoomsComponent, roomImages_component_1.RoomImagesComponent],
+        providers: [rooms_service_1.RoomsService, roomImages_service_1.RoomImagesService]
     })
 ], RoomsModule);
 exports.RoomsModule = RoomsModule;
