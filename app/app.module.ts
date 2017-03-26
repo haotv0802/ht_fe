@@ -4,7 +4,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent}  from './app.component';
-import {WelcomeComponent} from './home/welcome.component';
+import {WelcomeComponent} from './common/home/welcome.component';
 import {StaffComponent} from './staff/staff.component';
 import {NavComponent} from './nav.component';
 
