@@ -4,7 +4,8 @@ import {Constants} from './common/constant';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: 'app/nav.component.html'
+  templateUrl: 'app/nav.component.html',
+  styleUrls: ['app/nav.component.css'],
 })
 export class NavComponent {
 
@@ -20,9 +21,10 @@ export class NavComponent {
     return sessionStorage.getItem(this._constants.AUTHORITY);
   }
 
-  logout(): void {
+  logout(){
     sessionStorage.setItem(this._constants.AUTHORITY, null);
     sessionStorage.setItem(this._constants.AUTH_TOKEN, null);
     this._router.navigate(["welcome"]);
+    return false;
   }
 }

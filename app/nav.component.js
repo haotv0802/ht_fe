@@ -28,13 +28,15 @@ var NavComponent = (function () {
         sessionStorage.setItem(this._constants.AUTHORITY, null);
         sessionStorage.setItem(this._constants.AUTH_TOKEN, null);
         this._router.navigate(["welcome"]);
+        return false;
     };
     return NavComponent;
 }());
 NavComponent = __decorate([
     core_1.Component({
         selector: 'app-nav',
-        templateUrl: 'app/nav.component.html'
+        templateUrl: 'app/nav.component.html',
+        styleUrls: ['app/nav.component.css'],
     }),
     __metadata("design:paramtypes", [router_1.Router, constant_1.Constants])
 ], NavComponent);
