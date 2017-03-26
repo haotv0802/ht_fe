@@ -15,9 +15,7 @@ export class HTTPService {
     let headers = new Headers();
     headers.append("Accept-Language", "en");
     headers.append("Content-Type", "application/json");
-    console.log("getting x auth");
     if (url != this._constants.LOGIN_SERVICE_URL) {
-      console.log("getting xaaaa");
       headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
     }
 
