@@ -1,4 +1,4 @@
-import {Component, OnInit}  from '@angular/core';
+import {Component, OnInit, animate}  from '@angular/core';
 import {RoomImagesService} from "./roomImages.service";
 import {ActivatedRoute} from "@angular/router";
 import {Image} from "./image";
@@ -44,4 +44,28 @@ export class RoomImagesComponent implements OnInit {
     this._Index = index;
   };
 
+  SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
+
+  // action triggered when user swipes
+  swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
+    // out of range
+    if (currentIndex > this.images.length || currentIndex < 0) return;
+
+    let nextIndex = 0;
+
+    // swipe right, next avatar
+    if (action === this.SWIPE_ACTION.RIGHT) {
+      const isLast = currentIndex === this.images.length - 1;
+      nextIndex = isLast ? 0 : currentIndex + 1;
+    }
+
+    // swipe left, previous avatar
+    if (action === this.SWIPE_ACTION.LEFT) {
+      const isFirst = currentIndex === 0;
+      nextIndex = isFirst ? this.images.length - 1 : currentIndex - 1;
+    }
+
+    // toggle avatar visibility
+    this.images.forEach((x, i) => i === nextIndex);
+  }
 }

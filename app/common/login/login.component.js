@@ -44,7 +44,7 @@ var LoginComponent = (function () {
         }, function (error) {
             console.log("Unauthorized:");
             console.log(error);
-            _this._router.navigate(['Staff']);
+            // this._router.navigate(['Staff']);
         });
     };
     return LoginComponent;

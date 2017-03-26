@@ -36,8 +36,9 @@ export class RoomsComponent implements OnInit {
     )
   }
 
-  displayImages(images: Image[]): void {
+  displayImages(images: Image[]) {
     this._roomImagesService.images = images;
     this._router.navigate(['admin/roomImages']);
+    return false;
   }
 }

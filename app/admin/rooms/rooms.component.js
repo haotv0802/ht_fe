@@ -39,6 +39,7 @@ var RoomsComponent = (function () {
     RoomsComponent.prototype.displayImages = function (images) {
         this._roomImagesService.images = images;
         this._router.navigate(['admin/roomImages']);
+        return false;
     };
     return RoomsComponent;
 }());

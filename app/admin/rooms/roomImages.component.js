@@ -18,6 +18,7 @@ var RoomImagesComponent = (function () {
         this._roomImagesService = _roomImagesService;
         // initial image index
         this._Index = 0;
+        this.SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
         this.pageTitle = 'Room images component';
         // console.log("Images: ");
         // console.log(this._roomImagesService.images);
@@ -46,6 +47,26 @@ var RoomImagesComponent = (function () {
         this._Index = index;
     };
     ;
+    // action triggered when user swipes
+    RoomImagesComponent.prototype.swipe = function (currentIndex, action) {
+        if (action === void 0) { action = this.SWIPE_ACTION.RIGHT; }
+        // out of range
+        if (currentIndex > this.images.length || currentIndex < 0)
+            return;
+        var nextIndex = 0;
+        // swipe right, next avatar
+        if (action === this.SWIPE_ACTION.RIGHT) {
+            var isLast = currentIndex === this.images.length - 1;
+            nextIndex = isLast ? 0 : currentIndex + 1;
+        }
+        // swipe left, previous avatar
+        if (action === this.SWIPE_ACTION.LEFT) {
+            var isFirst = currentIndex === 0;
+            nextIndex = isFirst ? this.images.length - 1 : currentIndex - 1;
+        }
+        // toggle avatar visibility
+        this.images.forEach(function (x, i) { return i === nextIndex; });
+    };
     return RoomImagesComponent;
 }());
 RoomImagesComponent = __decorate([
