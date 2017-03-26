@@ -3,6 +3,7 @@ import {Credential} from "./credential";
 import {Http, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Constants} from './../constant';
+import {HTTPService} from "../HTTP.service";
 
 @Injectable()
 export class LoginService {
@@ -10,7 +11,10 @@ export class LoginService {
   // private _loginURL = 'http://localhost:8880/ht-be/svc/login';
   // private _roleURL = 'http://localhost:8880/ht-be/svc/testing';
 
-  constructor(private _http: Http, private _constants: Constants) {
+  constructor(
+    private _http: Http,
+    private _constants: Constants,
+    private _httpService: HTTPService) {
   }
 
   displayLoginPage() {
@@ -26,17 +30,15 @@ export class LoginService {
     headers.append("Accept-Language", "en");
     headers.append("Content-Type", "application/json");
 
-    return this._http.post(this._constants.LOGIN_SERVICE_URL,
-      JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
-        headers: headers
-      })
-    // .do(data => {console.log("All: login: "); console.log(data)})
-      .catch(this.handleError);
+    return this._httpService.post(
+      this._constants.LOGIN_SERVICE_URL,
+      JSON.stringify({"userName": credential.user, "userPass": credential.pass}));
+    // return this._http.post(this._constants.LOGIN_SERVICE_URL,
+    //   JSON.stringify({"userName": credential.user, "userPass": credential.pass}), {
+    //     headers: headers
+    //   })
+    // // .do(data => {console.log("All: login: "); console.log(data)})
+    //   .catch(this.handleError);
   }
 
-  private handleError(error: Response) {
-    console.error("Error happned in WelcomeService: ");
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
-  }
 }

@@ -15,6 +15,7 @@ import {AdminModule} from './admin/admin.module';
 import {ProductModule} from './products/product.module';
 
 import {Constants} from './common/constant';
+import {HTTPService} from "./common/HTTP.service";
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {Constants} from './common/constant';
     NavComponent
   ],
   providers: [
-    Constants
+    Constants,
+    HTTPService
   ],
   bootstrap: [AppComponent]
 })

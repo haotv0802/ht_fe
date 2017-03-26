@@ -19,6 +19,7 @@ var admin_module_1 = require("./admin/admin.module");
 /* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
+var HTTP_service_1 = require("./common/HTTP.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -47,7 +48,8 @@ AppModule = __decorate([
             nav_component_1.NavComponent
         ],
         providers: [
-            constant_1.Constants
+            constant_1.Constants,
+            HTTP_service_1.HTTPService
         ],
         bootstrap: [app_component_1.AppComponent]
     })
