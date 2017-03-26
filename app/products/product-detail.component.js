@@ -1,71 +1,53 @@
-System.register(['angular2/core', 'angular2/router', './product.service'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
-    var core_1, router_1, product_service_1;
-    var ProductDetailComponent;
-    return {
-        setters:[
-            function (core_1_1) {
-                core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
-            function (product_service_1_1) {
-                product_service_1 = product_service_1_1;
-            }],
-        execute: function() {
-            ProductDetailComponent = (function () {
-                function ProductDetailComponent(_routeParams, _router, _productService) {
-                    this._routeParams = _routeParams;
-                    this._router = _router;
-                    this._productService = _productService;
-                    this.pageTitle = "Product Detail";
-                    var id = this._routeParams.get('id');
-                    // this.product = this._productService.getProductById(id);
-                    // let products: IProduct[];
-                    // this._productService.getProducts()
-                    //                     .subscribe(products => this.products = products,
-                    //                     error => this.errorMessage = <any>error
-                    //                     );
-                    // this.product = products[4];
-                    this.pageTitle += ": " + id;
-                }
-                ProductDetailComponent.prototype.getProduct = function (id) {
-                    var _this = this;
-                    this._productService.getProduct(id)
-                        .subscribe(function (product) { return _this.product = product; }, function (error) { return _this.errorMessage = error; });
-                    console.log('product of ' + id);
-                    console.log(this.product);
-                };
-                ProductDetailComponent.prototype.ngOnInit = function () {
-                    // if (!this.product) {
-                    var id = +this._routeParams.get('id');
-                    this.getProduct(id);
-                    // }
-                };
-                ProductDetailComponent.prototype.onBack = function () {
-                    this._router.navigate(['Products']);
-                };
-                ProductDetailComponent = __decorate([
-                    core_1.Component({
-                        templateUrl: 'app/products/product-detail.component.html',
-                    }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, router_1.Router, product_service_1.ProductService])
-                ], ProductDetailComponent);
-                return ProductDetailComponent;
-            }());
-            exports_1("ProductDetailComponent", ProductDetailComponent);
-        }
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var product_service_1 = require("./product.service");
+var ProductDetailComponent = (function () {
+    function ProductDetailComponent(_route, _router, _productService) {
+        this._route = _route;
+        this._router = _router;
+        this._productService = _productService;
+        this.pageTitle = 'Product Detail';
     }
-});
+    ProductDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this._route.params.subscribe(function (params) {
+            var id = +params['id'];
+            _this.getProduct(id);
+        });
+    };
+    ProductDetailComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+    };
+    ProductDetailComponent.prototype.getProduct = function (id) {
+        var _this = this;
+        this._productService.getProduct(id).subscribe(function (product) { return _this.product = product; }, function (error) { return _this.errorMessage = error; });
+    };
+    ProductDetailComponent.prototype.onBack = function () {
+        this._router.navigate(['/products']);
+    };
+    ProductDetailComponent.prototype.onRatingClicked = function (message) {
+        this.pageTitle = 'Product Detail: ' + message;
+    };
+    return ProductDetailComponent;
+}());
+ProductDetailComponent = __decorate([
+    core_1.Component({
+        templateUrl: 'app/products/product-detail.component.html'
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        product_service_1.ProductService])
+], ProductDetailComponent);
+exports.ProductDetailComponent = ProductDetailComponent;
 //# sourceMappingURL=product-detail.component.js.map

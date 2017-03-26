@@ -1,42 +1,36 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit }  from '@angular/core';
+
 import { IProduct } from './product';
-import { ProductFilterPipe } from './product-filter.pipe';
-import { StarComponent } from './../shared/star.component';
 import { ProductService } from './product.service';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
 
 @Component({
-    // selector: 'pm-products',
     templateUrl: 'app/products/product-list.component.html',
-    styleUrls: ['app/products/product-list.component.css'],
-    pipes: [ProductFilterPipe],
-    directives: [StarComponent, ROUTER_DIRECTIVES]
-    // providers: [ProductService]
+    styleUrls: ['app/products/product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-    constructor (private _productService: ProductService) {
-        console.log("X-AUTH-TOKEN in Products");
-        console.log(sessionStorage.getItem("authToken"));
-    }
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
-    imageState: boolean = true;
-    listFilter: string = '';
-    products: IProduct[];
+    showImage: boolean = false;
+    listFilter: string;
     errorMessage: string;
 
+    products: IProduct[];
+
+    constructor(private _productService: ProductService) {
+        // console.log("authority" + sessionStorage.getItem("authority"));
+    }
+
     toggleImage(): void {
-        this.imageState = !this.imageState;
+        this.showImage = !this.showImage;
     }
 
     ngOnInit(): void {
-        // this.products = this._productService.getProducts()
         this._productService.getProducts()
-                            .subscribe(products => this.products = products,
-                            error => this.errorMessage = <any>error
-                            );
+                .subscribe(products => this.products = products,
+                           error => this.errorMessage = <any>error);
     }
+
     onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
     }
