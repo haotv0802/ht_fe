@@ -40,6 +40,9 @@ var RoomsComponent = (function () {
         this._router.navigate(['admin/roomImages']);
         return false;
     };
+    RoomsComponent.prototype.counter = function (length) {
+        return new Array(length);
+    };
     return RoomsComponent;
 }());
 RoomsComponent = __decorate([

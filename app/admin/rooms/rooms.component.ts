@@ -42,4 +42,8 @@ export class RoomsComponent implements OnInit {
     this._router.navigate(['admin/roomImages']);
     return false;
   }
+
+  counter(length: number){
+    return new Array(length);
+  }
 }
