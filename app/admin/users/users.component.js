@@ -17,7 +17,7 @@ var UsersComponent = (function () {
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {
-        // this.getUsers();
+        this.getUsers();
     };
     UsersComponent.prototype.getUsers = function () {
         var _this = this;
