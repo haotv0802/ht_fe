@@ -14,6 +14,7 @@ var Constants = (function () {
         // Services URLs for Admin
         this.ADMIN_USERS_SERVICE_URL = this._host + '/admin/users';
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this._host + '/admin/rooms/roomTypes';
+        this.ADMIN_ROOMS_IMAGES_SERVICE_URL = this._host + '/admin/images';
         // Services URLs for Staff
         // Services URLs for Customer
         // Constants

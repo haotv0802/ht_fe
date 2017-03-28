@@ -1,0 +1,21 @@
+<div class='panel panel-primary'>
+    <!--<div class='panel-heading' style='font-size:large'>-->
+        <!--{{pageTitle}}-->
+    <!--</div>-->
+    <table style="width: 800px;">
+        <thead>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+            <th>Creation Date</th>
+        </thead>
+        <tr *ngFor="let image of images">
+            <td>{{image.name}}</td>
+            <td>
+                <img [src]="image.imageURL" [title]="image.imageInfo" style="width: 128px; height: 64px; margin: 20px;">
+            </td>
+            <td>{{image.description}}</td>
+            <td>{{image.creationDate}}</td>
+        </tr>
+    </table>
+</div>
