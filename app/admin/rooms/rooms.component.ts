@@ -30,7 +30,6 @@ export class RoomsComponent implements OnInit {
         // console.log("get users: ----");
         // console.log(res);
         this.roomTypes = roomTypes;
-        console.log(this.roomTypes);
       },
       (error) => {
         console.log(error);

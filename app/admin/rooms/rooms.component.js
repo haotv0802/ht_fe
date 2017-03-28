@@ -31,7 +31,6 @@ var RoomsComponent = (function () {
             // console.log("get users: ----");
             // console.log(res);
             _this.roomTypes = roomTypes;
-            console.log(_this.roomTypes);
         }, function (error) {
             console.log(error);
         });

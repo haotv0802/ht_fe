@@ -23,7 +23,7 @@ export class RoomsService {
         // roomType.imageURL = data[0].imageURL;
         // roomType.imageId = data[0].imageId;
         // return roomType;
-        return <RoomType[]> res.json();
+        return res.json();
       })
       ;
   }
