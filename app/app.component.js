@@ -14,7 +14,7 @@ var AppComponent = (function () {
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'pm-app',
+        selector: 'ht-app',
         // template: `
         // <div>
         //     <nav class='navbar navbar-default'>

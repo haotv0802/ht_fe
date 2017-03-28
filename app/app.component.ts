@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'pm-app',
+    selector: 'ht-app',
     // template: `
     // <div>
     //     <nav class='navbar navbar-default'>

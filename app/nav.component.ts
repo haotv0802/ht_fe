@@ -3,9 +3,10 @@ import {Router} from '@angular/router';
 import {Constants} from './common/constant';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: 'app/nav.component.html',
-  styleUrls: ['app/nav.component.css'],
+  selector: 'ht-nav',
+  moduleId: module.id,
+  templateUrl: 'nav.component.html',
+  styleUrls: ['nav.component.css'],
 })
 export class NavComponent {
 

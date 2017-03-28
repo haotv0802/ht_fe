@@ -45,7 +45,9 @@ var RoomsComponent = (function () {
 }());
 RoomsComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/admin/rooms/rooms.component.html'
+        moduleId: module.id,
+        templateUrl: 'rooms.component.html'
+        // templateUrl: 'app/admin/rooms/rooms.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
     __metadata("design:paramtypes", [rooms_service_1.RoomsService, roomImages_service_1.RoomImagesService, router_1.Router])

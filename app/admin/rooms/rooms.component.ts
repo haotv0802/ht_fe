@@ -6,7 +6,9 @@ import {RoomImagesService} from "./roomImages.service";
 import {Router} from "@angular/router";
 
 @Component({
-  templateUrl: 'app/admin/rooms/rooms.component.html'
+  moduleId: module.id,
+  templateUrl: 'rooms.component.html'
+  // templateUrl: 'app/admin/rooms/rooms.component.html'
   // styleUrls: ['app/products/product-list.component.css']
 })
 export class RoomsComponent implements OnInit {
