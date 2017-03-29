@@ -12,6 +12,22 @@ import {Router} from "@angular/router";
 export class ImagesComponent implements OnInit {
   pageTitle: string;
   images: Image[];
+  settings = {
+    columns: {
+      id: {
+        title: 'ID'
+      },
+      name: {
+        title: 'Name'
+      },
+      description: {
+        title: 'Description'
+      },
+      creationDate: {
+        title: 'Creation Date'
+      }
+    }
+  };
 
   constructor(private _imagesService: ImagesService, private _router: Router) {
     // this.pageTitle = 'Room component';

@@ -16,6 +16,22 @@ var ImagesComponent = (function () {
     function ImagesComponent(_imagesService, _router) {
         this._imagesService = _imagesService;
         this._router = _router;
+        this.settings = {
+            columns: {
+                id: {
+                    title: 'ID'
+                },
+                name: {
+                    title: 'Name'
+                },
+                description: {
+                    title: 'Description'
+                },
+                creationDate: {
+                    title: 'Creation Date'
+                }
+            }
+        };
         // this.pageTitle = 'Room component';
         // this.getImages();
     }
