@@ -16,22 +16,6 @@ var ImagesComponent = (function () {
     function ImagesComponent(_imagesService, _router) {
         this._imagesService = _imagesService;
         this._router = _router;
-        this.settings = {
-            columns: {
-                id: {
-                    title: 'ID'
-                },
-                name: {
-                    title: 'Name'
-                },
-                description: {
-                    title: 'Description'
-                },
-                creationDate: {
-                    title: 'Creation Date'
-                }
-            }
-        };
         // this.pageTitle = 'Room component';
         // this.getImages();
     }
@@ -45,6 +29,7 @@ var ImagesComponent = (function () {
             console.log("get images: ----");
             console.log(images);
             _this.images = images;
+            // $('.carousel').carousel();
         }, function (error) {
             console.log(error);
         });
@@ -52,14 +37,17 @@ var ImagesComponent = (function () {
     ImagesComponent.prototype.counter = function (length) {
         return new Array(length);
     };
+    ImagesComponent.prototype.isActive = function (url) {
+        return url === this.images[4].imageURL;
+        // return url;
+    };
     return ImagesComponent;
 }());
 ImagesComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'images.component.html'
-        // templateUrl: 'app/admin/rooms/rooms.component.html'
-        // styleUrls: ['app/products/product-list.component.css']
+        templateUrl: 'images.component.html',
+        styleUrls: ['images.component.css']
     }),
     __metadata("design:paramtypes", [images_service_1.ImagesService, router_1.Router])
 ], ImagesComponent);

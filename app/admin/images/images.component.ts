@@ -5,30 +5,12 @@ import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'images.component.html'
-  // templateUrl: 'app/admin/rooms/rooms.component.html'
-  // styleUrls: ['app/products/product-list.component.css']
+  templateUrl: 'images.component.html',
+  styleUrls: ['images.component.css']
 })
 export class ImagesComponent implements OnInit {
   pageTitle: string;
   images: Image[];
-  settings = {
-    columns: {
-      id: {
-        title: 'ID'
-      },
-      name: {
-        title: 'Name'
-      },
-      description: {
-        title: 'Description'
-      },
-      creationDate: {
-        title: 'Creation Date'
-      }
-    }
-  };
-
   constructor(private _imagesService: ImagesService, private _router: Router) {
     // this.pageTitle = 'Room component';
     // this.getImages();
@@ -45,6 +27,7 @@ export class ImagesComponent implements OnInit {
         console.log("get images: ----");
         console.log(images);
         this.images = images;
+        // $('.carousel').carousel();
       },
       (error) => {
         console.log(error);
@@ -54,5 +37,10 @@ export class ImagesComponent implements OnInit {
 
   counter(length: number){
     return new Array(length);
+  }
+
+  isActive(url: string) {
+    return url === this.images[4].imageURL;
+    // return url;
   }
 }
