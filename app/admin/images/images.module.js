@@ -11,6 +11,8 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var images_component_1 = require("./images.component");
 var images_service_1 = require("./images.service");
+var ng2_smart_table_1 = require("ng2-smart-table");
+var ng2_completer_1 = require("ng2-completer");
 var ImagesModule = (function () {
     function ImagesModule() {
     }
@@ -22,7 +24,9 @@ ImagesModule = __decorate([
             router_1.RouterModule.forChild([
                 { path: 'admin/images', component: images_component_1.ImagesComponent }
             ]),
-            common_1.CommonModule
+            common_1.CommonModule,
+            ng2_smart_table_1.Ng2SmartTableModule,
+            ng2_completer_1.Ng2CompleterModule
         ],
         declarations: [images_component_1.ImagesComponent],
         providers: [images_service_1.ImagesService]

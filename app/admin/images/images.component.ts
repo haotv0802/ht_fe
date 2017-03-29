@@ -1,4 +1,4 @@
-import {Component, OnInit}  from '@angular/core';
+import {Component, OnInit, Input}  from '@angular/core';
 import {Image} from "./image";
 import {ImagesService} from "./images.service";
 import {Router} from "@angular/router";

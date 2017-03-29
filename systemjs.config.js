@@ -6,7 +6,10 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'node_modules/',
+      'ng2-smart-table': 'npm:ng2-smart-table',
+      'ng2-smart-table/lib': 'npm:ng2-smart-table/build/src/ng2-smart-table/lib',
+      'ng2-completer': 'node_modules/ng2-completer'
     },
     // map tells the System loader where to look for things
     map: {
@@ -34,6 +37,20 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'ng2-smart-table': {
+        main: 'ng2-smart-table.js',
+        meta: {
+          '*.html': {},
+          '*.scss': {}
+        }
+      },
+      'ng2-smart-table/lib': {
+        main: 'index.js'
+      },
+      'ng2-completer': {
+        main: 'ng2-completer.module.js',
+        defaultJSExtension: 'js',
       }
     }
   });
