@@ -38,7 +38,7 @@ var ImagesComponent = (function () {
         return new Array(length);
     };
     ImagesComponent.prototype.isActive = function (url) {
-        return url === this.images[4].imageURL;
+        return url === this.images[0].imageURL;
         // return url;
     };
     return ImagesComponent;
