@@ -11,7 +11,7 @@ export class HTTPService {
     private _constants: Constants) {
   }
 
-  public post(url: string, data: any): Observable<any> {
+  public post(url: string, data: any): Observable<Response> {
     let headers = new Headers();
     headers.append("Accept-Language", "en");
     headers.append("Content-Type", "application/json");
@@ -24,7 +24,7 @@ export class HTTPService {
       ;
   }
 
-  public get(url: string): Observable<any> {
+  public get(url: string): Observable<Response> {
     let headers = new Headers();
     headers.append("Accept-Language", "en");
     headers.append("Content-Type", "application/json");
