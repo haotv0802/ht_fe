@@ -3,14 +3,51 @@
         <!--{{pageTitle}}-->
     <!--</div>-->
 
-<div id="slider">
-    <figure>
-        <div *ngFor="let image of images; let i = index">
-            <img src="{{image.imageURL}}" alt="{{image.imageInfo}}">
-        </div>
-    </figure>
-</div>
 
+<span id="sl_play" class="sl_command">&nbsp;</span>
+<span id="sl_pause" class="sl_command">&nbsp;</span>
+<span id="sl_i1" class="sl_command sl_i">&nbsp;</span>
+<span id="sl_i2" class="sl_command sl_i">&nbsp;</span>
+<span id="sl_i3" class="sl_command sl_i">&nbsp;</span>
+<span id="sl_i4" class="sl_command sl_i">&nbsp;</span>
+
+
+<section id="slideshow">
+
+    <a class="commands prev commands1" href="#sl_i4" title="Go to last slide">&lt;</a>
+    <a class="commands next commands1" href="#sl_i2" title="Go to 2nd slide">&gt;</a>
+    <a class="commands prev commands2" href="#sl_i1" title="Go to 1rst slide">&lt;</a>
+    <a class="commands next commands2" href="#sl_i3" title="Go to 3rd slide">&gt;</a>
+    <a class="commands prev commands3" href="#sl_i2" title="Go to 2nd slide">&lt;</a>
+    <a class="commands next commands3" href="#sl_i4" title="Go to 4th slide">&gt;</a>
+    <a class="commands prev commands4" href="#sl_i3" title="Go to 3rd slide">&lt;</a>
+    <a class="commands next commands4" href="#sl_i1" title="Go to first slide">&gt;</a>
+
+    <a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
+    <a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
+
+    <div class="container">
+        <div class="c_slider"></div>
+        <div class="slider">
+            <div *ngFor="let image of images; let i = index">
+                <figure>
+                    <img [src]="image.imageURL" [title]="image.imageInfo" width="640" height="310" >
+                    <figcaption>{{image.imageInfo}}</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <span id="timeline"></span>
+
+    <ul class="dots_commands"><!--
+			--><li><a title="Show slide 1" href="#sl_i1">Slide 1</a></li><!--
+			--><li><a title="Show slide 2" href="#sl_i2">Slide 2</a></li><!--
+			--><li><a title="Show slide 3" href="#sl_i3">Slide 3</a></li><!--
+			--><li><a title="Show slide 4" href="#sl_i4">Slide 4</a></li>
+    </ul>
+
+</section>
 <!--<div id="carousel-generic" class="carousel slide" data-ride="carousel" style="width: 600px; height: 300px;">-->
     <!--<ol class="carousel-indicators">-->
         <!--<li data-target="#carousel-generic" *ngFor="let image of images; let i = index"-->
@@ -35,21 +72,21 @@
         <!--<span class="sr-only">Next</span>-->
     <!--</a>-->
 <!--</div>-->
-    <table style="width: 800px;">
-        <thead>
-            <th>Name</th>
-            <th></th>
-            <th>Description</th>
-            <th>Creation Date</th>
-        </thead>
-        <tr *ngFor="let image of images">
-            <td>{{image.name}}</td>
-            <td>
-                <img [src]="image.imageURL" [title]="image.imageInfo" style="width: 128px; height: 64px; margin: 20px;">
-            </td>
-            <td>{{image.description}}</td>
-            <td>{{image.creationDate}}</td>
-        </tr>
-    </table>
+<table style="width: 800px;">
+    <thead>
+        <th>Name</th>
+        <th></th>
+        <th>Description</th>
+        <th>Creation Date</th>
+    </thead>
+    <tr *ngFor="let image of images">
+        <td>{{image.name}}</td>
+        <td>
+            <img [src]="image.imageURL" [title]="image.imageInfo" style="width: 128px; height: 64px; margin: 20px;">
+        </td>
+        <td>{{image.description}}</td>
+        <td>{{image.creationDate}}</td>
+    </tr>
+</table>
 
 <!--</div>-->

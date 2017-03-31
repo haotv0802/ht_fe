@@ -47,7 +47,7 @@ ImagesComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'images.component.html',
-        styleUrls: ['images.component.css']
+        styleUrls: ['images.component.css', 'image.slider.css']
     }),
     __metadata("design:paramtypes", [images_service_1.ImagesService, router_1.Router])
 ], ImagesComponent);
