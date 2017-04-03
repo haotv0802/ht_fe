@@ -11,6 +11,8 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var individuals_component_1 = require("./individuals.component");
 var individuals_service_1 = require("./individuals.service");
+var individualDetails_service_1 = require("./individualDetails.service");
+var individualDetails_component_1 = require("./individualDetails.component");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -20,12 +22,13 @@ IndividualsModule = __decorate([
     core_1.NgModule({
         imports: [
             router_1.RouterModule.forChild([
-                { path: 'admin/individuals', component: individuals_component_1.IndividualsComponent }
+                { path: 'admin/individuals', component: individuals_component_1.IndividualsComponent },
+                { path: 'admin/individuals/details', component: individualDetails_component_1.IndividualDetailsComponent }
             ]),
             common_1.CommonModule
         ],
-        declarations: [individuals_component_1.IndividualsComponent],
-        providers: [individuals_service_1.IndividualsService]
+        declarations: [individuals_component_1.IndividualsComponent, individualDetails_component_1.IndividualDetailsComponent],
+        providers: [individuals_service_1.IndividualsService, individualDetails_service_1.IndividualDetailsService]
     })
 ], IndividualsModule);
 exports.IndividualsModule = IndividualsModule;

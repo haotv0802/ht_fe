@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 
 import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
+import {IndividualDetailsService} from "./individualDetails.service";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -11,16 +13,20 @@ import {IndividualsService} from "./individuals.service";
 export class IndividualsComponent implements OnInit {
   pageTitle: string;
   individuals: Individual[];
-  constructor(private _individualService: IndividualsService) {
-    // this.pageTitle = 'User component';
+  constructor(
+    private _individualService: IndividualsService,
+    private _individualDetailsService: IndividualDetailsService,
+    private _router: Router
+  ) {
+    this.pageTitle = 'Individual List';
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getIndividuals();
   }
 
-  getUsers(): void {
-    console.log("get individualss");
+  getIndividuals(): void {
+    console.log("get individuals");
     this._individualService.getIndividuals().subscribe(
       (individuals) => {
         console.log("get individuals: ----");
@@ -31,5 +37,12 @@ export class IndividualsComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  displayIndividual(individual: Individual) {
+    console.log(individual);
+    this._individualDetailsService.individual = individual;
+    this._router.navigate(["admin/individuals/details"]);
+    return false;
   }
 }

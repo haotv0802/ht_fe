@@ -11,17 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var individuals_service_1 = require("./individuals.service");
+var individualDetails_service_1 = require("./individualDetails.service");
+var router_1 = require("@angular/router");
 var IndividualsComponent = (function () {
-    function IndividualsComponent(_individualService) {
+    function IndividualsComponent(_individualService, _individualDetailsService, _router) {
         this._individualService = _individualService;
-        // this.pageTitle = 'User component';
+        this._individualDetailsService = _individualDetailsService;
+        this._router = _router;
+        this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
-        this.getUsers();
+        this.getIndividuals();
     };
-    IndividualsComponent.prototype.getUsers = function () {
+    IndividualsComponent.prototype.getIndividuals = function () {
         var _this = this;
-        console.log("get individualss");
+        console.log("get individuals");
         this._individualService.getIndividuals().subscribe(function (individuals) {
             console.log("get individuals: ----");
             console.log(individuals);
@@ -29,6 +33,12 @@ var IndividualsComponent = (function () {
         }, function (error) {
             console.log(error);
         });
+    };
+    IndividualsComponent.prototype.displayIndividual = function (individual) {
+        console.log(individual);
+        this._individualDetailsService.individual = individual;
+        this._router.navigate(["admin/individuals/details"]);
+        return false;
     };
     return IndividualsComponent;
 }());
@@ -38,7 +48,9 @@ IndividualsComponent = __decorate([
         templateUrl: 'individuals.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [individuals_service_1.IndividualsService])
+    __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
+        individualDetails_service_1.IndividualDetailsService,
+        router_1.Router])
 ], IndividualsComponent);
 exports.IndividualsComponent = IndividualsComponent;
 //# sourceMappingURL=individuals.component.js.map
