@@ -1,0 +1,32 @@
+<div class='panel panel-primary'>
+    <!--<div class='panel-heading' style='font-size:large'>-->
+    <!--{{pageTitle}}-->
+    <!--</div>-->
+    <!--<button (click)="getUsers()" style="width: 150px; height: 50px;">click get users</button>-->
+    <div class="table-responsive" align="center">
+        <table class="table table-bordered table-hover">
+            <thead style="color: #337AB7">
+            <th class="col-sm-1">Id</th>
+            <th class="col-sm-2">Name</th>
+            <th class="col-sm-1">Birthday</th>
+            <th class="col-sm-1">Gender</th>
+            <th class="col-sm-1">Email</th>
+            <th class="col-sm-2">Phone Number</th>
+            <th class="col-sm-1">Image</th>
+            <th class="col-sm-2">User Name</th>
+            <th class="col-sm-2">Roles</th>
+            </thead>
+            <tr *ngFor="let indiv of individuals">
+                <td>{{indiv.id}}</td>
+                <td>{{indiv.firstName}} {{indiv.lastName}}</td>
+                <td>{{indiv.birthday}}</td>
+                <td>{{indiv.gender}}</td>
+                <td>{{indiv.email}}</td>
+                <td>{{indiv.phoneNumber}}</td>
+                <td>{{indiv.imageId}}</td>
+                <td>{{indiv.userName}}</td>
+                <td>{{indiv.roles}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

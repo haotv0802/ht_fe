@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var users_module_1 = require("./users/users.module");
 var rooms_module_1 = require("./rooms/rooms.module");
 var images_module_1 = require("./images/images.module");
+var individuals_module_1 = require("./individuals/individuals.module");
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -20,7 +21,8 @@ AdminModule = __decorate([
         imports: [
             users_module_1.UsersModule,
             rooms_module_1.RoomsModule,
-            images_module_1.ImagesModule
+            images_module_1.ImagesModule,
+            individuals_module_1.IndividualsModule
         ],
         declarations: [],
         providers: []
