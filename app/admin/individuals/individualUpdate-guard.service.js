@@ -11,29 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
-var individualDetails_service_1 = require("./individualDetails.service");
-var IndividualDetailsGuard = (function () {
-    function IndividualDetailsGuard(_router, _individualDetailsService) {
+var individualUpdate_service_1 = require("./individualUpdate.service");
+var IndividualUpdateGuard = (function () {
+    function IndividualUpdateGuard(_router, _individualUpdateService) {
         this._router = _router;
-        this._individualDetailsService = _individualDetailsService;
+        this._individualUpdateService = _individualUpdateService;
     }
-    IndividualDetailsGuard.prototype.canActivate = function (route) {
-        console.log("url: " + route.url);
-        console.log("url: " + route.routeConfig.path);
-        if (!this._individualDetailsService.individual) {
+    IndividualUpdateGuard.prototype.canActivate = function (route) {
+        if (!this._individualUpdateService.individual) {
             this._router.navigate(["admin/individuals"]);
-            console.log("In Individual Guard, return false");
             return false;
         }
-        console.log("In Individual Guard, return true");
         return true;
     };
-    return IndividualDetailsGuard;
+    return IndividualUpdateGuard;
 }());
-IndividualDetailsGuard = __decorate([
+IndividualUpdateGuard = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.Router,
-        individualDetails_service_1.IndividualDetailsService])
-], IndividualDetailsGuard);
-exports.IndividualDetailsGuard = IndividualDetailsGuard;
-//# sourceMappingURL=individualDetails-guard.service.js.map
+        individualUpdate_service_1.IndividualUpdateService])
+], IndividualUpdateGuard);
+exports.IndividualUpdateGuard = IndividualUpdateGuard;
+//# sourceMappingURL=individualUpdate-guard.service.js.map

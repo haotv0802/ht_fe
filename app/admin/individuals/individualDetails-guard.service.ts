@@ -1,4 +1,4 @@
-import {CanActivate, Router, ActivatedRouteSnapshot} from "@angular/router";
+import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {IndividualDetailsService} from "./individualDetails.service";
 
@@ -10,6 +10,8 @@ export class IndividualDetailsGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
+    console.log("url: " + route.url);
+    console.log("url: " + route.routeConfig.path);
     if (!this._individualDetailsService.individual) {
       this._router.navigate(["admin/individuals"]);
       console.log("In Individual Guard, return false");

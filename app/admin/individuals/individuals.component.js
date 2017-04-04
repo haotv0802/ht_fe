@@ -13,10 +13,12 @@ var core_1 = require("@angular/core");
 var individuals_service_1 = require("./individuals.service");
 var individualDetails_service_1 = require("./individualDetails.service");
 var router_1 = require("@angular/router");
+var individualUpdate_service_1 = require("./individualUpdate.service");
 var IndividualsComponent = (function () {
-    function IndividualsComponent(_individualService, _individualDetailsService, _router) {
+    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router) {
         this._individualService = _individualService;
         this._individualDetailsService = _individualDetailsService;
+        this._individualUpdateService = _individualUpdateService;
         this._router = _router;
         this.pageTitle = 'Individual List';
     }
@@ -39,6 +41,11 @@ var IndividualsComponent = (function () {
         this._individualDetailsService.individual = individual;
         this._router.navigate(["admin/individuals/details"]);
     };
+    IndividualsComponent.prototype.editIndividual = function (individual) {
+        console.log(individual);
+        this._individualUpdateService.individual = individual;
+        this._router.navigate(["admin/individuals/update"]);
+    };
     return IndividualsComponent;
 }());
 IndividualsComponent = __decorate([
@@ -49,6 +56,7 @@ IndividualsComponent = __decorate([
     }),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
         individualDetails_service_1.IndividualDetailsService,
+        individualUpdate_service_1.IndividualUpdateService,
         router_1.Router])
 ], IndividualsComponent);
 exports.IndividualsComponent = IndividualsComponent;

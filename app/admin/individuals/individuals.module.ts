@@ -6,6 +6,9 @@ import {IndividualsService} from "./individuals.service";
 import {IndividualDetailsService} from "./individualDetails.service";
 import {IndividualDetailsComponent} from "./individualDetails.component";
 import {IndividualDetailsGuard} from "./individualDetails-guard.service";
+import {IndividualUpdateService} from "./individualUpdate.service";
+import {IndividualUpdateComponent} from "./individualUpdate.component";
+import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 
 @NgModule({
   imports: [
@@ -15,15 +18,26 @@ import {IndividualDetailsGuard} from "./individualDetails-guard.service";
         path: 'admin/individuals/details',
         canActivate: [IndividualDetailsGuard],
         component: IndividualDetailsComponent
-      }
+      },
+      {
+        path: 'admin/individuals/update',
+        canActivate: [IndividualUpdateGuard],
+        component: IndividualUpdateComponent
+      },
     ]),
     CommonModule
   ],
-  declarations: [IndividualsComponent, IndividualDetailsComponent],
+  declarations: [
+    IndividualsComponent,
+    IndividualDetailsComponent,
+    IndividualUpdateComponent
+  ],
   providers: [
     IndividualsService,
     IndividualDetailsService,
-    IndividualDetailsGuard
+    IndividualDetailsGuard,
+    IndividualUpdateService,
+    IndividualUpdateGuard
   ]
 })
 export class IndividualsModule {

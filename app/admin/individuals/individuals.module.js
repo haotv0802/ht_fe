@@ -14,6 +14,9 @@ var individuals_service_1 = require("./individuals.service");
 var individualDetails_service_1 = require("./individualDetails.service");
 var individualDetails_component_1 = require("./individualDetails.component");
 var individualDetails_guard_service_1 = require("./individualDetails-guard.service");
+var individualUpdate_service_1 = require("./individualUpdate.service");
+var individualUpdate_component_1 = require("./individualUpdate.component");
+var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -28,15 +31,26 @@ IndividualsModule = __decorate([
                     path: 'admin/individuals/details',
                     canActivate: [individualDetails_guard_service_1.IndividualDetailsGuard],
                     component: individualDetails_component_1.IndividualDetailsComponent
-                }
+                },
+                {
+                    path: 'admin/individuals/update',
+                    canActivate: [individualUpdate_guard_service_1.IndividualUpdateGuard],
+                    component: individualUpdate_component_1.IndividualUpdateComponent
+                },
             ]),
             common_1.CommonModule
         ],
-        declarations: [individuals_component_1.IndividualsComponent, individualDetails_component_1.IndividualDetailsComponent],
+        declarations: [
+            individuals_component_1.IndividualsComponent,
+            individualDetails_component_1.IndividualDetailsComponent,
+            individualUpdate_component_1.IndividualUpdateComponent
+        ],
         providers: [
             individuals_service_1.IndividualsService,
             individualDetails_service_1.IndividualDetailsService,
-            individualDetails_guard_service_1.IndividualDetailsGuard
+            individualDetails_guard_service_1.IndividualDetailsGuard,
+            individualUpdate_service_1.IndividualUpdateService,
+            individualUpdate_guard_service_1.IndividualUpdateGuard
         ]
     })
 ], IndividualsModule);
