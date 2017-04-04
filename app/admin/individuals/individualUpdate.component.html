@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label"
-                           for="middleNameId">Birthday</label>
+                           for="birthdayId">Birthday</label>
                     <div class="col-md-8">
                         <input class="form-control"
                                id="birthdayId"
@@ -85,7 +85,7 @@
                         <span *ngIf="individualForm.get('birthday').errors.required">
                             Please enter your birthday.
                         </span>
-                        <span *ngIf="individualForm.get('lastName').errors.minlength">
+                        <span *ngIf="individualForm.get('birthday').errors.minlength">
                             The birthday must be longer than 3 characters.
                         </span>
                     </span>
@@ -120,7 +120,7 @@
                                id="emailId"
                                type="text"
                                placeholder="Email (required)"
-                               formControlName="gender"/>
+                               formControlName="email"/>
                         <span class="help-block" *ngIf="(individualForm.get('email').touched ||
                                                          individualForm.get('email').dirty) &&
                                                          individualForm.get('email').errors">
