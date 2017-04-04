@@ -17,6 +17,7 @@ var individualDetails_guard_service_1 = require("./individualDetails-guard.servi
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var individualUpdate_component_1 = require("./individualUpdate.component");
 var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service");
+var forms_1 = require("@angular/forms");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -38,7 +39,8 @@ IndividualsModule = __decorate([
                     component: individualUpdate_component_1.IndividualUpdateComponent
                 },
             ]),
-            common_1.CommonModule
+            common_1.CommonModule,
+            forms_1.ReactiveFormsModule
         ],
         declarations: [
             individuals_component_1.IndividualsComponent,

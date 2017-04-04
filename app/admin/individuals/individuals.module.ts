@@ -9,6 +9,7 @@ import {IndividualDetailsGuard} from "./individualDetails-guard.service";
 import {IndividualUpdateService} from "./individualUpdate.service";
 import {IndividualUpdateComponent} from "./individualUpdate.component";
 import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
         component: IndividualUpdateComponent
       },
     ]),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     IndividualsComponent,
