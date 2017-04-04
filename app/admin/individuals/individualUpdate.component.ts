@@ -8,8 +8,8 @@ import 'rxjs/add/operator/debounceTime';
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'individualUpdate.component.html'
-  // styleUrls: ['app/products/product-list.component.css']
+  templateUrl: 'individualUpdate.component.html',
+  styleUrls: ['individualUpdate.component.css']
 })
 export class IndividualUpdateComponent implements OnInit {
   pageTitle: string;
@@ -52,10 +52,13 @@ export class IndividualUpdateComponent implements OnInit {
   save(): void {
     console.log('Saved: ' + JSON.stringify(this.individualForm.value));
   }
-
-  populateTestData() {
+  openCalendar() {
+    this.populateTestData();
+    return false;
+  }
+  populateTestData(): void {
     console.log('test data');
-    this.individualForm.patchValue({
+    this.individualForm.setValue({
       firstName: this.individual.firstName,
       lastName: this.individual.lastName,
       middleName: this.individual.middleName,

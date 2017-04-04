@@ -54,9 +54,13 @@ var IndividualUpdateComponent = (function () {
     IndividualUpdateComponent.prototype.save = function () {
         console.log('Saved: ' + JSON.stringify(this.individualForm.value));
     };
+    IndividualUpdateComponent.prototype.openCalendar = function () {
+        this.populateTestData();
+        return false;
+    };
     IndividualUpdateComponent.prototype.populateTestData = function () {
         console.log('test data');
-        this.individualForm.patchValue({
+        this.individualForm.setValue({
             firstName: this.individual.firstName,
             lastName: this.individual.lastName,
             middleName: this.individual.middleName,
@@ -82,8 +86,8 @@ var IndividualUpdateComponent = (function () {
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'individualUpdate.component.html'
-        // styleUrls: ['app/products/product-list.component.css']
+        templateUrl: 'individualUpdate.component.html',
+        styleUrls: ['individualUpdate.component.css']
     }),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
         individualUpdate_service_1.IndividualUpdateService,

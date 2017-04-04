@@ -85,7 +85,7 @@
                                               !individualForm.get('birthday').valid }">
                     <label class="col-md-2 control-label"
                            for="birthdayId">Birthday</label>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <input class="form-control"
                                id="birthdayId"
                                type="text"
@@ -101,6 +101,19 @@
                             The birthday must be longer than 3 characters.
                         </span>
                     </span>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" (click)="openCalendar()">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </a>
+                        <span class="input-group-addon btn">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <label class="input-group-btn" >
+        <span class="btn btn-default">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
