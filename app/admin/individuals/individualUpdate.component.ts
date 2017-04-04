@@ -29,7 +29,15 @@ export class IndividualUpdateComponent implements OnInit {
     console.log("In individual Update");
     console.log(this.individual);
     this.individualForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]]
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      middleName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      birthday: ['', [Validators.required, Validators.minLength(3)]],
+      gender: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.minLength(3)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
+      userName: ['', [Validators.required, Validators.minLength(3)]],
+      roles: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 

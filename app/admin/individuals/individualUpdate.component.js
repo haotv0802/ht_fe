@@ -27,7 +27,15 @@ var IndividualUpdateComponent = (function () {
         console.log("In individual Update");
         console.log(this.individual);
         this.individualForm = this.fb.group({
-            firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
+            firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            middleName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            birthday: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            gender: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            email: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            roles: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
     };
     IndividualUpdateComponent.prototype.save = function () {
