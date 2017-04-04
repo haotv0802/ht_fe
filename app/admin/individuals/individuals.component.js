@@ -27,24 +27,23 @@ var IndividualsComponent = (function () {
     };
     IndividualsComponent.prototype.getIndividuals = function () {
         var _this = this;
-        console.log("get individuals");
         this._individualService.getIndividuals().subscribe(function (individuals) {
-            console.log("get individuals: ----");
-            console.log(individuals);
             _this.individuals = individuals;
         }, function (error) {
             console.log(error);
         });
     };
     IndividualsComponent.prototype.displayIndividual = function (individual) {
-        console.log(individual);
         this._individualDetailsService.individual = individual;
         this._router.navigate(["admin/individuals/details"]);
     };
     IndividualsComponent.prototype.editIndividual = function (individual) {
-        console.log(individual);
         this._individualUpdateService.individual = individual;
         this._router.navigate(["admin/individuals/update"]);
+    };
+    IndividualsComponent.prototype.addIndividual = function () {
+        this._router.navigate(["admin/individuals/add"]);
+        return false;
     };
     return IndividualsComponent;
 }());

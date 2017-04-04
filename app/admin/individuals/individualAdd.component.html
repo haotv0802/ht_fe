@@ -2,6 +2,11 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
+    <span>
+        <a href="#" (click)="backIndividualList()">
+            <img src="./app/assets/icons/back.png" style="width: 32px; height: 32px;"/>
+        </a>
+    </span>
     <div class="panel-body">
         <form class="form-horizontal" novalidate
               (ngSubmit)="save()"
@@ -253,6 +258,7 @@
                                 Test Data
                             </button>
                         </span>
+
                     </div>
                 </div>
             </fieldset>

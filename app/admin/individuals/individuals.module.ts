@@ -10,6 +10,8 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {IndividualUpdateComponent} from "./individualUpdate.component";
 import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
+import {IndividualAddComponent} from "./individualAdd.component";
+import {IndividualAddService} from "./individualAdd.service";
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import {ReactiveFormsModule} from "@angular/forms";
         canActivate: [IndividualUpdateGuard],
         component: IndividualUpdateComponent
       },
+      {path: 'admin/individuals/add', component: IndividualAddComponent},
     ]),
     CommonModule,
     ReactiveFormsModule
@@ -32,14 +35,16 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     IndividualsComponent,
     IndividualDetailsComponent,
-    IndividualUpdateComponent
+    IndividualUpdateComponent,
+    IndividualAddComponent
   ],
   providers: [
     IndividualsService,
     IndividualDetailsService,
     IndividualDetailsGuard,
     IndividualUpdateService,
-    IndividualUpdateGuard
+    IndividualUpdateGuard,
+    IndividualAddService
   ]
 })
 export class IndividualsModule {

@@ -28,11 +28,8 @@ export class IndividualsComponent implements OnInit {
   }
 
   getIndividuals(): void {
-    console.log("get individuals");
     this._individualService.getIndividuals().subscribe(
       (individuals) => {
-        console.log("get individuals: ----");
-        console.log(individuals);
         this.individuals = individuals;
       },
       (error) => {
@@ -42,14 +39,16 @@ export class IndividualsComponent implements OnInit {
   }
 
   displayIndividual(individual: Individual) : void {
-    console.log(individual);
     this._individualDetailsService.individual = individual;
     this._router.navigate(["admin/individuals/details"]);
   }
 
   editIndividual(individual: Individual) : void {
-    console.log(individual);
     this._individualUpdateService.individual = individual;
     this._router.navigate(["admin/individuals/update"]);
+  }
+  addIndividual() {
+    this._router.navigate(["admin/individuals/add"]);
+    return false;
   }
 }
