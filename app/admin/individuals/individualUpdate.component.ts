@@ -34,7 +34,7 @@ export class IndividualUpdateComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       gender: ['', [Validators.required, Validators.minLength(3)]],
       birthday: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+')]],
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
       userName: ['', [Validators.required, Validators.minLength(3)]],
       roles: ['', [Validators.required, Validators.minLength(3)]]

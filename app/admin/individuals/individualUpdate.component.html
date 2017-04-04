@@ -95,21 +95,14 @@
                     <label class="col-md-2 control-label"
                            for="genderId">Gender</label>
                     <div class="col-md-8">
-                        <input class="form-control"
-                               id="genderId"
-                               type="text"
-                               placeholder="Gender (required)"
-                               formControlName="gender"/>
-                        <span class="help-block" *ngIf="(individualForm.get('gender').touched ||
-                                                         individualForm.get('gender').dirty) &&
-                                                         individualForm.get('gender').errors">
-                        <span *ngIf="individualForm.get('gender').errors.required">
-                            Please enter your gender.
-                        </span>
-                        <span *ngIf="individualForm.get('gender').errors.minlength">
-                            The gender must be longer than 3 characters.
-                        </span>
-                    </span>
+                        <select class="form-control"
+                                id="genderId"
+                                formControlName="gender">
+                            <option value="" disabled selected hidden>Select a Gender...</option>
+                            <option value="AL">Male</option>
+                            <option value="AK">Female</option>
+                            <option value="AZ">Unknown</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

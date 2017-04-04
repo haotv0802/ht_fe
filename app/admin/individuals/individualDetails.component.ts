@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Individual} from "./individual";
 import {IndividualDetailsService} from "./individualDetails.service";
 import {Router} from "@angular/router";
+import {IndividualUpdateService} from "./individualUpdate.service";
 
 @Component({
   moduleId: module.id,
@@ -13,6 +14,7 @@ export class IndividualDetailsComponent implements OnInit {
   pageTitle: string;
   constructor(
     private _individualDetailsService: IndividualDetailsService,
+    private _individualUpdateService: IndividualUpdateService,
     private _router: Router
   ) {
     this.pageTitle = 'Individual Details';
@@ -26,4 +28,8 @@ export class IndividualDetailsComponent implements OnInit {
     this._router.navigate(["admin/individuals"]);
   }
 
+  editIndividual() {
+    this._individualUpdateService.individual = this.individual;
+    this._router.navigate(["admin/individuals/update"]);
+  }
 }

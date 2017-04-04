@@ -32,7 +32,7 @@ var IndividualUpdateComponent = (function () {
             lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             gender: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             birthday: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            email: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            email: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+')]],
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             roles: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]

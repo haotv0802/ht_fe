@@ -4,7 +4,7 @@
     </div>
     <div class='panel-body'>
         <button type="button" class="btn btn-info" (click)="backIndividualList()">Back</button>
-        <!--<button type="button" class="btn btn-warning" (click)="editIndividual()")>Edit</button>-->
+        <button type="button" class="btn btn-warning" (click)="editIndividual()">Edit</button>
         <div class='row'>
             <div class='col-md-6'>
                 <div class='row top-buffer'>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class='col-md-4'>
-                <img [src]="individual.imageURL" [title]="individual.imageInfo" style="width: 384px; height: 300px;"/>
+                <img *ngIf="individual.imageURL" [src]="individual.imageURL" [title]="individual.imageInfo" style="width: 384px; height: 300px;"/>
             </div>
         </div>
     </div>
