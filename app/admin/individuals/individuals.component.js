@@ -38,7 +38,6 @@ var IndividualsComponent = (function () {
         console.log(individual);
         this._individualDetailsService.individual = individual;
         this._router.navigate(["admin/individuals/details"]);
-        return false;
     };
     return IndividualsComponent;
 }());

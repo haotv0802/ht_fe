@@ -19,10 +19,10 @@ var IndividualDetailsComponent = (function () {
         this.pageTitle = 'Individual Details';
     }
     IndividualDetailsComponent.prototype.ngOnInit = function () {
-        if (!this._individualDetailsService.individual) {
-            this._router.navigate(["admin/individuals"]);
-        }
         this.individual = this._individualDetailsService.individual;
+    };
+    IndividualDetailsComponent.prototype.backIndividualList = function () {
+        this._router.navigate(["admin/individuals"]);
     };
     return IndividualDetailsComponent;
 }());

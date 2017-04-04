@@ -24,7 +24,9 @@
                 <td>{{indiv.phoneNumber}}</td>
                 <td>{{indiv.imageId}}</td>
                 <td>{{indiv.userName}}</td>
-                <td><a href="#" (click)="displayIndividual(indiv)">View</a> | <a href="#">Edit</a></td>
+                <td>
+                    <button type="button" class="btn btn-link" (click)="displayIndividual(indiv)">View</button> |
+                    <button type="button" class="btn btn-link" (click)="displayIndividual(indiv)">Edit</button>
             </tr>
         </table>
     </div>

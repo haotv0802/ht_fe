@@ -39,10 +39,9 @@ export class IndividualsComponent implements OnInit {
     )
   }
 
-  displayIndividual(individual: Individual) {
+  displayIndividual(individual: Individual) : void {
     console.log(individual);
     this._individualDetailsService.individual = individual;
     this._router.navigate(["admin/individuals/details"]);
-    return false;
   }
 }

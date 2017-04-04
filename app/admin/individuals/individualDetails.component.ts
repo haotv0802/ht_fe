@@ -19,10 +19,11 @@ export class IndividualDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this._individualDetailsService.individual) {
-      this._router.navigate(["admin/individuals"]);
-    }
     this.individual = this._individualDetailsService.individual;
+  }
+
+  backIndividualList() {
+    this._router.navigate(["admin/individuals"]);
   }
 
 }
