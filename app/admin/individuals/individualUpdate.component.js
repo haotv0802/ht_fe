@@ -14,15 +14,21 @@ var individuals_service_1 = require("./individuals.service");
 var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
+require("rxjs/add/operator/debounceTime");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualService, _individualUpdateService, _router, fb) {
         this._individualService = _individualService;
         this._individualUpdateService = _individualUpdateService;
         this._router = _router;
         this.fb = fb;
+        this.validationMessages = {
+            required: 'Please enter your email address.',
+            pattern: 'Please enter a valid email address.'
+        };
         this.pageTitle = 'Individual Update';
     }
     IndividualUpdateComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.individual = this._individualUpdateService.individual;
         console.log("In individual Update");
         console.log(this.individual);
@@ -32,10 +38,17 @@ var IndividualUpdateComponent = (function () {
             lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             gender: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             birthday: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            email: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+')]],
+            emailGroup: this.fb.group({
+                email: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+')]],
+                confirmEmail: ['', forms_1.Validators.required],
+            }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             roles: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
+        });
+        var emailControl = this.individualForm.get('emailGroup.email');
+        emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
+            return _this.setMessage(emailControl);
         });
     };
     IndividualUpdateComponent.prototype.save = function () {
@@ -43,6 +56,26 @@ var IndividualUpdateComponent = (function () {
     };
     IndividualUpdateComponent.prototype.populateTestData = function () {
         console.log('test data');
+        this.individualForm.patchValue({
+            firstName: this.individual.firstName,
+            lastName: this.individual.lastName,
+            middleName: this.individual.middleName,
+            gender: this.individual.gender,
+            birthday: this.individual.birthday,
+            emailGroup: { email: this.individual.email, confirmEmail: this.individual.email },
+            phoneNumber: this.individual.phoneNumber,
+            userName: this.individual.userName,
+            roles: this.individual.roles
+        });
+    };
+    IndividualUpdateComponent.prototype.setMessage = function (c) {
+        var _this = this;
+        this.emailMessage = '';
+        if ((c.touched || c.dirty) && c.errors) {
+            this.emailMessage = Object.keys(c.errors).map(function (key) {
+                return _this.validationMessages[key];
+            }).join(' ');
+        }
     };
     return IndividualUpdateComponent;
 }());
@@ -58,4 +91,15 @@ IndividualUpdateComponent = __decorate([
         forms_1.FormBuilder])
 ], IndividualUpdateComponent);
 exports.IndividualUpdateComponent = IndividualUpdateComponent;
+function emailMatcher(c) {
+    var emailControl = c.get('email');
+    var confirmControl = c.get('confirmEmail');
+    if (emailControl.pristine || confirmControl.pristine) {
+        return null;
+    }
+    if (emailControl.value === confirmControl.value) {
+        return null;
+    }
+    return { 'match': true };
+}
 //# sourceMappingURL=individualUpdate.component.js.map
