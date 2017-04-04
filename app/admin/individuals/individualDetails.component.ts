@@ -5,8 +5,8 @@ import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'individualDetails.component.html'
-  // styleUrls: ['app/products/product-list.component.css']
+  templateUrl: 'individualDetails.component.html',
+  styleUrls: ['individualDetails.component.css']
 })
 export class IndividualDetailsComponent implements OnInit {
   individual: Individual;

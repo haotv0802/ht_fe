@@ -7,7 +7,8 @@ export class Individual {
   gender: string;
   email: string;
   phoneNumber: string;
-  imageId: string;
+  imageURL: string;
+  imageInfo: string;
   userName: string;
   roles: string;
 

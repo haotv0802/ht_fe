@@ -29,8 +29,8 @@ var IndividualDetailsComponent = (function () {
 IndividualDetailsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'individualDetails.component.html'
-        // styleUrls: ['app/products/product-list.component.css']
+        templateUrl: 'individualDetails.component.html',
+        styleUrls: ['individualDetails.component.css']
     }),
     __metadata("design:paramtypes", [individualDetails_service_1.IndividualDetailsService,
         router_1.Router])
