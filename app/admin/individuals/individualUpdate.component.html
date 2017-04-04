@@ -7,7 +7,10 @@
               (ngSubmit)="save()"
               [formGroup]="individualForm">
             <fieldset>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('firstName').touched ||
+                                              individualForm.get('firstName').dirty) &&
+                                              !individualForm.get('firstName').valid }">
                     <label class="col-md-2 control-label"
                            for="firstNameId">First Name</label>
                     <div class="col-md-8">
@@ -28,7 +31,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('middleName').touched ||
+                                              individualForm.get('middleName').dirty) &&
+                                              !individualForm.get('middleName').valid }">
                     <label class="col-md-2 control-label"
                            for="middleNameId">Middle Name</label>
                     <div class="col-md-8">
@@ -49,7 +55,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('lastName').touched ||
+                                              individualForm.get('lastName').dirty) &&
+                                              !individualForm.get('lastName').valid }">
                     <label class="col-md-2 control-label"
                            for="middleNameId">Last Name</label>
                     <div class="col-md-8">
@@ -70,7 +79,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('birthday').touched ||
+                                              individualForm.get('birthday').dirty) &&
+                                              !individualForm.get('birthday').valid }">
                     <label class="col-md-2 control-label"
                            for="birthdayId">Birthday</label>
                     <div class="col-md-8">
@@ -91,7 +103,8 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('gender').touched)}">
                     <label class="col-md-2 control-label"
                            for="genderId">Gender</label>
                     <div class="col-md-8">
@@ -105,7 +118,10 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('email').touched ||
+                                              individualForm.get('email').dirty) &&
+                                              !individualForm.get('email').valid }">
                     <label class="col-md-2 control-label"
                            for="emailId">Email</label>
                     <div class="col-md-8">
@@ -126,7 +142,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('phoneNumber').touched ||
+                                              individualForm.get('phoneNumber').dirty) &&
+                                              !individualForm.get('phoneNumber').valid }">
                     <label class="col-md-2 control-label"
                            for="phoneNumberId">Phone Number</label>
                     <div class="col-md-8">
@@ -147,7 +166,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('userName').touched ||
+                                              individualForm.get('userName').dirty) &&
+                                              !individualForm.get('userName').valid }">
                     <label class="col-md-2 control-label"
                            for="userNameId">User name</label>
                     <div class="col-md-8">
@@ -168,7 +190,10 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     [ngClass]="{'has-error': (individualForm.get('roles').touched ||
+                                              individualForm.get('roles').dirty) &&
+                                              !individualForm.get('roles').valid }">
                     <label class="col-md-2 control-label"
                            for="rolesId">Roles</label>
                     <div class="col-md-8">
