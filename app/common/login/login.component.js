@@ -12,27 +12,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var login_service_1 = require("./login.service");
 var credential_1 = require("./credential");
-// import {RouteParams, Router} from '@angular/router';
-// import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 var router_1 = require("@angular/router");
 var constant_1 = require("./../constant");
+var forms_1 = require("@angular/forms");
 var LoginComponent = (function () {
-    function LoginComponent(loginService, _router, _constants) {
+    function LoginComponent(loginService, _router, _constants, fb) {
         this.loginService = loginService;
         this._router = _router;
         this._constants = _constants;
+        this.fb = fb;
         this.pageTitle = "Login";
-        this.credential = new credential_1.Credential();
-        // if (sessionStorage.getItem("authToken")) {
-        //   this._router.navigate(['products']);
-        // }
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        this.loginForm = this.fb.group({
+            username: ['', [forms_1.Validators.required]],
+            password: ['', [forms_1.Validators.required]]
+        });
+    };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        this.loginService.login(this.credential).subscribe(function (res) {
-            // console.log("response");
-            // console.log(res);
-            // console.log(res.json()[0].authority);
+        console.log(this.loginForm.value);
+        var credential = new credential_1.Credential();
+        credential.user = this.loginForm.get("username").value;
+        credential.pass = this.loginForm.get("password").value;
+        credential.lang = "en";
+        this.loginService.login(credential).subscribe(function (res) {
             var authority = res.json()[0].authority;
             sessionStorage.setItem(_this._constants.AUTHORITY, authority);
             var headers = res.headers;
@@ -53,7 +57,10 @@ LoginComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/common/login/login.component.html'
     }),
-    __metadata("design:paramtypes", [login_service_1.LoginService, router_1.Router, constant_1.Constants])
+    __metadata("design:paramtypes", [login_service_1.LoginService,
+        router_1.Router,
+        constant_1.Constants,
+        forms_1.FormBuilder])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

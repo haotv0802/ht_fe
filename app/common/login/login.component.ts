@@ -1,31 +1,43 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from './login.service';
 import {Credential} from "./credential";
-// import {RouteParams, Router} from '@angular/router';
-// import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import {Router} from '@angular/router';
 import {Constants} from './../constant';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   templateUrl: 'app/common/login/login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
   public pageTitle: string = "Login";
   private _authToken: string;
-  credential: Credential = new Credential();
+  loginForm: FormGroup;
 
-  constructor(private loginService: LoginService, private _router: Router, private _constants: Constants) {
-    // if (sessionStorage.getItem("authToken")) {
-    //   this._router.navigate(['products']);
-    // }
+  constructor(
+    private loginService: LoginService,
+    private _router: Router,
+    private _constants: Constants,
+    private fb: FormBuilder
+  ) {
+
+  }
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
   }
 
   login() {
-    this.loginService.login(this.credential).subscribe(
+    console.log(this.loginForm.value);
+    let credential = new Credential();
+    credential.user = this.loginForm.get("username").value;
+    credential.pass = this.loginForm.get("password").value;
+    credential.lang = "en";
+    this.loginService.login(credential).subscribe(
       (res) => {
-        // console.log("response");
-        // console.log(res);
-        // console.log(res.json()[0].authority);
         let authority = res.json()[0].authority;
         sessionStorage.setItem(this._constants.AUTHORITY, authority);
         let headers = res.headers;
