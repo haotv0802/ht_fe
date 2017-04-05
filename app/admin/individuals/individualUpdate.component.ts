@@ -99,6 +99,11 @@ export class IndividualUpdateComponent implements OnInit {
     this._router.navigate(["admin/individuals"]);
     return false;
   }
+
+  addIndividual() {
+    this._router.navigate(["admin/individuals/add"]);
+    return false;
+  }
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {

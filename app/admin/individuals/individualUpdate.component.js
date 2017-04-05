@@ -88,6 +88,10 @@ var IndividualUpdateComponent = (function () {
         this._router.navigate(["admin/individuals"]);
         return false;
     };
+    IndividualUpdateComponent.prototype.addIndividual = function () {
+        this._router.navigate(["admin/individuals/add"]);
+        return false;
+    };
     return IndividualUpdateComponent;
 }());
 IndividualUpdateComponent = __decorate([
