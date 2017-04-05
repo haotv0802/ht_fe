@@ -47,17 +47,17 @@ export class IndividualUpdateComponent implements OnInit {
     let emailControl = this.individualForm.get('emailGroup.email');
     emailControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setMessage(emailControl));
+
+    this.populateData();
+
+
   }
 
   save(): void {
     console.log('Saved: ' + JSON.stringify(this.individualForm.value));
   }
-  openCalendar() {
-    this.populateTestData();
-    return false;
-  }
-  populateTestData(): void {
-    console.log('test data');
+
+  populateData(): void {
     this.individualForm.setValue({
       firstName: this.individual.firstName,
       lastName: this.individual.lastName,
@@ -82,6 +82,11 @@ export class IndividualUpdateComponent implements OnInit {
     required: 'Please enter your email address.',
     pattern: 'Please enter a valid email address.'
   };
+
+  backIndividualList() {
+    this._router.navigate(["admin/individuals"]);
+    return false;
+  }
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {

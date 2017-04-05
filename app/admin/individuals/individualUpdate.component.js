@@ -50,16 +50,12 @@ var IndividualUpdateComponent = (function () {
         emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
             return _this.setMessage(emailControl);
         });
+        this.populateData();
     };
     IndividualUpdateComponent.prototype.save = function () {
         console.log('Saved: ' + JSON.stringify(this.individualForm.value));
     };
-    IndividualUpdateComponent.prototype.openCalendar = function () {
-        this.populateTestData();
-        return false;
-    };
-    IndividualUpdateComponent.prototype.populateTestData = function () {
-        console.log('test data');
+    IndividualUpdateComponent.prototype.populateData = function () {
         this.individualForm.setValue({
             firstName: this.individual.firstName,
             lastName: this.individual.lastName,
@@ -80,6 +76,10 @@ var IndividualUpdateComponent = (function () {
                 return _this.validationMessages[key];
             }).join(' ');
         }
+    };
+    IndividualUpdateComponent.prototype.backIndividualList = function () {
+        this._router.navigate(["admin/individuals"]);
+        return false;
     };
     return IndividualUpdateComponent;
 }());

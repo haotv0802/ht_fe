@@ -2,6 +2,11 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
+    <span>
+        <a href="#" (click)="backIndividualList()">
+            <img src="./app/assets/icons/back.png" style="width: 32px; height: 32px;"/>
+        </a>
+    </span>
     <div class="panel-body">
         <form class="form-horizontal" novalidate
               (ngSubmit)="save()"
@@ -19,7 +24,7 @@
                                type="text"
                                placeholder="First Name (required)"
                                formControlName="firstName"/>
-                        <span class="help-block" *ngIf="(individualForm.get('firstName').touched ||
+                    <span class="help-block" *ngIf="(individualForm.get('firstName').touched ||
                                                          individualForm.get('firstName').dirty) &&
                                                          individualForm.get('firstName').errors">
                         <span *ngIf="individualForm.get('firstName').errors.required">
@@ -43,7 +48,7 @@
                                type="text"
                                placeholder="Middle Name (required)"
                                formControlName="middleName"/>
-                        <span class="help-block" *ngIf="(individualForm.get('middleName').touched ||
+                    <span class="help-block" *ngIf="(individualForm.get('middleName').touched ||
                                                          individualForm.get('middleName').dirty) &&
                                                          individualForm.get('middleName').errors">
                         <span *ngIf="individualForm.get('middleName').errors.required">
@@ -224,7 +229,7 @@
                                type="text"
                                placeholder="Roles (required)"
                                formControlName="roles"/>
-                        <span class="help-block" *ngIf="(individualForm.get('roles').touched ||
+                    <span class="help-block" *ngIf="(individualForm.get('roles').touched ||
                                                          individualForm.get('roles').dirty) &&
                                                          individualForm.get('roles').errors">
                         <span *ngIf="individualForm.get('roles').errors.required">
@@ -249,7 +254,7 @@
                         <span>
                             <button class="btn btn-default"
                                     type="button"
-                                    (click)="populateTestData()">
+                                    (click)="populateData()">
                                 Test Data
                             </button>
                         </span>
