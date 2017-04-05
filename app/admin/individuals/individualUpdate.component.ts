@@ -81,6 +81,14 @@ export class IndividualUpdateComponent implements OnInit {
       userName: this.individual.userName,
       role: this.individual.role
     });
+
+    this._individualUpdateService.isUserNameExisting(this.individual.userName).subscribe(
+      (res) => {
+        console.log("res.isUserNameExisting");
+        console.log(res.isUserNameExisting);
+      }
+    )
+    ;
   }
 
   setMessage(c: AbstractControl): void {
@@ -103,6 +111,17 @@ export class IndividualUpdateComponent implements OnInit {
   addIndividual() {
     this._router.navigate(["admin/individuals/add"]);
     return false;
+  }
+
+  onKey(event: any) {
+    console.log(event.target.value);
+    this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(
+      (res) => {
+        console.log("res.isUserNameExisting");
+        console.log(res.isUserNameExisting);
+      }
+    )
+    ;
   }
 }
 

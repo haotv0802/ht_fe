@@ -207,7 +207,7 @@
                                id="userNameId"
                                type="text"
                                placeholder="Username (required)"
-                               formControlName="userName"/>
+                               formControlName="userName" (keyup)="onKey($event)"/>
                         <span class="help-block" *ngIf="(individualForm.get('userName').touched ||
                                                          individualForm.get('userName').dirty) &&
                                                          individualForm.get('userName').errors">

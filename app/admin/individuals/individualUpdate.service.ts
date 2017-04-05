@@ -13,4 +13,9 @@ export class IndividualUpdateService {
     private _constants: Constants) {
   }
 
+  isUserNameExisting(username: string) {
+  return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL + username)
+    .map((res) => res.json())
+    ;
+}
 }

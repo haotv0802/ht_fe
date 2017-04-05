@@ -17,6 +17,10 @@ var IndividualUpdateService = (function () {
         this._httpService = _httpService;
         this._constants = _constants;
     }
+    IndividualUpdateService.prototype.isUserNameExisting = function (username) {
+        return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL + username)
+            .map(function (res) { return res.json(); });
+    };
     return IndividualUpdateService;
 }());
 IndividualUpdateService = __decorate([

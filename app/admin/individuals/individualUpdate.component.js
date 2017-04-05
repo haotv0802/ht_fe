@@ -74,6 +74,10 @@ var IndividualUpdateComponent = (function () {
             userName: this.individual.userName,
             role: this.individual.role
         });
+        this._individualUpdateService.isUserNameExisting(this.individual.userName).subscribe(function (res) {
+            console.log("res.isUserNameExisting");
+            console.log(res.isUserNameExisting);
+        });
     };
     IndividualUpdateComponent.prototype.setMessage = function (c) {
         var _this = this;
@@ -91,6 +95,13 @@ var IndividualUpdateComponent = (function () {
     IndividualUpdateComponent.prototype.addIndividual = function () {
         this._router.navigate(["admin/individuals/add"]);
         return false;
+    };
+    IndividualUpdateComponent.prototype.onKey = function (event) {
+        console.log(event.target.value);
+        this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(function (res) {
+            console.log("res.isUserNameExisting");
+            console.log(res.isUserNameExisting);
+        });
     };
     return IndividualUpdateComponent;
 }());
