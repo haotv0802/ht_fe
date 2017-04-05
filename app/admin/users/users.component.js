@@ -21,10 +21,7 @@ var UsersComponent = (function () {
     };
     UsersComponent.prototype.getUsers = function () {
         var _this = this;
-        console.log("get users");
         this._usersService.getUsers().subscribe(function (users) {
-            // console.log("get users: ----");
-            // console.log(res);
             _this.users = users;
         }, function (error) {
             console.log(error);
@@ -34,7 +31,8 @@ var UsersComponent = (function () {
 }());
 UsersComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/admin/users/users.component.html'
+        moduleId: module.id,
+        templateUrl: 'users.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
     __metadata("design:paramtypes", [users_service_1.UsersService])

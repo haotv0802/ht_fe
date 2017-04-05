@@ -4,7 +4,8 @@ import {UsersService} from "./users.service";
 import {User} from "./user";
 
 @Component({
-  templateUrl: 'app/admin/users/users.component.html'
+  moduleId: module.id,
+  templateUrl: 'users.component.html'
   // styleUrls: ['app/products/product-list.component.css']
 })
 export class UsersComponent implements OnInit {
@@ -19,11 +20,8 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    console.log("get users");
     this._usersService.getUsers().subscribe(
       (users) => {
-        // console.log("get users: ----");
-        // console.log(res);
         this.users = users;
       },
       (error) => {

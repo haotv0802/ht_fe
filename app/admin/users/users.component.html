@@ -1,18 +1,19 @@
 <div class='panel panel-primary'>
-    <!--<div class='panel-heading' style='font-size:large'>-->
-        <!--{{pageTitle}}-->
-    <!--</div>-->
-    <!--<button (click)="getUsers()" style="width: 150px; height: 50px;">click get users</button>-->
-    <table style="width: 800px;">
-        <thead>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Role</th>
-        </thead>
-        <tr *ngFor="let user of users">
-            <td>{{user.id}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.role}}</td>
-        </tr>
-    </table>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle}}
+    </div>
+    <div class="table-responsive" align="center">
+        <table class="table table-bordered table-hover" style="width: 800px;">
+            <thead style="color: #337AB7">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+            </thead>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.role}}</td>
+            </tr>
+        </table>
+    </div>
 </div>

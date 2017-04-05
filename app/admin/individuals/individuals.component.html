@@ -5,19 +5,19 @@
     <div class="table-responsive" align="center">
         <table class="table table-bordered table-hover">
             <thead style="color: #337AB7">
-            <th class="col-sm-1">Id</th>
-            <th class="col-sm-2">Name</th>
-            <th class="col-sm-1">Birthday</th>
-            <th class="col-sm-0">Gender</th>
-            <th class="col-sm-1">Email</th>
-            <th class="col-sm-2">Phone Number</th>
-            <th class="col-sm-2">User Name</th>
-            <th class="col-sm-2" align="center">
-                <!--<button type="button" class="btn btn-link" (click)="addIndividual()">Add New Individual</button>-->
-                <a href="#" (click)="addIndividual()">
-                    <img src="./app/assets/icons/add.png" style="width: 24px; height: 24px;"/>
-                </a>
-            </th>
+                <th class="col-sm-1">Id</th>
+                <th class="col-sm-2">Name</th>
+                <th class="col-sm-1">Birthday</th>
+                <th class="col-sm-0">Gender</th>
+                <th class="col-sm-1">Email</th>
+                <th class="col-sm-2">Phone Number</th>
+                <th class="col-sm-2">User Name</th>
+                <th class="col-sm-2" align="center">
+                    <!--<button type="button" class="btn btn-link" (click)="addIndividual()">Add New Individual</button>-->
+                    <a href="#" (click)="addIndividual()">
+                        <img src="./app/assets/icons/add.png" style="width: 24px; height: 24px;"/>
+                    </a>
+                </th>
             </thead>
             <tr *ngFor="let indiv of individuals">
                 <td>{{indiv.id}}</td>
