@@ -15,10 +15,12 @@ var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
+var domain_service_1 = require("../common/domain.service");
 var IndividualUpdateComponent = (function () {
-    function IndividualUpdateComponent(_individualService, _individualUpdateService, _router, fb) {
+    function IndividualUpdateComponent(_individualService, _individualUpdateService, _domainService, _router, fb) {
         this._individualService = _individualService;
         this._individualUpdateService = _individualUpdateService;
+        this._domainService = _domainService;
         this._router = _router;
         this.fb = fb;
         this.validationMessages = {
@@ -44,11 +46,16 @@ var IndividualUpdateComponent = (function () {
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            roles: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
+            role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
         emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
             return _this.setMessage(emailControl);
+        });
+        this._domainService.getRoles().subscribe(function (roles) {
+            _this.roles = roles;
+        }, function (error) {
+            console.log(error);
         });
         this.populateData();
     };
@@ -65,7 +72,7 @@ var IndividualUpdateComponent = (function () {
             emailGroup: { email: this.individual.email, confirmEmail: this.individual.email },
             phoneNumber: this.individual.phoneNumber,
             userName: this.individual.userName,
-            roles: this.individual.roles
+            role: this.individual.role
         });
     };
     IndividualUpdateComponent.prototype.setMessage = function (c) {
@@ -91,6 +98,7 @@ IndividualUpdateComponent = __decorate([
     }),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
         individualUpdate_service_1.IndividualUpdateService,
+        domain_service_1.DomainService,
         router_1.Router,
         forms_1.FormBuilder])
 ], IndividualUpdateComponent);

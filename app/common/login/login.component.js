@@ -25,8 +25,8 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.loginForm = this.fb.group({
-            username: ['', [forms_1.Validators.required]],
-            password: ['', [forms_1.Validators.required]]
+            username: ['admin', [forms_1.Validators.required]],
+            password: ['admin', [forms_1.Validators.required]]
         });
     };
     LoginComponent.prototype.login = function () {

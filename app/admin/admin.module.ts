@@ -3,6 +3,7 @@ import {UsersModule} from './users/users.module';
 import {RoomsModule} from './rooms/rooms.module';
 import {ImagesModule} from "./images/images.module";
 import {IndividualsModule} from "./individuals/individuals.module";
+import {DomainService} from "./common/domain.service";
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import {IndividualsModule} from "./individuals/individuals.module";
     IndividualsModule
   ],
   declarations: [],
-  providers: []
+  providers: [DomainService]
 })
 export class AdminModule {
 }

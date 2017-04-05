@@ -217,28 +217,16 @@
                     </span>
                     </div>
                 </div>
-                <div class="form-group"
-                     [ngClass]="{'has-error': (individualForm.get('roles').touched ||
-                                              individualForm.get('roles').dirty) &&
-                                              !individualForm.get('roles').valid }">
+                <div class="form-group">
                     <label class="col-md-2 control-label"
-                           for="rolesId">Roles</label>
+                           for="roleId">Role</label>
                     <div class="col-md-8">
-                        <input class="form-control"
-                               id="rolesId"
-                               type="text"
-                               placeholder="Roles (required)"
-                               formControlName="roles"/>
-                        <span class="help-block" *ngIf="(individualForm.get('roles').touched ||
-                                                         individualForm.get('roles').dirty) &&
-                                                         individualForm.get('roles').errors">
-                        <span *ngIf="individualForm.get('roles').errors.required">
-                            Please enter your roles.
-                        </span>
-                        <span *ngIf="individualForm.get('roles').errors.minlength">
-                            The roles must be longer than 3 characters.
-                        </span>
-                    </span>
+                        <select class="form-control"
+                                id="roleId"
+                                formControlName="role">
+                            <option value="" disabled selected hidden>Select a Role...</option>
+                            <option value="{{role}}" *ngFor="let role of roles">{{role}}</option>
+                        </select>
                     </div>
                 </div>
 

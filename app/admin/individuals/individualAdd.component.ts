@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {IndividualAddService} from "./individualAdd.service";
+import {DomainService} from "../common/domain.service";
 
 @Component({
   moduleId: module.id,
@@ -15,9 +16,11 @@ export class IndividualAddComponent implements OnInit {
   individual: Individual;
   individualForm: FormGroup;
   emailMessage: string;
+  roles: string[];
 
   constructor(
     private _individualAddService: IndividualAddService,
+    private _domainService: DomainService,
     private _router: Router,
     private fb: FormBuilder
   ) {
@@ -37,11 +40,20 @@ export class IndividualAddComponent implements OnInit {
       }, {validator: emailMatcher}),
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
       userName: ['', [Validators.required, Validators.minLength(3)]],
-      roles: ['', [Validators.required, Validators.minLength(3)]]
+      role: ['', [Validators.required, Validators.minLength(3)]]
     });
     let emailControl = this.individualForm.get('emailGroup.email');
     emailControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setMessage(emailControl));
+
+    this._domainService.getRoles().subscribe(
+      (roles) => {
+        this.roles = roles;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   save(): void {

@@ -14,9 +14,11 @@ var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var individualAdd_service_1 = require("./individualAdd.service");
+var domain_service_1 = require("../common/domain.service");
 var IndividualAddComponent = (function () {
-    function IndividualAddComponent(_individualAddService, _router, fb) {
+    function IndividualAddComponent(_individualAddService, _domainService, _router, fb) {
         this._individualAddService = _individualAddService;
+        this._domainService = _domainService;
         this._router = _router;
         this.fb = fb;
         this.validationMessages = {
@@ -39,11 +41,16 @@ var IndividualAddComponent = (function () {
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            roles: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
+            role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
         emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
             return _this.setMessage(emailControl);
+        });
+        this._domainService.getRoles().subscribe(function (roles) {
+            _this.roles = roles;
+        }, function (error) {
+            console.log(error);
         });
     };
     IndividualAddComponent.prototype.save = function () {
@@ -74,6 +81,7 @@ IndividualAddComponent = __decorate([
         styleUrls: ['individualAdd.component.css']
     }),
     __metadata("design:paramtypes", [individualAdd_service_1.IndividualAddService,
+        domain_service_1.DomainService,
         router_1.Router,
         forms_1.FormBuilder])
 ], IndividualAddComponent);

@@ -10,7 +10,7 @@ export class Individual {
   imageURL: string;
   imageInfo: string;
   userName: string;
-  roles: string;
+  role: string;
 
   constructor() {
   }
