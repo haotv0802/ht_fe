@@ -197,9 +197,7 @@
                     </div>
                 </div>
                 <div class="form-group"
-                     [ngClass]="{'has-error': (individualForm.get('userName').touched ||
-                                              individualForm.get('userName').dirty) &&
-                                              !individualForm.get('userName').valid }">
+                     [ngClass]="{'has-error': userNameMessage}">
                     <label class="col-md-2 control-label"
                            for="userNameId">User name</label>
                     <div class="col-md-8">
@@ -207,16 +205,19 @@
                                id="userNameId"
                                type="text"
                                placeholder="Username (required)"
-                               formControlName="userName" (keyup)="onKey($event)"/>
-                        <span class="help-block" *ngIf="(individualForm.get('userName').touched ||
-                                                         individualForm.get('userName').dirty) &&
-                                                         individualForm.get('userName').errors">
-                            <span *ngIf="individualForm.get('userName').errors.required">
-                                Please enter your username.
-                            </span>
-                            <span *ngIf="individualForm.get('userName').errors.minlength">
-                                The username must be longer than 3 characters.
-                            </span>
+                               formControlName="userName"/>
+                        <!--<span class="help-block" *ngIf="(individualForm.get('userName').touched ||-->
+                                                         <!--individualForm.get('userName').dirty) &&-->
+                                                         <!--individualForm.get('userName').errors">-->
+                            <!--<span *ngIf="individualForm.get('userName').errors.required">-->
+                                <!--Please enter your username.-->
+                            <!--</span>-->
+                            <!--<span *ngIf="individualForm.get('userName').errors.minlength">-->
+                                <!--The username must be longer than 3 characters.-->
+                            <!--</span>-->
+                        <!--</span>-->
+                        <span class="help-block" *ngIf="userNameMessage">
+                            {{ userNameMessage }}
                         </span>
                     </div>
                 </div>

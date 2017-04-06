@@ -23,7 +23,13 @@ var IndividualUpdateComponent = (function () {
         this._domainService = _domainService;
         this._router = _router;
         this.fb = fb;
-        this.validationMessages = {
+        this.isUserNameExisting = false;
+        this.userNameMessages = {
+            required: 'Please enter your user name.',
+            minlength: 'The username must be longer than 3 characters.',
+            isUserNameExisting: 'User Name is existing already.'
+        };
+        this.emailMessages = {
             required: 'Please enter your email address.',
             pattern: 'Please enter a valid email address.'
         };
@@ -50,7 +56,11 @@ var IndividualUpdateComponent = (function () {
         });
         var emailControl = this.individualForm.get('emailGroup.email');
         emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
-            return _this.setMessage(emailControl);
+            return _this.setErrorMessagesForEmailControl(emailControl);
+        });
+        var userNameControl = this.individualForm.get('userName');
+        userNameControl.valueChanges.subscribe(function (value) {
+            return _this.setErrorMessagesForUserNameControl(userNameControl);
         });
         this._domainService.getRoles().subscribe(function (roles) {
             _this.roles = roles;
@@ -79,12 +89,21 @@ var IndividualUpdateComponent = (function () {
             console.log(res.isUserNameExisting);
         });
     };
-    IndividualUpdateComponent.prototype.setMessage = function (c) {
+    IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
+        var _this = this;
+        this.userNameMessage = '';
+        if ((c.touched || c.dirty) && c.errors) {
+            this.userNameMessage = Object.keys(c.errors).map(function (key) {
+                return _this.userNameMessages[key];
+            }).join(' ');
+        }
+    };
+    IndividualUpdateComponent.prototype.setErrorMessagesForEmailControl = function (c) {
         var _this = this;
         this.emailMessage = '';
         if ((c.touched || c.dirty) && c.errors) {
             this.emailMessage = Object.keys(c.errors).map(function (key) {
-                return _this.validationMessages[key];
+                return _this.emailMessages[key];
             }).join(' ');
         }
     };
@@ -97,10 +116,12 @@ var IndividualUpdateComponent = (function () {
         return false;
     };
     IndividualUpdateComponent.prototype.onKey = function (event) {
-        console.log(event.target.value);
+        var _this = this;
+        // console.log(event.target.value);
         this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(function (res) {
             console.log("res.isUserNameExisting");
             console.log(res.isUserNameExisting);
+            _this.isUserNameExisting = res.isUserNameExisting;
         });
     };
     return IndividualUpdateComponent;

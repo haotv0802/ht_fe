@@ -3,7 +3,7 @@ import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
-import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn} from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
 import {DomainService} from "../common/domain.service";
 
@@ -17,7 +17,9 @@ export class IndividualUpdateComponent implements OnInit {
   individual: Individual;
   individualForm: FormGroup;
   emailMessage: string;
+  userNameMessage: string;
   roles: string[];
+  isUserNameExisting: boolean = false;
 
   constructor(
     private _individualService: IndividualsService,
@@ -49,7 +51,11 @@ export class IndividualUpdateComponent implements OnInit {
     });
     let emailControl = this.individualForm.get('emailGroup.email');
     emailControl.valueChanges.debounceTime(1000).subscribe(value =>
-      this.setMessage(emailControl));
+      this.setErrorMessagesForEmailControl(emailControl));
+
+    let userNameControl = this.individualForm.get('userName');
+    userNameControl.valueChanges.subscribe(value =>
+      this.setErrorMessagesForUserNameControl(userNameControl));
 
     this._domainService.getRoles().subscribe(
       (roles) => {
@@ -61,8 +67,6 @@ export class IndividualUpdateComponent implements OnInit {
     );
 
     this.populateData();
-
-
   }
 
   save(): void {
@@ -91,14 +95,27 @@ export class IndividualUpdateComponent implements OnInit {
     ;
   }
 
-  setMessage(c: AbstractControl): void {
+  setErrorMessagesForUserNameControl(c: AbstractControl): void {
+    this.userNameMessage = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.userNameMessage = Object.keys(c.errors).map(key =>
+        this.userNameMessages[key]).join(' ');
+    }
+  }
+  private userNameMessages = {
+    required: 'Please enter your user name.',
+    minlength: 'The username must be longer than 3 characters.',
+    isUserNameExisting: 'User Name is existing already.'
+  };
+
+  setErrorMessagesForEmailControl(c: AbstractControl): void {
     this.emailMessage = '';
     if ((c.touched || c.dirty) && c.errors) {
       this.emailMessage = Object.keys(c.errors).map(key =>
-        this.validationMessages[key]).join(' ');
+        this.emailMessages[key]).join(' ');
     }
   }
-  private validationMessages = {
+  private emailMessages = {
     required: 'Please enter your email address.',
     pattern: 'Please enter a valid email address.'
   };
@@ -114,15 +131,17 @@ export class IndividualUpdateComponent implements OnInit {
   }
 
   onKey(event: any) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(
       (res) => {
         console.log("res.isUserNameExisting");
         console.log(res.isUserNameExisting);
+        this.isUserNameExisting = res.isUserNameExisting;
       }
     )
     ;
   }
+
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {
