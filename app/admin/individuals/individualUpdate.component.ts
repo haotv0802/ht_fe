@@ -1,11 +1,12 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Injector} from "@angular/core";
 import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
-import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, FormControl} from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
 import {DomainService} from "../common/domain.service";
+import {Observable} from "rxjs";
 
 @Component({
   moduleId: module.id,
@@ -55,7 +56,8 @@ export class IndividualUpdateComponent implements OnInit {
 
     let userNameControl = this.individualForm.get('userName');
     userNameControl.valueChanges.subscribe(value =>
-      this.setErrorMessagesForUserNameControl(userNameControl));
+      this.setErrorMessagesForUserNameControl(userNameControl)
+    );
 
     this._domainService.getRoles().subscribe(
       (roles) => {
@@ -91,8 +93,7 @@ export class IndividualUpdateComponent implements OnInit {
         console.log("res.isUserNameExisting");
         console.log(res.isUserNameExisting);
       }
-    )
-    ;
+    );
   }
 
   setErrorMessagesForUserNameControl(c: AbstractControl): void {
@@ -105,7 +106,7 @@ export class IndividualUpdateComponent implements OnInit {
   private userNameMessages = {
     required: 'Please enter your user name.',
     minlength: 'The username must be longer than 3 characters.',
-    isUserNameExisting: 'User Name is existing already.'
+    checkusername: 'User Name is existing already.'
   };
 
   setErrorMessagesForEmailControl(c: AbstractControl): void {
@@ -115,6 +116,7 @@ export class IndividualUpdateComponent implements OnInit {
         this.emailMessages[key]).join(' ');
     }
   }
+
   private emailMessages = {
     required: 'Please enter your email address.',
     pattern: 'Please enter a valid email address.'
@@ -138,8 +140,25 @@ export class IndividualUpdateComponent implements OnInit {
         console.log(res.isUserNameExisting);
         this.isUserNameExisting = res.isUserNameExisting;
       }
-    )
-    ;
+    );
+  }
+
+  checkUserName(control : FormControl) : {[key: string]: any} {
+    return new Promise (resolve => {
+      // resolve({"duplicate": true});
+      this._individualUpdateService.isUserNameExisting(control.value).subscribe(
+        (res) => {
+          if (res.isUserNameExisting) {
+            resolve({"isUserNameExisting": true});
+          } else {
+            resolve(null);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
   }
 
 }

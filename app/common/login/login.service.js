@@ -14,19 +14,11 @@ var http_1 = require("@angular/http");
 var constant_1 = require("./../constant");
 var HTTP_service_1 = require("../HTTP.service");
 var LoginService = (function () {
-    // private _loginURL = 'http://localhost:8880/ht-be/svc/login';
-    // private _roleURL = 'http://localhost:8880/ht-be/svc/testing';
-    function LoginService(_http, _constants, _httpService) {
-        this._http = _http;
+    function LoginService(_constants, _httpService) {
         this._constants = _constants;
         this._httpService = _httpService;
     }
-    LoginService.prototype.displayLoginPage = function () {
-    };
     LoginService.prototype.login = function (credential) {
-        console.log('perform login');
-        console.log(credential.user);
-        console.log(credential.pass);
         var headers = new http_1.Headers();
         headers.append("Accept-Language", "en");
         headers.append("Content-Type", "application/json");
@@ -42,8 +34,7 @@ var LoginService = (function () {
 }());
 LoginService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http,
-        constant_1.Constants,
+    __metadata("design:paramtypes", [constant_1.Constants,
         HTTP_service_1.HTTPService])
 ], LoginService);
 exports.LoginService = LoginService;

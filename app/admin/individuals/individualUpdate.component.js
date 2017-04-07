@@ -27,7 +27,7 @@ var IndividualUpdateComponent = (function () {
         this.userNameMessages = {
             required: 'Please enter your user name.',
             minlength: 'The username must be longer than 3 characters.',
-            isUserNameExisting: 'User Name is existing already.'
+            checkusername: 'User Name is existing already.'
         };
         this.emailMessages = {
             required: 'Please enter your email address.',
@@ -122,6 +122,22 @@ var IndividualUpdateComponent = (function () {
             console.log("res.isUserNameExisting");
             console.log(res.isUserNameExisting);
             _this.isUserNameExisting = res.isUserNameExisting;
+        });
+    };
+    IndividualUpdateComponent.prototype.checkUserName = function (control) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // resolve({"duplicate": true});
+            _this._individualUpdateService.isUserNameExisting(control.value).subscribe(function (res) {
+                if (res.isUserNameExisting) {
+                    resolve({ "isUserNameExisting": true });
+                }
+                else {
+                    resolve(null);
+                }
+            }, function (error) {
+                console.log(error);
+            });
         });
     };
     return IndividualUpdateComponent;
