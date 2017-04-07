@@ -12,6 +12,7 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
+import {UserNameValidators} from "./individualUpdate.userNameValidator";
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import {IndividualAddService} from "./individualAdd.service";
     IndividualDetailsGuard,
     IndividualUpdateService,
     IndividualUpdateGuard,
-    IndividualAddService
+    IndividualAddService,
+    UserNameValidators,
   ]
 })
 export class IndividualsModule {

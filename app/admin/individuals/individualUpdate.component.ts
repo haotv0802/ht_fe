@@ -1,12 +1,11 @@
-import {Component, OnInit, Injector} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
-import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, FormControl} from "@angular/forms";
-import 'rxjs/add/operator/debounceTime';
+import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
+import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {Observable} from "rxjs";
 
 @Component({
   moduleId: module.id,
@@ -23,7 +22,6 @@ export class IndividualUpdateComponent implements OnInit {
   isUserNameExisting: boolean = false;
 
   constructor(
-    private _individualService: IndividualsService,
     private _individualUpdateService: IndividualUpdateService,
     private _domainService: DomainService,
     private _router: Router,
@@ -45,7 +43,7 @@ export class IndividualUpdateComponent implements OnInit {
         confirmEmail: ['', Validators.required],
       }, {validator: emailMatcher}),
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
-      userName: ['', [Validators.required, Validators.minLength(3), this.checkUserName.bind(this)]],
+      userName: ['', [Validators.required, Validators.minLength(3), this.validateUserName.bind(this)]],
       role: ['', [Validators.required, Validators.minLength(3)]]
     });
     let emailControl = this.individualForm.get('emailGroup.email');
@@ -53,8 +51,10 @@ export class IndividualUpdateComponent implements OnInit {
       this.setErrorMessagesForEmailControl(emailControl));
 
     let userNameControl = this.individualForm.get('userName');
-    userNameControl.valueChanges.subscribe(value =>
-      this.setErrorMessagesForUserNameControl(userNameControl)
+    userNameControl.valueChanges.subscribe(value => {
+        console.log(userNameControl.errors);
+        this.setErrorMessagesForUserNameControl(userNameControl)
+      }
     );
 
     this._domainService.getRoles().subscribe(
@@ -142,24 +142,22 @@ export class IndividualUpdateComponent implements OnInit {
     console.log("userNameMessage: " + this.userNameMessage);
   }
 
-  checkUserName(control : FormControl) {
+  validateUserName(control : FormControl) : {[key: string]: any}{
     if (!control.value) {
       return null;
     }
-    return new Promise (resolve => {
-      // resolve({"duplicate": true});
+    return new Promise(resolve => {
+      // resolve({"existing": true});
       this._individualUpdateService.isUserNameExisting(control.value).subscribe(
         (res) => {
           if (res.isUserNameExisting) {
-            console.log("existing");
-            resolve({existing: true});
+            resolve({"existing": true});
           } else {
-            console.log("NOT existing");
-            resolve(null);
+            resolve({"existing": null});
           }
         },
         (error) => {
-          resolve({existing: true});
+          resolve({"existing": true});
         }
       );
     });

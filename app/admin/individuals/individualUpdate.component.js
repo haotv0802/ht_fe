@@ -10,15 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var individuals_service_1 = require("./individuals.service");
 var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
 var IndividualUpdateComponent = (function () {
-    function IndividualUpdateComponent(_individualService, _individualUpdateService, _domainService, _router, fb) {
-        this._individualService = _individualService;
+    function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
         this._domainService = _domainService;
         this._router = _router;
@@ -49,7 +47,7 @@ var IndividualUpdateComponent = (function () {
                 confirmEmail: ['', forms_1.Validators.required],
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3), this.checkUserName.bind(this)]],
+            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3), this.validateUserName.bind(this)]],
             role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
@@ -58,7 +56,8 @@ var IndividualUpdateComponent = (function () {
         });
         var userNameControl = this.individualForm.get('userName');
         userNameControl.valueChanges.subscribe(function (value) {
-            return _this.setErrorMessagesForUserNameControl(userNameControl);
+            console.log(userNameControl.errors);
+            _this.setErrorMessagesForUserNameControl(userNameControl);
         });
         this._domainService.getRoles().subscribe(function (roles) {
             _this.roles = roles;
@@ -124,24 +123,22 @@ var IndividualUpdateComponent = (function () {
         // );
         console.log("userNameMessage: " + this.userNameMessage);
     };
-    IndividualUpdateComponent.prototype.checkUserName = function (control) {
+    IndividualUpdateComponent.prototype.validateUserName = function (control) {
         var _this = this;
         if (!control.value) {
             return null;
         }
         return new Promise(function (resolve) {
-            // resolve({"duplicate": true});
+            // resolve({"existing": true});
             _this._individualUpdateService.isUserNameExisting(control.value).subscribe(function (res) {
                 if (res.isUserNameExisting) {
-                    console.log("existing");
-                    resolve({ existing: true });
+                    resolve({ "existing": true });
                 }
                 else {
-                    console.log("NOT existing");
-                    resolve(null);
+                    resolve({ "existing": null });
                 }
             }, function (error) {
-                resolve({ existing: true });
+                resolve({ "existing": true });
             });
         });
     };
@@ -153,8 +150,7 @@ IndividualUpdateComponent = __decorate([
         templateUrl: 'individualUpdate.component.html',
         styleUrls: ['individualUpdate.component.css']
     }),
-    __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
-        individualUpdate_service_1.IndividualUpdateService,
+    __metadata("design:paramtypes", [individualUpdate_service_1.IndividualUpdateService,
         domain_service_1.DomainService,
         router_1.Router,
         forms_1.FormBuilder])
