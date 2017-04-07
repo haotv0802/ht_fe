@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {Individual} from "./individual";
-import {IndividualsService} from "./individuals.service";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
@@ -52,7 +51,6 @@ export class IndividualUpdateComponent implements OnInit {
 
     let userNameControl = this.individualForm.get('userName');
     userNameControl.valueChanges.subscribe(value => {
-        console.log(userNameControl.errors);
         this.setErrorMessagesForUserNameControl(userNameControl)
       }
     );
@@ -142,27 +140,45 @@ export class IndividualUpdateComponent implements OnInit {
     console.log("userNameMessage: " + this.userNameMessage);
   }
 
-  validateUserName(control : FormControl) : {[key: string]: any}{
+  validateUserName(control : FormControl) : {[key: string]: any} {
+    // if (!control.value) {
+    //   return null;
+    // }
+    // if (control.value == "hao") {
+    //   return {'existing': true};
+    // } else {
+    //   return null;
+    // }
+
+    // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
+    //   (res) => {
+    //     if (res.isUserNameExisting) {
+    //       console.log("existing");
+    //       return {'existing': true};
+    //     } else {
+    //       console.log("NOT existing");
+    //       return null;
+    //     }
+    //   },
+    //   (error) => {
+    //     return {'existing': true};
+    //   }
+    // );
+
     if (!control.value) {
       return null;
     }
-    return new Promise(resolve => {
-      // resolve({"existing": true});
-      this._individualUpdateService.isUserNameExisting(control.value).subscribe(
-        (res) => {
-          if (res.isUserNameExisting) {
-            resolve({"existing": true});
-          } else {
-            resolve({"existing": null});
-          }
-        },
-        (error) => {
-          resolve({"existing": true});
-        }
-      );
-    });
-  }
 
+    // console.log(value);
+    // let isExisting = false;
+    // console.log("at the end of subscribe: " + isExisting);
+    // if (isExisting) {
+    //   return {'existing': true};
+    // } else {
+    //   return null;
+    // }
+
+  }
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {

@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
+import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
+import {CommonModule} from "@angular/common";
 import {IndividualsComponent} from "./individuals.component";
 import {IndividualsService} from "./individuals.service";
 import {IndividualDetailsService} from "./individualDetails.service";
@@ -12,7 +12,6 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
-import {UserNameValidators} from "./individualUpdate.userNameValidator";
 
 @NgModule({
   imports: [
@@ -45,8 +44,7 @@ import {UserNameValidators} from "./individualUpdate.userNameValidator";
     IndividualDetailsGuard,
     IndividualUpdateService,
     IndividualUpdateGuard,
-    IndividualAddService,
-    UserNameValidators,
+    IndividualAddService
   ]
 })
 export class IndividualsModule {

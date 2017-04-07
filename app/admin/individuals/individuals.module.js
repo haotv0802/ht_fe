@@ -20,7 +20,6 @@ var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service
 var forms_1 = require("@angular/forms");
 var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
-var individualUpdate_userNameValidator_1 = require("./individualUpdate.userNameValidator");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -58,8 +57,7 @@ IndividualsModule = __decorate([
             individualDetails_guard_service_1.IndividualDetailsGuard,
             individualUpdate_service_1.IndividualUpdateService,
             individualUpdate_guard_service_1.IndividualUpdateGuard,
-            individualAdd_service_1.IndividualAddService,
-            individualUpdate_userNameValidator_1.UserNameValidators,
+            individualAdd_service_1.IndividualAddService
         ]
     })
 ], IndividualsModule);

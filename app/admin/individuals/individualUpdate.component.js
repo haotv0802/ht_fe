@@ -56,7 +56,6 @@ var IndividualUpdateComponent = (function () {
         });
         var userNameControl = this.individualForm.get('userName');
         userNameControl.valueChanges.subscribe(function (value) {
-            console.log(userNameControl.errors);
             _this.setErrorMessagesForUserNameControl(userNameControl);
         });
         this._domainService.getRoles().subscribe(function (roles) {
@@ -124,23 +123,39 @@ var IndividualUpdateComponent = (function () {
         console.log("userNameMessage: " + this.userNameMessage);
     };
     IndividualUpdateComponent.prototype.validateUserName = function (control) {
-        var _this = this;
+        // if (!control.value) {
+        //   return null;
+        // }
+        // if (control.value == "hao") {
+        //   return {'existing': true};
+        // } else {
+        //   return null;
+        // }
+        // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
+        //   (res) => {
+        //     if (res.isUserNameExisting) {
+        //       console.log("existing");
+        //       return {'existing': true};
+        //     } else {
+        //       console.log("NOT existing");
+        //       return null;
+        //     }
+        //   },
+        //   (error) => {
+        //     return {'existing': true};
+        //   }
+        // );
         if (!control.value) {
             return null;
         }
-        return new Promise(function (resolve) {
-            // resolve({"existing": true});
-            _this._individualUpdateService.isUserNameExisting(control.value).subscribe(function (res) {
-                if (res.isUserNameExisting) {
-                    resolve({ "existing": true });
-                }
-                else {
-                    resolve({ "existing": null });
-                }
-            }, function (error) {
-                resolve({ "existing": true });
-            });
-        });
+        // console.log(value);
+        // let isExisting = false;
+        // console.log("at the end of subscribe: " + isExisting);
+        // if (isExisting) {
+        //   return {'existing': true};
+        // } else {
+        //   return null;
+        // }
     };
     return IndividualUpdateComponent;
 }());

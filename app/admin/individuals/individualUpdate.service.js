@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var constant_1 = require("../../common/constant");
 var HTTP_service_1 = require("../../common/HTTP.service");
+var http_1 = require("@angular/http");
 var IndividualUpdateService = (function () {
-    function IndividualUpdateService(_httpService, _constants) {
+    function IndividualUpdateService(_http, _httpService, _constants) {
+        this._http = _http;
         this._httpService = _httpService;
         this._constants = _constants;
     }
@@ -25,7 +27,8 @@ var IndividualUpdateService = (function () {
 }());
 IndividualUpdateService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [HTTP_service_1.HTTPService,
+    __metadata("design:paramtypes", [http_1.Http,
+        HTTP_service_1.HTTPService,
         constant_1.Constants])
 ], IndividualUpdateService);
 exports.IndividualUpdateService = IndividualUpdateService;

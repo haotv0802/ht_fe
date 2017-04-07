@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Constants} from "../../common/constant";
 import {HTTPService} from "../../common/HTTP.service";
 import {Individual} from "./individual";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class IndividualUpdateService {
@@ -9,6 +10,7 @@ export class IndividualUpdateService {
   public individual: Individual;
 
   constructor(
+    private _http: Http,
     private _httpService: HTTPService,
     private _constants: Constants) {
   }
