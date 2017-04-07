@@ -19,6 +19,7 @@ export class IndividualUpdateComponent implements OnInit {
   userNameMessage: string;
   roles: string[];
   isUserNameExisting: boolean = false;
+  visible: boolean = false;
 
   constructor(
     private _individualUpdateService: IndividualUpdateService,
@@ -93,6 +94,7 @@ export class IndividualUpdateComponent implements OnInit {
   }
 
   setErrorMessagesForUserNameControl(c: AbstractControl): void {
+    console.log(c.errors);
     this.userNameMessage = '';
     if ((c.touched || c.dirty) && c.errors) {
       this.userNameMessage = Object.keys(c.errors).map(key =>
@@ -141,14 +143,20 @@ export class IndividualUpdateComponent implements OnInit {
   }
 
   validateUserName(control : FormControl) : {[key: string]: any} {
-    // if (!control.value) {
-    //   return null;
-    // }
-    // if (control.value == "hao") {
-    //   return {'existing': true};
-    // } else {
-    //   return null;
-    // }
+    if (!control.value) {
+      return null;
+    }
+    return new Promise(resolve => {
+      console.log(control.value);
+      if (control.value == "hao") {
+        console.log("existing");
+        resolve ({'existing': true});
+      } else {
+        console.log("NOT existing");
+        resolve (null);
+      }
+    });
+
 
     // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
     //   (res) => {
@@ -165,9 +173,9 @@ export class IndividualUpdateComponent implements OnInit {
     //   }
     // );
 
-    if (!control.value) {
-      return null;
-    }
+    // if (!control.value) {
+    //   return null;
+    // }
 
     // console.log(value);
     // let isExisting = false;
@@ -178,6 +186,9 @@ export class IndividualUpdateComponent implements OnInit {
     //   return null;
     // }
 
+  }
+  openDialog(): void {
+    this.visible = true;
   }
 }
 

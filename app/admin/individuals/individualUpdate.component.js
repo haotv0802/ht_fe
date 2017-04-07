@@ -22,6 +22,7 @@ var IndividualUpdateComponent = (function () {
         this._router = _router;
         this.fb = fb;
         this.isUserNameExisting = false;
+        this.visible = false;
         this.userNameMessages = {
             required: 'Please enter your user name.',
             minlength: 'The username must be longer than 3 characters.',
@@ -87,6 +88,7 @@ var IndividualUpdateComponent = (function () {
     };
     IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
         var _this = this;
+        console.log(c.errors);
         this.userNameMessage = '';
         if ((c.touched || c.dirty) && c.errors) {
             this.userNameMessage = Object.keys(c.errors).map(function (key) {
@@ -123,14 +125,20 @@ var IndividualUpdateComponent = (function () {
         console.log("userNameMessage: " + this.userNameMessage);
     };
     IndividualUpdateComponent.prototype.validateUserName = function (control) {
-        // if (!control.value) {
-        //   return null;
-        // }
-        // if (control.value == "hao") {
-        //   return {'existing': true};
-        // } else {
-        //   return null;
-        // }
+        if (!control.value) {
+            return null;
+        }
+        return new Promise(function (resolve) {
+            console.log(control.value);
+            if (control.value == "hao") {
+                console.log("existing");
+                resolve({ 'existing': true });
+            }
+            else {
+                console.log("NOT existing");
+                resolve(null);
+            }
+        });
         // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
         //   (res) => {
         //     if (res.isUserNameExisting) {
@@ -145,9 +153,9 @@ var IndividualUpdateComponent = (function () {
         //     return {'existing': true};
         //   }
         // );
-        if (!control.value) {
-            return null;
-        }
+        // if (!control.value) {
+        //   return null;
+        // }
         // console.log(value);
         // let isExisting = false;
         // console.log("at the end of subscribe: " + isExisting);
@@ -156,6 +164,9 @@ var IndividualUpdateComponent = (function () {
         // } else {
         //   return null;
         // }
+    };
+    IndividualUpdateComponent.prototype.openDialog = function () {
+        this.visible = true;
     };
     return IndividualUpdateComponent;
 }());

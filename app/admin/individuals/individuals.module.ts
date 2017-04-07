@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
 
+
 @NgModule({
   imports: [
     RouterModule.forChild([

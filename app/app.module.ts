@@ -16,6 +16,7 @@ import {ProductModule} from './products/product.module';
 
 import {Constants} from './common/constant';
 import {HTTPService} from "./common/HTTP.service";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
