@@ -27,7 +27,7 @@ var IndividualUpdateComponent = (function () {
         this.userNameMessages = {
             required: 'Please enter your user name.',
             minlength: 'The username must be longer than 3 characters.',
-            checkusername: 'User Name is existing already.'
+            existing: 'User Name is existing already.'
         };
         this.emailMessages = {
             required: 'Please enter your email address.',
@@ -38,8 +38,6 @@ var IndividualUpdateComponent = (function () {
     IndividualUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.individual = this._individualUpdateService.individual;
-        console.log("In individual Update");
-        console.log(this.individual);
         this.individualForm = this.fb.group({
             firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             middleName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
@@ -51,7 +49,7 @@ var IndividualUpdateComponent = (function () {
                 confirmEmail: ['', forms_1.Validators.required],
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3), this.checkUserName.bind(this)]],
             role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
@@ -116,27 +114,34 @@ var IndividualUpdateComponent = (function () {
         return false;
     };
     IndividualUpdateComponent.prototype.onKey = function (event) {
-        var _this = this;
         // console.log(event.target.value);
-        this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(function (res) {
-            console.log("res.isUserNameExisting");
-            console.log(res.isUserNameExisting);
-            _this.isUserNameExisting = res.isUserNameExisting;
-        });
+        // this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(
+        //   (res) => {
+        //     console.log("res.isUserNameExisting");
+        //     console.log(res.isUserNameExisting);
+        //     this.isUserNameExisting = res.isUserNameExisting;
+        //   }
+        // );
+        console.log("userNameMessage: " + this.userNameMessage);
     };
     IndividualUpdateComponent.prototype.checkUserName = function (control) {
         var _this = this;
+        if (!control.value) {
+            return null;
+        }
         return new Promise(function (resolve) {
             // resolve({"duplicate": true});
             _this._individualUpdateService.isUserNameExisting(control.value).subscribe(function (res) {
                 if (res.isUserNameExisting) {
-                    resolve({ "isUserNameExisting": true });
+                    console.log("existing");
+                    resolve({ existing: true });
                 }
                 else {
+                    console.log("NOT existing");
                     resolve(null);
                 }
             }, function (error) {
-                console.log(error);
+                resolve({ existing: true });
             });
         });
     };

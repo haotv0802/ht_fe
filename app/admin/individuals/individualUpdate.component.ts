@@ -34,8 +34,6 @@ export class IndividualUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.individual = this._individualUpdateService.individual;
-    console.log("In individual Update");
-    console.log(this.individual);
     this.individualForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       middleName: ['', [Validators.required, Validators.minLength(3)]],
@@ -47,7 +45,7 @@ export class IndividualUpdateComponent implements OnInit {
         confirmEmail: ['', Validators.required],
       }, {validator: emailMatcher}),
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
-      userName: ['', [Validators.required, Validators.minLength(3)]],
+      userName: ['', [Validators.required, Validators.minLength(3), this.checkUserName.bind(this)]],
       role: ['', [Validators.required, Validators.minLength(3)]]
     });
     let emailControl = this.individualForm.get('emailGroup.email');
@@ -106,7 +104,7 @@ export class IndividualUpdateComponent implements OnInit {
   private userNameMessages = {
     required: 'Please enter your user name.',
     minlength: 'The username must be longer than 3 characters.',
-    checkusername: 'User Name is existing already.'
+    existing: 'User Name is existing already.'
   };
 
   setErrorMessagesForEmailControl(c: AbstractControl): void {
@@ -134,28 +132,34 @@ export class IndividualUpdateComponent implements OnInit {
 
   onKey(event: any) {
     // console.log(event.target.value);
-    this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(
-      (res) => {
-        console.log("res.isUserNameExisting");
-        console.log(res.isUserNameExisting);
-        this.isUserNameExisting = res.isUserNameExisting;
-      }
-    );
+    // this._individualUpdateService.isUserNameExisting(event.target.value).subscribe(
+    //   (res) => {
+    //     console.log("res.isUserNameExisting");
+    //     console.log(res.isUserNameExisting);
+    //     this.isUserNameExisting = res.isUserNameExisting;
+    //   }
+    // );
+    console.log("userNameMessage: " + this.userNameMessage);
   }
 
-  checkUserName(control : FormControl) : {[key: string]: any} {
+  checkUserName(control : FormControl) {
+    if (!control.value) {
+      return null;
+    }
     return new Promise (resolve => {
       // resolve({"duplicate": true});
       this._individualUpdateService.isUserNameExisting(control.value).subscribe(
         (res) => {
           if (res.isUserNameExisting) {
-            resolve({"isUserNameExisting": true});
+            console.log("existing");
+            resolve({existing: true});
           } else {
+            console.log("NOT existing");
             resolve(null);
           }
         },
         (error) => {
-          console.log(error);
+          resolve({existing: true});
         }
       );
     });

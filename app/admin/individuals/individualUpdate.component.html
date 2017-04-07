@@ -205,7 +205,7 @@
                                id="userNameId"
                                type="text"
                                placeholder="Username (required)"
-                               formControlName="userName"/>
+                               formControlName="userName" (keyup)="onKey($event)"/>
                         <!--<span class="help-block" *ngIf="(individualForm.get('userName').touched ||-->
                                                          <!--individualForm.get('userName').dirty) &&-->
                                                          <!--individualForm.get('userName').errors">-->
@@ -213,6 +213,9 @@
                                 <!--Please enter your username.-->
                             <!--</span>-->
                             <!--<span *ngIf="individualForm.get('userName').errors.minlength">-->
+                                <!--The username must be longer than 3 characters.-->
+                            <!--</span>-->
+                            <!--<span *ngIf="individualForm.get('userName').errors.checkusername">-->
                                 <!--The username must be longer than 3 characters.-->
                             <!--</span>-->
                         <!--</span>-->

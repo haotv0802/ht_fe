@@ -14,8 +14,10 @@ export class IndividualUpdateService {
   }
 
   isUserNameExisting(username: string) {
-  return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL + 'admin')
-    .map((res) => res.json())
-    ;
-}
+    console.log(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL + username);
+    console.log("username: " + username);
+    return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL + username)
+      .map((res) => res.json())
+      ;
+  }
 }
