@@ -15,6 +15,8 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
+var dialog_component_1 = require("./modal/dialog.component");
+var dialogAnchor_directive_1 = require("./modal/dialogAnchor.directive");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -35,6 +37,7 @@ var IndividualUpdateComponent = (function () {
         this.pageTitle = 'Individual Update';
     }
     IndividualUpdateComponent.prototype.openDialog = function () {
+        this.dialogAnchor.createDialog(dialog_component_1.DialogComponent);
     };
     IndividualUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -169,11 +172,16 @@ var IndividualUpdateComponent = (function () {
     };
     return IndividualUpdateComponent;
 }());
+__decorate([
+    core_1.ViewChild(dialogAnchor_directive_1.DialogAnchorDirective),
+    __metadata("design:type", dialogAnchor_directive_1.DialogAnchorDirective)
+], IndividualUpdateComponent.prototype, "dialogAnchor", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'individualUpdate.component.html',
-        styleUrls: ['individualUpdate.component.css']
+        styleUrls: ['individualUpdate.component.css'],
+        entryComponents: [dialog_component_1.DialogComponent]
     }),
     __metadata("design:paramtypes", [individualUpdate_service_1.IndividualUpdateService,
         domain_service_1.DomainService,

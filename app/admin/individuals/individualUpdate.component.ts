@@ -5,11 +5,14 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
+import {DialogComponent} from "./modal/dialog.component";
+import {DialogAnchorDirective} from "./modal/dialogAnchor.directive";
 
 @Component({
   moduleId: module.id,
   templateUrl: 'individualUpdate.component.html',
-  styleUrls: ['individualUpdate.component.css']
+  styleUrls: ['individualUpdate.component.css'],
+  entryComponents: [DialogComponent]
 })
 export class IndividualUpdateComponent implements OnInit {
   pageTitle: string;
@@ -20,6 +23,7 @@ export class IndividualUpdateComponent implements OnInit {
   roles: string[];
   isUserNameExisting: boolean = false;
   visible: boolean = false;
+  @ViewChild(DialogAnchorDirective) dialogAnchor: DialogAnchorDirective;
 
   constructor(
     private _individualUpdateService: IndividualUpdateService,
@@ -31,7 +35,7 @@ export class IndividualUpdateComponent implements OnInit {
   }
 
   openDialog(): void {
-
+    this.dialogAnchor.createDialog(DialogComponent);
   }
 
   ngOnInit(): void {
