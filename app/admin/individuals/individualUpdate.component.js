@@ -15,6 +15,8 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
+var modal_1 = require("./modal/modal");
+var login_1 = require("./login/login");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -34,6 +36,13 @@ var IndividualUpdateComponent = (function () {
         };
         this.pageTitle = 'Individual Update';
     }
+    IndividualUpdateComponent.prototype.openDialog = function () {
+        this.modal.modalTitle = "LOGIN";
+        this.modal.modalFooter = false;
+        this.modal.modalMessage = true;
+        this.modal.message = "Here Login component will load.";
+        this.modal.open(login_1.Login);
+    };
     IndividualUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.individual = this._individualUpdateService.individual;
@@ -165,11 +174,12 @@ var IndividualUpdateComponent = (function () {
         //   return null;
         // }
     };
-    IndividualUpdateComponent.prototype.openDialog = function () {
-        this.visible = true;
-    };
     return IndividualUpdateComponent;
 }());
+__decorate([
+    core_1.ViewChild(modal_1.Modal),
+    __metadata("design:type", Object)
+], IndividualUpdateComponent.prototype, "modal", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

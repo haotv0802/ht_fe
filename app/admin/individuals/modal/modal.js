@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("reflect-metadata");
+// import 'reflect-metadata';
 var core_1 = require("@angular/core");
 var Modal = (function () {
     function Modal(compiler, viewContainer) {

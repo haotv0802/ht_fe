@@ -1,9 +1,10 @@
-import 'reflect-metadata';
+// import 'reflect-metadata';
 import {
   Component, ComponentFactoryResolver, ViewChild,
   ViewContainerRef, ViewEncapsulation, ComponentRef,
   ElementRef, Input, EventEmitter, Output
 } from '@angular/core';
+
 import {Open} from './open.component';
 
 @Component({
