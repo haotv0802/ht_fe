@@ -31,7 +31,7 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        console.log(this.loginForm.value);
+        // console.log(this.loginForm.value);
         var credential = new credential_1.Credential();
         credential.user = this.loginForm.get("username").value;
         credential.pass = this.loginForm.get("password").value;
@@ -43,7 +43,7 @@ var LoginComponent = (function () {
             _this._authToken = headers.get(_this._constants.X_AUTH_TOKEN_HEADER);
             sessionStorage.setItem(_this._constants.AUTH_TOKEN, _this._authToken);
             if (_this._authToken) {
-                _this._router.navigate(['products']);
+                _this._router.navigate(['welcome']);
             }
         }, function (error) {
             console.log("Unauthorized:");

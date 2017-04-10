@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     let credential = new Credential();
     credential.user = this.loginForm.get("username").value;
     credential.pass = this.loginForm.get("password").value;
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         this._authToken = headers.get(this._constants.X_AUTH_TOKEN_HEADER);
         sessionStorage.setItem(this._constants.AUTH_TOKEN, this._authToken);
         if (this._authToken) {
-          this._router.navigate(['products']);
+          this._router.navigate(['welcome']);
         }
       },
       (error) => {
