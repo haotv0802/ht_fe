@@ -1,22 +1,18 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
-
-import {AppComponent}  from './app.component';
-import {WelcomeComponent} from './common/home/welcome.component';
-import {StaffComponent} from './staff/staff.component';
-import {NavComponent} from './nav.component';
-
-import {LoginModule} from './common/login/login.module';
-
-import {AdminModule} from './admin/admin.module';
-/* Feature Modules */
-import {ProductModule} from './products/product.module';
-
-import {Constants} from './common/constant';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpModule} from "@angular/http";
+import {RouterModule} from "@angular/router";
+import {AppComponent} from "./app.component";
+import {WelcomeComponent} from "./common/home/welcome.component";
+import {StaffComponent} from "./staff/staff.component";
+import {NavComponent} from "./nav.component";
+import {LoginModule} from "./common/login/login.module";
+import {AdminModule} from "./admin/admin.module";
+import {ProductModule} from "./products/product.module";
+import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {LoginModalComponent} from "./common/loginModal/loginModal.component";
+import {LoginAnchorDirective} from "./common/loginModal/loginAnchor.directive";
 
 @NgModule({
   imports: [
@@ -32,7 +28,9 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
     ]),
     LoginModule,
     ProductModule,
-    AdminModule
+    AdminModule,
+    LoginModalComponent,
+    LoginAnchorDirective
   ],
   declarations: [
     AppComponent,

@@ -16,10 +16,11 @@ var staff_component_1 = require("./staff/staff.component");
 var nav_component_1 = require("./nav.component");
 var login_module_1 = require("./common/login/login.module");
 var admin_module_1 = require("./admin/admin.module");
-/* Feature Modules */
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
+var loginModal_component_1 = require("./common/loginModal/loginModal.component");
+var loginAnchor_directive_1 = require("./common/loginModal/loginAnchor.directive");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,9 @@ AppModule = __decorate([
             ]),
             login_module_1.LoginModule,
             product_module_1.ProductModule,
-            admin_module_1.AdminModule
+            admin_module_1.AdminModule,
+            loginModal_component_1.LoginModalComponent,
+            loginAnchor_directive_1.LoginAnchorDirective
         ],
         declarations: [
             app_component_1.AppComponent,

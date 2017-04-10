@@ -1,16 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Constants} from './common/constant';
+import {LoginModalComponent} from "./common/loginModal/loginModal.component";
+import {LoginAnchorDirective} from "./common/loginModal/loginAnchor.directive";
 
 @Component({
   selector: 'ht-nav',
   moduleId: module.id,
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css'],
+  entryComponents: [LoginModalComponent]
 })
 export class NavComponent {
 
   // public authority: string;
+  @ViewChild(LoginAnchorDirective) loginAnchor: LoginAnchorDirective;
 
   constructor(private _router: Router, private _constants: Constants) {
     // this.authority = sessionStorage.getItem("authority");
@@ -20,6 +24,10 @@ export class NavComponent {
   authority(): string {
     // console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
     return sessionStorage.getItem(this._constants.AUTHORITY);
+  }
+
+  openDialog(): void {
+    this.loginAnchor.createDialog(new LoginModalComponent());
   }
 
   logout(){
