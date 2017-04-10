@@ -11,7 +11,8 @@ import {Login} from "./login/login";
 @Component({
   moduleId: module.id,
   templateUrl: 'individualUpdate.component.html',
-  styleUrls: ['individualUpdate.component.css']
+  styleUrls: ['individualUpdate.component.css'],
+  entryComponents: [Modal]
 })
 export class IndividualUpdateComponent implements OnInit {
   pageTitle: string;
@@ -22,7 +23,8 @@ export class IndividualUpdateComponent implements OnInit {
   roles: string[];
   isUserNameExisting: boolean = false;
   visible: boolean = false;
-  @ViewChild(Modal) modal: any;
+  @ViewChild(Modal) modal: Modal;
+  public data: any;
 
   constructor(
     private _individualUpdateService: IndividualUpdateService,
@@ -39,6 +41,10 @@ export class IndividualUpdateComponent implements OnInit {
     this.modal.modalMessage = true;
     this.modal.message = "Here Login component will load.";
     this.modal.open(Login);
+  }
+
+  getData(data: any){
+    this.data = data;
   }
 
   ngOnInit(): void {

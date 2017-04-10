@@ -43,6 +43,9 @@ var IndividualUpdateComponent = (function () {
         this.modal.message = "Here Login component will load.";
         this.modal.open(login_1.Login);
     };
+    IndividualUpdateComponent.prototype.getData = function (data) {
+        this.data = data;
+    };
     IndividualUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.individual = this._individualUpdateService.individual;
@@ -178,13 +181,14 @@ var IndividualUpdateComponent = (function () {
 }());
 __decorate([
     core_1.ViewChild(modal_1.Modal),
-    __metadata("design:type", Object)
+    __metadata("design:type", modal_1.Modal)
 ], IndividualUpdateComponent.prototype, "modal", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'individualUpdate.component.html',
-        styleUrls: ['individualUpdate.component.css']
+        styleUrls: ['individualUpdate.component.css'],
+        entryComponents: [modal_1.Modal]
     }),
     __metadata("design:paramtypes", [individualUpdate_service_1.IndividualUpdateService,
         domain_service_1.DomainService,

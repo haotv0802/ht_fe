@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
 // todo: add animate
 // todo: add init and on change
+var core_1 = require("@angular/core");
 var Open = (function () {
     function Open() {
         this.isExpanded = true;

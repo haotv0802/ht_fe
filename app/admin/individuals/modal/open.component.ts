@@ -1,7 +1,7 @@
-import {Directive, Input, HostBinding} from '@angular/core';
 
 // todo: add animate
 // todo: add init and on change
+import {Directive, HostBinding, Input} from "@angular/core";
 @Directive({selector: '[open]'})
 export class Open {
   @HostBinding('style.display')
