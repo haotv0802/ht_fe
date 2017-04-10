@@ -17,6 +17,7 @@ import {ProductModule} from './products/product.module';
 import {Constants} from './common/constant';
 import {HTTPService} from "./common/HTTP.service";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {Modal} from "./admin/individuals/modal/modal";
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
     Constants,
     HTTPService
   ],
+  entryComponents: [Modal],
   bootstrap: [AppComponent]
 })
 export class AppModule {

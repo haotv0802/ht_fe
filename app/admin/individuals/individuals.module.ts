@@ -51,6 +51,7 @@ import {Open} from "./modal/open.component";
     IndividualUpdateGuard,
     IndividualAddService
   ]
+
 })
 export class IndividualsModule {
 }

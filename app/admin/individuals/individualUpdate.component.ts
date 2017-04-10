@@ -11,8 +11,8 @@ import {Login} from "./login/login";
 @Component({
   moduleId: module.id,
   templateUrl: 'individualUpdate.component.html',
-  styleUrls: ['individualUpdate.component.css'],
-  entryComponents: [Modal]
+  styleUrls: ['individualUpdate.component.css']
+
 })
 export class IndividualUpdateComponent implements OnInit {
   pageTitle: string;

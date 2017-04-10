@@ -187,8 +187,7 @@ IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'individualUpdate.component.html',
-        styleUrls: ['individualUpdate.component.css'],
-        entryComponents: [modal_1.Modal]
+        styleUrls: ['individualUpdate.component.css']
     }),
     __metadata("design:paramtypes", [individualUpdate_service_1.IndividualUpdateService,
         domain_service_1.DomainService,

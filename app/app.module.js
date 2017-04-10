@@ -20,6 +20,7 @@ var admin_module_1 = require("./admin/admin.module");
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
+var modal_1 = require("./admin/individuals/modal/modal");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -51,6 +52,7 @@ AppModule = __decorate([
             constant_1.Constants,
             HTTP_service_1.HTTPService
         ],
+        entryComponents: [modal_1.Modal],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
