@@ -5,8 +5,6 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {Modal} from "./modal/modal";
-import {Login} from "./login/login";
 
 @Component({
   moduleId: module.id,
@@ -22,7 +20,6 @@ export class IndividualUpdateComponent implements OnInit {
   roles: string[];
   isUserNameExisting: boolean = false;
   visible: boolean = false;
-  @ViewChild(Modal) modal: any;
 
   constructor(
     private _individualUpdateService: IndividualUpdateService,
@@ -34,11 +31,7 @@ export class IndividualUpdateComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.modal.modalTitle = "LOGIN";
-    this.modal.modalFooter = false;
-    this.modal.modalMessage = true;
-    this.modal.message = "Here Login component will load.";
-    this.modal.open(Login);
+
   }
 
   ngOnInit(): void {
