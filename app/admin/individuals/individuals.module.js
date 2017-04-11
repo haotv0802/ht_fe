@@ -62,7 +62,8 @@ IndividualsModule = __decorate([
             individualUpdate_service_1.IndividualUpdateService,
             individualUpdate_guard_service_1.IndividualUpdateGuard,
             individualAdd_service_1.IndividualAddService
-        ]
+        ],
+        entryComponents: [modal_component_1.ModalComponent]
     })
 ], IndividualsModule);
 exports.IndividualsModule = IndividualsModule;

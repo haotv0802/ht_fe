@@ -50,8 +50,8 @@ import {ModalComponent} from "../../common/modal/modal.component";
     IndividualUpdateService,
     IndividualUpdateGuard,
     IndividualAddService
-  ]
-
+  ],
+  entryComponents: [ModalComponent]
 })
 export class IndividualsModule {
 }
