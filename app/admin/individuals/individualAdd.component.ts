@@ -5,7 +5,9 @@ import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/form
 import "rxjs/add/operator/debounceTime";
 import {IndividualAddService} from "./individualAdd.service";
 import {DomainService} from "../common/domain.service";
-import {AlertComponent} from "../../common/alert.component";
+import {Login} from "./login/login";
+import {ModalComponent} from "./modal/modal.component";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
@@ -18,6 +20,7 @@ export class IndividualAddComponent implements OnInit {
   individualForm: FormGroup;
   emailMessage: string;
   roles: string[];
+  @ViewChild(ModalComponent) modal: ModalComponent;
   @ViewChild(AlertComponent) alert: AlertComponent;
 
   constructor(
@@ -56,6 +59,14 @@ export class IndividualAddComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  openDialog(): void {
+    this.modal.modalTitle = "LOGIN";
+    this.modal.modalFooter = false;
+    this.modal.modalMessage = true;
+    this.modal.message = "Here Login component will load.";
+    this.modal.open(Login);
   }
 
   save(): void {

@@ -15,8 +15,7 @@ import {IndividualAddService} from "./individualAdd.service";
 import {ModalComponent} from "./modal/modal.component";
 import {OpenDirective} from "./modal/open.component";
 import {Login} from "./login/login";
-import {AlertComponent} from "../../common/alert.component";
-
+import {AlertComponent} from "./modal/alert.component";
 
 @NgModule({
   imports: [

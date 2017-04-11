@@ -7,7 +7,7 @@ import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
 import {ModalComponent} from "./modal/modal.component";
 import {Login} from "./login/login";
-import {AlertComponent} from "../../common/alert.component";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
