@@ -12,8 +12,8 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
-import {Open} from "../../common/modal/open.component";
-import {ModalComponent} from "../../common/modal/modal.component";
+import {ModalComponent} from "./modal/modal.component";
+import {OpenDirective} from "./modal/open.component";
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {ModalComponent} from "../../common/modal/modal.component";
     IndividualUpdateComponent,
     IndividualAddComponent,
     ModalComponent,
-    Open
+    OpenDirective
   ],
   providers: [
     IndividualsService,

@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // todo: add animate
 // todo: add init and on change
 var core_1 = require("@angular/core");
-var Open = (function () {
-    function Open() {
+var OpenDirective = (function () {
+    function OpenDirective() {
         this.isExpanded = true;
     }
-    Object.defineProperty(Open.prototype, "open", {
+    Object.defineProperty(OpenDirective.prototype, "open", {
         get: function () {
             return this.isExpanded;
         },
@@ -27,7 +27,7 @@ var Open = (function () {
         enumerable: true,
         configurable: true
     });
-    Open.prototype.toggle = function () {
+    OpenDirective.prototype.toggle = function () {
         if (this.isExpanded) {
             this.hide();
         }
@@ -35,7 +35,7 @@ var Open = (function () {
             this.show();
         }
     };
-    Open.prototype.hide = function () {
+    OpenDirective.prototype.hide = function () {
         this.isExpanded = false;
         this.display = 'none';
         var backDrop = document.getElementsByClassName("modal-backdrop");
@@ -43,32 +43,32 @@ var Open = (function () {
             document.body.removeChild(backDrop[0]);
         }
     };
-    Open.prototype.show = function () {
+    OpenDirective.prototype.show = function () {
         var backDrop = document.createElement('div');
         backDrop.className = "modal-backdrop fade in";
         document.body.appendChild(backDrop);
         this.isExpanded = true;
         this.display = 'block';
     };
-    return Open;
+    return OpenDirective;
 }());
 __decorate([
     core_1.HostBinding('style.display'),
     __metadata("design:type", String)
-], Open.prototype, "display", void 0);
+], OpenDirective.prototype, "display", void 0);
 __decorate([
     core_1.HostBinding('class.in'),
     core_1.HostBinding('attr.aria-expanded'),
     __metadata("design:type", Boolean)
-], Open.prototype, "isExpanded", void 0);
+], OpenDirective.prototype, "isExpanded", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean),
     __metadata("design:paramtypes", [Boolean])
-], Open.prototype, "open", null);
-Open = __decorate([
+], OpenDirective.prototype, "open", null);
+OpenDirective = __decorate([
     core_1.Directive({ selector: '[open]' }),
     __metadata("design:paramtypes", [])
-], Open);
-exports.Open = Open;
+], OpenDirective);
+exports.OpenDirective = OpenDirective;
 //# sourceMappingURL=open.component.js.map

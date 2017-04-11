@@ -6,7 +6,7 @@ import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
 import {LoginComponent} from "../../common/login/login.component";
-import {ModalComponent} from "../../common/modal/modal.component";
+import {ModalComponent} from "./modal/modal.component";
 
 @Component({
   moduleId: module.id,

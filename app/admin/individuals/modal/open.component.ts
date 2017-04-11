@@ -2,7 +2,7 @@
 // todo: add init and on change
 import {Directive, HostBinding, Input} from "@angular/core";
 @Directive({selector: '[open]'})
-export class Open {
+export class OpenDirective {
   @HostBinding('style.display')
   private display:string;
   @HostBinding('class.in')
