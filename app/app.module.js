@@ -19,8 +19,8 @@ var admin_module_1 = require("./admin/admin.module");
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
-var modal_1 = require("./admin/individuals/modal/modal");
 var login_1 = require("./admin/individuals/login/login");
+var modal_1 = require("./common/modal/modal");
 var AppModule = (function () {
     function AppModule() {
     }

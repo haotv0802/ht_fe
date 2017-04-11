@@ -20,9 +20,9 @@ var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service
 var forms_1 = require("@angular/forms");
 var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
-var modal_1 = require("./modal/modal");
-var open_component_1 = require("./modal/open.component");
 var login_1 = require("./login/login");
+var modal_1 = require("../../common/modal/modal");
+var open_component_1 = require("../../common/modal/open.component");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }

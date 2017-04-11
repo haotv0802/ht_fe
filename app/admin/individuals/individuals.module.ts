@@ -12,9 +12,9 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
-import {Modal} from "./modal/modal";
-import {Open} from "./modal/open.component";
 import {Login} from "./login/login";
+import {Modal} from "../../common/modal/modal";
+import {Open} from "../../common/modal/open.component";
 
 
 @NgModule({

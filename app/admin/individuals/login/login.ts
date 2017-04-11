@@ -1,5 +1,5 @@
-import {Modal} from "../modal/modal";
 import {Component} from "@angular/core";
+import {Modal} from "../../../common/modal/modal";
 
 @Component({
   selector: 'login',

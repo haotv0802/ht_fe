@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var modal_1 = require("../modal/modal");
 var core_1 = require("@angular/core");
+var modal_1 = require("../../../common/modal/modal");
 var Login = (function () {
     function Login(_modal) {
         this._modal = _modal;

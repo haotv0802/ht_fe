@@ -11,8 +11,8 @@ import {AdminModule} from "./admin/admin.module";
 import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
-import {Modal} from "./admin/individuals/modal/modal";
 import {Login} from "./admin/individuals/login/login";
+import {Modal} from "./common/modal/modal";
 
 @NgModule({
   imports: [
