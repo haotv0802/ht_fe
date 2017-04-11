@@ -5,8 +5,8 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {LoginComponent} from "../../common/login/login.component";
 import {ModalComponent} from "./modal/modal.component";
+import {Login} from "./login/login";
 
 @Component({
   moduleId: module.id,
@@ -38,7 +38,7 @@ export class IndividualUpdateComponent implements OnInit {
     this.modal.modalFooter = false;
     this.modal.modalMessage = true;
     this.modal.message = "Here Login component will load.";
-    this.modal.open(LoginComponent);
+    this.modal.open(Login);
   }
 
   getData(data: any) {

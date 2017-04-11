@@ -22,6 +22,7 @@ var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
 var modal_component_1 = require("./modal/modal.component");
 var open_component_1 = require("./modal/open.component");
+var login_1 = require("./login/login");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -53,7 +54,8 @@ IndividualsModule = __decorate([
             individualUpdate_component_1.IndividualUpdateComponent,
             individualAdd_component_1.IndividualAddComponent,
             modal_component_1.ModalComponent,
-            open_component_1.OpenDirective
+            open_component_1.OpenDirective,
+            login_1.Login
         ],
         providers: [
             individuals_service_1.IndividualsService,
@@ -63,7 +65,7 @@ IndividualsModule = __decorate([
             individualUpdate_guard_service_1.IndividualUpdateGuard,
             individualAdd_service_1.IndividualAddService
         ],
-        entryComponents: [modal_component_1.ModalComponent]
+        entryComponents: [modal_component_1.ModalComponent, login_1.Login]
     })
 ], IndividualsModule);
 exports.IndividualsModule = IndividualsModule;

@@ -14,6 +14,7 @@ import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
 import {ModalComponent} from "./modal/modal.component";
 import {OpenDirective} from "./modal/open.component";
+import {Login} from "./login/login";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {OpenDirective} from "./modal/open.component";
     IndividualUpdateComponent,
     IndividualAddComponent,
     ModalComponent,
-    OpenDirective
+    OpenDirective,
+    Login
   ],
   providers: [
     IndividualsService,
@@ -51,7 +53,7 @@ import {OpenDirective} from "./modal/open.component";
     IndividualUpdateGuard,
     IndividualAddService
   ],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent, Login]
 })
 export class IndividualsModule {
 }

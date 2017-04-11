@@ -15,8 +15,8 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
-var login_component_1 = require("../../common/login/login.component");
 var modal_component_1 = require("./modal/modal.component");
+var login_1 = require("./login/login");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -41,7 +41,7 @@ var IndividualUpdateComponent = (function () {
         this.modal.modalFooter = false;
         this.modal.modalMessage = true;
         this.modal.message = "Here Login component will load.";
-        this.modal.open(login_component_1.LoginComponent);
+        this.modal.open(login_1.Login);
     };
     IndividualUpdateComponent.prototype.getData = function (data) {
         this.data = data;
