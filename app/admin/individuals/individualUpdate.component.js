@@ -15,8 +15,9 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
-var dialog_component_1 = require("./modal/dialog.component");
-var dialogAnchor_directive_1 = require("./modal/dialogAnchor.directive");
+var modal_component_1 = require("./modal/modal.component");
+var login_1 = require("./login/login");
+var alert_component_1 = require("./modal/alert.component");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -24,7 +25,6 @@ var IndividualUpdateComponent = (function () {
         this._router = _router;
         this.fb = fb;
         this.isUserNameExisting = false;
-        this.visible = false;
         this.userNameMessages = {
             required: 'Please enter your user name.',
             minlength: 'The username must be longer than 3 characters.',
@@ -37,7 +37,24 @@ var IndividualUpdateComponent = (function () {
         this.pageTitle = 'Individual Update';
     }
     IndividualUpdateComponent.prototype.openDialog = function () {
-        this.dialogAnchor.createDialog(dialog_component_1.DialogComponent);
+        this.modal.modalTitle = "LOGIN";
+        this.modal.modalFooter = false;
+        this.modal.modalMessage = true;
+        this.modal.message = "Here Login component will load.";
+        this.modal.open(login_1.Login);
+    };
+    IndividualUpdateComponent.prototype.openAlert = function () {
+        this.alert.alertFooter = true;
+        this.alert.cancelButton = true;
+        this.alert.okButton = false;
+        this.alert.alertHeader = true;
+        this.alert.alertTitle = "A simple Alert modal window";
+        this.alert.message = "It is a classic Alert modal with title, body, footer.";
+        this.alert.cancelButtonText = "Ok, Got it.";
+        this.alert.open();
+    };
+    IndividualUpdateComponent.prototype.getData = function (data) {
+        this.data = data;
     };
     IndividualUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -173,15 +190,18 @@ var IndividualUpdateComponent = (function () {
     return IndividualUpdateComponent;
 }());
 __decorate([
-    core_1.ViewChild(dialogAnchor_directive_1.DialogAnchorDirective),
-    __metadata("design:type", dialogAnchor_directive_1.DialogAnchorDirective)
-], IndividualUpdateComponent.prototype, "dialogAnchor", void 0);
+    core_1.ViewChild(modal_component_1.ModalComponent),
+    __metadata("design:type", modal_component_1.ModalComponent)
+], IndividualUpdateComponent.prototype, "modal", void 0);
+__decorate([
+    core_1.ViewChild(alert_component_1.AlertComponent),
+    __metadata("design:type", alert_component_1.AlertComponent)
+], IndividualUpdateComponent.prototype, "alert", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'individualUpdate.component.html',
-        styleUrls: ['individualUpdate.component.css'],
-        entryComponents: [dialog_component_1.DialogComponent]
+        styleUrls: ['individualUpdate.component.css']
     }),
     __metadata("design:paramtypes", [individualUpdate_service_1.IndividualUpdateService,
         domain_service_1.DomainService,

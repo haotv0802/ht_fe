@@ -20,8 +20,10 @@ var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service
 var forms_1 = require("@angular/forms");
 var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
-var dialog_component_1 = require("./modal/dialog.component");
-var dialogAnchor_directive_1 = require("./modal/dialogAnchor.directive");
+var modal_component_1 = require("./modal/modal.component");
+var open_component_1 = require("./modal/open.component");
+var login_1 = require("./login/login");
+var alert_component_1 = require("./modal/alert.component");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -52,8 +54,10 @@ IndividualsModule = __decorate([
             individualDetails_component_1.IndividualDetailsComponent,
             individualUpdate_component_1.IndividualUpdateComponent,
             individualAdd_component_1.IndividualAddComponent,
-            dialog_component_1.DialogComponent,
-            dialogAnchor_directive_1.DialogAnchorDirective
+            modal_component_1.ModalComponent,
+            open_component_1.OpenDirective,
+            login_1.Login,
+            alert_component_1.AlertComponent
         ],
         providers: [
             individuals_service_1.IndividualsService,
@@ -62,7 +66,8 @@ IndividualsModule = __decorate([
             individualUpdate_service_1.IndividualUpdateService,
             individualUpdate_guard_service_1.IndividualUpdateGuard,
             individualAdd_service_1.IndividualAddService
-        ]
+        ],
+        entryComponents: [modal_component_1.ModalComponent, login_1.Login]
     })
 ], IndividualsModule);
 exports.IndividualsModule = IndividualsModule;

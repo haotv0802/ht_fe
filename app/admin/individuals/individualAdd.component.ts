@@ -1,10 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {Individual} from "./individual";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {IndividualAddService} from "./individualAdd.service";
 import {DomainService} from "../common/domain.service";
+import {Login} from "./login/login";
+import {ModalComponent} from "./modal/modal.component";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
@@ -17,6 +20,8 @@ export class IndividualAddComponent implements OnInit {
   individualForm: FormGroup;
   emailMessage: string;
   roles: string[];
+  @ViewChild(ModalComponent) modal: ModalComponent;
+  @ViewChild(AlertComponent) alert: AlertComponent;
 
   constructor(
     private _individualAddService: IndividualAddService,
@@ -56,12 +61,31 @@ export class IndividualAddComponent implements OnInit {
     );
   }
 
+  openDialog(): void {
+    this.modal.modalTitle = "LOGIN";
+    this.modal.modalFooter = false;
+    this.modal.modalMessage = true;
+    this.modal.message = "Here Login component will load.";
+    this.modal.open(Login);
+  }
+
   save(): void {
     console.log('Saved: ' + JSON.stringify(this.individualForm.value));
   }
 
   openCalendar() {
     return false;
+  }
+
+  openAlert(): void {
+    this.alert.alertFooter = true;
+    this.alert.cancelButton = true;
+    this.alert.okButton = false;
+    this.alert.alertHeader = true;
+    this.alert.alertTitle = "A simple Alert modal window";
+    this.alert.message = "It is a classic Alert modal with title, body, footer.";
+    this.alert.cancelButtonText = "Ok, Got it.";
+    this.alert.open();
   }
 
   setMessage(c: AbstractControl): void {

@@ -11,8 +11,6 @@ import {AdminModule} from "./admin/admin.module";
 import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
-import {LoginModalComponent} from "./common/loginModal/loginModal.component";
-import {LoginAnchorDirective} from "./common/loginModal/loginAnchor.directive";
 
 @NgModule({
   imports: [
@@ -28,9 +26,7 @@ import {LoginAnchorDirective} from "./common/loginModal/loginAnchor.directive";
     ]),
     LoginModule,
     ProductModule,
-    AdminModule,
-    LoginModalComponent,
-    LoginAnchorDirective
+    AdminModule
   ],
   declarations: [
     AppComponent,

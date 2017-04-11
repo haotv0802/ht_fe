@@ -12,9 +12,10 @@ import {IndividualUpdateGuard} from "./individualUpdate-guard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
-import {DialogComponent} from "./modal/dialog.component";
-import {DialogAnchorDirective} from "./modal/dialogAnchor.directive";
-
+import {ModalComponent} from "./modal/modal.component";
+import {OpenDirective} from "./modal/open.component";
+import {Login} from "./login/login";
+import {AlertComponent} from "./modal/alert.component";
 
 @NgModule({
   imports: [
@@ -40,8 +41,10 @@ import {DialogAnchorDirective} from "./modal/dialogAnchor.directive";
     IndividualDetailsComponent,
     IndividualUpdateComponent,
     IndividualAddComponent,
-    DialogComponent,
-    DialogAnchorDirective
+    ModalComponent,
+    OpenDirective,
+    Login,
+    AlertComponent
   ],
   providers: [
     IndividualsService,
@@ -50,7 +53,8 @@ import {DialogAnchorDirective} from "./modal/dialogAnchor.directive";
     IndividualUpdateService,
     IndividualUpdateGuard,
     IndividualAddService
-  ]
+  ],
+  entryComponents: [ModalComponent, Login]
 })
 export class IndividualsModule {
 }

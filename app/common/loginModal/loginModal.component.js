@@ -21,7 +21,6 @@ var LoginModalComponent = (function () {
         this._router = _router;
         this._constants = _constants;
         this.fb = fb;
-        this.close = new core_1.EventEmitter();
     }
     LoginModalComponent.prototype.ngOnInit = function () {
         this.loginForm = this.fb.group({
@@ -50,9 +49,6 @@ var LoginModalComponent = (function () {
             console.log(error);
             _this._router.navigate(['welcome']);
         });
-    };
-    LoginModalComponent.prototype.onClickedExit = function () {
-        this.close.emit('event');
     };
     return LoginModalComponent;
 }());

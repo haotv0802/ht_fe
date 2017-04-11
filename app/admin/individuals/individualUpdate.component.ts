@@ -5,14 +5,15 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {DialogComponent} from "./modal/dialog.component";
-import {DialogAnchorDirective} from "./modal/dialogAnchor.directive";
+import {ModalComponent} from "./modal/modal.component";
+import {Login} from "./login/login";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
   templateUrl: 'individualUpdate.component.html',
-  styleUrls: ['individualUpdate.component.css'],
-  entryComponents: [DialogComponent]
+  styleUrls: ['individualUpdate.component.css']
+
 })
 export class IndividualUpdateComponent implements OnInit {
   pageTitle: string;
@@ -22,20 +23,40 @@ export class IndividualUpdateComponent implements OnInit {
   userNameMessage: string;
   roles: string[];
   isUserNameExisting: boolean = false;
-  visible: boolean = false;
-  @ViewChild(DialogAnchorDirective) dialogAnchor: DialogAnchorDirective;
 
-  constructor(
-    private _individualUpdateService: IndividualUpdateService,
-    private _domainService: DomainService,
-    private _router: Router,
-    private fb: FormBuilder
-  ) {
+  @ViewChild(ModalComponent) modal: ModalComponent;
+  @ViewChild(AlertComponent) alert: AlertComponent;
+
+  public data: any;
+
+  constructor(private _individualUpdateService: IndividualUpdateService,
+              private _domainService: DomainService,
+              private _router: Router,
+              private fb: FormBuilder) {
     this.pageTitle = 'Individual Update';
   }
 
   openDialog(): void {
-    this.dialogAnchor.createDialog(DialogComponent);
+    this.modal.modalTitle = "LOGIN";
+    this.modal.modalFooter = false;
+    this.modal.modalMessage = true;
+    this.modal.message = "Here Login component will load.";
+    this.modal.open(Login);
+  }
+
+  openAlert(): void {
+    this.alert.alertFooter = true;
+    this.alert.cancelButton = true;
+    this.alert.okButton = false;
+    this.alert.alertHeader = true;
+    this.alert.alertTitle = "A simple Alert modal window";
+    this.alert.message = "It is a classic Alert modal with title, body, footer.";
+    this.alert.cancelButtonText = "Ok, Got it.";
+    this.alert.open();
+  }
+
+  getData(data: any) {
+    this.data = data;
   }
 
   ngOnInit(): void {
@@ -109,6 +130,7 @@ export class IndividualUpdateComponent implements OnInit {
         this.userNameMessages[key]).join(' ');
     }
   }
+
   private userNameMessages = {
     required: 'Please enter your user name.',
     minlength: 'The username must be longer than 3 characters.',
@@ -150,7 +172,7 @@ export class IndividualUpdateComponent implements OnInit {
     console.log("userNameMessage: " + this.userNameMessage);
   }
 
-  validateUserName(control : FormControl) : {[key: string]: any} {
+  validateUserName(control: FormControl): {[key: string]: any} {
     if (!control.value) {
       return null;
     }
@@ -158,10 +180,10 @@ export class IndividualUpdateComponent implements OnInit {
       console.log(control.value);
       if (control.value == "hao") {
         console.log("existing");
-        resolve ({'existing': true});
+        resolve({'existing': true});
       } else {
         console.log("NOT existing");
-        resolve (null);
+        resolve(null);
       }
     });
 

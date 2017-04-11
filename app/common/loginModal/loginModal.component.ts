@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Constants} from './../constant';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -10,6 +10,7 @@ import {Credential} from "./credential";
   templateUrl: 'loginModal.component.html'
 })
 export class LoginModalComponent implements OnInit {
+
   private _authToken: string;
   loginForm: FormGroup;
 
@@ -52,11 +53,5 @@ export class LoginModalComponent implements OnInit {
         this._router.navigate(['welcome']);
       }
     );
-  }
-
-  close = new EventEmitter();
-
-  onClickedExit() {
-    this.close.emit('event');
   }
 }
