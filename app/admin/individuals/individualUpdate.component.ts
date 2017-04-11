@@ -5,8 +5,8 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {Login} from "./login/login";
 import {Modal} from "../../common/modal/modal";
+import {LoginComponent} from "../../common/login/login.component";
 
 @Component({
   moduleId: module.id,
@@ -26,12 +26,10 @@ export class IndividualUpdateComponent implements OnInit {
   @ViewChild(Modal) modal: Modal;
   public data: any;
 
-  constructor(
-    private _individualUpdateService: IndividualUpdateService,
-    private _domainService: DomainService,
-    private _router: Router,
-    private fb: FormBuilder
-  ) {
+  constructor(private _individualUpdateService: IndividualUpdateService,
+              private _domainService: DomainService,
+              private _router: Router,
+              private fb: FormBuilder) {
     this.pageTitle = 'Individual Update';
   }
 
@@ -40,10 +38,10 @@ export class IndividualUpdateComponent implements OnInit {
     this.modal.modalFooter = false;
     this.modal.modalMessage = true;
     this.modal.message = "Here Login component will load.";
-    this.modal.open(Login);
+    this.modal.open(LoginComponent);
   }
 
-  getData(data: any){
+  getData(data: any) {
     this.data = data;
   }
 
@@ -118,6 +116,7 @@ export class IndividualUpdateComponent implements OnInit {
         this.userNameMessages[key]).join(' ');
     }
   }
+
   private userNameMessages = {
     required: 'Please enter your user name.',
     minlength: 'The username must be longer than 3 characters.',
@@ -159,7 +158,7 @@ export class IndividualUpdateComponent implements OnInit {
     console.log("userNameMessage: " + this.userNameMessage);
   }
 
-  validateUserName(control : FormControl) : {[key: string]: any} {
+  validateUserName(control: FormControl): {[key: string]: any} {
     if (!control.value) {
       return null;
     }
@@ -167,10 +166,10 @@ export class IndividualUpdateComponent implements OnInit {
       console.log(control.value);
       if (control.value == "hao") {
         console.log("existing");
-        resolve ({'existing': true});
+        resolve({'existing': true});
       } else {
         console.log("NOT existing");
-        resolve (null);
+        resolve(null);
       }
     });
 
