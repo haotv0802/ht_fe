@@ -7,7 +7,7 @@ import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
 import {ModalComponent} from "./modal/modal.component";
 import {Login} from "./login/login";
-import {AlertComponent} from "./modal/alert.component";
+import {AlertComponent} from "../../common/alert.component";
 
 @Component({
   moduleId: module.id,
@@ -23,7 +23,6 @@ export class IndividualUpdateComponent implements OnInit {
   userNameMessage: string;
   roles: string[];
   isUserNameExisting: boolean = false;
-  visible: boolean = false;
 
   @ViewChild(ModalComponent) modal: ModalComponent;
   @ViewChild(AlertComponent) alert: AlertComponent;

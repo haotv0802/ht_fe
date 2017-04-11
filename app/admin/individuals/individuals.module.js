@@ -23,7 +23,7 @@ var individualAdd_service_1 = require("./individualAdd.service");
 var modal_component_1 = require("./modal/modal.component");
 var open_component_1 = require("./modal/open.component");
 var login_1 = require("./login/login");
-var alert_component_1 = require("./modal/alert.component");
+var alert_component_1 = require("../../common/alert.component");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
