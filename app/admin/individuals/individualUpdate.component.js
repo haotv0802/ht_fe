@@ -17,6 +17,7 @@ require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
 var modal_component_1 = require("./modal/modal.component");
 var login_1 = require("./login/login");
+var alert_component_1 = require("./modal/alert.component");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -42,6 +43,16 @@ var IndividualUpdateComponent = (function () {
         this.modal.modalMessage = true;
         this.modal.message = "Here Login component will load.";
         this.modal.open(login_1.Login);
+    };
+    IndividualUpdateComponent.prototype.openAlert = function () {
+        this.alert.alertFooter = true;
+        this.alert.cancelButton = true;
+        this.alert.okButton = false;
+        this.alert.alertHeader = true;
+        this.alert.alertTitle = "A simple Alert modal window";
+        this.alert.message = "It is a classic Alert modal with title, body, footer.";
+        this.alert.cancelButtonText = "Ok, Got it.";
+        this.alert.open();
     };
     IndividualUpdateComponent.prototype.getData = function (data) {
         this.data = data;
@@ -183,6 +194,10 @@ __decorate([
     core_1.ViewChild(modal_component_1.ModalComponent),
     __metadata("design:type", modal_component_1.ModalComponent)
 ], IndividualUpdateComponent.prototype, "modal", void 0);
+__decorate([
+    core_1.ViewChild(alert_component_1.AlertComponent),
+    __metadata("design:type", alert_component_1.AlertComponent)
+], IndividualUpdateComponent.prototype, "alert", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

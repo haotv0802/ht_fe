@@ -7,6 +7,7 @@ import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
 import {ModalComponent} from "./modal/modal.component";
 import {Login} from "./login/login";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
@@ -23,7 +24,10 @@ export class IndividualUpdateComponent implements OnInit {
   roles: string[];
   isUserNameExisting: boolean = false;
   visible: boolean = false;
+
   @ViewChild(ModalComponent) modal: ModalComponent;
+  @ViewChild(AlertComponent) alert: AlertComponent;
+
   public data: any;
 
   constructor(private _individualUpdateService: IndividualUpdateService,
@@ -39,6 +43,17 @@ export class IndividualUpdateComponent implements OnInit {
     this.modal.modalMessage = true;
     this.modal.message = "Here Login component will load.";
     this.modal.open(Login);
+  }
+
+  openAlert(): void {
+    this.alert.alertFooter = true;
+    this.alert.cancelButton = true;
+    this.alert.okButton = false;
+    this.alert.alertHeader = true;
+    this.alert.alertTitle = "A simple Alert modal window";
+    this.alert.message = "It is a classic Alert modal with title, body, footer.";
+    this.alert.cancelButtonText = "Ok, Got it.";
+    this.alert.open();
   }
 
   getData(data: any) {

@@ -246,9 +246,14 @@
                                 Save
                             </button>
                             <button class="btn btn-primary"
-                                    type="submit"
+                                    type="button"
                                     (click)="openDialog()">
                                 Open Dialog
+                            </button>
+                            <button class="btn btn-primary"
+                                    type="button"
+                                    (click)="openAlert()">
+                                Open Alert
                             </button>
                         </span>
                     </div>
@@ -258,4 +263,6 @@
     </div>
     <modal (modalOutput)="getData($event)">
     </modal>
+    <alert (alertOutput)="confirmClose($event)">
+    </alert>
 </div>
