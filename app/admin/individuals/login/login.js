@@ -28,8 +28,9 @@ var Login = (function () {
 Login = __decorate([
     core_1.Component({
         selector: 'login',
-        templateUrl: 'demo/app/login/login.html',
-        styleUrls: ['demo/app/login/login.css'],
+        moduleId: module.id,
+        templateUrl: 'login.html',
+        styleUrls: ['login.css'],
     }),
     __metadata("design:paramtypes", [modal_1.Modal])
 ], Login);

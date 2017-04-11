@@ -22,6 +22,7 @@ var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
 var modal_1 = require("./modal/modal");
 var open_component_1 = require("./modal/open.component");
+var login_1 = require("./login/login");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -53,7 +54,8 @@ IndividualsModule = __decorate([
             individualUpdate_component_1.IndividualUpdateComponent,
             individualAdd_component_1.IndividualAddComponent,
             modal_1.Modal,
-            open_component_1.Open
+            open_component_1.Open,
+            login_1.Login
         ],
         providers: [
             individuals_service_1.IndividualsService,

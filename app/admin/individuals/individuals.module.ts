@@ -14,6 +14,7 @@ import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
 import {Modal} from "./modal/modal";
 import {Open} from "./modal/open.component";
+import {Login} from "./login/login";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {Open} from "./modal/open.component";
     IndividualUpdateComponent,
     IndividualAddComponent,
     Modal,
-    Open
+    Open,
+    Login
   ],
   providers: [
     IndividualsService,

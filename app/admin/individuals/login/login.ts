@@ -3,10 +3,10 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: 'login',
-  templateUrl: 'demo/app/login/login.html',
-  styleUrls: ['demo/app/login/login.css'],
+  moduleId: module.id,
+  templateUrl: 'login.html',
+  styleUrls: ['login.css'],
 })
-
 export class Login {
   modal: Modal;
 
