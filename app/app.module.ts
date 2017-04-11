@@ -11,7 +11,7 @@ import {AdminModule} from "./admin/admin.module";
 import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
-import {Modal} from "./common/modal/modal";
+import {ModalComponent} from "./common/modal/modal.component";
 
 @NgModule({
   imports: [
@@ -39,7 +39,7 @@ import {Modal} from "./common/modal/modal";
     Constants,
     HTTPService
   ],
-  entryComponents: [Modal],
+  entryComponents: [ModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

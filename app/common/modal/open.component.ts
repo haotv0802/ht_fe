@@ -1,4 +1,3 @@
-
 // todo: add animate
 // todo: add init and on change
 import {Directive, HostBinding, Input} from "@angular/core";

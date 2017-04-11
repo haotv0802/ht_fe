@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // import 'reflect-metadata';
 var core_1 = require("@angular/core");
-var Modal = (function () {
-    function Modal(compiler, viewContainer) {
+var ModalComponent = (function () {
+    function ModalComponent(compiler, viewContainer) {
         this.compiler = compiler;
         this.viewContainer = viewContainer;
         /**
@@ -59,7 +59,7 @@ var Modal = (function () {
      * Opens a modal window creating backdrop.
      * @param component The angular Component that is to be loaded dynamically(optional).
      */
-    Modal.prototype.open = function (component) {
+    ModalComponent.prototype.open = function (component) {
         this.isOpen = true;
         if (this.cmpRef) {
             this.cmpRef.destroy();
@@ -72,7 +72,7 @@ var Modal = (function () {
     /**
      *  close method dispose the component, closes the modal and optionally emits modalOutput value.
      */
-    Modal.prototype.close = function (data) {
+    ModalComponent.prototype.close = function (data) {
         this.dispose();
         if (data) {
             this.modalOutput.emit(data);
@@ -81,14 +81,14 @@ var Modal = (function () {
     /**
      *  ok method dispose the component, closes the modal and emits true.
      */
-    Modal.prototype.submit = function () {
+    ModalComponent.prototype.submit = function () {
         this.dispose();
         this.modalOutput.emit(true);
     };
     /**
      *  dispose method dispose the loaded component.
      */
-    Modal.prototype.dispose = function () {
+    ModalComponent.prototype.dispose = function () {
         this.isOpen = false;
         if (this.component != undefined) {
             this.component.then(function (componentRef) {
@@ -97,17 +97,17 @@ var Modal = (function () {
             });
         }
     };
-    return Modal;
+    return ModalComponent;
 }());
 __decorate([
     core_1.ViewChild("child", { read: core_1.ViewContainerRef }),
     __metadata("design:type", Object)
-], Modal.prototype, "target", void 0);
+], ModalComponent.prototype, "target", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], Modal.prototype, "modalOutput", void 0);
-Modal = __decorate([
+], ModalComponent.prototype, "modalOutput", void 0);
+ModalComponent = __decorate([
     core_1.Component({
         selector: 'modal',
         template: "\n  <div class=\"modal fade\" [open]=\"!isOpen\" id=\"myModal\" [attr.data-keyboard]=\"true\" [attr.data-backdrop]=\"false\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\" [hidden]=!modalHeader>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" (click)='close()' aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n          <h4 class=\"modal-title text-center\" id=\"myModalLabel\">{{modalTitle}}</h4>\n        </div>\n        <div class=\"modal-body\">\n        <div [hidden]=!modalMessage>\n        {{message}}\n        </div>\n          <div #child>\n          </div>\n        </div>\n        <div class=\"modal-footer\" [hidden]=!modalFooter>\n        <span [hidden]=!okButton >\n          <button [hidden]=!okButton class=\"btn btn-primary\" (click)=\"submit()\">{{okButtonText}}</button>\n          </span>\n          <span [hidden]=!cancelButton >\n          <button [hidden]=!cancelButton class=\"btn btn-primary\" (click)=\"close()\">{{cancelButtonText}}</button>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n",
@@ -119,6 +119,6 @@ Modal = __decorate([
      */
     ,
     __metadata("design:paramtypes", [core_1.ComponentFactoryResolver, core_1.ViewContainerRef])
-], Modal);
-exports.Modal = Modal;
-//# sourceMappingURL=modal.js.map
+], ModalComponent);
+exports.ModalComponent = ModalComponent;
+//# sourceMappingURL=modal.component.js.map

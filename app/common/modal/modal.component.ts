@@ -45,7 +45,7 @@ import {
 /**
  * API to an open modal window.
  */
-export class Modal {
+export class ModalComponent {
   /**
    * Caption for the title.
    */

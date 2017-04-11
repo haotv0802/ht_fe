@@ -5,8 +5,8 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {Modal} from "../../common/modal/modal";
 import {LoginComponent} from "../../common/login/login.component";
+import {ModalComponent} from "../../common/modal/modal.component";
 
 @Component({
   moduleId: module.id,
@@ -23,7 +23,7 @@ export class IndividualUpdateComponent implements OnInit {
   roles: string[];
   isUserNameExisting: boolean = false;
   visible: boolean = false;
-  @ViewChild(Modal) modal: Modal;
+  @ViewChild(ModalComponent) modal: ModalComponent;
   public data: any;
 
   constructor(private _individualUpdateService: IndividualUpdateService,

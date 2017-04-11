@@ -15,8 +15,8 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
-var modal_1 = require("../../common/modal/modal");
 var login_component_1 = require("../../common/login/login.component");
+var modal_component_1 = require("../../common/modal/modal.component");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
@@ -180,8 +180,8 @@ var IndividualUpdateComponent = (function () {
     return IndividualUpdateComponent;
 }());
 __decorate([
-    core_1.ViewChild(modal_1.Modal),
-    __metadata("design:type", modal_1.Modal)
+    core_1.ViewChild(modal_component_1.ModalComponent),
+    __metadata("design:type", modal_component_1.ModalComponent)
 ], IndividualUpdateComponent.prototype, "modal", void 0);
 IndividualUpdateComponent = __decorate([
     core_1.Component({
