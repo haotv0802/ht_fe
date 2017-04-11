@@ -239,10 +239,17 @@
                                     [disabled]="!individualForm.valid">
                                 Save
                             </button>
+                            <button class="btn btn-primary"
+                                    type="button"
+                                    (click)="openAlert()">
+                                Open Alert
+                            </button>
                         </span>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
+    <alert (alertOutput)="confirmClose($event)">
+    </alert>
 </div>

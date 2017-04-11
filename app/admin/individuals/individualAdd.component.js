@@ -15,6 +15,7 @@ var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var individualAdd_service_1 = require("./individualAdd.service");
 var domain_service_1 = require("../common/domain.service");
+var alert_component_1 = require("../../common/alert.component");
 var IndividualAddComponent = (function () {
     function IndividualAddComponent(_individualAddService, _domainService, _router, fb) {
         this._individualAddService = _individualAddService;
@@ -59,6 +60,16 @@ var IndividualAddComponent = (function () {
     IndividualAddComponent.prototype.openCalendar = function () {
         return false;
     };
+    IndividualAddComponent.prototype.openAlert = function () {
+        this.alert.alertFooter = true;
+        this.alert.cancelButton = true;
+        this.alert.okButton = false;
+        this.alert.alertHeader = true;
+        this.alert.alertTitle = "A simple Alert modal window";
+        this.alert.message = "It is a classic Alert modal with title, body, footer.";
+        this.alert.cancelButtonText = "Ok, Got it.";
+        this.alert.open();
+    };
     IndividualAddComponent.prototype.setMessage = function (c) {
         var _this = this;
         this.emailMessage = '';
@@ -74,6 +85,10 @@ var IndividualAddComponent = (function () {
     };
     return IndividualAddComponent;
 }());
+__decorate([
+    core_1.ViewChild(alert_component_1.AlertComponent),
+    __metadata("design:type", alert_component_1.AlertComponent)
+], IndividualAddComponent.prototype, "alert", void 0);
 IndividualAddComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
