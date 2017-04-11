@@ -12,9 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var constant_1 = require("./common/constant");
-var loginModal_component_1 = require("./common/loginModal/loginModal.component");
-var loginAnchor_directive_1 = require("./common/loginModal/loginAnchor.directive");
 var NavComponent = (function () {
+    // public authority: string;
     function NavComponent(_router, _constants) {
         this._router = _router;
         this._constants = _constants;
@@ -25,9 +24,6 @@ var NavComponent = (function () {
         // console.log("nav - get session storage: " + sessionStorage.getItem("authority"));
         return sessionStorage.getItem(this._constants.AUTHORITY);
     };
-    NavComponent.prototype.openDialog = function () {
-        this.loginAnchor.createDialog(new loginModal_component_1.LoginModalComponent());
-    };
     NavComponent.prototype.logout = function () {
         sessionStorage.setItem(this._constants.AUTHORITY, null);
         sessionStorage.setItem(this._constants.AUTH_TOKEN, null);
@@ -36,17 +32,12 @@ var NavComponent = (function () {
     };
     return NavComponent;
 }());
-__decorate([
-    core_1.ViewChild(loginAnchor_directive_1.LoginAnchorDirective),
-    __metadata("design:type", loginAnchor_directive_1.LoginAnchorDirective)
-], NavComponent.prototype, "loginAnchor", void 0);
 NavComponent = __decorate([
     core_1.Component({
         selector: 'ht-nav',
         moduleId: module.id,
         templateUrl: 'nav.component.html',
-        styleUrls: ['nav.component.css'],
-        entryComponents: [loginModal_component_1.LoginModalComponent]
+        styleUrls: ['nav.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router, constant_1.Constants])
 ], NavComponent);
