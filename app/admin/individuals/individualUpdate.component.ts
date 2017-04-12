@@ -21,6 +21,7 @@ export class IndividualUpdateComponent implements OnInit {
   individualForm: FormGroup;
   emailMessage: string;
   userNameMessage: string;
+  oldUserNameForCheck: string;
   roles: string[];
   isUserNameExisting: boolean = false;
 
@@ -72,7 +73,7 @@ export class IndividualUpdateComponent implements OnInit {
         confirmEmail: ['', Validators.required],
       }, {validator: emailMatcher}),
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
-      userName: ['', [Validators.required, Validators.minLength(3), this.validateUserName.bind(this)]],
+      userName: ['', [Validators.required, Validators.minLength(3)], [this.validateUserName.bind(this)]],
       role: ['', [Validators.required, Validators.minLength(3)]]
     });
     let emailControl = this.individualForm.get('emailGroup.email');
@@ -97,6 +98,20 @@ export class IndividualUpdateComponent implements OnInit {
     this.populateData();
   }
 
+  setErrorMessagesForUserNameControl(c: AbstractControl): void {
+    console.log(c.errors);
+    this.userNameMessage = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.userNameMessage = Object.keys(c.errors).map(key =>
+        this.userNameMessages[key]).join(' ');
+    }
+  }
+  private userNameMessages = {
+    required: 'Please enter your user name.',
+    minlength: 'The username must be longer than 3 characters.',
+    existing: 'User Name is existing already.'
+  }
+
   save(): void {
     console.log('Saved: ' + JSON.stringify(this.individualForm.value));
   }
@@ -113,29 +128,30 @@ export class IndividualUpdateComponent implements OnInit {
       userName: this.individual.userName,
       role: this.individual.role
     });
+    this.oldUserNameForCheck = this.individual.userName;
+  }
 
-    this._individualUpdateService.isUserNameExisting(this.individual.userName).subscribe(
-      (res) => {
-        console.log("res.isUserNameExisting");
-        console.log(res.isUserNameExisting);
+  validateUserName(control: FormControl): {[key: string]: any} {
+    return new Promise(resolve => {
+      // resolve({"existing": true});
+      if (this.oldUserNameForCheck != undefined) {
+        this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
+          (res) => {
+            if (res.isUserNameExisting) {
+              resolve({'existing': true});
+            } else {
+              resolve(null);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        resolve(null);
       }
-    );
+    });
   }
-
-  setErrorMessagesForUserNameControl(c: AbstractControl): void {
-    console.log(c.errors);
-    this.userNameMessage = '';
-    if ((c.touched || c.dirty) && c.errors) {
-      this.userNameMessage = Object.keys(c.errors).map(key =>
-        this.userNameMessages[key]).join(' ');
-    }
-  }
-
-  private userNameMessages = {
-    required: 'Please enter your user name.',
-    minlength: 'The username must be longer than 3 characters.',
-    existing: 'User Name is existing already.'
-  };
 
   setErrorMessagesForEmailControl(c: AbstractControl): void {
     this.emailMessage = '';
@@ -169,55 +185,58 @@ export class IndividualUpdateComponent implements OnInit {
     //     this.isUserNameExisting = res.isUserNameExisting;
     //   }
     // );
-    console.log("userNameMessage: " + this.userNameMessage);
-  }
-
-  validateUserName(control: FormControl): {[key: string]: any} {
-    if (!control.value) {
-      return null;
-    }
-    return new Promise(resolve => {
-      console.log(control.value);
-      if (control.value == "hao") {
-        console.log("existing");
-        resolve({'existing': true});
-      } else {
-        console.log("NOT existing");
-        resolve(null);
-      }
-    });
-
-
-    // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
-    //   (res) => {
-    //     if (res.isUserNameExisting) {
-    //       console.log("existing");
-    //       return {'existing': true};
-    //     } else {
-    //       console.log("NOT existing");
-    //       return null;
-    //     }
-    //   },
-    //   (error) => {
-    //     return {'existing': true};
-    //   }
-    // );
-
-    // if (!control.value) {
-    //   return null;
-    // }
-
-    // console.log(value);
-    // let isExisting = false;
-    // console.log("at the end of subscribe: " + isExisting);
-    // if (isExisting) {
-    //   return {'existing': true};
+    // console.log("userNameMessage: " + this.userNameMessage);
+    // if (this.individualForm.get('userName').value == "hao") {
+    //   this.userNameMessage = "User name is existing";
     // } else {
-    //   return null;
+    //   this.userNameMessage = ""
     // }
-
   }
 
+  // validateUserName(control: FormControl): {[key: string]: any} {
+  //   if (!control.value) {
+  //     return null;
+  //   }
+  //   return new Promise(resolve => {
+  //     console.log(control.value);
+  //     if (control.value == "hao") {
+  //       console.log("existing");
+  //       resolve({'existing': true});
+  //     } else {
+  //       console.log("NOT existing");
+  //       resolve(null);
+  //     }
+  //   });
+  //
+  //   // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
+  //   //   (res) => {
+  //   //     if (res.isUserNameExisting) {
+  //   //       console.log("existing");
+  //   //       return {'existing': true};
+  //   //     } else {
+  //   //       console.log("NOT existing");
+  //   //       return null;
+  //   //     }
+  //   //   },
+  //   //   (error) => {
+  //   //     return {'existing': true};
+  //   //   }
+  //   // );
+  //
+  //   // if (!control.value) {
+  //   //   return null;
+  //   // }
+  //
+  //   // console.log(value);
+  //   // let isExisting = false;
+  //   // console.log("at the end of subscribe: " + isExisting);
+  //   // if (isExisting) {
+  //   //   return {'existing': true};
+  //   // } else {
+  //   //   return null;
+  //   // }
+  //
+  // }
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {

@@ -70,7 +70,7 @@ var IndividualUpdateComponent = (function () {
                 confirmEmail: ['', forms_1.Validators.required],
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3), this.validateUserName.bind(this)]],
+            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)], [this.validateUserName.bind(this)]],
             role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
@@ -88,6 +88,16 @@ var IndividualUpdateComponent = (function () {
         });
         this.populateData();
     };
+    IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
+        var _this = this;
+        console.log(c.errors);
+        this.userNameMessage = '';
+        if ((c.touched || c.dirty) && c.errors) {
+            this.userNameMessage = Object.keys(c.errors).map(function (key) {
+                return _this.userNameMessages[key];
+            }).join(' ');
+        }
+    };
     IndividualUpdateComponent.prototype.save = function () {
         console.log('Saved: ' + JSON.stringify(this.individualForm.value));
     };
@@ -103,20 +113,28 @@ var IndividualUpdateComponent = (function () {
             userName: this.individual.userName,
             role: this.individual.role
         });
-        this._individualUpdateService.isUserNameExisting(this.individual.userName).subscribe(function (res) {
-            console.log("res.isUserNameExisting");
-            console.log(res.isUserNameExisting);
-        });
+        this.oldUserNameForCheck = this.individual.userName;
     };
-    IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
+    IndividualUpdateComponent.prototype.validateUserName = function (control) {
         var _this = this;
-        console.log(c.errors);
-        this.userNameMessage = '';
-        if ((c.touched || c.dirty) && c.errors) {
-            this.userNameMessage = Object.keys(c.errors).map(function (key) {
-                return _this.userNameMessages[key];
-            }).join(' ');
-        }
+        return new Promise(function (resolve) {
+            // resolve({"existing": true});
+            if (_this.oldUserNameForCheck != undefined) {
+                _this._individualUpdateService.isUserNameExisting(_this.oldUserNameForCheck, control.value).subscribe(function (res) {
+                    if (res.isUserNameExisting) {
+                        resolve({ 'existing': true });
+                    }
+                    else {
+                        resolve(null);
+                    }
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+            else {
+                resolve(null);
+            }
+        });
     };
     IndividualUpdateComponent.prototype.setErrorMessagesForEmailControl = function (c) {
         var _this = this;
@@ -144,47 +162,11 @@ var IndividualUpdateComponent = (function () {
         //     this.isUserNameExisting = res.isUserNameExisting;
         //   }
         // );
-        console.log("userNameMessage: " + this.userNameMessage);
-    };
-    IndividualUpdateComponent.prototype.validateUserName = function (control) {
-        if (!control.value) {
-            return null;
-        }
-        return new Promise(function (resolve) {
-            console.log(control.value);
-            if (control.value == "hao") {
-                console.log("existing");
-                resolve({ 'existing': true });
-            }
-            else {
-                console.log("NOT existing");
-                resolve(null);
-            }
-        });
-        // return this._individualUpdateService.isUserNameExisting(control.value).subscribe(
-        //   (res) => {
-        //     if (res.isUserNameExisting) {
-        //       console.log("existing");
-        //       return {'existing': true};
-        //     } else {
-        //       console.log("NOT existing");
-        //       return null;
-        //     }
-        //   },
-        //   (error) => {
-        //     return {'existing': true};
-        //   }
-        // );
-        // if (!control.value) {
-        //   return null;
-        // }
-        // console.log(value);
-        // let isExisting = false;
-        // console.log("at the end of subscribe: " + isExisting);
-        // if (isExisting) {
-        //   return {'existing': true};
+        // console.log("userNameMessage: " + this.userNameMessage);
+        // if (this.individualForm.get('userName').value == "hao") {
+        //   this.userNameMessage = "User name is existing";
         // } else {
-        //   return null;
+        //   this.userNameMessage = ""
         // }
     };
     return IndividualUpdateComponent;
