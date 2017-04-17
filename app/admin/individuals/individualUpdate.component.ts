@@ -138,8 +138,10 @@ export class IndividualUpdateComponent implements OnInit {
         this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
           (res) => {
             if (res.isUserNameExisting) {
+              console.log("existing");
               resolve({'existing': true});
             } else {
+              console.log("NOT existing");
               resolve(null);
             }
           },

@@ -122,9 +122,11 @@ var IndividualUpdateComponent = (function () {
             if (_this.oldUserNameForCheck != undefined) {
                 _this._individualUpdateService.isUserNameExisting(_this.oldUserNameForCheck, control.value).subscribe(function (res) {
                     if (res.isUserNameExisting) {
+                        console.log("existing");
                         resolve({ 'existing': true });
                     }
                     else {
+                        console.log("NOT existing");
                         resolve(null);
                     }
                 }, function (error) {

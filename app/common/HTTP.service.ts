@@ -34,7 +34,6 @@ export class HTTPService {
     let requestOptions: RequestOptions = new RequestOptions();
     requestOptions.headers = headers;
     requestOptions.params = params;
-    console.log(requestOptions);
     return this._http.get(url, requestOptions)
       .catch(this.handleError);
   }
