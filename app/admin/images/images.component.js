@@ -16,7 +16,7 @@ var ImagesComponent = (function () {
     function ImagesComponent(_imagesService, _router) {
         this._imagesService = _imagesService;
         this._router = _router;
-        // this.pageTitle = 'Room component';
+        this.pageTitle = 'Images Management';
         // this.getImages();
     }
     ImagesComponent.prototype.ngOnInit = function () {

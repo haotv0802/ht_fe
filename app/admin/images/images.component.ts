@@ -12,7 +12,7 @@ export class ImagesComponent implements OnInit {
   pageTitle: string;
   images: Image[];
   constructor(private _imagesService: ImagesService, private _router: Router) {
-    // this.pageTitle = 'Room component';
+    this.pageTitle = 'Images Management';
     // this.getImages();
   }
 
