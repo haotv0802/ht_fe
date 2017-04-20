@@ -26,7 +26,7 @@ export class ImagesUpdateComponent implements OnInit {
     this.image = this._imagesUpdateService.image;
     this.imageForm = this.fb.group({
       name: [this.image.name, [Validators.required, Validators.minLength(3)]],
-      imageURL: [this.image.imageURL, [Validators.required, Validators.minLength(3)]],
+      imageURL: [''],
       description: [this.image.description, [Validators.required, Validators.minLength(3)]],
       imageInfo: [this.image.imageInfo, [Validators.required, Validators.minLength(3)]],
       creationDate: [this.image.creationDate, [Validators.required, Validators.minLength(3)]]

@@ -14,17 +14,17 @@
     </span>
     <div class="panel-body">
         <div class='row'>
-            <div class='col-md-7'>
+            <div class='col-sm-7'>
             <form class="form-horizontal" novalidate
                   (ngSubmit)="save()"
-                  [formGroup]="imageForm">
-                <fieldset>
+                  [formGroup]="imageForm" style="width: 650px;">
+                <fieldset style="width: 650px;">
                     <div class="form-group"
                          [ngClass]="{'has-error': (imageForm.get('name').touched ||
                                                   imageForm.get('name').dirty) &&
                                                   !imageForm.get('name').valid }">
                         <label class="col-md-2 control-label"
-                               for="nameId">Name</label>
+                               for="nameId">Name:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="nameId"
@@ -48,7 +48,7 @@
                                                   imageForm.get('imageInfo').dirty) &&
                                                   !imageForm.get('imageInfo').valid }">
                         <label class="col-md-2 control-label"
-                               for="imageInfoId">Image Info</label>
+                               for="imageInfoId">Image Info:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="imageInfoId"
@@ -67,28 +67,14 @@
                         </span>
                         </div>
                     </div>
-                    <div class="form-group"
-                         [ngClass]="{'has-error': (imageForm.get('imageURL').touched ||
-                                                  imageForm.get('imageURL').dirty) &&
-                                                  !imageForm.get('imageURL').valid }">
+                    <div class="form-group">
                         <label class="col-md-2 control-label"
-                               for="imageURLId">Image URL</label>
+                               for="imageURLId">Image URL:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="imageURLId"
-                                   type="text"
-                                   placeholder="Image URL (required)"
+                                   type="file"
                                    formControlName="imageURL"/>
-                            <span class="help-block" *ngIf="(imageForm.get('imageURL').touched ||
-                                                             imageForm.get('imageURL').dirty) &&
-                                                             imageForm.get('imageURL').errors">
-                            <span *ngIf="imageForm.get('imageURL').errors.required">
-                                Please enter Image URL.
-                            </span>
-                            <span *ngIf="imageForm.get('imageURL').errors.minlength">
-                                Image URL must be longer than 3 characters.
-                            </span>
-                        </span>
                         </div>
                     </div>
                     <div class="form-group"
@@ -96,7 +82,7 @@
                                                   imageForm.get('description').dirty) &&
                                                   !imageForm.get('description').valid }">
                         <label class="col-md-2 control-label"
-                               for="descriptionId">Description</label>
+                               for="descriptionId">Description:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="descriptionId"
@@ -120,7 +106,7 @@
                                                   imageForm.get('creationDate').dirty) &&
                                                   !imageForm.get('creationDate').valid }">
                         <label class="col-md-2 control-label"
-                               for="creationDateId">Created On</label>
+                               for="creationDateId">Created On:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="creationDateId"
@@ -153,7 +139,7 @@
                 </fieldset>
             </form>
             </div>
-            <div class='col-md-3'>
+            <div class='col-sm-3'>
                 <img *ngIf="image.imageURL" [src]="image.imageURL" [title]="image.imageInfo" style="width: 384px; height: auto;"/>
             </div>
         </div>

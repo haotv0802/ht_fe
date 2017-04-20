@@ -25,7 +25,7 @@ var ImagesUpdateComponent = (function () {
         this.image = this._imagesUpdateService.image;
         this.imageForm = this.fb.group({
             name: [this.image.name, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            imageURL: [this.image.imageURL, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            imageURL: [''],
             description: [this.image.description, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             imageInfo: [this.image.imageInfo, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             creationDate: [this.image.creationDate, [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
