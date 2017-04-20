@@ -29,6 +29,7 @@ export class IndividualUpdateService {
 
     return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL, params)
       .map((res) => res.json())
+      // .do(data => console.log('All: ' + JSON.stringify(data)))
       ;
   }
 }

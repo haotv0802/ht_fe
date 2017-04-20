@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from "@angular/core";
 import {Individual} from "./individual";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
-import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ValidatorFn} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
 import {ModalComponent} from "./modal/modal.component";
@@ -98,6 +98,48 @@ export class IndividualUpdateComponent implements OnInit {
     this.populateData();
   }
 
+  validateUserName2(control: FormControl): {[key: string]: any} {
+    console.log(this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value));
+    return this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
+      (res) => {
+        if (res.isUserNameExisting) {
+          console.log("existing");
+          return {'existing': true};
+        } else {
+          console.log("NOT existing");
+          return null;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  validateUserName(control: FormControl): {[key: string]: any} {
+    return new Promise(resolve => {
+      // resolve({"existing": true});
+      if (this.oldUserNameForCheck != undefined) {
+        this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
+          (res) => {
+            if (res.isUserNameExisting) {
+              console.log("existing");
+              resolve({'existing': true});
+            } else {
+              console.log("NOT existing");
+              resolve(null);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } else {
+        resolve(null);
+      }
+    });
+  }
+
   setErrorMessagesForUserNameControl(c: AbstractControl): void {
     console.log(c.errors);
     this.userNameMessage = '';
@@ -131,29 +173,6 @@ export class IndividualUpdateComponent implements OnInit {
     this.oldUserNameForCheck = this.individual.userName;
   }
 
-  validateUserName(control: FormControl): {[key: string]: any} {
-    return new Promise(resolve => {
-      // resolve({"existing": true});
-      if (this.oldUserNameForCheck != undefined) {
-        this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
-          (res) => {
-            if (res.isUserNameExisting) {
-              console.log("existing");
-              resolve({'existing': true});
-            } else {
-              console.log("NOT existing");
-              resolve(null);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        resolve(null);
-      }
-    });
-  }
 
   setErrorMessagesForEmailControl(c: AbstractControl): void {
     this.emailMessage = '';
@@ -239,6 +258,34 @@ export class IndividualUpdateComponent implements OnInit {
   //   // }
   //
   // }
+}
+
+
+function validateUserName(
+  c: AbstractControl,
+  oldUserNameForCheck: string,
+  individualUpdateService: IndividualUpdateService): {[key: string]: any} | null {
+    return new Promise<any>(resolve => {
+      resolve({'existing': true});
+      // if (this.oldUserNameForCheck != undefined) {
+      //   this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, c.value).subscribe(
+      //     (res) => {
+      //       if (res.isUserNameExisting) {
+      //         console.log("existing");
+      //         resolve({'existing': true});
+      //       } else {
+      //         console.log("NOT existing");
+      //         resolve(null);
+      //       }
+      //     },
+      //     (error) => {
+      //       console.log(error);
+      //     }
+      //   );
+      // } else {
+      //   resolve(null);
+      // }
+    });
 }
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {

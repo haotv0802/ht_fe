@@ -88,6 +88,44 @@ var IndividualUpdateComponent = (function () {
         });
         this.populateData();
     };
+    IndividualUpdateComponent.prototype.validateUserName2 = function (control) {
+        console.log(this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value));
+        return this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(function (res) {
+            if (res.isUserNameExisting) {
+                console.log("existing");
+                return { 'existing': true };
+            }
+            else {
+                console.log("NOT existing");
+                return null;
+            }
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    IndividualUpdateComponent.prototype.validateUserName = function (control) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // resolve({"existing": true});
+            if (_this.oldUserNameForCheck != undefined) {
+                _this._individualUpdateService.isUserNameExisting(_this.oldUserNameForCheck, control.value).subscribe(function (res) {
+                    if (res.isUserNameExisting) {
+                        console.log("existing");
+                        resolve({ 'existing': true });
+                    }
+                    else {
+                        console.log("NOT existing");
+                        resolve(null);
+                    }
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+            else {
+                resolve(null);
+            }
+        });
+    };
     IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
         var _this = this;
         console.log(c.errors);
@@ -114,29 +152,6 @@ var IndividualUpdateComponent = (function () {
             role: this.individual.role
         });
         this.oldUserNameForCheck = this.individual.userName;
-    };
-    IndividualUpdateComponent.prototype.validateUserName = function (control) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // resolve({"existing": true});
-            if (_this.oldUserNameForCheck != undefined) {
-                _this._individualUpdateService.isUserNameExisting(_this.oldUserNameForCheck, control.value).subscribe(function (res) {
-                    if (res.isUserNameExisting) {
-                        console.log("existing");
-                        resolve({ 'existing': true });
-                    }
-                    else {
-                        console.log("NOT existing");
-                        resolve(null);
-                    }
-                }, function (error) {
-                    console.log(error);
-                });
-            }
-            else {
-                resolve(null);
-            }
-        });
     };
     IndividualUpdateComponent.prototype.setErrorMessagesForEmailControl = function (c) {
         var _this = this;
@@ -193,6 +208,29 @@ IndividualUpdateComponent = __decorate([
         forms_1.FormBuilder])
 ], IndividualUpdateComponent);
 exports.IndividualUpdateComponent = IndividualUpdateComponent;
+function validateUserName(c, oldUserNameForCheck, individualUpdateService) {
+    return new Promise(function (resolve) {
+        resolve({ 'existing': true });
+        // if (this.oldUserNameForCheck != undefined) {
+        //   this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, c.value).subscribe(
+        //     (res) => {
+        //       if (res.isUserNameExisting) {
+        //         console.log("existing");
+        //         resolve({'existing': true});
+        //       } else {
+        //         console.log("NOT existing");
+        //         resolve(null);
+        //       }
+        //     },
+        //     (error) => {
+        //       console.log(error);
+        //     }
+        //   );
+        // } else {
+        //   resolve(null);
+        // }
+    });
+}
 function emailMatcher(c) {
     var emailControl = c.get('email');
     var confirmControl = c.get('confirmEmail');
