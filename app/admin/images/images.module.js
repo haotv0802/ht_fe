@@ -11,6 +11,10 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var images_component_1 = require("./images.component");
 var images_service_1 = require("./images.service");
+var imagesUpdate_component_1 = require("./imagesUpdate.component");
+var forms_1 = require("@angular/forms");
+var imagesUpdate_service_1 = require("./imagesUpdate.service");
+var image_guard_service_1 = require("./image-guard.service");
 var ImagesModule = (function () {
     function ImagesModule() {
     }
@@ -20,12 +24,18 @@ ImagesModule = __decorate([
     core_1.NgModule({
         imports: [
             router_1.RouterModule.forChild([
-                { path: 'admin/images', component: images_component_1.ImagesComponent }
+                { path: 'admin/images', component: images_component_1.ImagesComponent },
+                {
+                    path: 'admin/images/update',
+                    canActivate: [image_guard_service_1.ImageDetailsGuard],
+                    component: imagesUpdate_component_1.ImagesUpdateComponent
+                }
             ]),
-            common_1.CommonModule
+            common_1.CommonModule,
+            forms_1.ReactiveFormsModule
         ],
-        declarations: [images_component_1.ImagesComponent],
-        providers: [images_service_1.ImagesService]
+        declarations: [images_component_1.ImagesComponent, imagesUpdate_component_1.ImagesUpdateComponent],
+        providers: [images_service_1.ImagesService, imagesUpdate_service_1.ImagesUpdateService, image_guard_service_1.ImageDetailsGuard]
     })
 ], ImagesModule);
 exports.ImagesModule = ImagesModule;

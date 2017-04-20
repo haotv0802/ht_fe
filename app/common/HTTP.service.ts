@@ -37,6 +37,7 @@ export class HTTPService {
     return this._http.get(url, requestOptions)
       .catch(this.handleError);
   }
+
   private handleError(error: Response) {
     console.error("Error logged in HTTPService: ");
     console.error(error);

@@ -12,10 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var images_service_1 = require("./images.service");
 var router_1 = require("@angular/router");
+var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var ImagesComponent = (function () {
-    function ImagesComponent(_imagesService, _router) {
+    function ImagesComponent(_imagesService, _router, _imageUpdateService) {
         this._imagesService = _imagesService;
         this._router = _router;
+        this._imageUpdateService = _imageUpdateService;
         this.pageTitle = 'Images Management';
         // this.getImages();
     }
@@ -26,7 +28,8 @@ var ImagesComponent = (function () {
         console.log(image);
     };
     ImagesComponent.prototype.editImage = function (image) {
-        console.log(image);
+        this._imageUpdateService.image = image;
+        this._router.navigate(["admin/images/update"]);
     };
     ImagesComponent.prototype.getImages = function () {
         var _this = this;
@@ -55,7 +58,9 @@ ImagesComponent = __decorate([
         templateUrl: 'images.component.html',
         styleUrls: ['images.component.01.css', 'images.component.02.css']
     }),
-    __metadata("design:paramtypes", [images_service_1.ImagesService, router_1.Router])
+    __metadata("design:paramtypes", [images_service_1.ImagesService,
+        router_1.Router,
+        imagesUpdate_service_1.ImagesUpdateService])
 ], ImagesComponent);
 exports.ImagesComponent = ImagesComponent;
 //# sourceMappingURL=images.component.js.map
