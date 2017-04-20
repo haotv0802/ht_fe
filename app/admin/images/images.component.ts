@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 @Component({
   moduleId: module.id,
   templateUrl: 'images.component.html',
-  styleUrls: ['images.component.css']
+  styleUrls: ['images.component.01.css', 'images.component.02.css']
 })
 export class ImagesComponent implements OnInit {
   pageTitle: string;
