@@ -24,6 +24,11 @@ var IndividualAddComponent = (function () {
         this._domainService = _domainService;
         this._router = _router;
         this.fb = fb;
+        this.userNameMessages = {
+            required: 'Please enter your user name.',
+            minlength: 'The username must be longer than 3 characters.',
+            existing: 'User Name is already existing.'
+        };
         this.validationMessages = {
             required: 'Please enter your email address.',
             pattern: 'Please enter a valid email address.'
@@ -50,11 +55,47 @@ var IndividualAddComponent = (function () {
         emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
             return _this.setMessage(emailControl);
         });
+        var userNameControl = this.individualForm.get('userName');
+        userNameControl.valueChanges.subscribe(function (value) {
+            if (value.length > 3) {
+                _this.checkUserName(value, userNameControl);
+            }
+            else {
+                _this.setErrorMessagesForUserNameControl(userNameControl);
+            }
+        });
         this._domainService.getRoles().subscribe(function (roles) {
             _this.roles = roles;
         }, function (error) {
             console.log(error);
         });
+    };
+    IndividualAddComponent.prototype.checkUserName = function (userName, userNameControl) {
+        var _this = this;
+        this._individualAddService.isUserNameExisting(userName).subscribe(function (res) {
+            if (res.isUserNameExisting) {
+                // this.userNameMessage = "User Name is already existing.";
+                userNameControl.setErrors({ "existing": true });
+                // this.userNameMessage = Object.keys(userNameControl.errors).map(key =>
+                //   this.userNameMessages[key]).join(' ');
+                _this.setErrorMessagesForUserNameControl(userNameControl);
+            }
+            else {
+                _this.userNameMessage = '';
+            }
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    IndividualAddComponent.prototype.setErrorMessagesForUserNameControl = function (control) {
+        var _this = this;
+        console.log(control.errors);
+        this.userNameMessage = '';
+        if ((control.touched || control.dirty) && control.errors) {
+            this.userNameMessage = Object.keys(control.errors).map(function (key) {
+                return _this.userNameMessages[key];
+            }).join(' ');
+        }
     };
     IndividualAddComponent.prototype.openDialog = function () {
         this.modal.modalTitle = "LOGIN";

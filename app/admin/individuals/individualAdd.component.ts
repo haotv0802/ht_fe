@@ -20,6 +20,7 @@ export class IndividualAddComponent implements OnInit {
   individualForm: FormGroup;
   emailMessage: string;
   roles: string[];
+  userNameMessage: string;
   @ViewChild(ModalComponent) modal: ModalComponent;
   @ViewChild(AlertComponent) alert: AlertComponent;
 
@@ -51,6 +52,16 @@ export class IndividualAddComponent implements OnInit {
     emailControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setMessage(emailControl));
 
+    let userNameControl = this.individualForm.get('userName');
+    userNameControl.valueChanges.subscribe(value => {
+        if (value.length > 3) {
+          this.checkUserName(value, userNameControl);
+        } else {
+          this.setErrorMessagesForUserNameControl(userNameControl);
+        }
+      }
+    );
+
     this._domainService.getRoles().subscribe(
       (roles) => {
         this.roles = roles;
@@ -59,6 +70,39 @@ export class IndividualAddComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  checkUserName(userName: string, userNameControl: AbstractControl): void {
+    this._individualAddService.isUserNameExisting(userName).subscribe(
+      (res) => {
+        if (res.isUserNameExisting) {
+          // this.userNameMessage = "User Name is already existing.";
+          userNameControl.setErrors({"existing" : true});
+          // this.userNameMessage = Object.keys(userNameControl.errors).map(key =>
+          //   this.userNameMessages[key]).join(' ');
+          this.setErrorMessagesForUserNameControl(userNameControl);
+        } else {
+          this.userNameMessage = '';
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  setErrorMessagesForUserNameControl(control: AbstractControl): void {
+    console.log(control.errors);
+    this.userNameMessage = '';
+    if ((control.touched || control.dirty) && control.errors) {
+      this.userNameMessage = Object.keys(control.errors).map(key =>
+        this.userNameMessages[key]).join(' ');
+    }
+  }
+  private userNameMessages = {
+    required: 'Please enter your user name.',
+    minlength: 'The username must be longer than 3 characters.',
+    existing: 'User Name is already existing.'
   }
 
   openDialog(): void {

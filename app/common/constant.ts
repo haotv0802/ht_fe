@@ -11,7 +11,7 @@ export class Constants {
   public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this._host + '/admin/rooms/roomTypes';
   public ADMIN_ROOMS_IMAGES_SERVICE_URL: string = this._host + '/admin/images';
   public ADMIN_INDIVIDUALS_SERVICE_URL: string = this._host + '/admin/individuals';
-  public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this._host + '/admin/individuals/isUserNameExisting/';
+  public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this._host + '/admin/individuals/isUserNameExisting';
   public ADMIN_ROLES_SERVICE_URL: string = this._host + '/admin/roles';
 
 

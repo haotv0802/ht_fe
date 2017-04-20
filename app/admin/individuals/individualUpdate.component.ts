@@ -145,11 +145,11 @@ export class IndividualUpdateComponent implements OnInit {
     });
   }
 
-  setErrorMessagesForUserNameControl(c: AbstractControl): void {
-    console.log(c.errors);
+  setErrorMessagesForUserNameControl(control: AbstractControl): void {
+    console.log(control.errors);
     this.userNameMessage = '';
-    if ((c.touched || c.dirty) && c.errors) {
-      this.userNameMessage = Object.keys(c.errors).map(key =>
+    if ((control.touched || control.dirty) && control.errors) {
+      this.userNameMessage = Object.keys(control.errors).map(key =>
         this.userNameMessages[key]).join(' ');
     }
   }

@@ -133,12 +133,12 @@ var IndividualUpdateComponent = (function () {
             }
         });
     };
-    IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (c) {
+    IndividualUpdateComponent.prototype.setErrorMessagesForUserNameControl = function (control) {
         var _this = this;
-        console.log(c.errors);
+        console.log(control.errors);
         this.userNameMessage = '';
-        if ((c.touched || c.dirty) && c.errors) {
-            this.userNameMessage = Object.keys(c.errors).map(function (key) {
+        if ((control.touched || control.dirty) && control.errors) {
+            this.userNameMessage = Object.keys(control.errors).map(function (key) {
                 return _this.userNameMessages[key];
             }).join(' ');
         }
