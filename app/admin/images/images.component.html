@@ -87,10 +87,10 @@
         <table class="table table-bordered table-hover" align="center" style="width: 948px;">
             <thead style="color: #337AB7">
             <th class="col-sm-1">Name</th>
-            <th class="col-sm-2"></th>
-            <th class="col-sm-2">Description</th>
+            <th class="col-sm-1"></th>
+            <th class="col-sm-1">Description</th>
             <th class="col-sm-1">Created On</th>
-            <th class="col-sm-2" align="center">
+            <th class="col-sm-1" align="center">
                 <!--<button type="button" class="btn btn-link" (click)="addIndividual()">Add New Individual</button>-->
                 <a href="#" (click)="addIndividual()">
                     <img src="./app/assets/icons/add.png" style="width: 24px; height: 24px;"/>
@@ -100,8 +100,16 @@
             <tr *ngFor="let image of images">
                 <td>{{image.name}}</td>
                 <td>
-                    <img [src]="image.imageURL" [title]="image.imageInfo"
-                         style="width: 128px; height: 64px; margin: 20px;">
+                    <span class="enlarge">
+                        <span>
+                            <img [src]="image.imageURL" [title]="image.imageInfo"
+                                 style="width: 128px; height: 96px; margin: 5px;" class="thumbnailStyle">
+                        </span>
+                        <span class="hideImage">
+                            <img [src]="image.imageURL" [title]="image.imageInfo"
+                                 style="width: 512px; height: 384px;">
+                        </span>
+                    </span>
                 </td>
                 <td>{{image.description}}</td>
                 <td>{{image.creationDate}}</td>

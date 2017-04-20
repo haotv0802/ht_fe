@@ -20,6 +20,13 @@ export class ImagesComponent implements OnInit {
     this.getImages();
   }
 
+  displayImage(image: Image) {
+    console.log(image);
+  }
+
+  editImage(image: Image) {
+    console.log(image);
+  }
   getImages(): void {
     // console.log("get room Types");
     this._imagesService.getImages().subscribe(

@@ -22,6 +22,12 @@ var ImagesComponent = (function () {
     ImagesComponent.prototype.ngOnInit = function () {
         this.getImages();
     };
+    ImagesComponent.prototype.displayImage = function (image) {
+        console.log(image);
+    };
+    ImagesComponent.prototype.editImage = function (image) {
+        console.log(image);
+    };
     ImagesComponent.prototype.getImages = function () {
         var _this = this;
         // console.log("get room Types");
