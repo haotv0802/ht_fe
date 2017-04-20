@@ -42,6 +42,7 @@ export class ImagesUpdateComponent implements OnInit {
     console.log(this.imageForm);
     return false;
   }
+
   save(): void {
     console.log(this.imageForm);
   }
