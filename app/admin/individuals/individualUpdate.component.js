@@ -28,7 +28,7 @@ var IndividualUpdateComponent = (function () {
         this.userNameMessages = {
             required: 'Please enter your user name.',
             minlength: 'The username must be longer than 3 characters.',
-            existing: 'User Name is existing already.'
+            existing: 'User Name is already existing.'
         };
         this.emailMessages = {
             required: 'Please enter your email address.',
@@ -70,7 +70,7 @@ var IndividualUpdateComponent = (function () {
                 confirmEmail: ['', forms_1.Validators.required],
             }, { validator: emailMatcher }),
             phoneNumber: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)], [this.validateUserName.bind(this)]],
+            userName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             role: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
         });
         var emailControl = this.individualForm.get('emailGroup.email');
@@ -79,7 +79,12 @@ var IndividualUpdateComponent = (function () {
         });
         var userNameControl = this.individualForm.get('userName');
         userNameControl.valueChanges.subscribe(function (value) {
-            _this.setErrorMessagesForUserNameControl(userNameControl);
+            if (_this.oldUserNameForCheck != undefined && value.length > 3) {
+                _this.checkUserName(_this.oldUserNameForCheck, value, userNameControl);
+            }
+            else {
+                _this.setErrorMessagesForUserNameControl(userNameControl);
+            }
         });
         this._domainService.getRoles().subscribe(function (roles) {
             _this.roles = roles;
@@ -88,16 +93,18 @@ var IndividualUpdateComponent = (function () {
         });
         this.populateData();
     };
-    IndividualUpdateComponent.prototype.validateUserName2 = function (control) {
-        console.log(this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value));
-        return this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(function (res) {
+    IndividualUpdateComponent.prototype.checkUserName = function (oldUserName, userName, userNameControl) {
+        var _this = this;
+        this._individualUpdateService.isUserNameExisting(oldUserName, userName).subscribe(function (res) {
             if (res.isUserNameExisting) {
-                console.log("existing");
-                return { 'existing': true };
+                // this.userNameMessage = "User Name is already existing.";
+                userNameControl.setErrors({ "existing": true });
+                // this.userNameMessage = Object.keys(userNameControl.errors).map(key =>
+                //   this.userNameMessages[key]).join(' ');
+                _this.setErrorMessagesForUserNameControl(userNameControl);
             }
             else {
-                console.log("NOT existing");
-                return null;
+                _this.userNameMessage = '';
             }
         }, function (error) {
             console.log(error);

@@ -73,7 +73,7 @@ export class IndividualUpdateComponent implements OnInit {
         confirmEmail: ['', Validators.required],
       }, {validator: emailMatcher}),
       phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
-      userName: ['', [Validators.required, Validators.minLength(3)], [this.validateUserName.bind(this)]],
+      userName: ['', [Validators.required, Validators.minLength(3)]],
       role: ['', [Validators.required, Validators.minLength(3)]]
     });
     let emailControl = this.individualForm.get('emailGroup.email');
@@ -82,7 +82,11 @@ export class IndividualUpdateComponent implements OnInit {
 
     let userNameControl = this.individualForm.get('userName');
     userNameControl.valueChanges.subscribe(value => {
-        this.setErrorMessagesForUserNameControl(userNameControl)
+        if (this.oldUserNameForCheck != undefined && value.length > 3) {
+          this.checkUserName(this.oldUserNameForCheck, value, userNameControl);
+        } else {
+          this.setErrorMessagesForUserNameControl(userNameControl);
+        }
       }
     );
 
@@ -98,16 +102,17 @@ export class IndividualUpdateComponent implements OnInit {
     this.populateData();
   }
 
-  validateUserName2(control: FormControl): {[key: string]: any} {
-    console.log(this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value));
-    return this._individualUpdateService.isUserNameExisting(this.oldUserNameForCheck, control.value).subscribe(
+  checkUserName(oldUserName: string, userName: string, userNameControl: AbstractControl): void {
+    this._individualUpdateService.isUserNameExisting(oldUserName, userName).subscribe(
       (res) => {
         if (res.isUserNameExisting) {
-          console.log("existing");
-          return {'existing': true};
+          // this.userNameMessage = "User Name is already existing.";
+          userNameControl.setErrors({"existing" : true});
+          // this.userNameMessage = Object.keys(userNameControl.errors).map(key =>
+          //   this.userNameMessages[key]).join(' ');
+          this.setErrorMessagesForUserNameControl(userNameControl);
         } else {
-          console.log("NOT existing");
-          return null;
+          this.userNameMessage = '';
         }
       },
       (error) => {
@@ -151,7 +156,7 @@ export class IndividualUpdateComponent implements OnInit {
   private userNameMessages = {
     required: 'Please enter your user name.',
     minlength: 'The username must be longer than 3 characters.',
-    existing: 'User Name is existing already.'
+    existing: 'User Name is already existing.'
   }
 
   save(): void {
