@@ -38,8 +38,6 @@ export class ImagesComponent implements OnInit {
     // console.log("get room Types");
     this._imagesService.getImages().subscribe(
       (images) => {
-        console.log("get images: ----");
-        console.log(images);
         this.images = images;
         // $('.carousel').carousel();
       },

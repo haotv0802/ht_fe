@@ -149,7 +149,8 @@
             </form>
             </div>
             <div class='col-sm-3'>
-                <img *ngIf="image" [src]="image.imageURL" [title]="image.imageInfo" style="width: 384px; height: auto;"/>
+                <img [src]="imageForm.get('imageURL').value"
+                     [title]="imageForm.get('imageInfo').value" style="width: 384px; height: auto;"/>
             </div>
         </div>
     </div>

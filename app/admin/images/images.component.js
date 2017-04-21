@@ -35,8 +35,6 @@ var ImagesComponent = (function () {
         var _this = this;
         // console.log("get room Types");
         this._imagesService.getImages().subscribe(function (images) {
-            console.log("get images: ----");
-            console.log(images);
             _this.images = images;
             // $('.carousel').carousel();
         }, function (error) {
