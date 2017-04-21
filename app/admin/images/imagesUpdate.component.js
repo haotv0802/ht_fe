@@ -24,11 +24,16 @@ var ImagesUpdateComponent = (function () {
     ImagesUpdateComponent.prototype.ngOnInit = function () {
         this.image = this._imagesUpdateService.image;
         this.imageForm = this.fb.group({
+            id: [this.image.id],
             name: [this.image.name, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            imageURL: [''],
+            // Comments for reference
+            // imageURL: [this.image.imageURL],
+            // imageURL: new FormControl({value: this.image.imageURL, disabled: true}, Validators.required),
+            imageURL: new forms_1.FormControl({ value: this.image.imageURL, disabled: true }),
             description: [this.image.description, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             imageInfo: [this.image.imageInfo, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            creationDate: [this.image.creationDate, [forms_1.Validators.required, forms_1.Validators.minLength(3)]]
+            creationDate: [this.image.creationDate, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            imageFile: ['']
         });
     };
     ImagesUpdateComponent.prototype.backImagesList = function () {
@@ -40,7 +45,7 @@ var ImagesUpdateComponent = (function () {
         return false;
     };
     ImagesUpdateComponent.prototype.save = function () {
-        console.log(this.imageForm);
+        console.log(this.imageForm.value);
     };
     return ImagesUpdateComponent;
 }());

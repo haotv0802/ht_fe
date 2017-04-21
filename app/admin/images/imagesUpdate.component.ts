@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {ImagesUpdateService} from "./imagesUpdate.service";
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
 
 @Component({
@@ -25,11 +25,16 @@ export class ImagesUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.image = this._imagesUpdateService.image;
     this.imageForm = this.fb.group({
+      id: [this.image.id],
       name: [this.image.name, [Validators.required, Validators.minLength(3)]],
-      imageURL: [''],
+      // Comments for reference
+      // imageURL: [this.image.imageURL],
+      // imageURL: new FormControl({value: this.image.imageURL, disabled: true}, Validators.required),
+      imageURL: new FormControl({value: this.image.imageURL, disabled: true}),
       description: [this.image.description, [Validators.required, Validators.minLength(3)]],
       imageInfo: [this.image.imageInfo, [Validators.required, Validators.minLength(3)]],
-      creationDate: [this.image.creationDate, [Validators.required, Validators.minLength(3)]]
+      creationDate: [this.image.creationDate, [Validators.required, Validators.minLength(3)]],
+      imageFile: ['']
     });
   }
 
@@ -44,6 +49,6 @@ export class ImagesUpdateComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.imageForm);
+    console.log(this.imageForm.value);
   }
 }

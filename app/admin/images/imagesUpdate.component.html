@@ -10,7 +10,6 @@
             <!--<img src="./app/assets/icons/add.png" style="width: 24px; height: 24px;"/>-->
         <!--</a>-->
         <button type="button" class="btn btn-info" (click)="backImagesList()">Back</button>
-        <button type="button" class="btn btn-warning" (click)="addImage()">Edit</button>
     </span>
     <div class="panel-body">
         <div class='row'>
@@ -69,11 +68,21 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label"
+                               for="imageFileId">Image File:</label>
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   id="imageFileId"
+                                   type="file"
+                                   formControlName="imageFile"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"
                                for="imageURLId">Image URL:</label>
                         <div class="col-md-8">
                             <input class="form-control"
                                    id="imageURLId"
-                                   type="file"
+                                   type="text"
                                    formControlName="imageURL"/>
                         </div>
                     </div>

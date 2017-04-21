@@ -18,8 +18,9 @@ var ImageDetailsGuard = (function () {
         this._imageUpdateService = _imageUpdateService;
     }
     ImageDetailsGuard.prototype.canActivate = function (route) {
-        console.log("url: " + route.url);
-        console.log("url: " + route.routeConfig.path);
+        // Comments for reference
+        // console.log("url: " + route.url);              // -> admin,images,update
+        // console.log("url: " + route.routeConfig.path); // -> admin/images/update
         if (!this._imageUpdateService.image) {
             this._router.navigate(["admin/images"]);
             return false;
