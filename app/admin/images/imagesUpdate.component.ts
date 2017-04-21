@@ -25,16 +25,27 @@ export class ImagesUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.image = this._imagesUpdateService.image;
     this.imageForm = this.fb.group({
-      id: [this.image.id],
-      name: [this.image.name, [Validators.required, Validators.minLength(3)]],
+      id: [''],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       // Comments for reference
       // imageURL: [this.image.imageURL],
       // imageURL: new FormControl({value: this.image.imageURL, disabled: true}, Validators.required),
-      imageURL: new FormControl({value: this.image.imageURL, disabled: true}),
-      description: [this.image.description, [Validators.required, Validators.minLength(3)]],
-      imageInfo: [this.image.imageInfo, [Validators.required, Validators.minLength(3)]],
-      creationDate: [this.image.creationDate, [Validators.required, Validators.minLength(3)]],
+      imageURL: new FormControl({value: '', disabled: true}),
+      description: ['', [Validators.required, Validators.minLength(3)]],
+      imageInfo: ['', [Validators.required, Validators.minLength(3)]],
+      creationOn: ['', [Validators.required, Validators.minLength(3)]],
       imageFile: ['']
+    });
+  }
+
+  populateData(): void {
+    this.imageForm.setValue({
+      id: this.image.id,
+      name: this.image.name,
+      imageURL: this.image.imageURL,
+      description: this.image.description,
+      imageInfo: this.image.imageInfo,
+      creationOn: this.image.createdOn,
     });
   }
 

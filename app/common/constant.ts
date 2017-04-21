@@ -3,16 +3,17 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class Constants {
 
-  private _host = 'http://localhost:8880/ht-be/svc';
-  public LOGIN_SERVICE_URL: string = this._host + '/login';
+  public HOST = 'http://localhost:8880/ht-be/svc';
+  public LOGIN_SERVICE_URL: string = this.HOST + '/login';
 
   // Services URLs for Admin
-  public ADMIN_USERS_SERVICE_URL: string = this._host + '/admin/users';
-  public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this._host + '/admin/rooms/roomTypes';
-  public ADMIN_ROOMS_IMAGES_SERVICE_URL: string = this._host + '/admin/images';
-  public ADMIN_INDIVIDUALS_SERVICE_URL: string = this._host + '/admin/individuals';
-  public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this._host + '/admin/individuals/isUserNameExisting';
-  public ADMIN_ROLES_SERVICE_URL: string = this._host + '/admin/roles';
+  public ADMIN_USERS_SERVICE_URL: string = this.HOST + '/admin/users';
+  public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
+  public ADMIN_IMAGES_SERVICE_URL: string = this.HOST + '/admin/images';
+  public ADMIN_IMAGES_BY_ID_SERVICE_URL: string = this.HOST + `/admin/images/`;
+  public ADMIN_INDIVIDUALS_SERVICE_URL: string = this.HOST + '/admin/individuals';
+  public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this.HOST + '/admin/individuals/isUserNameExisting';
+  public ADMIN_ROLES_SERVICE_URL: string = this.HOST + '/admin/roles';
 
 
   // Services URLs for Staff

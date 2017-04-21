@@ -17,6 +17,10 @@ var ImagesUpdateService = (function () {
         this._httpService = _httpService;
         this._constants = _constants;
     }
+    ImagesUpdateService.prototype.getImageById = function (id) {
+        return this._httpService.get(this._constants.HOST + ("/admin/images/" + id))
+            .map(function (res) { return res.json(); });
+    };
     return ImagesUpdateService;
 }());
 ImagesUpdateService = __decorate([

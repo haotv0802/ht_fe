@@ -4,5 +4,5 @@ export class Image {
   imageURL: string;
   imageInfo: string;
   description: string;
-  creationDate: string;
+  createdOn: string;
 }

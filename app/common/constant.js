@@ -9,15 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Constants = (function () {
     function Constants() {
-        this._host = 'http://localhost:8880/ht-be/svc';
-        this.LOGIN_SERVICE_URL = this._host + '/login';
+        this.HOST = 'http://localhost:8880/ht-be/svc';
+        this.LOGIN_SERVICE_URL = this.HOST + '/login';
         // Services URLs for Admin
-        this.ADMIN_USERS_SERVICE_URL = this._host + '/admin/users';
-        this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this._host + '/admin/rooms/roomTypes';
-        this.ADMIN_ROOMS_IMAGES_SERVICE_URL = this._host + '/admin/images';
-        this.ADMIN_INDIVIDUALS_SERVICE_URL = this._host + '/admin/individuals';
-        this.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL = this._host + '/admin/individuals/isUserNameExisting';
-        this.ADMIN_ROLES_SERVICE_URL = this._host + '/admin/roles';
+        this.ADMIN_USERS_SERVICE_URL = this.HOST + '/admin/users';
+        this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';
+        this.ADMIN_IMAGES_SERVICE_URL = this.HOST + '/admin/images';
+        this.ADMIN_IMAGES_BY_ID_SERVICE_URL = this.HOST + "/admin/images/";
+        this.ADMIN_INDIVIDUALS_SERVICE_URL = this.HOST + '/admin/individuals';
+        this.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL = this.HOST + '/admin/individuals/isUserNameExisting';
+        this.ADMIN_ROLES_SERVICE_URL = this.HOST + '/admin/roles';
         // Services URLs for Staff
         // Services URLs for Customer
         // Constants

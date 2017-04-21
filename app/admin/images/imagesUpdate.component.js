@@ -24,16 +24,26 @@ var ImagesUpdateComponent = (function () {
     ImagesUpdateComponent.prototype.ngOnInit = function () {
         this.image = this._imagesUpdateService.image;
         this.imageForm = this.fb.group({
-            id: [this.image.id],
-            name: [this.image.name, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            id: [''],
+            name: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             // Comments for reference
             // imageURL: [this.image.imageURL],
             // imageURL: new FormControl({value: this.image.imageURL, disabled: true}, Validators.required),
-            imageURL: new forms_1.FormControl({ value: this.image.imageURL, disabled: true }),
-            description: [this.image.description, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            imageInfo: [this.image.imageInfo, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            creationDate: [this.image.creationDate, [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            imageURL: new forms_1.FormControl({ value: '', disabled: true }),
+            description: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            imageInfo: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
+            creationOn: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             imageFile: ['']
+        });
+    };
+    ImagesUpdateComponent.prototype.populateData = function () {
+        this.imageForm.setValue({
+            id: this.image.id,
+            name: this.image.name,
+            imageURL: this.image.imageURL,
+            description: this.image.description,
+            imageInfo: this.image.imageInfo,
+            creationOn: this.image.createdOn,
         });
     };
     ImagesUpdateComponent.prototype.backImagesList = function () {

@@ -18,7 +18,7 @@ var ImagesService = (function () {
         this._constants = _constants;
     }
     ImagesService.prototype.getImages = function () {
-        return this._httpService.get(this._constants.ADMIN_ROOMS_IMAGES_SERVICE_URL)
+        return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL)
             .map(function (res) {
             // let roomType = new RoomType();
             // let data = res.json();
