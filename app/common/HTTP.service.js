@@ -28,6 +28,17 @@ var HTTPService = (function () {
         return this._http.post(url, data, { headers: headers })
             .catch(this.handleError);
     };
+    HTTPService.prototype.postImageFile = function (url, data) {
+        var headers = new http_1.Headers();
+        headers.append("Accept-Language", "en");
+        // headers.append("Content-Type", "multipart/form-data");
+        headers.append('Accept', 'application/json');
+        if (url != this._constants.LOGIN_SERVICE_URL) {
+            headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
+        }
+        return this._http.post(url, data, { headers: headers })
+            .catch(this.handleError);
+    };
     HTTPService.prototype.get = function (url, params) {
         var headers = new http_1.Headers();
         headers.append("Accept-Language", "en");

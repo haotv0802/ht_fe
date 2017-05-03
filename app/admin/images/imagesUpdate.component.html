@@ -71,6 +71,7 @@
                                for="imageFileId">Image File:</label>
                         <div class="col-md-8">
                             <input class="form-control"
+                                   (change)="fileChangeEvent($event)"
                                    id="imageFileId"
                                    type="file"
                                    formControlName="imageFile"/>

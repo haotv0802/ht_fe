@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+///<reference path="../../common/HTTP.service.ts"/>
 var core_1 = require("@angular/core");
 var constant_1 = require("../../common/constant");
 var HTTP_service_1 = require("../../common/HTTP.service");
@@ -25,6 +26,16 @@ var ImagesUpdateService = (function () {
         this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
             .subscribe(function (res) {
             // console.log('Data Responsed:');
+            // console.log(res);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    ImagesUpdateService.prototype.updateImageFile = function (id, imageFile) {
+        this._httpService.postImageFile(this._constants.HOST + ("/admin/images/" + id + "/updateImage"), imageFile)
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .subscribe(function (res) {
+            // console.log('Data Response:');
             // console.log(res);
         }, function (error) {
             console.log(error);

@@ -24,6 +24,20 @@ export class HTTPService {
       ;
   }
 
+  public postImageFile(url: string, data: any): Observable<Response> {
+    let headers = new Headers();
+    headers.append("Accept-Language", "en");
+    // headers.append("Content-Type", "multipart/form-data");
+    headers.append('Accept', 'application/json');
+    if (url != this._constants.LOGIN_SERVICE_URL) {
+      headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
+    }
+
+    return this._http.post(url, data, {headers: headers})
+      .catch(this.handleError)
+      ;
+  }
+
   public get(url: string, params?: URLSearchParams): Observable<Response> {
     let headers = new Headers();
     headers.append("Accept-Language", "en");

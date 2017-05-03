@@ -77,9 +77,16 @@ var ImagesUpdateComponent = (function () {
         console.log(this.imageForm);
         return false;
     };
+    ImagesUpdateComponent.prototype.fileChangeEvent = function (fileInput) {
+        this.imageFile = fileInput.target.files[0];
+        console.log(this.imageFile);
+    };
     ImagesUpdateComponent.prototype.save = function () {
-        // console.log(this.imageForm.value);
-        this._imageUpdateService.updateImage(this.convertToImage());
+        console.log(this.imageForm.value);
+        // this._imageUpdateService.updateImage(this.convertToImage());
+        var formData = new FormData();
+        formData.append('imageFile', this.imageFile, this.imageFile.name);
+        this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
     };
     ImagesUpdateComponent.prototype.convertToImage = function () {
         var img = new image_1.Image();

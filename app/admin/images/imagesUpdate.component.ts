@@ -15,6 +15,7 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   imageForm: FormGroup;
   image: Image;
   sub: any;
+  imageFile: any;
   constructor(
       private _imageUpdateService: ImagesUpdateService,
       private _router: Router,
@@ -87,9 +88,17 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  fileChangeEvent(fileInput: any){
+    this.imageFile = fileInput.target.files[0];
+    console.log(this.imageFile);
+  }
+
   save(): void {
-    // console.log(this.imageForm.value);
-    this._imageUpdateService.updateImage(this.convertToImage());
+    console.log(this.imageForm.value);
+    // this._imageUpdateService.updateImage(this.convertToImage());
+    let formData:FormData = new FormData();
+    formData.append('imageFile', this.imageFile, this.imageFile.name);
+    this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
   }
 
   convertToImage(): Image {
