@@ -16,6 +16,7 @@ var Constants = (function () {
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';
         this.ADMIN_IMAGES_SERVICE_URL = this.HOST + '/admin/images';
         this.ADMIN_IMAGES_BY_ID_SERVICE_URL = this.HOST + "/admin/images/";
+        this.ADMIN_IMAGE_UPDATE_SERVICE_URL = this.HOST + "/admin/images/updateImageInfo";
         this.ADMIN_INDIVIDUALS_SERVICE_URL = this.HOST + '/admin/individuals';
         this.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL = this.HOST + '/admin/individuals/isUserNameExisting';
         this.ADMIN_ROLES_SERVICE_URL = this.HOST + '/admin/roles';

@@ -5,4 +5,8 @@ export class Image {
   imageInfo: string;
   description: string;
   createdOn: string;
+
+  constructor() {
+
+  }
 }

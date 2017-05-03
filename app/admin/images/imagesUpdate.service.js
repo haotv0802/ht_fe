@@ -18,8 +18,17 @@ var ImagesUpdateService = (function () {
         this._constants = _constants;
     }
     ImagesUpdateService.prototype.getImageById = function (id) {
-        return this._httpService.get(this._constants.HOST + ("/admin/images/" + id))
+        return this._httpService.get(this._constants.HOST + ("/admin/images/" + id + "/info"))
             .map(function (res) { return res.json(); });
+    };
+    ImagesUpdateService.prototype.updateImage = function (image) {
+        this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
+            .subscribe(function (res) {
+            // console.log('Data Responsed:');
+            // console.log(res);
+        }, function (error) {
+            console.log(error);
+        });
     };
     return ImagesUpdateService;
 }());

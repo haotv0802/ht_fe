@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var forms_1 = require("@angular/forms");
+var image_1 = require("./image");
 var ImagesUpdateComponent = (function () {
     function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route) {
         this._imageUpdateService = _imageUpdateService;
@@ -77,7 +78,17 @@ var ImagesUpdateComponent = (function () {
         return false;
     };
     ImagesUpdateComponent.prototype.save = function () {
-        console.log(this.imageForm.value);
+        // console.log(this.imageForm.value);
+        this._imageUpdateService.updateImage(this.convertToImage());
+    };
+    ImagesUpdateComponent.prototype.convertToImage = function () {
+        var img = new image_1.Image();
+        img.id = this.imageForm.get("id").value;
+        img.name = this.imageForm.get("name").value;
+        img.imageURL = this.imageForm.get("imageURL").value;
+        img.description = this.imageForm.get("description").value;
+        img.imageInfo = this.imageForm.get("imageInfo").value;
+        return img;
     };
     return ImagesUpdateComponent;
 }());

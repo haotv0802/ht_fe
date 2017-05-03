@@ -88,6 +88,18 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    console.log(this.imageForm.value);
+    // console.log(this.imageForm.value);
+    this._imageUpdateService.updateImage(this.convertToImage());
+  }
+
+  convertToImage(): Image {
+    let img = new Image();
+    img.id = this.imageForm.get("id").value;
+    img.name = this.imageForm.get("name").value;
+    img.imageURL = this.imageForm.get("imageURL").value;
+    img.description = this.imageForm.get("description").value;
+    img.imageInfo = this.imageForm.get("imageInfo").value;
+
+    return img;
   }
 }
