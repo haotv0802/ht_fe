@@ -38,24 +38,10 @@ export class ImagesUpdateService {
       ;
   }
 
-  updateImageFile(id: number, imageFile: any): void {
-    this._httpService.postImageFile(this._constants.HOST + `/admin/images/${id}/updateImage`, imageFile)
+  updateImageFile(id: number, imageFile: any): Observable<any> {
+    return this._httpService.postImageFile(this._constants.HOST + `/admin/images/${id}/updateImage`, imageFile)
       .do(data => console.log('All: ' + JSON.stringify(data)))
-      .subscribe(
-        (res) => {
-          console.log('Data Response:');
-          console.log(res);
-          console.log(res.status);
-          if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
-            console.log('NO CONTENT');
-          } else {
-            console.log('NO NONONONO CONTENT');
-          }
-        },
-        (error: Error) => {
-          console.log(error);
-        }
-      )
+
     ;
   }
 }

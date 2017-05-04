@@ -32,22 +32,8 @@ var ImagesUpdateService = (function () {
         });
     };
     ImagesUpdateService.prototype.updateImageFile = function (id, imageFile) {
-        var _this = this;
-        this._httpService.postImageFile(this._constants.HOST + ("/admin/images/" + id + "/updateImage"), imageFile)
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
-            .subscribe(function (res) {
-            console.log('Data Response:');
-            console.log(res);
-            console.log(res.status);
-            if (res.status == _this._constants.HTTP_STATUS_NO_CONTENT) {
-                console.log('NO CONTENT');
-            }
-            else {
-                console.log('NO NONONONO CONTENT');
-            }
-        }, function (error) {
-            console.log(error);
-        });
+        return this._httpService.postImageFile(this._constants.HOST + ("/admin/images/" + id + "/updateImage"), imageFile)
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); });
     };
     return ImagesUpdateService;
 }());

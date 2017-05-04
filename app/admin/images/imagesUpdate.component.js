@@ -14,12 +14,14 @@ var router_1 = require("@angular/router");
 var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var forms_1 = require("@angular/forms");
 var image_1 = require("./image");
+var constant_1 = require("../../common/constant");
 var ImagesUpdateComponent = (function () {
-    function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route) {
+    function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route, _constants) {
         this._imageUpdateService = _imageUpdateService;
         this._router = _router;
         this.fb = fb;
         this._route = _route;
+        this._constants = _constants;
         this.pageTitle = 'Image Update';
         // this.getImages();
     }
@@ -82,15 +84,32 @@ var ImagesUpdateComponent = (function () {
         console.log(this.imageFile);
     };
     ImagesUpdateComponent.prototype.save = function () {
+        var _this = this;
         console.log(this.imageForm.value);
-        // this._imageUpdateService.updateImage(this.convertToImage());
+        this._imageUpdateService.updateImage(this.convertToImage());
         if (this.imageFile) {
             var formData = new FormData();
             formData.append('imageFile', this.imageFile, this.imageFile.name);
-            this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+            this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData)
+                .subscribe(function (res) {
+                console.log('Data Response:');
+                console.log(res);
+                console.log(res.status);
+                if (res.status == _this._constants.HTTP_STATUS_NO_CONTENT) {
+                    console.log('NO CONTENT');
+                    _this._router.navigate(["admin/images"]);
+                }
+                else {
+                    console.log('NO NONONONO CONTENT');
+                    // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
+                }
+            }, function (error) {
+                console.log(error);
+            });
         }
         else {
             console.log('Image file not set yet.');
+            this._router.navigate(["admin/images"]);
         }
     };
     ImagesUpdateComponent.prototype.convertToImage = function () {
@@ -113,7 +132,8 @@ ImagesUpdateComponent = __decorate([
     __metadata("design:paramtypes", [imagesUpdate_service_1.ImagesUpdateService,
         router_1.Router,
         forms_1.FormBuilder,
-        router_1.ActivatedRoute])
+        router_1.ActivatedRoute,
+        constant_1.Constants])
 ], ImagesUpdateComponent);
 exports.ImagesUpdateComponent = ImagesUpdateComponent;
 //# sourceMappingURL=imagesUpdate.component.js.map

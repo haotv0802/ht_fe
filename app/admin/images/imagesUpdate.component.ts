@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import {ImagesUpdateService} from "./imagesUpdate.service";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
+import {Constants} from "../../common/constant";
 
 @Component({
   moduleId: module.id,
@@ -20,7 +21,8 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
       private _imageUpdateService: ImagesUpdateService,
       private _router: Router,
       private fb: FormBuilder,
-      private _route: ActivatedRoute
+      private _route: ActivatedRoute,
+      private _constants: Constants
   ) {
     this.pageTitle = 'Image Update';
     // this.getImages();
@@ -95,13 +97,32 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
 
   save(): void {
     console.log(this.imageForm.value);
-    // this._imageUpdateService.updateImage(this.convertToImage());
+    this._imageUpdateService.updateImage(this.convertToImage());
     if (this.imageFile) {
       let formData:FormData = new FormData();
       formData.append('imageFile', this.imageFile, this.imageFile.name);
-      this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+      this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData)
+        .subscribe(
+          (res) => {
+            console.log('Data Response:');
+            console.log(res);
+            console.log(res.status);
+            if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
+              console.log('NO CONTENT');
+              this._router.navigate(["admin/images"]);
+            } else {
+              console.log('NO NONONONO CONTENT');
+              // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
+            }
+          },
+          (error: Error) => {
+            console.log(error);
+          }
+        )
+      ;
     } else {
       console.log('Image file not set yet.');
+      this._router.navigate(["admin/images"]);
     }
   }
 
