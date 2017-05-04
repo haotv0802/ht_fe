@@ -28,4 +28,14 @@ export class ImagesService {
       ;
   }
 
+  getImageFile(id: number): Observable<any> {
+    return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL + `/${id}.JPG/file`)
+      .map((res) => {
+        return res.json();
+      })
+      // .do(data => console.log('All: ' + JSON.stringify(data)))
+      // .do(res => console.log('_body: ' + res._body))
+
+    ;
+  }
 }

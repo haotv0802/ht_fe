@@ -13,11 +13,13 @@ var core_1 = require("@angular/core");
 var images_service_1 = require("./images.service");
 var router_1 = require("@angular/router");
 var imagesUpdate_service_1 = require("./imagesUpdate.service");
+var constant_1 = require("../../common/constant");
 var ImagesComponent = (function () {
-    function ImagesComponent(_imagesService, _router, _imageUpdateService) {
+    function ImagesComponent(_imagesService, _router, _imageUpdateService, _constants) {
         this._imagesService = _imagesService;
         this._router = _router;
         this._imageUpdateService = _imageUpdateService;
+        this._constants = _constants;
         this.pageTitle = 'Images Management';
         // this.getImages();
     }
@@ -28,15 +30,35 @@ var ImagesComponent = (function () {
         console.log(image);
     };
     ImagesComponent.prototype.editImage = function (image) {
-        this._imageUpdateService.image = image;
-        this._router.navigate(["admin/images/update"]);
+        // this._imageUpdateService.image = image;
+        // this._router.navigate(["admin/images/update"]);
+        this.getImageFile(image);
     };
     ImagesComponent.prototype.getImages = function () {
         var _this = this;
         // console.log("get room Types");
         this._imagesService.getImages().subscribe(function (images) {
             _this.images = images;
+            // for (let i = 0; i < this.images.length; i++) {
+            //   let imgTmp = this.images[i];
+            //   imgTmp.imageBEURL = this._constants.ADMIN_IMAGES_SERVICE_URL + "/" + imgTmp.id + ".JPG";
+            // }
             // $('.carousel').carousel();
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    ImagesComponent.prototype.hexToBase64 = function (str) {
+        return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+    };
+    ImagesComponent.prototype.getImageFile = function (image) {
+        this._imagesService.getImageFile(image.id)
+            .subscribe(function (res) {
+            console.log("res");
+            console.log(res.encodedString);
+            // console.log("====");
+            // console.log(JSON.stringify(res));
+            image.imageURL = "data:image/jpeg;base64," + res.encodedString;
         }, function (error) {
             console.log(error);
         });
@@ -58,7 +80,8 @@ ImagesComponent = __decorate([
     }),
     __metadata("design:paramtypes", [images_service_1.ImagesService,
         router_1.Router,
-        imagesUpdate_service_1.ImagesUpdateService])
+        imagesUpdate_service_1.ImagesUpdateService,
+        constant_1.Constants])
 ], ImagesComponent);
 exports.ImagesComponent = ImagesComponent;
 //# sourceMappingURL=images.component.js.map

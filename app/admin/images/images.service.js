@@ -30,6 +30,12 @@ var ImagesService = (function () {
             return res.json();
         });
     };
+    ImagesService.prototype.getImageFile = function (id) {
+        return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL + ("/" + id + ".JPG/file"))
+            .map(function (res) {
+            return res.json();
+        });
+    };
     return ImagesService;
 }());
 ImagesService = __decorate([

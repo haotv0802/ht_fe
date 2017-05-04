@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {Router, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {ImagesUpdateService} from "./imagesUpdate.service";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
