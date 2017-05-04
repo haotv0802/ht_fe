@@ -84,9 +84,14 @@ var ImagesUpdateComponent = (function () {
     ImagesUpdateComponent.prototype.save = function () {
         console.log(this.imageForm.value);
         // this._imageUpdateService.updateImage(this.convertToImage());
-        var formData = new FormData();
-        formData.append('imageFile', this.imageFile, this.imageFile.name);
-        this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+        if (this.imageFile) {
+            var formData = new FormData();
+            formData.append('imageFile', this.imageFile, this.imageFile.name);
+            this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+        }
+        else {
+            console.log('Image file not set yet.');
+        }
     };
     ImagesUpdateComponent.prototype.convertToImage = function () {
         var img = new image_1.Image();

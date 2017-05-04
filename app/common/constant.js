@@ -11,12 +11,13 @@ var Constants = (function () {
     function Constants() {
         this.HOST = 'http://localhost:8880/ht-be/svc';
         this.LOGIN_SERVICE_URL = this.HOST + '/login';
+        // HTTP Status
+        this.HTTP_STATUS_NO_CONTENT = 204;
         // Services URLs for Admin
         this.ADMIN_USERS_SERVICE_URL = this.HOST + '/admin/users';
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';
         //  Images (for Admin)
         this.ADMIN_IMAGES_SERVICE_URL = this.HOST + '/admin/images';
-        this.ADMIN_IMAGES_BY_ID_SERVICE_URL = this.HOST + "/admin/images/";
         this.ADMIN_IMAGE_UPDATE_SERVICE_URL = this.HOST + "/admin/images/updateImageInfo";
         //  Individuals (for Admin)
         this.ADMIN_INDIVIDUALS_SERVICE_URL = this.HOST + '/admin/individuals';

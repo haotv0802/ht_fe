@@ -16,7 +16,7 @@ export class ImagesUpdateService {
   }
 
   getImageById(id: number): Observable<Image> {
-    return this._httpService.get(this._constants.HOST + `/admin/images/${id}/info`)
+    return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL + `/${id}/info`)
       .map(
         (res) => {return <Image>res.json()}
       )
@@ -43,8 +43,14 @@ export class ImagesUpdateService {
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .subscribe(
         (res) => {
-          // console.log('Data Response:');
-          // console.log(res);
+          console.log('Data Response:');
+          console.log(res);
+          console.log(res.status);
+          if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
+            console.log('NO CONTENT');
+          } else {
+            console.log('NO NONONONO CONTENT');
+          }
         },
         (error: Error) => {
           console.log(error);

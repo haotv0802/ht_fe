@@ -6,12 +6,14 @@ export class Constants {
   public HOST = 'http://localhost:8880/ht-be/svc';
   public LOGIN_SERVICE_URL: string = this.HOST + '/login';
 
+  // HTTP Status
+  public HTTP_STATUS_NO_CONTENT: number = 204;
+
   // Services URLs for Admin
   public ADMIN_USERS_SERVICE_URL: string = this.HOST + '/admin/users';
   public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
   //  Images (for Admin)
   public ADMIN_IMAGES_SERVICE_URL: string = this.HOST + '/admin/images';
-  public ADMIN_IMAGES_BY_ID_SERVICE_URL: string = this.HOST + `/admin/images/`;
   public ADMIN_IMAGE_UPDATE_SERVICE_URL: string = this.HOST + `/admin/images/updateImageInfo`;
   //  Individuals (for Admin)
   public ADMIN_INDIVIDUALS_SERVICE_URL: string = this.HOST + '/admin/individuals';

@@ -96,9 +96,13 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   save(): void {
     console.log(this.imageForm.value);
     // this._imageUpdateService.updateImage(this.convertToImage());
-    let formData:FormData = new FormData();
-    formData.append('imageFile', this.imageFile, this.imageFile.name);
-    this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+    if (this.imageFile) {
+      let formData:FormData = new FormData();
+      formData.append('imageFile', this.imageFile, this.imageFile.name);
+      this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData);
+    } else {
+      console.log('Image file not set yet.');
+    }
   }
 
   convertToImage(): Image {
