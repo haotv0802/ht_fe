@@ -42,10 +42,24 @@ export class ImagesComponent implements OnInit {
     this._imagesService.getImages().subscribe(
       (images) => {
         this.images = images;
-        // for (let i = 0; i < this.images.length; i++) {
-        //   let imgTmp = this.images[i];
-        //   imgTmp.imageBEURL = this._constants.ADMIN_IMAGES_SERVICE_URL + "/" + imgTmp.id + ".JPG";
-        // }
+        for (let i = 0; i < this.images.length; i++) {
+          let imgTmp = this.images[i];
+
+          this._imagesService.getImageFile(imgTmp.id)
+            .subscribe(
+              (res) => {
+                // console.log("res.headers.content-type");
+                // console.log(res.headers);
+                // console.log(res.headers.get('content-type'));
+                // imgTmp.imageURL = "data:image/jpeg;base64," + res.json().encodedString;
+                imgTmp.imageURL = `data:${res.headers.get('content-type')};base64,` + res.json().encodedString;
+              },
+              (error) => {
+                console.log(error);
+              }
+            )
+          ;
+        }
         // $('.carousel').carousel();
       },
       (error) => {
@@ -84,4 +98,3 @@ export class ImagesComponent implements OnInit {
     // return url;
   }
 }
-

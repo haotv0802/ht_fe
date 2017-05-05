@@ -39,10 +39,22 @@ var ImagesComponent = (function () {
         // console.log("get room Types");
         this._imagesService.getImages().subscribe(function (images) {
             _this.images = images;
-            // for (let i = 0; i < this.images.length; i++) {
-            //   let imgTmp = this.images[i];
-            //   imgTmp.imageBEURL = this._constants.ADMIN_IMAGES_SERVICE_URL + "/" + imgTmp.id + ".JPG";
-            // }
+            var _loop_1 = function (i) {
+                var imgTmp = _this.images[i];
+                _this._imagesService.getImageFile(imgTmp.id)
+                    .subscribe(function (res) {
+                    // console.log("res.headers.content-type");
+                    // console.log(res.headers);
+                    // console.log(res.headers.get('content-type'));
+                    // imgTmp.imageURL = "data:image/jpeg;base64," + res.json().encodedString;
+                    imgTmp.imageURL = "data:" + res.headers.get('content-type') + ";base64," + res.json().encodedString;
+                }, function (error) {
+                    console.log(error);
+                });
+            };
+            for (var i = 0; i < _this.images.length; i++) {
+                _loop_1(i);
+            }
             // $('.carousel').carousel();
         }, function (error) {
             console.log(error);

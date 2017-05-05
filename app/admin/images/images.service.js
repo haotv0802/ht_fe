@@ -31,10 +31,7 @@ var ImagesService = (function () {
         });
     };
     ImagesService.prototype.getImageFile = function (id) {
-        return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL + ("/" + id + ".JPG/file"))
-            .map(function (res) {
-            return res.json();
-        });
+        return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL + ("/" + id + ".JPG/file"));
     };
     return ImagesService;
 }());
