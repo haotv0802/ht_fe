@@ -13,7 +13,6 @@ export class ImagesService {
   }
 
   getImages(): Observable<Image[]> {
-
     return this._httpService.get(this._constants.ADMIN_IMAGES_SERVICE_URL)
       .map((res) => {
         // let roomType = new RoomType();

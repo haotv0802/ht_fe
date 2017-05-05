@@ -96,7 +96,6 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    console.log(this.imageForm.value);
     this._imageUpdateService.updateImage(this.convertToImage());
     if (this.imageFile) {
       let formData:FormData = new FormData();
@@ -104,14 +103,14 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
       this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData)
         .subscribe(
           (res) => {
-            console.log('Data Response:');
-            console.log(res);
-            console.log(res.status);
+            // console.log('Data Response:');
+            // console.log(res);
+            // console.log(res.status);
             if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
-              console.log('NO CONTENT');
+              // console.log('NO CONTENT');
               this._router.navigate(["admin/images"]);
             } else {
-              console.log('NO NONONONO CONTENT');
+              // console.log('NO NONONONO CONTENT');
               // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
             }
           },
@@ -121,7 +120,7 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
         )
       ;
     } else {
-      console.log('Image file not set yet.');
+      // console.log('Image file not set yet.');
       this._router.navigate(["admin/images"]);
     }
   }

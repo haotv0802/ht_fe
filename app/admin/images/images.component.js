@@ -24,23 +24,24 @@ var ImagesComponent = (function () {
         // this.getImages();
     }
     ImagesComponent.prototype.ngOnInit = function () {
+        console.log("get images in ngOnInit");
         this.getImages();
     };
     ImagesComponent.prototype.displayImage = function (image) {
         console.log(image);
     };
     ImagesComponent.prototype.editImage = function (image) {
-        // this._imageUpdateService.image = image;
-        // this._router.navigate(["admin/images/update"]);
-        this.getImageFile(image);
+        this._imageUpdateService.image = image;
+        this._router.navigate(["admin/images/update"]);
     };
     ImagesComponent.prototype.getImages = function () {
         var _this = this;
-        // console.log("get room Types");
+        console.log("get room images");
         this._imagesService.getImages().subscribe(function (images) {
             _this.images = images;
             var _loop_1 = function (i) {
                 var imgTmp = _this.images[i];
+                console.log(imgTmp);
                 _this._imagesService.getImageFile(imgTmp.id)
                     .subscribe(function (res) {
                     // console.log("res.headers.content-type");
@@ -57,6 +58,7 @@ var ImagesComponent = (function () {
             }
             // $('.carousel').carousel();
         }, function (error) {
+            console.log("images component - get images - Error:");
             console.log(error);
         });
     };

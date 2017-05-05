@@ -25,10 +25,10 @@ export class ImagesUpdateService {
 
   updateImage(image: Image): void {
     this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
-      // .do(data => console.log('All: ' + JSON.stringify(data)))
+      // .do(data => console.log('updateImage Info: ' + JSON.stringify(data)))
       .subscribe(
         (res) => {
-          // console.log('Data Responsed:');
+          // console.log('Data Response:');
           // console.log(res);
         },
         (error: Error) => {
@@ -40,7 +40,7 @@ export class ImagesUpdateService {
 
   updateImageFile(id: number, imageFile: any): Observable<any> {
     return this._httpService.postImageFile(this._constants.HOST + `/admin/images/${id}/updateImage`, imageFile)
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      // .do(data => console.log('image update component - updateImageFile: ' + JSON.stringify(data)))
 
     ;
   }

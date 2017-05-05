@@ -24,6 +24,7 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("get images in ngOnInit");
     this.getImages();
   }
 
@@ -32,18 +33,19 @@ export class ImagesComponent implements OnInit {
   }
 
   editImage(image: Image) {
-    // this._imageUpdateService.image = image;
-    // this._router.navigate(["admin/images/update"]);
-    this.getImageFile(image);
+    this._imageUpdateService.image = image;
+    this._router.navigate(["admin/images/update"]);
   }
 
   getImages(): void {
-    // console.log("get room Types");
+    console.log("get room images");
+
     this._imagesService.getImages().subscribe(
       (images) => {
         this.images = images;
         for (let i = 0; i < this.images.length; i++) {
           let imgTmp = this.images[i];
+          console.log(imgTmp);
 
           this._imagesService.getImageFile(imgTmp.id)
             .subscribe(
@@ -63,6 +65,7 @@ export class ImagesComponent implements OnInit {
         // $('.carousel').carousel();
       },
       (error) => {
+        console.log("images component - get images - Error:");
         console.log(error);
       }
     )

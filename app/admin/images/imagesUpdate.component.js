@@ -85,22 +85,21 @@ var ImagesUpdateComponent = (function () {
     };
     ImagesUpdateComponent.prototype.save = function () {
         var _this = this;
-        console.log(this.imageForm.value);
         this._imageUpdateService.updateImage(this.convertToImage());
         if (this.imageFile) {
             var formData = new FormData();
             formData.append('imageFile', this.imageFile, this.imageFile.name);
             this._imageUpdateService.updateImageFile(this.imageForm.get("id").value, formData)
                 .subscribe(function (res) {
-                console.log('Data Response:');
-                console.log(res);
-                console.log(res.status);
+                // console.log('Data Response:');
+                // console.log(res);
+                // console.log(res.status);
                 if (res.status == _this._constants.HTTP_STATUS_NO_CONTENT) {
-                    console.log('NO CONTENT');
+                    // console.log('NO CONTENT');
                     _this._router.navigate(["admin/images"]);
                 }
                 else {
-                    console.log('NO NONONONO CONTENT');
+                    // console.log('NO NONONONO CONTENT');
                     // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
                 }
             }, function (error) {
@@ -108,7 +107,7 @@ var ImagesUpdateComponent = (function () {
             });
         }
         else {
-            console.log('Image file not set yet.');
+            // console.log('Image file not set yet.');
             this._router.navigate(["admin/images"]);
         }
     };
