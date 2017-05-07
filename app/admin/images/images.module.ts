@@ -7,6 +7,8 @@ import {ImagesUpdateComponent} from "./imagesUpdate.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ImagesUpdateService} from "./imagesUpdate.service";
 import {ImageDetailsGuard} from "./image-guard.service";
+import {OpenDirective} from "./modal/open.component";
+import {AlertComponent} from "./modal/alert.component";
 
 @NgModule({
   imports: [
@@ -21,7 +23,12 @@ import {ImageDetailsGuard} from "./image-guard.service";
     CommonModule,
     ReactiveFormsModule
   ],
-  declarations: [ImagesComponent, ImagesUpdateComponent],
+  declarations: [
+    ImagesComponent,
+    ImagesUpdateComponent,
+    OpenDirective,
+    AlertComponent
+  ],
   providers: [ImagesService, ImagesUpdateService, ImageDetailsGuard]
 })
 export class ImagesModule {

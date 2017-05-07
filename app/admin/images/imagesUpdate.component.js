@@ -15,6 +15,7 @@ var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var forms_1 = require("@angular/forms");
 var image_1 = require("./image");
 var constant_1 = require("../../common/constant");
+var alert_component_1 = require("./modal/alert.component");
 var ImagesUpdateComponent = (function () {
     function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route, _constants) {
         this._imageUpdateService = _imageUpdateService;
@@ -85,7 +86,8 @@ var ImagesUpdateComponent = (function () {
     };
     ImagesUpdateComponent.prototype.save = function () {
         var _this = this;
-        this._imageUpdateService.updateImage(this.convertToImage());
+        var imageForUpdate = this.convertToImage();
+        this._imageUpdateService.updateImage(imageForUpdate);
         if (this.imageFile) {
             var formData = new FormData();
             formData.append('imageFile', this.imageFile, this.imageFile.name);
@@ -110,6 +112,7 @@ var ImagesUpdateComponent = (function () {
             // console.log('Image file not set yet.');
             this._router.navigate(["admin/images"]);
         }
+        this._imageUpdateService.image = imageForUpdate;
     };
     ImagesUpdateComponent.prototype.convertToImage = function () {
         var img = new image_1.Image();
@@ -120,8 +123,22 @@ var ImagesUpdateComponent = (function () {
         img.imageInfo = this.imageForm.get("imageInfo").value;
         return img;
     };
+    ImagesUpdateComponent.prototype.openAlert = function () {
+        this.alert.alertFooter = true;
+        this.alert.cancelButton = true;
+        this.alert.okButton = false;
+        this.alert.alertHeader = true;
+        this.alert.alertTitle = "A simple Alert modal window";
+        this.alert.message = "It is a classic Alert modal with title, body, footer.";
+        this.alert.cancelButtonText = "Ok, Got it.";
+        this.alert.open();
+    };
     return ImagesUpdateComponent;
 }());
+__decorate([
+    core_1.ViewChild(alert_component_1.AlertComponent),
+    __metadata("design:type", alert_component_1.AlertComponent)
+], ImagesUpdateComponent.prototype, "alert", void 0);
 ImagesUpdateComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

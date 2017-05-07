@@ -27,6 +27,8 @@ var ImagesComponent = (function () {
         console.log("get images in ngOnInit");
         this.getImages();
     };
+    ImagesComponent.prototype.ngOnDestroy = function () {
+    };
     ImagesComponent.prototype.displayImage = function (image) {
         console.log(image);
     };
@@ -36,12 +38,10 @@ var ImagesComponent = (function () {
     };
     ImagesComponent.prototype.getImages = function () {
         var _this = this;
-        console.log("get room images");
         this._imagesService.getImages().subscribe(function (images) {
             _this.images = images;
             var _loop_1 = function (i) {
                 var imgTmp = _this.images[i];
-                console.log(imgTmp);
                 _this._imagesService.getImageFile(imgTmp.id)
                     .subscribe(function (res) {
                     // console.log("res.headers.content-type");

@@ -1,4 +1,4 @@
-import {Component, OnInit}  from '@angular/core';
+import {Component, OnInit, OnDestroy}  from '@angular/core';
 import {Image} from "./image";
 import {ImagesService} from "./images.service";
 import {Router} from "@angular/router";
@@ -10,7 +10,7 @@ import {Constants} from "../../common/constant";
   templateUrl: 'images.component.html',
   styleUrls: ['images.component.01.css', 'images.component.02.css']
 })
-export class ImagesComponent implements OnInit {
+export class ImagesComponent implements OnInit, OnDestroy {
   pageTitle: string;
   images: Image[];
   constructor(
@@ -28,6 +28,9 @@ export class ImagesComponent implements OnInit {
     this.getImages();
   }
 
+  ngOnDestroy(): void {
+  }
+
   displayImage(image: Image) {
     console.log(image);
   }
@@ -38,15 +41,11 @@ export class ImagesComponent implements OnInit {
   }
 
   getImages(): void {
-    console.log("get room images");
-
     this._imagesService.getImages().subscribe(
       (images) => {
         this.images = images;
         for (let i = 0; i < this.images.length; i++) {
           let imgTmp = this.images[i];
-          console.log(imgTmp);
-
           this._imagesService.getImageFile(imgTmp.id)
             .subscribe(
               (res) => {
@@ -69,6 +68,7 @@ export class ImagesComponent implements OnInit {
         console.log(error);
       }
     )
+    ;
   }
 
   hexToBase64(str: string) {

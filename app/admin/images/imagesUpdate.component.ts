@@ -1,9 +1,10 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {ImagesUpdateService} from "./imagesUpdate.service";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
 import {Constants} from "../../common/constant";
+import {AlertComponent} from "./modal/alert.component";
 
 @Component({
   moduleId: module.id,
@@ -17,6 +18,8 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   image: Image;
   sub: any;
   imageFile: any;
+  @ViewChild(AlertComponent) alert: AlertComponent;
+
   constructor(
       private _imageUpdateService: ImagesUpdateService,
       private _router: Router,
@@ -96,7 +99,8 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    this._imageUpdateService.updateImage(this.convertToImage());
+    let imageForUpdate = this.convertToImage();
+    this._imageUpdateService.updateImage(imageForUpdate);
     if (this.imageFile) {
       let formData:FormData = new FormData();
       formData.append('imageFile', this.imageFile, this.imageFile.name);
@@ -123,6 +127,7 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
       // console.log('Image file not set yet.');
       this._router.navigate(["admin/images"]);
     }
+    this._imageUpdateService.image = imageForUpdate;
   }
 
   convertToImage(): Image {
@@ -135,4 +140,16 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
 
     return img;
   }
+
+  openAlert(): void {
+    this.alert.alertFooter = true;
+    this.alert.cancelButton = true;
+    this.alert.okButton = false;
+    this.alert.alertHeader = true;
+    this.alert.alertTitle = "A simple Alert modal window";
+    this.alert.message = "It is a classic Alert modal with title, body, footer.";
+    this.alert.cancelButtonText = "Ok, Got it.";
+    this.alert.open();
+  }
+
 }

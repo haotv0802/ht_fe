@@ -15,6 +15,8 @@ var imagesUpdate_component_1 = require("./imagesUpdate.component");
 var forms_1 = require("@angular/forms");
 var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var image_guard_service_1 = require("./image-guard.service");
+var open_component_1 = require("./modal/open.component");
+var alert_component_1 = require("./modal/alert.component");
 var ImagesModule = (function () {
     function ImagesModule() {
     }
@@ -34,7 +36,12 @@ ImagesModule = __decorate([
             common_1.CommonModule,
             forms_1.ReactiveFormsModule
         ],
-        declarations: [images_component_1.ImagesComponent, imagesUpdate_component_1.ImagesUpdateComponent],
+        declarations: [
+            images_component_1.ImagesComponent,
+            imagesUpdate_component_1.ImagesUpdateComponent,
+            open_component_1.OpenDirective,
+            alert_component_1.AlertComponent
+        ],
         providers: [images_service_1.ImagesService, imagesUpdate_service_1.ImagesUpdateService, image_guard_service_1.ImageDetailsGuard]
     })
 ], ImagesModule);

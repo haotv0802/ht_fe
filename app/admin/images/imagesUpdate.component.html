@@ -143,6 +143,11 @@
                                         [disabled]="!imageForm.valid">
                                     Save
                                 </button>
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        (click)="openAlert()">
+                                Open Alert
+                            </button>
                             </span>
                         </div>
                     </div>
@@ -155,4 +160,6 @@
             </div>
         </div>
     </div>
+    <alert (alertOutput)="confirmClose($event)">
+    </alert>
 </div>
