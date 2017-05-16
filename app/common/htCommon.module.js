@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var alert_component_1 = require("../common/modal/alert.component");
 var open_component_1 = require("../common/modal/open.component");
+var modal_component_1 = require("./modal/modal.component");
 var HTCommonModule = (function () {
     function HTCommonModule() {
     }
@@ -20,10 +21,12 @@ HTCommonModule = __decorate([
         declarations: [
             alert_component_1.AlertComponent,
             open_component_1.OpenDirective,
+            modal_component_1.ModalComponent
         ],
         exports: [
             alert_component_1.AlertComponent,
-            open_component_1.OpenDirective
+            open_component_1.OpenDirective,
+            modal_component_1.ModalComponent
         ],
         providers: []
     })

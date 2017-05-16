@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var modal_component_1 = require("../modal/modal.component");
+var modal_component_1 = require("../../../common/modal/modal.component");
 var Login = (function () {
     function Login(_modal) {
         this._modal = _modal;

@@ -5,9 +5,9 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ValidatorFn} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {DomainService} from "../common/domain.service";
-import {ModalComponent} from "./modal/modal.component";
 import {Login} from "./login/login";
 import {AlertComponent} from "../../common/modal/alert.component";
+import {ModalComponent} from "../../common/modal/modal.component";
 
 @Component({
   moduleId: module.id,

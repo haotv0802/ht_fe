@@ -20,9 +20,9 @@ var individualUpdate_guard_service_1 = require("./individualUpdate-guard.service
 var forms_1 = require("@angular/forms");
 var individualAdd_component_1 = require("./individualAdd.component");
 var individualAdd_service_1 = require("./individualAdd.service");
-var modal_component_1 = require("./modal/modal.component");
 var login_1 = require("./login/login");
 var htCommon_module_1 = require("../../common/htCommon.module");
+var modal_component_1 = require("../../common/modal/modal.component");
 var IndividualsModule = (function () {
     function IndividualsModule() {
     }
@@ -54,7 +54,6 @@ IndividualsModule = __decorate([
             individualDetails_component_1.IndividualDetailsComponent,
             individualUpdate_component_1.IndividualUpdateComponent,
             individualAdd_component_1.IndividualAddComponent,
-            modal_component_1.ModalComponent,
             login_1.Login
         ],
         providers: [

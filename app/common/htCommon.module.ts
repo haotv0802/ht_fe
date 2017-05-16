@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {AlertComponent} from "../common/modal/alert.component";
 import {OpenDirective} from "../common/modal/open.component";
+import {ModalComponent} from "./modal/modal.component";
 
 @NgModule({
   imports: [
@@ -8,10 +9,12 @@ import {OpenDirective} from "../common/modal/open.component";
   declarations: [
     AlertComponent,
     OpenDirective,
+    ModalComponent
   ],
   exports: [
     AlertComponent,
-    OpenDirective
+    OpenDirective,
+    ModalComponent
   ],
   providers: []
 })
