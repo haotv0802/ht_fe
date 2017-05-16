@@ -23,13 +23,7 @@ var ImagesUpdateService = (function () {
             .map(function (res) { return res.json(); });
     };
     ImagesUpdateService.prototype.updateImage = function (image) {
-        this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
-            .subscribe(function (res) {
-            // console.log('Data Response:');
-            // console.log(res);
-        }, function (error) {
-            console.log(error);
-        });
+        return this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image);
     };
     ImagesUpdateService.prototype.updateImageFile = function (id, imageFile) {
         return this._httpService.postImageFile(this._constants.HOST + ("/admin/images/" + id + "/updateImage"), imageFile);

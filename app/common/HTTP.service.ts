@@ -19,7 +19,7 @@ export class HTTPService {
       headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
     }
     return this._http.post(url, data, {headers: headers})
-      .catch(this.handleError)
+      // .catch(this.handleError)
       ;
   }
 

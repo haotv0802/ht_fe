@@ -87,7 +87,27 @@ var ImagesUpdateComponent = (function () {
     ImagesUpdateComponent.prototype.save = function () {
         var _this = this;
         var imageForUpdate = this.convertToImage();
-        this._imageUpdateService.updateImage(imageForUpdate);
+        this._imageUpdateService.updateImage(imageForUpdate)
+            .subscribe(function (res) {
+            // console.log('Data Response:');
+            // console.log(res);
+            if (res.status == _this._constants.HTTP_STATUS_NO_CONTENT) {
+                _this.saveImageFile();
+                _this._imageUpdateService.image = imageForUpdate;
+            }
+            else {
+                // TODO: popup error message (when there's other problem happening)
+                console.log("TODO: popup error message");
+            }
+        }, function (error) {
+            console.log(error);
+            if (error.status = _this._constants.HTTP_STATUS_BAD_REQUEST) {
+                _this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+            }
+        });
+    };
+    ImagesUpdateComponent.prototype.saveImageFile = function () {
+        var _this = this;
         if (this.imageFile) {
             var formData = new FormData();
             formData.append('imageFile', this.imageFile, this.imageFile.name);
@@ -95,7 +115,6 @@ var ImagesUpdateComponent = (function () {
                 .subscribe(function (res) {
                 // console.log('Data Response:');
                 // console.log(res);
-                // console.log(res.status);
                 if (res.status == _this._constants.HTTP_STATUS_NO_CONTENT) {
                     // console.log('NO CONTENT');
                     _this._router.navigate(["admin/images"]);
@@ -103,16 +122,16 @@ var ImagesUpdateComponent = (function () {
                 else {
                     // console.log('NO NONONONO CONTENT');
                     // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
+                    _this._router.navigate(["welcome"]);
                 }
             }, function (error) {
                 console.log(error);
             });
         }
         else {
-            // console.log('Image file not set yet.');
+            console.log('Image file not set yet.');
             this._router.navigate(["admin/images"]);
         }
-        this._imageUpdateService.image = imageForUpdate;
     };
     ImagesUpdateComponent.prototype.convertToImage = function () {
         var img = new image_1.Image();
@@ -131,6 +150,16 @@ var ImagesUpdateComponent = (function () {
         this.alert.alertTitle = "A simple Alert modal window";
         this.alert.message = "It is a classic Alert modal with title, body, footer.";
         this.alert.cancelButtonText = "Ok, Got it.";
+        this.alert.open();
+    };
+    ImagesUpdateComponent.prototype.openAlertWithParams = function (title, message, buttonText) {
+        this.alert.alertFooter = true;
+        this.alert.cancelButton = true;
+        this.alert.okButton = false;
+        this.alert.alertHeader = true;
+        this.alert.alertTitle = title;
+        this.alert.message = message;
+        this.alert.cancelButtonText = buttonText;
         this.alert.open();
     };
     return ImagesUpdateComponent;

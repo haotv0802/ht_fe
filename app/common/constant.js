@@ -13,6 +13,7 @@ var Constants = (function () {
         this.LOGIN_SERVICE_URL = this.HOST + '/login';
         // HTTP Status
         this.HTTP_STATUS_NO_CONTENT = 204;
+        this.HTTP_STATUS_BAD_REQUEST = 400;
         // Services URLs for Admin
         this.ADMIN_USERS_SERVICE_URL = this.HOST + '/admin/users';
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';

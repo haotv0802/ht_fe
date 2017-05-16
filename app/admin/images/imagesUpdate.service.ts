@@ -23,18 +23,9 @@ export class ImagesUpdateService {
     ;
   }
 
-  updateImage(image: Image): void {
-    this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
+  updateImage(image: Image): Observable<any> {
+    return this._httpService.post(this._constants.ADMIN_IMAGE_UPDATE_SERVICE_URL, image)
       // .do(data => console.log('updateImage Info: ' + JSON.stringify(data)))
-      .subscribe(
-        (res) => {
-          // console.log('Data Response:');
-          // console.log(res);
-        },
-        (error: Error) => {
-          console.log(error);
-        }
-      )
       ;
   }
 

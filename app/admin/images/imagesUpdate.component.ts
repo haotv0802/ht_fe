@@ -100,7 +100,31 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
 
   save(): void {
     let imageForUpdate = this.convertToImage();
-    this._imageUpdateService.updateImage(imageForUpdate);
+    this._imageUpdateService.updateImage(imageForUpdate)
+      .subscribe(
+        (res) => {
+          // console.log('Data Response:');
+          // console.log(res);
+          if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
+            this.saveImageFile();
+            this._imageUpdateService.image = imageForUpdate;
+          } else {
+            // TODO: popup error message (when there's other problem happening)
+            console.log("TODO: popup error message");
+          }
+        },
+        (error: any) => {
+          console.log(error);
+          if (error.status = this._constants.HTTP_STATUS_BAD_REQUEST) {
+            this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+          }
+        }
+      )
+    ;
+
+  }
+
+  private saveImageFile(): void {
     if (this.imageFile) {
       let formData:FormData = new FormData();
       formData.append('imageFile', this.imageFile, this.imageFile.name);
@@ -109,13 +133,13 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
           (res) => {
             // console.log('Data Response:');
             // console.log(res);
-            // console.log(res.status);
             if (res.status == this._constants.HTTP_STATUS_NO_CONTENT) {
               // console.log('NO CONTENT');
               this._router.navigate(["admin/images"]);
             } else {
               // console.log('NO NONONONO CONTENT');
               // TODO popup error message here. That's why we don't place "this._router.navigate(["admin/images"]);" in the end.
+              this._router.navigate(["welcome"]);
             }
           },
           (error: Error) => {
@@ -124,10 +148,9 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
         )
       ;
     } else {
-      // console.log('Image file not set yet.');
+      console.log('Image file not set yet.');
       this._router.navigate(["admin/images"]);
     }
-    this._imageUpdateService.image = imageForUpdate;
   }
 
   convertToImage(): Image {
@@ -152,4 +175,14 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
     this.alert.open();
   }
 
+  openAlertWithParams(title: string, message: string, buttonText: string): void {
+    this.alert.alertFooter = true;
+    this.alert.cancelButton = true;
+    this.alert.okButton = false;
+    this.alert.alertHeader = true;
+    this.alert.alertTitle = title;
+    this.alert.message = message;
+    this.alert.cancelButtonText = buttonText;
+    this.alert.open();
+  }
 }
