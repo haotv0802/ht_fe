@@ -10,11 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var angular2_toaster_1 = require("angular2-toaster");
 var AppComponent = (function () {
-    // pageTitle: string = 'Acme Product Management';
-    function AppComponent() {
+    function AppComponent(toasterService) {
+        this.toastList = new Array();
+        this.toastIndex = 0;
         console.log("In App Component");
+        this.toasterService = toasterService;
     }
+    AppComponent.prototype.popToast = function () {
+        var toast = this.toasterService.pop('success', 'Args Title', 'Args Body');
+        this.toastList.push(toast);
+    };
+    AppComponent.prototype.clearToast = function () {
+        for (var i = 0; i < this.toastList.length; i++) {
+            this.toasterService.clear(this.toastList[i].toastId, this.toastList[i].toastContainerId);
+        }
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -39,7 +51,7 @@ AppComponent = __decorate([
         //  `
         templateUrl: 'app/app.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [angular2_toaster_1.ToasterService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

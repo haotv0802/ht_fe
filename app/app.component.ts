@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from "@angular/core";
+import {ToasterService} from "angular2-toaster";
 
 @Component({
     selector: 'ht-app',
@@ -24,7 +25,22 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
     // pageTitle: string = 'Acme Product Management';
-    constructor() {
+    toasterService: ToasterService;
+    toastList: Array<any> = new Array();
+    toastIndex: number = 0;
+
+    constructor(toasterService: ToasterService) {
         console.log("In App Component");
+        this.toasterService = toasterService;
+    }
+
+    popToast() {
+        let toast = this.toasterService.pop('success', 'Args Title', 'Args Body');
+        this.toastList.push(toast);
+    }
+    clearToast() {
+        for (let i = 0; i < this.toastList.length; i++) {
+            this.toasterService.clear(this.toastList[i].toastId, this.toastList[i].toastContainerId);
+        }
     }
 }

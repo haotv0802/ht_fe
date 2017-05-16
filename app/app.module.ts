@@ -12,6 +12,7 @@ import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
 import {HTCommonModule} from "./common/htCommon.module";
+import {ToasterModule} from "angular2-toaster";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {HTCommonModule} from "./common/htCommon.module";
     LoginModule,
     ProductModule,
     AdminModule,
-    HTCommonModule
+    HTCommonModule,
+    ToasterModule
   ],
   declarations: [
     AppComponent,

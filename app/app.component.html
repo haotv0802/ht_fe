@@ -14,6 +14,9 @@
 	<!--</nav>-->
 	<ht-nav></ht-nav>
     <div class="container">
+        <button (click)="popToast()">pop toast</button>
+        <button (click)="clearToast()">clear toast</button>
+        <toaster-container></toaster-container>
         <router-outlet></router-outlet>
     </div>
 </div>
