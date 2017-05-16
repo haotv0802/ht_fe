@@ -15,7 +15,7 @@ var imagesUpdate_service_1 = require("./imagesUpdate.service");
 var forms_1 = require("@angular/forms");
 var image_1 = require("./image");
 var constant_1 = require("../../common/constant");
-var alert_component_1 = require("./modal/alert.component");
+var alert_component_1 = require("../../common/modal/alert.component");
 var ImagesUpdateComponent = (function () {
     function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route, _constants) {
         this._imageUpdateService = _imageUpdateService;

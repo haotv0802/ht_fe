@@ -7,7 +7,7 @@ import {IndividualAddService} from "./individualAdd.service";
 import {DomainService} from "../common/domain.service";
 import {Login} from "./login/login";
 import {ModalComponent} from "./modal/modal.component";
-import {AlertComponent} from "./modal/alert.component";
+import {AlertComponent} from "../../common/modal/alert.component";
 
 @Component({
   moduleId: module.id,

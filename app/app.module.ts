@@ -11,6 +11,7 @@ import {AdminModule} from "./admin/admin.module";
 import {ProductModule} from "./products/product.module";
 import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
+import {HTCommonModule} from "./common/htCommon.module";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {HTTPService} from "./common/HTTP.service";
     ]),
     LoginModule,
     ProductModule,
-    AdminModule
+    AdminModule,
+    HTCommonModule
   ],
   declarations: [
     AppComponent,

@@ -13,9 +13,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {IndividualAddComponent} from "./individualAdd.component";
 import {IndividualAddService} from "./individualAdd.service";
 import {ModalComponent} from "./modal/modal.component";
-import {OpenDirective} from "./modal/open.component";
 import {Login} from "./login/login";
-import {AlertComponent} from "./modal/alert.component";
+import {HTCommonModule} from "../../common/htCommon.module";
 
 @NgModule({
   imports: [
@@ -34,7 +33,8 @@ import {AlertComponent} from "./modal/alert.component";
       {path: 'admin/individuals/add', component: IndividualAddComponent},
     ]),
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HTCommonModule
   ],
   declarations: [
     IndividualsComponent,
@@ -42,9 +42,7 @@ import {AlertComponent} from "./modal/alert.component";
     IndividualUpdateComponent,
     IndividualAddComponent,
     ModalComponent,
-    OpenDirective,
-    Login,
-    AlertComponent
+    Login
   ],
   providers: [
     IndividualsService,

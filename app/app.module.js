@@ -19,6 +19,7 @@ var admin_module_1 = require("./admin/admin.module");
 var product_module_1 = require("./products/product.module");
 var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
+var htCommon_module_1 = require("./common/htCommon.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,7 +39,8 @@ AppModule = __decorate([
             ]),
             login_module_1.LoginModule,
             product_module_1.ProductModule,
-            admin_module_1.AdminModule
+            admin_module_1.AdminModule,
+            htCommon_module_1.HTCommonModule
         ],
         declarations: [
             app_component_1.AppComponent,

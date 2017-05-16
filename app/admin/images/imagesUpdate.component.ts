@@ -4,7 +4,7 @@ import {ImagesUpdateService} from "./imagesUpdate.service";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
 import {Constants} from "../../common/constant";
-import {AlertComponent} from "./modal/alert.component";
+import {AlertComponent} from "../../common/modal/alert.component";
 
 @Component({
   moduleId: module.id,

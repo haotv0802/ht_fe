@@ -10,8 +10,8 @@ var core_1 = require("@angular/core");
 var users_module_1 = require("./users/users.module");
 var rooms_module_1 = require("./rooms/rooms.module");
 var images_module_1 = require("./images/images.module");
-var individuals_module_1 = require("./individuals/individuals.module");
 var domain_service_1 = require("./common/domain.service");
+var individuals_module_1 = require("./individuals/individuals.module");
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -26,6 +26,7 @@ AdminModule = __decorate([
             individuals_module_1.IndividualsModule
         ],
         declarations: [],
+        exports: [],
         providers: [domain_service_1.DomainService]
     })
 ], AdminModule);

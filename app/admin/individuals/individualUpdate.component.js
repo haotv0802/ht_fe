@@ -17,7 +17,7 @@ require("rxjs/add/operator/debounceTime");
 var domain_service_1 = require("../common/domain.service");
 var modal_component_1 = require("./modal/modal.component");
 var login_1 = require("./login/login");
-var alert_component_1 = require("./modal/alert.component");
+var alert_component_1 = require("../../common/modal/alert.component");
 var IndividualUpdateComponent = (function () {
     function IndividualUpdateComponent(_individualUpdateService, _domainService, _router, fb) {
         this._individualUpdateService = _individualUpdateService;
