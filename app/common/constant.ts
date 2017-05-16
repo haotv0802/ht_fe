@@ -9,6 +9,7 @@ export class Constants {
   // HTTP Status
   public HTTP_STATUS_NO_CONTENT: number = 204;
   public HTTP_STATUS_BAD_REQUEST: number = 400;
+  public HTTP_STATUS_UNAUTHORIZED: number = 401;
 
   // Services URLs for Admin
   public ADMIN_USERS_SERVICE_URL: string = this.HOST + '/admin/users';

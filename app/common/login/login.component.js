@@ -15,12 +15,14 @@ var credential_1 = require("./credential");
 var router_1 = require("@angular/router");
 var constant_1 = require("./../constant");
 var forms_1 = require("@angular/forms");
+var angular2_toaster_1 = require("angular2-toaster");
 var LoginComponent = (function () {
-    function LoginComponent(loginService, _router, _constants, fb) {
+    function LoginComponent(loginService, _router, _constants, fb, _toasterService) {
         this.loginService = loginService;
         this._router = _router;
         this._constants = _constants;
         this.fb = fb;
+        this._toasterService = _toasterService;
         this.pageTitle = "Login";
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -31,7 +33,8 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        // console.log(this.loginForm.value);
+        // this._toasterService.pop('error', 'Args Title', 'Args Body');
+        console.log(this.loginForm.value);
         var credential = new credential_1.Credential();
         credential.user = this.loginForm.get("username").value;
         credential.pass = this.loginForm.get("password").value;
@@ -46,9 +49,11 @@ var LoginComponent = (function () {
                 _this._router.navigate(['welcome']);
             }
         }, function (error) {
-            console.log("Unauthorized:");
             console.log(error);
-            _this._router.navigate(['welcome']);
+            if (error.status == _this._constants.HTTP_STATUS_UNAUTHORIZED) {
+                _this._toasterService.pop('error', 'Username or Password is incorrect!');
+            }
+            // this._router.navigate(['welcome']);
         });
     };
     return LoginComponent;
@@ -60,7 +65,8 @@ LoginComponent = __decorate([
     __metadata("design:paramtypes", [login_service_1.LoginService,
         router_1.Router,
         constant_1.Constants,
-        forms_1.FormBuilder])
+        forms_1.FormBuilder,
+        angular2_toaster_1.ToasterService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

@@ -4,6 +4,7 @@ import {Credential} from "./credential";
 import {Router} from '@angular/router';
 import {Constants} from './../constant';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ToasterService} from "angular2-toaster";
 
 @Component({
   templateUrl: 'app/common/login/login.component.html'
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private _router: Router,
     private _constants: Constants,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _toasterService: ToasterService
   ) {
 
   }
@@ -31,7 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // console.log(this.loginForm.value);
+    // this._toasterService.pop('error', 'Args Title', 'Args Body');
+    console.log(this.loginForm.value);
     let credential = new Credential();
     credential.user = this.loginForm.get("username").value;
     credential.pass = this.loginForm.get("password").value;
@@ -47,10 +50,12 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['welcome']);
         }
       },
-      (error) => {
-        console.log("Unauthorized:");
+      (error: any) => {
         console.log(error);
-        this._router.navigate(['welcome']);
+        if (error.status == this._constants.HTTP_STATUS_UNAUTHORIZED) {
+          this._toasterService.pop('error', 'Username or Password is incorrect!');
+        }
+        // this._router.navigate(['welcome']);
       }
     );
   }
