@@ -5,6 +5,7 @@ import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Image} from "./image";
 import {Constants} from "../../common/constant";
 import {AlertComponent} from "../../common/modal/alert.component";
+import {ToasterService} from "angular2-toaster";
 
 @Component({
   moduleId: module.id,
@@ -25,7 +26,8 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
       private _router: Router,
       private fb: FormBuilder,
       private _route: ActivatedRoute,
-      private _constants: Constants
+      private _constants: Constants,
+      private _toasterService: ToasterService
   ) {
     this.pageTitle = 'Image Update';
     // this.getImages();
@@ -116,7 +118,8 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
         (error: any) => {
           console.log(error);
           if (error.status = this._constants.HTTP_STATUS_BAD_REQUEST) {
-            this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+            // this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+            this._toasterService.pop("error", error.json().faultMessage);
           }
         }
       )

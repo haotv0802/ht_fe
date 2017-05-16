@@ -16,13 +16,15 @@ var forms_1 = require("@angular/forms");
 var image_1 = require("./image");
 var constant_1 = require("../../common/constant");
 var alert_component_1 = require("../../common/modal/alert.component");
+var angular2_toaster_1 = require("angular2-toaster");
 var ImagesUpdateComponent = (function () {
-    function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route, _constants) {
+    function ImagesUpdateComponent(_imageUpdateService, _router, fb, _route, _constants, _toasterService) {
         this._imageUpdateService = _imageUpdateService;
         this._router = _router;
         this.fb = fb;
         this._route = _route;
         this._constants = _constants;
+        this._toasterService = _toasterService;
         this.pageTitle = 'Image Update';
         // this.getImages();
     }
@@ -102,7 +104,8 @@ var ImagesUpdateComponent = (function () {
         }, function (error) {
             console.log(error);
             if (error.status = _this._constants.HTTP_STATUS_BAD_REQUEST) {
-                _this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+                // this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
+                _this._toasterService.pop("error", error.json().faultMessage);
             }
         });
     };
@@ -178,7 +181,8 @@ ImagesUpdateComponent = __decorate([
         router_1.Router,
         forms_1.FormBuilder,
         router_1.ActivatedRoute,
-        constant_1.Constants])
+        constant_1.Constants,
+        angular2_toaster_1.ToasterService])
 ], ImagesUpdateComponent);
 exports.ImagesUpdateComponent = ImagesUpdateComponent;
 //# sourceMappingURL=imagesUpdate.component.js.map
