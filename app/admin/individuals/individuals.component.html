@@ -2,7 +2,7 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
-    <div class="table-responsive" align="center">
+    <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:400px;">
         <table class="table table-bordered table-hover">
             <thead style="color: #337AB7">
                 <th class="col-sm-1">Id</th>
@@ -19,19 +19,31 @@
                     </a>
                 </th>
             </thead>
-            <tr *ngFor="let indiv of individuals">
-                <td>{{indiv.id}}</td>
-                <td>{{indiv.firstName}} {{indiv.lastName}}</td>
-                <td>{{indiv.birthday}}</td>
-                <td>{{indiv.gender}}</td>
-                <td>{{indiv.email}}</td>
-                <td>{{indiv.phoneNumber}}</td>
-                <td>{{indiv.userName}}</td>
-                <td>
-                    <button type="button" class="btn btn-link" (click)="displayIndividual(indiv)">View</button> |
-                    <button type="button" class="btn btn-link" (click)="editIndividual(indiv)">Edit</button>
-                </td>
-            </tr>
+            <tbody>
+                <tr *ngFor="let indiv of individuals">
+                    <td>{{indiv.id}}</td>
+                    <td>{{indiv.firstName}} {{indiv.lastName}}</td>
+                    <td>{{indiv.birthday}}</td>
+                    <td>{{indiv.gender}}</td>
+                    <td>{{indiv.email}}</td>
+                    <td>{{indiv.phoneNumber}}</td>
+                    <td>{{indiv.userName}}</td>
+                    <td>
+                        <button type="button" class="btn btn-link" (click)="displayIndividual(indiv)">View</button> |
+                        <button type="button" class="btn btn-link" (click)="editIndividual(indiv)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
+    <div align="center">
+        <ul class="pagination">
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
+    </div>
+
 </div>
