@@ -28,12 +28,13 @@ export class IndividualsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getIndividuals();
-    // this.getIndividualsWithPaging();
-    // this.getIndividualsCount();
+    this.getIndividuals(0);
+  }
+
+  getIndividuals(pageNum: number) {
     Observable.forkJoin(
       this._individualService.getIndividualsCount(),
-      this._individualService.getIndividualsWithPaging(0)
+      this._individualService.getIndividualsWithPaging(pageNum)
     ).subscribe(
       (data) => {
         this.individualsCount = data[0];
@@ -51,55 +52,7 @@ export class IndividualsComponent implements OnInit {
       }
     )
     ;
-  }
-
-  getIndividuals(): void {
-    this._individualService.getIndividuals().subscribe(
-      (individuals) => {
-        this.individuals = individuals;
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
-  }
-
-  getIndividualsWithPageNum(pageNum: number) {
-    this._individualService.getIndividualsWithPaging(pageNum).subscribe(
-      (slice) => {
-        this.individuals = slice.content;
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
     return false;
-  }
-
-  // getIndividualsWithPaging(): void {
-  //   this._individualService.getIndividualsWithPaging().subscribe(
-  //     (slice) => {
-  //       this.individuals = slice.content;
-  //       this.pagination = new Pagination(slice, 0);
-  //       console.log(this.pagination);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }
-
-  getIndividualsCount(): void {
-    this._individualService.getIndividualsCount().subscribe(
-      (count) => {
-        this.individualsCount = count;
-        console.log("this.individualsCount");
-        console.log(this.individualsCount);
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
   }
 
   displayIndividual(individual: Individual) : void {

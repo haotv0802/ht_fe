@@ -25,11 +25,11 @@ var IndividualsComponent = (function () {
         this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
+        this.getIndividuals(0);
+    };
+    IndividualsComponent.prototype.getIndividuals = function (pageNum) {
         var _this = this;
-        // this.getIndividuals();
-        // this.getIndividualsWithPaging();
-        // this.getIndividualsCount();
-        Rx_1.Observable.forkJoin(this._individualService.getIndividualsCount(), this._individualService.getIndividualsWithPaging(0)).subscribe(function (data) {
+        Rx_1.Observable.forkJoin(this._individualService.getIndividualsCount(), this._individualService.getIndividualsWithPaging(pageNum)).subscribe(function (data) {
             _this.individualsCount = data[0];
             _this.individuals = data[1].content;
             _this.pagination = new pagination_1.Pagination(data[1], _this.individualsCount);
@@ -42,45 +42,7 @@ var IndividualsComponent = (function () {
         }, function (error) {
             console.log(error);
         });
-    };
-    IndividualsComponent.prototype.getIndividuals = function () {
-        var _this = this;
-        this._individualService.getIndividuals().subscribe(function (individuals) {
-            _this.individuals = individuals;
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    IndividualsComponent.prototype.getIndividualsWithPageNum = function (pageNum) {
-        var _this = this;
-        this._individualService.getIndividualsWithPaging(pageNum).subscribe(function (slice) {
-            _this.individuals = slice.content;
-        }, function (error) {
-            console.log(error);
-        });
         return false;
-    };
-    // getIndividualsWithPaging(): void {
-    //   this._individualService.getIndividualsWithPaging().subscribe(
-    //     (slice) => {
-    //       this.individuals = slice.content;
-    //       this.pagination = new Pagination(slice, 0);
-    //       console.log(this.pagination);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   )
-    // }
-    IndividualsComponent.prototype.getIndividualsCount = function () {
-        var _this = this;
-        this._individualService.getIndividualsCount().subscribe(function (count) {
-            _this.individualsCount = count;
-            console.log("this.individualsCount");
-            console.log(_this.individualsCount);
-        }, function (error) {
-            console.log(error);
-        });
     };
     IndividualsComponent.prototype.displayIndividual = function (individual) {
         this._individualDetailsService.individual = individual;
