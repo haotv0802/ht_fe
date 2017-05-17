@@ -24,6 +24,7 @@ var Constants = (function () {
         //  Individuals (for Admin)
         this.ADMIN_INDIVIDUALS_SERVICE_URL = this.HOST + '/admin/individuals';
         this.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL = this.HOST + '/admin/individuals/paging';
+        this.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL = this.HOST + '/admin/individuals/count';
         this.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL = this.HOST + '/admin/individuals/isUserNameExisting';
         this.ADMIN_ROLES_SERVICE_URL = this.HOST + '/admin/roles';
         // Services URLs for Staff

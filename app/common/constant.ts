@@ -20,6 +20,7 @@ export class Constants {
   //  Individuals (for Admin)
   public ADMIN_INDIVIDUALS_SERVICE_URL: string = this.HOST + '/admin/individuals';
   public ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL: string = this.HOST + '/admin/individuals/paging';
+  public ADMIN_INDIVIDUALS_COUNT_SERVICE_URL: string = this.HOST + '/admin/individuals/count';
   public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this.HOST + '/admin/individuals/isUserNameExisting';
   public ADMIN_ROLES_SERVICE_URL: string = this.HOST + '/admin/roles';
 

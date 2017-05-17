@@ -26,6 +26,7 @@ var IndividualsComponent = (function () {
     IndividualsComponent.prototype.ngOnInit = function () {
         // this.getIndividuals();
         this.getIndividualsWithPaging();
+        this.getIndividualsCount();
     };
     IndividualsComponent.prototype.getIndividuals = function () {
         var _this = this;
@@ -41,6 +42,16 @@ var IndividualsComponent = (function () {
             _this.individuals = slice.content;
             _this.pagination = new pagination_1.Pagination(slice);
             console.log(_this.pagination);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    IndividualsComponent.prototype.getIndividualsCount = function () {
+        var _this = this;
+        this._individualService.getIndividualsCount().subscribe(function (count) {
+            _this.individualsCount = count;
+            console.log("this.individualsCount");
+            console.log(_this.individualsCount);
         }, function (error) {
             console.log(error);
         });

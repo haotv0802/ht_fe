@@ -29,6 +29,11 @@ var IndividualsService = (function () {
         return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL, params)
             .map(function (res) { return res.json(); });
     };
+    IndividualsService.prototype.getIndividualsCount = function () {
+        return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL)
+            .map(function (res) { return res.json().individualsCount; })
+            .do(function (data) { return console.log(data); });
+    };
     return IndividualsService;
 }());
 IndividualsService = __decorate([

@@ -15,6 +15,7 @@ export class IndividualsComponent implements OnInit {
   pageTitle: string;
   individuals: Individual[];
   pagination: Pagination;
+  individualsCount: number;
 
   constructor(
     private _individualService: IndividualsService,
@@ -28,6 +29,7 @@ export class IndividualsComponent implements OnInit {
   ngOnInit(): void {
     // this.getIndividuals();
     this.getIndividualsWithPaging();
+    this.getIndividualsCount();
   }
 
   getIndividuals(): void {
@@ -47,6 +49,19 @@ export class IndividualsComponent implements OnInit {
         this.individuals = slice.content;
         this.pagination = new Pagination(slice);
         console.log(this.pagination);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  getIndividualsCount(): void {
+    this._individualService.getIndividualsCount().subscribe(
+      (count) => {
+        this.individualsCount = count;
+        console.log("this.individualsCount");
+        console.log(this.individualsCount);
       },
       (error) => {
         console.log(error);

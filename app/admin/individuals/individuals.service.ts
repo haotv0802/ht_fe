@@ -29,4 +29,11 @@ export class IndividualsService {
       // .do(data => console.log('All: ' + JSON.stringify(data)))
       ;
   }
+
+  getIndividualsCount(): Observable<number> {
+    return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL)
+      .map((res) => {return <number>res.json().individualsCount})
+      .do(data => console.log(data))
+      ;
+  }
 }
