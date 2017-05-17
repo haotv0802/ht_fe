@@ -41,10 +41,11 @@ var IndividualsComponent = (function () {
             console.log(error);
         });
     };
-    IndividualsComponent.prototype.onWindowScroll = function () {
-        var number = this.document.body.scrollTop;
-        console.log("number: " + number);
-    };
+    // @HostListener("window:scroll", [])
+    // onWindowScroll() {
+    //   let number = this.document.body.scrollTop;
+    //   console.log("number: " + number);
+    // }
     IndividualsComponent.prototype.getIndividuals = function (pageNum) {
         var _this = this;
         Rx_1.Observable.forkJoin(this._individualService.getIndividualsCount(), this._individualService.getIndividualsWithPaging(pageNum)).subscribe(function (data) {
@@ -71,14 +72,17 @@ var IndividualsComponent = (function () {
     IndividualsComponent.prototype.counter = function (length) {
         return new Array(length);
     };
+    IndividualsComponent.prototype.onScroll = function (event) {
+        console.log(event);
+    };
     return IndividualsComponent;
 }());
 __decorate([
-    core_1.HostListener("window:scroll", []),
+    core_1.HostListener('scroll', ['$event']),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], IndividualsComponent.prototype, "onWindowScroll", null);
+], IndividualsComponent.prototype, "onScroll", null);
 IndividualsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

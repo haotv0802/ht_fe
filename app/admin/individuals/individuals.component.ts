@@ -46,11 +46,11 @@ export class IndividualsComponent implements OnInit {
     )
   }
 
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    let number = this.document.body.scrollTop;
-    console.log("number: " + number);
-  }
+  // @HostListener("window:scroll", [])
+  // onWindowScroll() {
+  //   let number = this.document.body.scrollTop;
+  //   console.log("number: " + number);
+  // }
 
   getIndividuals(pageNum: number) {
     Observable.forkJoin(
@@ -79,6 +79,7 @@ export class IndividualsComponent implements OnInit {
     this._individualUpdateService.individual = individual;
     this._router.navigate(["admin/individuals/update"]);
   }
+
   addIndividual() {
     this._router.navigate(["admin/individuals/add"]);
     return false;
@@ -87,4 +88,10 @@ export class IndividualsComponent implements OnInit {
   counter(length: number){
     return new Array(length);
   }
+
+  @HostListener('scroll', ['$event'])
+  onScroll(event: any) {
+    console.log(event);
+  }
+
 }
