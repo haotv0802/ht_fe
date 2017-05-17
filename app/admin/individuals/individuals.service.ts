@@ -19,9 +19,9 @@ export class IndividualsService {
       ;
   }
 
-  getIndividualsWithPaging(): Observable<any> {
+  getIndividualsWithPaging(pageNum: number): Observable<any> {
     let params: URLSearchParams = new URLSearchParams();
-    params.set("page", "3");
+    params.set("page", pageNum.toString());
     params.set("size", "5");
 
     return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL, params)
@@ -33,7 +33,7 @@ export class IndividualsService {
   getIndividualsCount(): Observable<number> {
     return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL)
       .map((res) => {return <number>res.json().individualsCount})
-      .do(data => console.log(data))
+      // .do(data => console.log(data))
       ;
   }
 }

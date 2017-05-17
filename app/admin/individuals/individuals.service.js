@@ -22,17 +22,16 @@ var IndividualsService = (function () {
         return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_SERVICE_URL)
             .map(function (res) { return res.json(); });
     };
-    IndividualsService.prototype.getIndividualsWithPaging = function () {
+    IndividualsService.prototype.getIndividualsWithPaging = function (pageNum) {
         var params = new http_1.URLSearchParams();
-        params.set("page", "3");
+        params.set("page", pageNum.toString());
         params.set("size", "5");
         return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL, params)
             .map(function (res) { return res.json(); });
     };
     IndividualsService.prototype.getIndividualsCount = function () {
         return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL)
-            .map(function (res) { return res.json().individualsCount; })
-            .do(function (data) { return console.log(data); });
+            .map(function (res) { return res.json().individualsCount; });
     };
     return IndividualsService;
 }());

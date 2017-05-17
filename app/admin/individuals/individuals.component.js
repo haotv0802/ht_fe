@@ -15,6 +15,7 @@ var individualDetails_service_1 = require("./individualDetails.service");
 var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var pagination_1 = require("../../common/pagination");
+var Rx_1 = require("rxjs/Rx");
 var IndividualsComponent = (function () {
     function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router) {
         this._individualService = _individualService;
@@ -24,9 +25,23 @@ var IndividualsComponent = (function () {
         this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         // this.getIndividuals();
-        this.getIndividualsWithPaging();
-        this.getIndividualsCount();
+        // this.getIndividualsWithPaging();
+        // this.getIndividualsCount();
+        Rx_1.Observable.forkJoin(this._individualService.getIndividualsCount(), this._individualService.getIndividualsWithPaging(0)).subscribe(function (data) {
+            _this.individualsCount = data[0];
+            _this.individuals = data[1].content;
+            _this.pagination = new pagination_1.Pagination(data[1], _this.individualsCount);
+            console.log("individualsCount: ");
+            console.log(_this.individualsCount);
+            console.log("individuals: ");
+            console.log(_this.individuals);
+            console.log("pagination: ");
+            console.log(_this.pagination);
+        }, function (error) {
+            console.log(error);
+        });
     };
     IndividualsComponent.prototype.getIndividuals = function () {
         var _this = this;
@@ -36,16 +51,27 @@ var IndividualsComponent = (function () {
             console.log(error);
         });
     };
-    IndividualsComponent.prototype.getIndividualsWithPaging = function () {
+    IndividualsComponent.prototype.getIndividualsWithPageNum = function (pageNum) {
         var _this = this;
-        this._individualService.getIndividualsWithPaging().subscribe(function (slice) {
+        this._individualService.getIndividualsWithPaging(pageNum).subscribe(function (slice) {
             _this.individuals = slice.content;
-            _this.pagination = new pagination_1.Pagination(slice);
-            console.log(_this.pagination);
         }, function (error) {
             console.log(error);
         });
+        return false;
     };
+    // getIndividualsWithPaging(): void {
+    //   this._individualService.getIndividualsWithPaging().subscribe(
+    //     (slice) => {
+    //       this.individuals = slice.content;
+    //       this.pagination = new Pagination(slice, 0);
+    //       console.log(this.pagination);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     }
+    //   )
+    // }
     IndividualsComponent.prototype.getIndividualsCount = function () {
         var _this = this;
         this._individualService.getIndividualsCount().subscribe(function (count) {
@@ -67,6 +93,10 @@ var IndividualsComponent = (function () {
     IndividualsComponent.prototype.addIndividual = function () {
         this._router.navigate(["admin/individuals/add"]);
         return false;
+    };
+    IndividualsComponent.prototype.counter = function (length) {
+        console.log("counter: " + length);
+        return new Array(length);
     };
     return IndividualsComponent;
 }());
