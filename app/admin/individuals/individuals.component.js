@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var individuals_service_1 = require("./individuals.service");
@@ -16,16 +19,31 @@ var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
 var pagination_1 = require("../../common/pagination");
 var Rx_1 = require("rxjs/Rx");
+var platform_browser_1 = require("@angular/platform-browser");
 var IndividualsComponent = (function () {
-    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router) {
+    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router, document) {
         this._individualService = _individualService;
         this._individualDetailsService = _individualDetailsService;
         this._individualUpdateService = _individualUpdateService;
         this._router = _router;
+        this.document = document;
         this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
         this.getIndividuals(0);
+        this.getAllIndividuals();
+    };
+    IndividualsComponent.prototype.getAllIndividuals = function () {
+        var _this = this;
+        this._individualService.getIndividuals().subscribe(function (individuals) {
+            _this.individualsALL = individuals;
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    IndividualsComponent.prototype.onWindowScroll = function () {
+        var number = this.document.body.scrollTop;
+        console.log("number: " + number);
     };
     IndividualsComponent.prototype.getIndividuals = function (pageNum) {
         var _this = this;
@@ -33,12 +51,6 @@ var IndividualsComponent = (function () {
             _this.individualsCount = data[0];
             _this.individuals = data[1].content;
             _this.pagination = new pagination_1.Pagination(data[1], _this.individualsCount);
-            console.log("individualsCount: ");
-            console.log(_this.individualsCount);
-            console.log("individuals: ");
-            console.log(_this.individuals);
-            console.log("pagination: ");
-            console.log(_this.pagination);
         }, function (error) {
             console.log(error);
         });
@@ -57,21 +69,28 @@ var IndividualsComponent = (function () {
         return false;
     };
     IndividualsComponent.prototype.counter = function (length) {
-        console.log("counter: " + length);
         return new Array(length);
     };
     return IndividualsComponent;
 }());
+__decorate([
+    core_1.HostListener("window:scroll", []),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], IndividualsComponent.prototype, "onWindowScroll", null);
 IndividualsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: 'individuals.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
+    __param(4, core_1.Inject(platform_browser_1.DOCUMENT)),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
         individualDetails_service_1.IndividualDetailsService,
         individualUpdate_service_1.IndividualUpdateService,
-        router_1.Router])
+        router_1.Router,
+        Document])
 ], IndividualsComponent);
 exports.IndividualsComponent = IndividualsComponent;
 //# sourceMappingURL=individuals.component.js.map

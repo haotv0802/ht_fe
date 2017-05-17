@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, HostListener, Inject} from "@angular/core";
 import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
 import {IndividualDetailsService} from "./individualDetails.service";
@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
 import {Pagination} from "../../common/pagination";
 import {Observable} from "rxjs/Rx";
+import {DOCUMENT} from "@angular/platform-browser";
 
 @Component({
   moduleId: module.id,
@@ -15,6 +16,7 @@ import {Observable} from "rxjs/Rx";
 export class IndividualsComponent implements OnInit {
   pageTitle: string;
   individuals: Individual[];
+  individualsALL: Individual[];
   pagination: Pagination;
   individualsCount: number;
 
@@ -22,13 +24,32 @@ export class IndividualsComponent implements OnInit {
     private _individualService: IndividualsService,
     private _individualDetailsService: IndividualDetailsService,
     private _individualUpdateService: IndividualUpdateService,
-    private _router: Router
+    private _router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.pageTitle = 'Individual List';
   }
 
   ngOnInit(): void {
     this.getIndividuals(0);
+    this.getAllIndividuals();
+  }
+
+  getAllIndividuals(): void {
+    this._individualService.getIndividuals().subscribe(
+      (individuals) => {
+        this.individualsALL = individuals;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    let number = this.document.body.scrollTop;
+    console.log("number: " + number);
   }
 
   getIndividuals(pageNum: number) {
@@ -40,12 +61,6 @@ export class IndividualsComponent implements OnInit {
         this.individualsCount = data[0];
         this.individuals = data[1].content;
         this.pagination = new Pagination(data[1], this.individualsCount);
-        console.log("individualsCount: ");
-        console.log(this.individualsCount);
-        console.log("individuals: ");
-        console.log(this.individuals);
-        console.log("pagination: ");
-        console.log(this.pagination);
       },
       (error: any) => {
         console.log(error);
@@ -70,7 +85,6 @@ export class IndividualsComponent implements OnInit {
   }
 
   counter(length: number){
-    console.log("counter: " + length);
     return new Array(length);
   }
 }
