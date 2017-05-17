@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-
 import {Individual} from "./individual";
 import {IndividualsService} from "./individuals.service";
 import {IndividualDetailsService} from "./individualDetails.service";
 import {Router} from "@angular/router";
 import {IndividualUpdateService} from "./individualUpdate.service";
+import {Pagination} from "../../common/pagination";
 
 @Component({
   moduleId: module.id,
@@ -14,6 +14,8 @@ import {IndividualUpdateService} from "./individualUpdate.service";
 export class IndividualsComponent implements OnInit {
   pageTitle: string;
   individuals: Individual[];
+  pagination: Pagination;
+
   constructor(
     private _individualService: IndividualsService,
     private _individualDetailsService: IndividualDetailsService,
@@ -24,13 +26,27 @@ export class IndividualsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getIndividuals();
+    // this.getIndividuals();
+    this.getIndividualsWithPaging();
   }
 
   getIndividuals(): void {
     this._individualService.getIndividuals().subscribe(
       (individuals) => {
         this.individuals = individuals;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  getIndividualsWithPaging(): void {
+    this._individualService.getIndividualsWithPaging().subscribe(
+      (slice) => {
+        this.individuals = slice.content;
+        this.pagination = new Pagination(slice);
+        console.log(this.pagination);
       },
       (error) => {
         console.log(error);

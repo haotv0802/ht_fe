@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var constant_1 = require("../../common/constant");
 var HTTP_service_1 = require("../../common/HTTP.service");
+var http_1 = require("@angular/http");
 var IndividualsService = (function () {
     function IndividualsService(_httpService, _constants) {
         this._httpService = _httpService;
@@ -19,6 +20,13 @@ var IndividualsService = (function () {
     }
     IndividualsService.prototype.getIndividuals = function () {
         return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_SERVICE_URL)
+            .map(function (res) { return res.json(); });
+    };
+    IndividualsService.prototype.getIndividualsWithPaging = function () {
+        var params = new http_1.URLSearchParams();
+        params.set("page", "3");
+        params.set("size", "5");
+        return this._httpService.get(this._constants.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL, params)
             .map(function (res) { return res.json(); });
     };
     return IndividualsService;

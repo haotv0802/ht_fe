@@ -14,6 +14,7 @@ var individuals_service_1 = require("./individuals.service");
 var individualDetails_service_1 = require("./individualDetails.service");
 var router_1 = require("@angular/router");
 var individualUpdate_service_1 = require("./individualUpdate.service");
+var pagination_1 = require("../../common/pagination");
 var IndividualsComponent = (function () {
     function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router) {
         this._individualService = _individualService;
@@ -23,12 +24,23 @@ var IndividualsComponent = (function () {
         this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
-        this.getIndividuals();
+        // this.getIndividuals();
+        this.getIndividualsWithPaging();
     };
     IndividualsComponent.prototype.getIndividuals = function () {
         var _this = this;
         this._individualService.getIndividuals().subscribe(function (individuals) {
             _this.individuals = individuals;
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    IndividualsComponent.prototype.getIndividualsWithPaging = function () {
+        var _this = this;
+        this._individualService.getIndividualsWithPaging().subscribe(function (slice) {
+            _this.individuals = slice.content;
+            _this.pagination = new pagination_1.Pagination(slice);
+            console.log(_this.pagination);
         }, function (error) {
             console.log(error);
         });

@@ -19,7 +19,7 @@
                     </a>
                 </th>
             </thead>
-            <tbody>
+            <tbody *ngIf="individuals">
                 <tr *ngFor="let indiv of individuals">
                     <td>{{indiv.id}}</td>
                     <td>{{indiv.firstName}} {{indiv.lastName}}</td>
