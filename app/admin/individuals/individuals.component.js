@@ -36,7 +36,7 @@ var IndividualsComponent = (function () {
     };
     IndividualsComponent.prototype.getAllIndividuals = function () {
         var _this = this;
-        var timer = Rx_1.Observable.timer(5000, 5000);
+        var timer = Rx_1.Observable.interval(5000);
         // subscribing to a observable returns a subscription object
         timer.subscribe(function () {
             _this._individualService.getIndividuals().subscribe(function (individuals) {
