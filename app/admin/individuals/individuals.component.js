@@ -27,6 +27,7 @@ var IndividualsComponent = (function () {
         this._individualUpdateService = _individualUpdateService;
         this._router = _router;
         this.document = document;
+        this.isShown = true;
         this.pageTitle = 'Individual List';
     }
     IndividualsComponent.prototype.ngOnInit = function () {
@@ -35,10 +36,15 @@ var IndividualsComponent = (function () {
     };
     IndividualsComponent.prototype.getAllIndividuals = function () {
         var _this = this;
-        this._individualService.getIndividuals().subscribe(function (individuals) {
-            _this.individualsALL = individuals;
-        }, function (error) {
-            console.log(error);
+        var timer = Rx_1.Observable.timer(5000, 5000);
+        // subscribing to a observable returns a subscription object
+        timer.subscribe(function () {
+            _this._individualService.getIndividuals().subscribe(function (individuals) {
+                _this.individualsALL = individuals;
+                _this.isShown = false;
+            }, function (error) {
+                console.log(error);
+            });
         });
     };
     // @HostListener("window:scroll", [])
@@ -86,8 +92,8 @@ __decorate([
 IndividualsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        templateUrl: 'individuals.component.html'
-        // styleUrls: ['app/products/product-list.component.css']
+        templateUrl: 'individuals.component.html',
+        styleUrls: ['individual.bubbling.component.css']
     }),
     __param(4, core_1.Inject(platform_browser_1.DOCUMENT)),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,

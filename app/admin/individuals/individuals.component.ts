@@ -10,8 +10,8 @@ import {DOCUMENT} from "@angular/platform-browser";
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'individuals.component.html'
-  // styleUrls: ['app/products/product-list.component.css']
+  templateUrl: 'individuals.component.html',
+  styleUrls: ['individual.bubbling.component.css']
 })
 export class IndividualsComponent implements OnInit {
   pageTitle: string;
@@ -19,6 +19,7 @@ export class IndividualsComponent implements OnInit {
   individualsALL: Individual[];
   pagination: Pagination;
   individualsCount: number;
+  isShown: boolean = true;
 
   constructor(
     private _individualService: IndividualsService,
@@ -36,14 +37,21 @@ export class IndividualsComponent implements OnInit {
   }
 
   getAllIndividuals(): void {
-    this._individualService.getIndividuals().subscribe(
-      (individuals) => {
-        this.individualsALL = individuals;
-      },
-      (error) => {
-        console.log(error);
+    let timer = Observable.timer(5000,5000);
+    // subscribing to a observable returns a subscription object
+    timer.subscribe(
+      () => {
+        this._individualService.getIndividuals().subscribe(
+          (individuals) => {
+            this.individualsALL = individuals;
+            this.isShown = false;
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
       }
-    )
+    );
   }
 
   // @HostListener("window:scroll", [])
