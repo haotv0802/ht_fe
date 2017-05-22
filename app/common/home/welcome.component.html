@@ -9,4 +9,24 @@
                  style="max-height:300px;padding-bottom:50px"/>
         </div>
     </div>
+    <ul class="pagination">
+        <li *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]"
+            [class.current]="id == 's'+ num "
+            (click)="scrollTo('#s'+num, '#v-scrollable')">{{num}}
+    </ul>
+
+    scrolled to: {{id}}
+    <div id="v-scrollable" class="scrollable section"
+         ngui-scrollable (elementVisible)="id = $event.id">
+        <div id="s1">Section 1  (scroll to here)</div>
+        <div id="s2">Section 2  (scroll to here)</div>
+        <div id="s3">Section 3  (scroll to here)</div>
+        <div id="s4">Section 4  (scroll to here)</div>
+        <div id="s5">Section 5  (scroll to here)</div>
+        <div id="s6">Section 6  (scroll to here)</div>
+        <div id="s7">Section 7  (scroll to here)</div>
+        <div id="s8">Section 8  (scroll to here)</div>
+        <div id="s9">Section 9  (scroll to here)</div>
+        <div id="s10">Section 10  (scroll to here)</div>
+    </div>
 </div>

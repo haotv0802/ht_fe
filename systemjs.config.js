@@ -24,6 +24,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // toaster
       'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js',
+      // scrollable
+      '@ngui/scrollable': 'node_modules/@ngui/scrollable/dist/scrollable.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs'
     },

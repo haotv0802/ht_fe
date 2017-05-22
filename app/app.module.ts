@@ -13,6 +13,7 @@ import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
 import {HTCommonModule} from "./common/htCommon.module";
 import {ToasterModule} from "angular2-toaster";
+import {NguiScrollableModule} from "@ngui/scrollable";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {ToasterModule} from "angular2-toaster";
     ProductModule,
     AdminModule,
     HTCommonModule,
-    ToasterModule
+    ToasterModule,
+    NguiScrollableModule
   ],
   declarations: [
     AppComponent,

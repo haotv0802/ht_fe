@@ -7,15 +7,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var scrollable_1 = require("@ngui/scrollable");
 var WelcomeComponent = (function () {
     function WelcomeComponent() {
         this.pageTitle = 'Welcome';
+        this.id = 's1';
+        this.hid = 'h1';
+        this.wid = 'w1';
     }
+    WelcomeComponent.prototype.scrollTo = function (selector, parentSelector, horizontal) {
+        scrollable_1.NguiScrollableDirective.scrollTo(selector, // scroll to this
+        parentSelector, // scroll within (null if window scrolling)
+        horizontal, // is it horizontal scrolling
+        10 // distance from top or left
+        );
+    };
     return WelcomeComponent;
 }());
 WelcomeComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/common/home/welcome.component.html'
+        templateUrl: 'app/common/home/welcome.component.html',
+        styleUrls: ['app/common/home/welcome.component.css']
     })
 ], WelcomeComponent);
 exports.WelcomeComponent = WelcomeComponent;

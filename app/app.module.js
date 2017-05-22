@@ -21,6 +21,7 @@ var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
 var htCommon_module_1 = require("./common/htCommon.module");
 var angular2_toaster_1 = require("angular2-toaster");
+var scrollable_1 = require("@ngui/scrollable");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -42,7 +43,8 @@ AppModule = __decorate([
             product_module_1.ProductModule,
             admin_module_1.AdminModule,
             htCommon_module_1.HTCommonModule,
-            angular2_toaster_1.ToasterModule
+            angular2_toaster_1.ToasterModule,
+            scrollable_1.NguiScrollableModule
         ],
         declarations: [
             app_component_1.AppComponent,
