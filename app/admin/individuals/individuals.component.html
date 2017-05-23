@@ -3,6 +3,7 @@
         {{pageTitle}}
     </div>
     <loader-modal [opening]="isOpen" (loaderClicked)='onLoaderClicked($event)'></loader-modal>
+    <loader [opening]="isOpen"></loader>
     <button (click)="onClick()">Alert</button>
     <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:500px;">
         <table class="table table-bordered table-hover">

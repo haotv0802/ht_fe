@@ -4,6 +4,7 @@ import {OpenDirective} from "../common/modal/open.component";
 import {ModalComponent} from "./modal/modal.component";
 import {CommonModule} from "@angular/common";
 import {LoaderModalComponent} from "./modal/loaderModal/loader.modal.component";
+import {LoaderComponent} from "./loader/loader.component";
 
 @NgModule({
   imports: [CommonModule],
@@ -11,14 +12,16 @@ import {LoaderModalComponent} from "./modal/loaderModal/loader.modal.component";
     AlertComponent,
     OpenDirective,
     ModalComponent,
-    LoaderModalComponent
+    LoaderModalComponent,
+    LoaderComponent
   ],
   exports: [
     AlertComponent,
     OpenDirective,
     ModalComponent,
     LoaderModalComponent,
-    CommonModule
+    CommonModule,
+    LoaderComponent
   ],
   providers: []
 })
