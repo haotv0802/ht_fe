@@ -1,12 +1,12 @@
 import {Component, Input, OnChanges, Output, EventEmitter} from "@angular/core";
 
 @Component({
-  selector: 'loader',
+  selector: 'loader-modal',
   moduleId: module.id,
-  templateUrl: 'loader.component.html',
+  templateUrl: 'loader.modal.component.html',
   styleUrls: ['fountain.component.css', 'bubbling.component.css']
 })
-export class LoaderComponent implements OnChanges {
+export class LoaderModalComponent implements OnChanges {
 
   @Input() opening: boolean = false;
   @Output() loaderClicked: EventEmitter<string> = new EventEmitter<string>();

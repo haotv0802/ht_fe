@@ -2,15 +2,7 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
-    <!--<div class="bubblingG" *ngIf="isShown">-->
-        <!--<span id="bubblingG_1">-->
-        <!--</span>-->
-        <!--<span id="bubblingG_2">-->
-        <!--</span>-->
-        <!--<span id="bubblingG_3">-->
-        <!--</span>-->
-    <!--</div>-->
-    <loader [opening]="isOpen" (loaderClicked)='onLoaderClicked($event)'></loader>
+    <loader-modal [opening]="isOpen" (loaderClicked)='onLoaderClicked($event)'></loader-modal>
     <button (click)="onClick()">Alert</button>
     <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:500px;">
         <table class="table table-bordered table-hover">

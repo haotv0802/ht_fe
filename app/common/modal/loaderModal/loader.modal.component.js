@@ -10,35 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var LoaderComponent = (function () {
-    function LoaderComponent() {
+var LoaderModalComponent = (function () {
+    function LoaderModalComponent() {
         this.opening = false;
         this.loaderClicked = new core_1.EventEmitter();
     }
-    LoaderComponent.prototype.ngOnChanges = function () {
+    LoaderModalComponent.prototype.ngOnChanges = function () {
         console.log("LoaderComponent, ngOnChanges " + this.opening);
     };
-    LoaderComponent.prototype.onClick = function () {
+    LoaderModalComponent.prototype.onClick = function () {
         // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);
         console.log(this.opening);
     };
-    return LoaderComponent;
+    return LoaderModalComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
-], LoaderComponent.prototype, "opening", void 0);
+], LoaderModalComponent.prototype, "opening", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
-], LoaderComponent.prototype, "loaderClicked", void 0);
-LoaderComponent = __decorate([
+], LoaderModalComponent.prototype, "loaderClicked", void 0);
+LoaderModalComponent = __decorate([
     core_1.Component({
-        selector: 'loader',
+        selector: 'loader-modal',
         moduleId: module.id,
-        templateUrl: 'loader.component.html',
+        templateUrl: 'loader.modal.component.html',
         styleUrls: ['fountain.component.css', 'bubbling.component.css']
     })
-], LoaderComponent);
-exports.LoaderComponent = LoaderComponent;
-//# sourceMappingURL=loader.component.js.map
+], LoaderModalComponent);
+exports.LoaderModalComponent = LoaderModalComponent;
+//# sourceMappingURL=loader.modal.component.js.map
