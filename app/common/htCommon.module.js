@@ -10,6 +10,8 @@ var core_1 = require("@angular/core");
 var alert_component_1 = require("../common/modal/alert.component");
 var open_component_1 = require("../common/modal/open.component");
 var modal_component_1 = require("./modal/modal.component");
+var loader_component_1 = require("./loader/loader.component");
+var common_1 = require("@angular/common");
 var HTCommonModule = (function () {
     function HTCommonModule() {
     }
@@ -17,16 +19,19 @@ var HTCommonModule = (function () {
 }());
 HTCommonModule = __decorate([
     core_1.NgModule({
-        imports: [],
+        imports: [common_1.CommonModule],
         declarations: [
             alert_component_1.AlertComponent,
             open_component_1.OpenDirective,
-            modal_component_1.ModalComponent
+            modal_component_1.ModalComponent,
+            loader_component_1.LoaderComponent
         ],
         exports: [
             alert_component_1.AlertComponent,
             open_component_1.OpenDirective,
-            modal_component_1.ModalComponent
+            modal_component_1.ModalComponent,
+            loader_component_1.LoaderComponent,
+            common_1.CommonModule
         ],
         providers: []
     })

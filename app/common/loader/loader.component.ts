@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnChanges, Output, EventEmitter} from "@angular/core";
 
 @Component({
   selector: 'loader',
@@ -6,14 +6,16 @@ import {Component} from '@angular/core';
   templateUrl: 'loader.component.html',
   styleUrls: ['fountain.component.css', 'bubbling.component.css']
 })
-export class LoaderComponent {
-  isShow: boolean = true;
+export class LoaderComponent implements OnChanges {
 
-  closeLoader() {
-    this.isShow = false;
+  @Input() isShown: boolean = false;
+  @Output() loaderClicked: EventEmitter<string> = new EventEmitter<string>();
+  ngOnChanges(): void {
+    console.log("LoaderComponent, ngOnChanges " + this.isShown);
   }
 
-  displayLoader() {
-    this.isShow = true;
+  onClick(): void {
+    // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);
+    console.log(this.isShown);
   }
 }

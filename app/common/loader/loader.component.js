@@ -5,20 +5,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LoaderComponent = (function () {
     function LoaderComponent() {
-        this.isShow = true;
+        this.isShown = false;
+        this.loaderClicked = new core_1.EventEmitter();
     }
-    LoaderComponent.prototype.closeLoader = function () {
-        this.isShow = false;
+    LoaderComponent.prototype.ngOnChanges = function () {
+        console.log("LoaderComponent, ngOnChanges " + this.isShown);
     };
-    LoaderComponent.prototype.displayLoader = function () {
-        this.isShow = true;
+    LoaderComponent.prototype.onClick = function () {
+        // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);
+        console.log(this.isShown);
     };
     return LoaderComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], LoaderComponent.prototype, "isShown", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], LoaderComponent.prototype, "loaderClicked", void 0);
 LoaderComponent = __decorate([
     core_1.Component({
         selector: 'loader',

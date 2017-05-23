@@ -1,8 +1,7 @@
-<div class="bubblingG" *ngIf="isShown">
-        <span id="bubblingG_1">
-        </span>
-    <span id="bubblingG_2">
-        </span>
-    <span id="bubblingG_3">
-        </span>
+<div [title]="isShown"
+     (click)='onClick()' *ngIf="isShown"
+     class="bubblingG">
+    <span id="bubblingG_1"></span>
+    <span id="bubblingG_2"></span>
+    <span id="bubblingG_3"></span>
 </div>

@@ -90,17 +90,15 @@ var IndividualsComponent = (function () {
     IndividualsComponent.prototype.counter = function (length) {
         return new Array(length);
     };
-    IndividualsComponent.prototype.onScroll = function (event) {
-        console.log(event);
+    // @HostListener('scroll', ['$event'])
+    // onScroll(event: any) {
+    //   console.log(event);
+    // }
+    IndividualsComponent.prototype.onLoaderClicked = function (message) {
+        this.pageTitle = '--->' + message;
     };
     return IndividualsComponent;
 }());
-__decorate([
-    core_1.HostListener('scroll', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], IndividualsComponent.prototype, "onScroll", null);
 IndividualsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

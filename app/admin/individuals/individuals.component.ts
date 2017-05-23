@@ -121,9 +121,12 @@ export class IndividualsComponent implements OnInit {
     return new Array(length);
   }
 
-  @HostListener('scroll', ['$event'])
-  onScroll(event: any) {
-    console.log(event);
-  }
+  // @HostListener('scroll', ['$event'])
+  // onScroll(event: any) {
+  //   console.log(event);
+  // }
 
+  onLoaderClicked(message: string): void {
+    this.pageTitle = '--->' + message;
+  }
 }
