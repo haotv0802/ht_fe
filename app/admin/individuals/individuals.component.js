@@ -20,16 +20,28 @@ var individualUpdate_service_1 = require("./individualUpdate.service");
 var pagination_1 = require("../../common/pagination");
 var Rx_1 = require("rxjs/Rx");
 var platform_browser_1 = require("@angular/platform-browser");
+var angular2_modal_1 = require("angular2-modal");
+var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
 var IndividualsComponent = (function () {
-    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router, document) {
+    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router, overlay, vcRef, modal, document) {
         this._individualService = _individualService;
         this._individualDetailsService = _individualDetailsService;
         this._individualUpdateService = _individualUpdateService;
         this._router = _router;
+        this.modal = modal;
         this.document = document;
         this.isShown = true;
         this.pageTitle = 'Individual List';
+        overlay.defaultViewContainer = vcRef;
     }
+    IndividualsComponent.prototype.onClick = function () {
+        this.modal.alert()
+            .size('lg')
+            .showClose(true)
+            .title('A simple Alert style modal window')
+            .body("\n            <h4>Alert is a classic (title/body/footer) 1 button modal window that \n            does not block.</h4>\n            <b>Configuration:</b>\n            <ul>\n                <li>Non blocking (click anywhere outside to dismiss)</li>\n                <li>Size large</li>\n                <li>Dismissed with default keyboard key (ESC)</li>\n                <li>Close wth button click</li>\n                <li>HTML content</li>\n            </ul>\n        ")
+            .open();
+    };
     IndividualsComponent.prototype.ngOnInit = function () {
         this.getIndividuals(0);
         this.getAllIndividuals();
@@ -95,11 +107,12 @@ IndividualsComponent = __decorate([
         templateUrl: 'individuals.component.html',
         styleUrls: ['individual.bubbling.component.css']
     }),
-    __param(4, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __param(7, core_1.Inject(platform_browser_1.DOCUMENT)),
     __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
         individualDetails_service_1.IndividualDetailsService,
         individualUpdate_service_1.IndividualUpdateService,
         router_1.Router,
+        angular2_modal_1.Overlay, core_1.ViewContainerRef, bootstrap_1.Modal,
         Document])
 ], IndividualsComponent);
 exports.IndividualsComponent = IndividualsComponent;

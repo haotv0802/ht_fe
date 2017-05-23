@@ -21,6 +21,8 @@ var constant_1 = require("./common/constant");
 var HTTP_service_1 = require("./common/HTTP.service");
 var htCommon_module_1 = require("./common/htCommon.module");
 var angular2_toaster_1 = require("angular2-toaster");
+var angular2_modal_1 = require("angular2-modal");
+var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -42,7 +44,9 @@ AppModule = __decorate([
             product_module_1.ProductModule,
             admin_module_1.AdminModule,
             htCommon_module_1.HTCommonModule,
-            angular2_toaster_1.ToasterModule
+            angular2_toaster_1.ToasterModule,
+            angular2_modal_1.ModalModule.forRoot(),
+            bootstrap_1.BootstrapModalModule
         ],
         declarations: [
             app_component_1.AppComponent,

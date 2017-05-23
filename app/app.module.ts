@@ -13,6 +13,8 @@ import {Constants} from "./common/constant";
 import {HTTPService} from "./common/HTTP.service";
 import {HTCommonModule} from "./common/htCommon.module";
 import {ToasterModule} from "angular2-toaster";
+import {ModalModule} from "angular2-modal";
+import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import {ToasterModule} from "angular2-toaster";
     ProductModule,
     AdminModule,
     HTCommonModule,
-    ToasterModule
+    ToasterModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   declarations: [
     AppComponent,

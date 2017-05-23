@@ -24,6 +24,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // toaster
       'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js',
+      'angular2-modal': 'npm:angular2-modal',
+      'angular2-modal/plugins/bootstrap': 'npm:angular2-modal/bundles',
       // other libraries
       'rxjs': 'npm:rxjs'
     },
@@ -34,6 +36,15 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      'angular2-modal': {
+        main: 'bundles/angular2-modal.umd',
+        defaultExtension: 'js'
+      },
+
+      "angular2-modal/plugins/bootstrap": {
+        main: 'angular2-modal.bootstrap.umd',
         defaultExtension: 'js'
       }
     }
