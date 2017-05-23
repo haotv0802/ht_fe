@@ -4,18 +4,18 @@ import {Directive, HostBinding, Input} from "@angular/core";
 @Directive({selector: '[open]'})
 export class OpenDirective {
   @HostBinding('style.display')
-  private display:string;
+  private display: string;
   @HostBinding('class.in')
   @HostBinding('attr.aria-expanded')
-  private isExpanded:boolean = true;
+  private isExpanded: boolean = true;
 
   @Input()
-  private set open(value:boolean) {
+  private set open(value: boolean) {
     this.isExpanded = value;
     this.toggle();
   }
 
-  private get open():boolean {
+  private get open(): boolean {
     return this.isExpanded;
   }
 
@@ -35,14 +35,14 @@ export class OpenDirective {
     this.display = 'none';
 
     let backDrop = document.getElementsByClassName("modal-backdrop");
-    if(backDrop.length>0){
+    if (backDrop.length > 0) {
       document.body.removeChild(backDrop[0]);
     }
   }
 
   show() {
     let backDrop = document.createElement('div');
-    backDrop.className="modal-backdrop fade in";
+    backDrop.className = "modal-backdrop fade in";
     document.body.appendChild(backDrop);
     this.isExpanded = true;
     this.display = 'block';

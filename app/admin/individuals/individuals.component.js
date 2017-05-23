@@ -30,7 +30,7 @@ var IndividualsComponent = (function () {
         this._router = _router;
         this.modal = modal;
         this.document = document;
-        this.isShown = true;
+        this.isOpen = true;
         this.pageTitle = 'Individual List';
         overlay.defaultViewContainer = vcRef;
     }
@@ -53,7 +53,7 @@ var IndividualsComponent = (function () {
         timer.subscribe(function () {
             _this._individualService.getIndividuals().subscribe(function (individuals) {
                 _this.individualsALL = individuals;
-                _this.isShown = false;
+                _this.isOpen = false;
             }, function (error) {
                 console.log(error);
             });

@@ -21,7 +21,7 @@ export class IndividualsComponent implements OnInit {
   individualsALL: Individual[];
   pagination: Pagination;
   individualsCount: number;
-  isShown: boolean = true;
+  isOpen: boolean = true;
 
   constructor(
     private _individualService: IndividualsService,
@@ -68,7 +68,7 @@ export class IndividualsComponent implements OnInit {
         this._individualService.getIndividuals().subscribe(
           (individuals) => {
             this.individualsALL = individuals;
-            this.isShown = false;
+            this.isOpen = false;
           },
           (error) => {
             console.log(error);
