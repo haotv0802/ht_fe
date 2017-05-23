@@ -1,7 +1,7 @@
 .bubblingG {
     text-align: center;
-    width:78px;
-    height:49px;
+    width: 78px;
+    height: 49px;
     margin: auto;
 }
 
@@ -11,7 +11,7 @@
     width: 10px;
     height: 10px;
     margin: 24px auto;
-    background: rgb(240,163,31);
+    background: rgb(240, 163, 31);
     border-radius: 49px;
     -o-border-radius: 49px;
     -ms-border-radius: 49px;
@@ -48,20 +48,18 @@
     -moz-animation-delay: 0.9s;
 }
 
-
-
 @keyframes bubblingG {
     0% {
         width: 10px;
         height: 10px;
-        background-color:rgb(50,213,235);
+        background-color: rgb(50, 213, 235);
         transform: translateY(0);
     }
 
     100% {
         width: 23px;
         height: 23px;
-        background-color:rgb(255,255,255);
+        background-color: rgb(255, 255, 255);
         transform: translateY(-20px);
     }
 }
@@ -70,14 +68,14 @@
     0% {
         width: 10px;
         height: 10px;
-        background-color:rgb(50,213,235);
+        background-color: rgb(50, 213, 235);
         -o-transform: translateY(0);
     }
 
     100% {
         width: 23px;
         height: 23px;
-        background-color:rgb(255,255,255);
+        background-color: rgb(255, 255, 255);
         -o-transform: translateY(-20px);
     }
 }
@@ -86,14 +84,14 @@
     0% {
         width: 10px;
         height: 10px;
-        background-color:rgb(50,213,235);
+        background-color: rgb(50, 213, 235);
         -ms-transform: translateY(0);
     }
 
     100% {
         width: 23px;
         height: 23px;
-        background-color:rgb(255,255,255);
+        background-color: rgb(255, 255, 255);
         -ms-transform: translateY(-20px);
     }
 }
@@ -102,14 +100,14 @@
     0% {
         width: 10px;
         height: 10px;
-        background-color:rgb(50,213,235);
+        background-color: rgb(50, 213, 235);
         -webkit-transform: translateY(0);
     }
 
     100% {
         width: 23px;
         height: 23px;
-        background-color:rgb(255,255,255);
+        background-color: rgb(255, 255, 255);
         -webkit-transform: translateY(-20px);
     }
 }
@@ -118,14 +116,14 @@
     0% {
         width: 10px;
         height: 10px;
-        background-color:rgb(50,213,235);
+        background-color: rgb(50, 213, 235);
         -moz-transform: translateY(0);
     }
 
     100% {
         width: 23px;
         height: 23px;
-        background-color:rgb(255,255,255);
+        background-color: rgb(255, 255, 255);
         -moz-transform: translateY(-20px);
     }
 }

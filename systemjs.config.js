@@ -42,7 +42,6 @@
         main: 'bundles/angular2-modal.umd',
         defaultExtension: 'js'
       },
-
       "angular2-modal/plugins/bootstrap": {
         main: 'angular2-modal.bootstrap.umd',
         defaultExtension: 'js'
