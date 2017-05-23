@@ -8,14 +8,14 @@ import {Component, Input, OnChanges, Output, EventEmitter} from "@angular/core";
 })
 export class LoaderComponent implements OnChanges {
 
-  @Input() isShown: boolean = false;
+  @Input() opening: boolean = false;
   @Output() loaderClicked: EventEmitter<string> = new EventEmitter<string>();
   ngOnChanges(): void {
-    console.log("LoaderComponent, ngOnChanges " + this.isShown);
+    console.log("LoaderComponent, ngOnChanges " + this.opening);
   }
 
   onClick(): void {
     // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);
-    console.log(this.isShown);
+    console.log(this.opening);
   }
 }

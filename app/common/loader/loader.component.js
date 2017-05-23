@@ -12,22 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LoaderComponent = (function () {
     function LoaderComponent() {
-        this.isShown = false;
+        this.opening = false;
         this.loaderClicked = new core_1.EventEmitter();
     }
     LoaderComponent.prototype.ngOnChanges = function () {
-        console.log("LoaderComponent, ngOnChanges " + this.isShown);
+        console.log("LoaderComponent, ngOnChanges " + this.opening);
     };
     LoaderComponent.prototype.onClick = function () {
         // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);
-        console.log(this.isShown);
+        console.log(this.opening);
     };
     return LoaderComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
-], LoaderComponent.prototype, "isShown", void 0);
+], LoaderComponent.prototype, "opening", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", core_1.EventEmitter)
