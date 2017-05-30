@@ -22,10 +22,12 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
-      // toaster
+      // Toaster
       'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js',
+      // Modal
       'angular2-modal': 'npm:angular2-modal',
       'angular2-modal/plugins/bootstrap': 'npm:angular2-modal/bundles',
+      // Smart-Table
       'ng2-completer':'npm:ng2-completer',
       'ng2-smart-table':'npm:ng2-smart-table',
       'lodash':'npm:lodash',
