@@ -26,6 +26,10 @@
       'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js',
       'angular2-modal': 'npm:angular2-modal',
       'angular2-modal/plugins/bootstrap': 'npm:angular2-modal/bundles',
+      'ng2-completer':'npm:ng2-completer',
+      'ng2-smart-table':'npm:ng2-smart-table',
+      'lodash':'npm:lodash',
+      'traceur':'npm:traceur/bin/traceur.js',
       // other libraries
       'rxjs': 'npm:rxjs'
     },
@@ -44,6 +48,18 @@
       },
       "angular2-modal/plugins/bootstrap": {
         main: 'angular2-modal.bootstrap.umd',
+        defaultExtension: 'js'
+      },
+      lodash: {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-completer': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-smart-table': {
+        main: 'index.js',
         defaultExtension: 'js'
       }
     }

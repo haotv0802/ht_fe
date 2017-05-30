@@ -14,6 +14,36 @@ var users_service_1 = require("./users.service");
 var UsersComponent = (function () {
     function UsersComponent(_usersService) {
         this._usersService = _usersService;
+        this.settings = {
+            columns: {
+                id: {
+                    title: 'ID',
+                    // width: '20px',
+                    filter: true
+                },
+                name: {
+                    title: 'NAME',
+                    // width: '100px',
+                    filter: false
+                },
+                role: {
+                    title: 'ROLE',
+                    // width: '100px',
+                    filter: true
+                }
+            },
+            hideSubHeader: false,
+            actions: {
+                edit: true
+            },
+            delete: {
+                confirmDelete: true
+            },
+            pager: {
+                display: true,
+                perPage: 3
+            }
+        };
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {

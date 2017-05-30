@@ -1,5 +1,4 @@
-import {Component, OnInit}  from '@angular/core';
-import {Constants} from './../../common/constant';
+import {Component, OnInit} from "@angular/core";
 import {UsersService} from "./users.service";
 import {User} from "./user";
 
@@ -11,6 +10,37 @@ import {User} from "./user";
 export class UsersComponent implements OnInit {
   pageTitle: string;
   users: User[];
+  settings = {
+    columns: {
+      id: {
+        title: 'ID',
+        // width: '20px',
+        filter: true
+      },
+      name: {
+        title: 'NAME',
+        // width: '100px',
+        filter: false
+      },
+      role: {
+        title: 'ROLE',
+        // width: '100px',
+        filter: true
+      }
+    },
+    hideSubHeader: false,
+    actions:{
+      edit: true
+    },
+    delete:{
+      confirmDelete: true
+    },
+    pager : {
+      display : true,
+      perPage: 3
+    }
+  };
+
   constructor(private _usersService: UsersService) {
     this.pageTitle = 'User component';
   }
