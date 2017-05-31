@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
       name: {
         title: 'NAME',
         // width: '100px',
+        editable: true,
         filter: false
       },
       role: {
@@ -58,5 +59,8 @@ export class UsersComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+  editUser(): void {
+
   }
 }

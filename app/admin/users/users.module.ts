@@ -1,20 +1,29 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {UsersComponent} from './users.component';
-import {UsersService} from './users.service';
-import {CommonModule} from '@angular/common';
+import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
+import {UsersUpdateComponent} from "./usersUpdate.component";
+import {UsersComponent} from "./users.component";
+import {UsersService} from "./users.service";
+import {CommonModule} from "@angular/common";
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import {UsersUpdateService} from "./usersUpdate.service";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      {path: 'admin/users', component: UsersComponent}
+      {path: 'admin/users', component: UsersComponent},
+      {path: 'admin/usersUpdate', component: UsersUpdateComponent}
     ]),
     CommonModule,
     Ng2SmartTableModule
   ],
-  declarations: [UsersComponent],
-  providers: [UsersService]
+  declarations: [
+    UsersComponent,
+    UsersUpdateComponent
+  ],
+  providers: [
+    UsersService,
+    UsersUpdateService
+  ]
 })
 export class UsersModule {
 }

@@ -24,6 +24,7 @@ var UsersComponent = (function () {
                 name: {
                     title: 'NAME',
                     // width: '100px',
+                    editable: true,
                     filter: false
                 },
                 role: {
@@ -56,6 +57,8 @@ var UsersComponent = (function () {
         }, function (error) {
             console.log(error);
         });
+    };
+    UsersComponent.prototype.editUser = function () {
     };
     return UsersComponent;
 }());
