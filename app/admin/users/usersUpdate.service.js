@@ -31,6 +31,10 @@ var UsersUpdateService = (function () {
         return this._httpService.get(this._constants.ADMIN_USERS_SERVICE_URL)
             .map(function (res) { return res.json(); });
     };
+    UsersUpdateService.prototype.getRolesInfo = function () {
+        return this._httpService.get(this._constants.ADMIN_ROLES_KEYVALUE_SERVICE_URL)
+            .map(function (res) { return res.json(); });
+    };
     return UsersUpdateService;
 }());
 UsersUpdateService = __decorate([

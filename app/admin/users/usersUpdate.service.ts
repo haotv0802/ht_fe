@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {User} from "./user";
 import {Constants} from "../../common/constant";
 import {HTTPService} from "../../common/HTTP.service";
+import {KeyValuePair} from "../../common/keyValuePair";
 
 @Injectable()
 export class UsersUpdateService {
@@ -28,4 +29,9 @@ export class UsersUpdateService {
       ;
   }
 
+  getRolesInfo(): Observable<KeyValuePair[]> {
+    return this._httpService.get(this._constants.ADMIN_ROLES_KEYVALUE_SERVICE_URL)
+      .map((res) => { return <KeyValuePair[]> res.json(); })
+      ;
+  }
 }

@@ -11,13 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var usersUpdate_service_1 = require("./usersUpdate.service");
+var Rx_1 = require("rxjs/Rx");
 var UsersUpdateComponent = (function () {
     function UsersUpdateComponent(_userUpdateService) {
         this._userUpdateService = _userUpdateService;
+        this.saveDisabled = true;
         // this.pageTitle = 'User component';
     }
     UsersUpdateComponent.prototype.ngOnInit = function () {
-        this.getUsers();
+        var _this = this;
+        Rx_1.Observable.forkJoin(this._userUpdateService.getUsers(), this._userUpdateService.getRolesInfo()).subscribe(function (data) {
+            _this.users = data[0];
+            _this.roles = data[1];
+        }, function (error) {
+            console.log(error);
+        });
     };
     UsersUpdateComponent.prototype.getUsers = function () {
         var _this = this;
@@ -26,6 +34,21 @@ var UsersUpdateComponent = (function () {
         }, function (error) {
             console.log(error);
         });
+    };
+    UsersUpdateComponent.prototype.getRolesInfo = function () {
+        var _this = this;
+        this._userUpdateService.getRolesInfo().subscribe(function (roles) {
+            _this.roles = roles;
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    UsersUpdateComponent.prototype.onSelectChange = function (event, userTemp) {
+        this.saveDisabled = false;
+        userTemp.roleId = event.target.value;
+    };
+    UsersUpdateComponent.prototype.save = function () {
+        console.log(this.users);
     };
     return UsersUpdateComponent;
 }());

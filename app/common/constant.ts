@@ -11,9 +11,13 @@ export class Constants {
   public HTTP_STATUS_BAD_REQUEST: number = 400;
   public HTTP_STATUS_UNAUTHORIZED: number = 401;
 
-  // Services URLs for Admin
+  ////      Services URLs for Admin
+  //  Users (for Admin)
   public ADMIN_USERS_SERVICE_URL: string = this.HOST + '/admin/users';
   public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
+  //  Roles (for Admin)
+  public ADMIN_ROLES_SERVICE_URL: string = this.HOST + '/admin/roles';
+  public ADMIN_ROLES_KEYVALUE_SERVICE_URL: string = this.HOST + '/admin/roles/keyValuePair';
   //  Images (for Admin)
   public ADMIN_IMAGES_SERVICE_URL: string = this.HOST + '/admin/images';
   public ADMIN_IMAGE_UPDATE_SERVICE_URL: string = this.HOST + `/admin/images/updateImageInfo`;
@@ -22,7 +26,7 @@ export class Constants {
   public ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL: string = this.HOST + '/admin/individuals/paging';
   public ADMIN_INDIVIDUALS_COUNT_SERVICE_URL: string = this.HOST + '/admin/individuals/count';
   public ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL: string = this.HOST + '/admin/individuals/isUserNameExisting';
-  public ADMIN_ROLES_SERVICE_URL: string = this.HOST + '/admin/roles';
+
 
 
   // Services URLs for Staff

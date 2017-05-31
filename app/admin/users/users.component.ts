@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {UsersService} from "./users.service";
 import {User} from "./user";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -42,7 +43,10 @@ export class UsersComponent implements OnInit {
     }
   };
 
-  constructor(private _usersService: UsersService) {
+  constructor(
+    private _usersService: UsersService,
+    private _router: Router
+  ) {
     this.pageTitle = 'User component';
   }
 
@@ -61,6 +65,6 @@ export class UsersComponent implements OnInit {
     )
   }
   editUser(): void {
-
+    this._router.navigate(["admin/usersUpdate"]);
   }
 }

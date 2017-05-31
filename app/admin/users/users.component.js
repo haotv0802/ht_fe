@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var users_service_1 = require("./users.service");
+var router_1 = require("@angular/router");
 var UsersComponent = (function () {
-    function UsersComponent(_usersService) {
+    function UsersComponent(_usersService, _router) {
         this._usersService = _usersService;
+        this._router = _router;
         this.settings = {
             columns: {
                 id: {
@@ -59,6 +61,7 @@ var UsersComponent = (function () {
         });
     };
     UsersComponent.prototype.editUser = function () {
+        this._router.navigate(["admin/usersUpdate"]);
     };
     return UsersComponent;
 }());
@@ -68,7 +71,8 @@ UsersComponent = __decorate([
         templateUrl: 'users.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    __metadata("design:paramtypes", [users_service_1.UsersService,
+        router_1.Router])
 ], UsersComponent);
 exports.UsersComponent = UsersComponent;
 //# sourceMappingURL=users.component.js.map

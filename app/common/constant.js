@@ -15,9 +15,13 @@ var Constants = (function () {
         this.HTTP_STATUS_NO_CONTENT = 204;
         this.HTTP_STATUS_BAD_REQUEST = 400;
         this.HTTP_STATUS_UNAUTHORIZED = 401;
-        // Services URLs for Admin
+        ////      Services URLs for Admin
+        //  Users (for Admin)
         this.ADMIN_USERS_SERVICE_URL = this.HOST + '/admin/users';
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';
+        //  Roles (for Admin)
+        this.ADMIN_ROLES_SERVICE_URL = this.HOST + '/admin/roles';
+        this.ADMIN_ROLES_KEYVALUE_SERVICE_URL = this.HOST + '/admin/roles/keyValuePair';
         //  Images (for Admin)
         this.ADMIN_IMAGES_SERVICE_URL = this.HOST + '/admin/images';
         this.ADMIN_IMAGE_UPDATE_SERVICE_URL = this.HOST + "/admin/images/updateImageInfo";
@@ -26,7 +30,6 @@ var Constants = (function () {
         this.ADMIN_INDIVIDUALS_WITH_PAGING_SERVICE_URL = this.HOST + '/admin/individuals/paging';
         this.ADMIN_INDIVIDUALS_COUNT_SERVICE_URL = this.HOST + '/admin/individuals/count';
         this.ADMIN_INDIVIDUALS_USERNAME_CHECK_SERVICE_URL = this.HOST + '/admin/individuals/isUserNameExisting';
-        this.ADMIN_ROLES_SERVICE_URL = this.HOST + '/admin/roles';
         // Services URLs for Staff
         // Services URLs for Customer
         // Constants
