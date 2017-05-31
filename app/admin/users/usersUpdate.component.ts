@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Rx";
 import {Constants} from "../../common/constant";
 import {Router} from "@angular/router";
 import {ToasterService} from "angular2-toaster";
+import {ModalComponent} from "../../common/modal/modal.component";
 
 @Component({
   moduleId: module.id,
@@ -16,14 +17,21 @@ export class UsersUpdateComponent implements OnInit {
   users: User[];
   roles: KeyValuePair[];
   saveDisabled: boolean = true;
+  modal: ModalComponent;
 
   constructor(
     private _userUpdateService: UsersUpdateService,
     private _constants: Constants,
     private _router: Router,
-    private _toasterService: ToasterService
+    private _toasterService: ToasterService,
+    public _modal: ModalComponent
   ) {
     // this.pageTitle = 'User component';
+    this.modal = _modal
+  }
+
+  close() {
+    this.modal.close();
   }
 
   ngOnInit(): void {
@@ -75,10 +83,11 @@ export class UsersUpdateComponent implements OnInit {
         if (res.status == this._constants.HTTP_STATUS_OK) {
           this._toasterService.pop("success", "Users updated successfully");
           // this._router.navigate(["admin/users"]);
-          let timer = Observable.interval(5000);
+          let timer = Observable.interval(3000);
           timer.subscribe(
             () => {
-              this._router.navigate(["admin/users"]);
+              // this._router.navigate(["admin/users"]);
+              this.close();
             }
           );
         } else {

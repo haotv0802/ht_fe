@@ -15,15 +15,21 @@ var Rx_1 = require("rxjs/Rx");
 var constant_1 = require("../../common/constant");
 var router_1 = require("@angular/router");
 var angular2_toaster_1 = require("angular2-toaster");
+var modal_component_1 = require("../../common/modal/modal.component");
 var UsersUpdateComponent = (function () {
-    function UsersUpdateComponent(_userUpdateService, _constants, _router, _toasterService) {
+    function UsersUpdateComponent(_userUpdateService, _constants, _router, _toasterService, _modal) {
         this._userUpdateService = _userUpdateService;
         this._constants = _constants;
         this._router = _router;
         this._toasterService = _toasterService;
+        this._modal = _modal;
         this.saveDisabled = true;
         // this.pageTitle = 'User component';
+        this.modal = _modal;
     }
+    UsersUpdateComponent.prototype.close = function () {
+        this.modal.close();
+    };
     UsersUpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
         Rx_1.Observable.forkJoin(this._userUpdateService.getUsers(), this._userUpdateService.getRolesInfo()).subscribe(function (data) {
@@ -59,9 +65,10 @@ var UsersUpdateComponent = (function () {
             if (res.status == _this._constants.HTTP_STATUS_OK) {
                 _this._toasterService.pop("success", "Users updated successfully");
                 // this._router.navigate(["admin/users"]);
-                var timer = Rx_1.Observable.interval(5000);
+                var timer = Rx_1.Observable.interval(3000);
                 timer.subscribe(function () {
-                    _this._router.navigate(["admin/users"]);
+                    // this._router.navigate(["admin/users"]);
+                    _this.close();
                 });
             }
             else {
@@ -81,7 +88,8 @@ UsersUpdateComponent = __decorate([
     __metadata("design:paramtypes", [usersUpdate_service_1.UsersUpdateService,
         constant_1.Constants,
         router_1.Router,
-        angular2_toaster_1.ToasterService])
+        angular2_toaster_1.ToasterService,
+        modal_component_1.ModalComponent])
 ], UsersUpdateComponent);
 exports.UsersUpdateComponent = UsersUpdateComponent;
 //# sourceMappingURL=usersUpdate.component.js.map

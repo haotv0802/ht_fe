@@ -1,8 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {UsersService} from "./users.service";
 import {User} from "./user";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Rx";
+import {ModalComponent} from "../../common/modal/modal.component";
+import {UsersUpdateComponent} from "./usersUpdate.component";
 
 @Component({
   moduleId: module.id,
@@ -44,6 +46,7 @@ export class UsersComponent implements OnInit {
     }
   };
   loaderOpen: boolean = true;
+  @ViewChild(ModalComponent) modal: ModalComponent;
 
   constructor(
     private _usersService: UsersService,
@@ -52,7 +55,7 @@ export class UsersComponent implements OnInit {
     this.pageTitle = 'User component';
   }
 
-  ngOnInit(): void {let timer = Observable.interval(5000);
+  ngOnInit(): void {let timer = Observable.interval(1000);
     // subscribing to a observable returns a subscription object
     timer.subscribe(
       () => {
@@ -74,6 +77,15 @@ export class UsersComponent implements OnInit {
   }
 
   editUser(): void {
-    this._router.navigate(["admin/usersUpdate"]);
+    // this._router.navigate(["admin/usersUpdate"]);
+    this.popupUsersUpdate();
+  }
+
+  popupUsersUpdate(): void {
+    this.modal.modalTitle = "User Update";
+    this.modal.modalFooter = false;
+    this.modal.modalMessage = true;
+    // this.modal.message = "Here Users Update component will load.";
+    this.modal.open(UsersUpdateComponent);
   }
 }

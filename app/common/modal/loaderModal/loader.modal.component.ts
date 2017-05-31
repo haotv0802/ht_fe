@@ -11,7 +11,7 @@ export class LoaderModalComponent implements OnChanges {
   @Input() opening: boolean = false;
   @Output() loaderClicked: EventEmitter<string> = new EventEmitter<string>();
   ngOnChanges(): void {
-    console.log("LoaderComponent, ngOnChanges " + this.opening);
+    // console.log("LoaderComponent, ngOnChanges " + this.opening);
   }
 
   onClick(): void {

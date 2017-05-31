@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 var users_service_1 = require("./users.service");
 var router_1 = require("@angular/router");
 var Rx_1 = require("rxjs/Rx");
+var modal_component_1 = require("../../common/modal/modal.component");
+var usersUpdate_component_1 = require("./usersUpdate.component");
 var UsersComponent = (function () {
     function UsersComponent(_usersService, _router) {
         this._usersService = _usersService;
@@ -53,7 +55,7 @@ var UsersComponent = (function () {
     }
     UsersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var timer = Rx_1.Observable.interval(5000);
+        var timer = Rx_1.Observable.interval(1000);
         // subscribing to a observable returns a subscription object
         timer.subscribe(function () {
             _this.getUsers();
@@ -69,10 +71,22 @@ var UsersComponent = (function () {
         });
     };
     UsersComponent.prototype.editUser = function () {
-        this._router.navigate(["admin/usersUpdate"]);
+        // this._router.navigate(["admin/usersUpdate"]);
+        this.popupUsersUpdate();
+    };
+    UsersComponent.prototype.popupUsersUpdate = function () {
+        this.modal.modalTitle = "User Update";
+        this.modal.modalFooter = false;
+        this.modal.modalMessage = true;
+        // this.modal.message = "Here Users Update component will load.";
+        this.modal.open(usersUpdate_component_1.UsersUpdateComponent);
     };
     return UsersComponent;
 }());
+__decorate([
+    core_1.ViewChild(modal_component_1.ModalComponent),
+    __metadata("design:type", modal_component_1.ModalComponent)
+], UsersComponent.prototype, "modal", void 0);
 UsersComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

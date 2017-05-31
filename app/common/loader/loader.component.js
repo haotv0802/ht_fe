@@ -16,7 +16,7 @@ var LoaderComponent = (function () {
         this.loaderClicked = new core_1.EventEmitter();
     }
     LoaderComponent.prototype.ngOnChanges = function () {
-        console.log("LoaderComponent, ngOnChanges " + this.opening);
+        // console.log("LoaderComponent, ngOnChanges " + this.opening);
     };
     LoaderComponent.prototype.onClick = function () {
         // this.loaderClicked.emit(`The rating ${this.isShown} was clicked!`);

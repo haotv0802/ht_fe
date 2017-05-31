@@ -61,7 +61,7 @@ export class IndividualsComponent implements OnInit {
   }
 
   getAllIndividuals(): void {
-    let timer = Observable.interval(5000);
+    let timer = Observable.interval(1000);
     // subscribing to a observable returns a subscription object
     timer.subscribe(
       () => {
