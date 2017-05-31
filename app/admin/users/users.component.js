@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var users_service_1 = require("./users.service");
 var router_1 = require("@angular/router");
+var Rx_1 = require("rxjs/Rx");
 var UsersComponent = (function () {
     function UsersComponent(_usersService, _router) {
         this._usersService = _usersService;
@@ -47,15 +48,22 @@ var UsersComponent = (function () {
                 perPage: 3
             }
         };
+        this.loaderOpen = true;
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {
-        this.getUsers();
+        var _this = this;
+        var timer = Rx_1.Observable.interval(5000);
+        // subscribing to a observable returns a subscription object
+        timer.subscribe(function () {
+            _this.getUsers();
+        });
     };
     UsersComponent.prototype.getUsers = function () {
         var _this = this;
         this._usersService.getUsers().subscribe(function (users) {
             _this.users = users;
+            _this.loaderOpen = false;
         }, function (error) {
             console.log(error);
         });

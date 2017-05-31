@@ -6,6 +6,7 @@ import {UsersService} from "./users.service";
 import {CommonModule} from "@angular/common";
 import {Ng2SmartTableModule} from "ng2-smart-table";
 import {UsersUpdateService} from "./usersUpdate.service";
+import {HTCommonModule} from "../../common/htCommon.module";
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {UsersUpdateService} from "./usersUpdate.service";
       {path: 'admin/usersUpdate', component: UsersUpdateComponent}
     ]),
     CommonModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    HTCommonModule
   ],
   declarations: [
     UsersComponent,

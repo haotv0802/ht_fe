@@ -14,6 +14,7 @@ var users_service_1 = require("./users.service");
 var common_1 = require("@angular/common");
 var ng2_smart_table_1 = require("ng2-smart-table");
 var usersUpdate_service_1 = require("./usersUpdate.service");
+var htCommon_module_1 = require("../../common/htCommon.module");
 var UsersModule = (function () {
     function UsersModule() {
     }
@@ -27,7 +28,8 @@ UsersModule = __decorate([
                 { path: 'admin/usersUpdate', component: usersUpdate_component_1.UsersUpdateComponent }
             ]),
             common_1.CommonModule,
-            ng2_smart_table_1.Ng2SmartTableModule
+            ng2_smart_table_1.Ng2SmartTableModule,
+            htCommon_module_1.HTCommonModule
         ],
         declarations: [
             users_component_1.UsersComponent,

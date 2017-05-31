@@ -1,4 +1,5 @@
-<div class='panel panel-primary'>
+<loader-modal [opening]="loaderOpen" (loaderClicked)='onLoaderClicked($event)'></loader-modal>
+<div class='panel panel-primary' *ngIf="!loaderOpen">
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>

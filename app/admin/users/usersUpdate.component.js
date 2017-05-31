@@ -12,9 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var usersUpdate_service_1 = require("./usersUpdate.service");
 var Rx_1 = require("rxjs/Rx");
+var constant_1 = require("../../common/constant");
+var router_1 = require("@angular/router");
+var angular2_toaster_1 = require("angular2-toaster");
 var UsersUpdateComponent = (function () {
-    function UsersUpdateComponent(_userUpdateService) {
+    function UsersUpdateComponent(_userUpdateService, _constants, _router, _toasterService) {
         this._userUpdateService = _userUpdateService;
+        this._constants = _constants;
+        this._router = _router;
+        this._toasterService = _toasterService;
         this.saveDisabled = true;
         // this.pageTitle = 'User component';
     }
@@ -48,7 +54,22 @@ var UsersUpdateComponent = (function () {
         userTemp.roleId = event.target.value;
     };
     UsersUpdateComponent.prototype.save = function () {
-        console.log(this.users);
+        var _this = this;
+        this._userUpdateService.updateUsersRoles(this.users).subscribe(function (res) {
+            if (res.status == _this._constants.HTTP_STATUS_OK) {
+                _this._toasterService.pop("success", "Users updated successfully");
+                // this._router.navigate(["admin/users"]);
+                var timer = Rx_1.Observable.interval(5000);
+                timer.subscribe(function () {
+                    _this._router.navigate(["admin/users"]);
+                });
+            }
+            else {
+                _this._toasterService.pop("error", "Users updated unsuccessfully");
+            }
+        }, function (error) {
+            console.log(error);
+        });
     };
     return UsersUpdateComponent;
 }());
@@ -57,7 +78,10 @@ UsersUpdateComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'usersUpdate.component.html'
     }),
-    __metadata("design:paramtypes", [usersUpdate_service_1.UsersUpdateService])
+    __metadata("design:paramtypes", [usersUpdate_service_1.UsersUpdateService,
+        constant_1.Constants,
+        router_1.Router,
+        angular2_toaster_1.ToasterService])
 ], UsersUpdateComponent);
 exports.UsersUpdateComponent = UsersUpdateComponent;
 //# sourceMappingURL=usersUpdate.component.js.map

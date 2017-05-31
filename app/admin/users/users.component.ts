@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {UsersService} from "./users.service";
 import {User} from "./user";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   moduleId: module.id,
@@ -42,6 +43,7 @@ export class UsersComponent implements OnInit {
       perPage: 3
     }
   };
+  loaderOpen: boolean = true;
 
   constructor(
     private _usersService: UsersService,
@@ -50,20 +52,27 @@ export class UsersComponent implements OnInit {
     this.pageTitle = 'User component';
   }
 
-  ngOnInit(): void {
-    this.getUsers();
+  ngOnInit(): void {let timer = Observable.interval(5000);
+    // subscribing to a observable returns a subscription object
+    timer.subscribe(
+      () => {
+        this.getUsers();
+      }
+    );
   }
 
   getUsers(): void {
     this._usersService.getUsers().subscribe(
       (users) => {
         this.users = users;
+        this.loaderOpen = false;
       },
       (error) => {
         console.log(error);
       }
     )
   }
+
   editUser(): void {
     this._router.navigate(["admin/usersUpdate"]);
   }

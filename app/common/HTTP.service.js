@@ -27,6 +27,15 @@ var HTTPService = (function () {
         }
         return this._http.post(url, data, { headers: headers });
     };
+    HTTPService.prototype.patch = function (url, data) {
+        var headers = new http_1.Headers();
+        headers.append("Accept-Language", "en");
+        headers.append("Content-Type", "application/json");
+        if (url != this._constants.LOGIN_SERVICE_URL) {
+            headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
+        }
+        return this._http.patch(url, data, { headers: headers });
+    };
     HTTPService.prototype.postImageFile = function (url, data) {
         var headers = new http_1.Headers();
         headers.append("Accept-Language", "en");
@@ -35,8 +44,7 @@ var HTTPService = (function () {
         if (url != this._constants.LOGIN_SERVICE_URL) {
             headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
         }
-        return this._http.post(url, data, { headers: headers })
-            .catch(this.handleError);
+        return this._http.post(url, data, { headers: headers });
     };
     HTTPService.prototype.get = function (url, params) {
         var headers = new http_1.Headers();
@@ -48,8 +56,7 @@ var HTTPService = (function () {
         var requestOptions = new http_1.RequestOptions();
         requestOptions.headers = headers;
         requestOptions.params = params;
-        return this._http.get(url, requestOptions)
-            .catch(this.handleError);
+        return this._http.get(url, requestOptions);
     };
     HTTPService.prototype.handleError = function (error) {
         console.error("Error logged in HTTPService: ");

@@ -7,6 +7,7 @@ export class Constants {
   public LOGIN_SERVICE_URL: string = this.HOST + '/login';
 
   // HTTP Status
+  public HTTP_STATUS_OK: number = 200;
   public HTTP_STATUS_NO_CONTENT: number = 204;
   public HTTP_STATUS_BAD_REQUEST: number = 400;
   public HTTP_STATUS_UNAUTHORIZED: number = 401;
@@ -14,10 +15,14 @@ export class Constants {
   ////      Services URLs for Admin
   //  Users (for Admin)
   public ADMIN_USERS_SERVICE_URL: string = this.HOST + '/admin/users';
-  public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
+  public ADMIN_USERS_ROLES_UPDATE_SERVICE_URL: string = this.HOST + '/admin/users/usersRolesUpdate';
+
   //  Roles (for Admin)
   public ADMIN_ROLES_SERVICE_URL: string = this.HOST + '/admin/roles';
   public ADMIN_ROLES_KEYVALUE_SERVICE_URL: string = this.HOST + '/admin/roles/keyValuePair';
+
+  //  Rooms
+  public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
   //  Images (for Admin)
   public ADMIN_IMAGES_SERVICE_URL: string = this.HOST + '/admin/images';
   public ADMIN_IMAGE_UPDATE_SERVICE_URL: string = this.HOST + `/admin/images/updateImageInfo`;

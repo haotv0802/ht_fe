@@ -10,7 +10,8 @@ export class UsersUpdateService {
 
   constructor(
     private _httpService: HTTPService,
-    private _constants: Constants) {
+    private _constants: Constants
+  ) {
   }
 
   getUsers(): Observable<User[]> {
@@ -33,5 +34,10 @@ export class UsersUpdateService {
     return this._httpService.get(this._constants.ADMIN_ROLES_KEYVALUE_SERVICE_URL)
       .map((res) => { return <KeyValuePair[]> res.json(); })
       ;
+  }
+
+  updateUsersRoles(users: User[]): Observable<any> {
+    return this._httpService.patch(this._constants.ADMIN_USERS_ROLES_UPDATE_SERVICE_URL, users)
+    ;
   }
 }

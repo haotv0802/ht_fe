@@ -30,7 +30,6 @@ export class AppComponent {
     toastIndex: number = 0;
 
     constructor(toasterService: ToasterService) {
-        console.log("In App Component");
         this.toasterService = toasterService;
     }
 

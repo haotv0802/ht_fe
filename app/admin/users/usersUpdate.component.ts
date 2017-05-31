@@ -3,6 +3,9 @@ import {User} from "./user";
 import {UsersUpdateService} from "./usersUpdate.service";
 import {KeyValuePair} from "../../common/keyValuePair";
 import {Observable} from "rxjs/Rx";
+import {Constants} from "../../common/constant";
+import {Router} from "@angular/router";
+import {ToasterService} from "angular2-toaster";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +17,12 @@ export class UsersUpdateComponent implements OnInit {
   roles: KeyValuePair[];
   saveDisabled: boolean = true;
 
-  constructor(private _userUpdateService: UsersUpdateService) {
+  constructor(
+    private _userUpdateService: UsersUpdateService,
+    private _constants: Constants,
+    private _router: Router,
+    private _toasterService: ToasterService
+  ) {
     // this.pageTitle = 'User component';
   }
 
@@ -62,6 +70,25 @@ export class UsersUpdateComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.users);
+    this._userUpdateService.updateUsersRoles(this.users).subscribe(
+      (res) => {
+        if (res.status == this._constants.HTTP_STATUS_OK) {
+          this._toasterService.pop("success", "Users updated successfully");
+          // this._router.navigate(["admin/users"]);
+          let timer = Observable.interval(5000);
+          timer.subscribe(
+            () => {
+              this._router.navigate(["admin/users"]);
+            }
+          );
+        } else {
+          this._toasterService.pop("error", "Users updated unsuccessfully");
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
+    ;
   }
 }

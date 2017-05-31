@@ -15,7 +15,6 @@ var AppComponent = (function () {
     function AppComponent(toasterService) {
         this.toastList = new Array();
         this.toastIndex = 0;
-        console.log("In App Component");
         this.toasterService = toasterService;
     }
     AppComponent.prototype.popToast = function () {
