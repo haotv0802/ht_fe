@@ -24,7 +24,7 @@ export class UsersUpdateComponent implements OnInit {
     private _constants: Constants,
     private _router: Router,
     private _toasterService: ToasterService,
-    public _modal: ModalComponent
+    private _modal: ModalComponent
   ) {
     // this.pageTitle = 'User component';
     this.modal = _modal

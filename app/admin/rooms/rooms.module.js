@@ -13,6 +13,8 @@ var roomImages_component_1 = require("./roomImages.component");
 var rooms_service_1 = require("./rooms.service");
 var roomImages_service_1 = require("./roomImages.service");
 var common_1 = require("@angular/common");
+var roomTabs_component_1 = require("./tabs/roomTabs.component");
+var htCommon_module_1 = require("../../common/htCommon.module");
 var RoomsModule = (function () {
     function RoomsModule() {
     }
@@ -27,10 +29,19 @@ RoomsModule = __decorate([
             router_1.RouterModule.forChild([
                 { path: 'admin/roomImages', component: roomImages_component_1.RoomImagesComponent }
             ]),
-            common_1.CommonModule
+            common_1.CommonModule,
+            htCommon_module_1.HTCommonModule
         ],
-        declarations: [rooms_component_1.RoomsComponent, roomImages_component_1.RoomImagesComponent],
-        providers: [rooms_service_1.RoomsService, roomImages_service_1.RoomImagesService]
+        declarations: [
+            rooms_component_1.RoomsComponent,
+            roomImages_component_1.RoomImagesComponent,
+            roomTabs_component_1.RoomTabsComponent
+        ],
+        providers: [
+            rooms_service_1.RoomsService,
+            roomImages_service_1.RoomImagesService
+        ]
+        // entryComponents: [ModalComponent, RoomTabsComponent]
     })
 ], RoomsModule);
 exports.RoomsModule = RoomsModule;

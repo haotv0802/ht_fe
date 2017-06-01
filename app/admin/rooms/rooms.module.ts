@@ -5,6 +5,9 @@ import {RoomImagesComponent} from './roomImages.component';
 import {RoomsService} from './rooms.service';
 import {RoomImagesService} from './roomImages.service';
 import {CommonModule} from '@angular/common';
+import {RoomTabsComponent} from "./tabs/roomTabs.component";
+import {HTCommonModule} from "../../common/htCommon.module";
+import {ModalComponent} from "../../common/modal/modal.component";
 
 @NgModule({
   imports: [
@@ -14,10 +17,19 @@ import {CommonModule} from '@angular/common';
     RouterModule.forChild([
       {path: 'admin/roomImages', component: RoomImagesComponent}
     ]),
-    CommonModule
+    CommonModule,
+    HTCommonModule
   ],
-  declarations: [RoomsComponent, RoomImagesComponent],
-  providers: [RoomsService, RoomImagesService]
+  declarations: [
+    RoomsComponent,
+    RoomImagesComponent,
+    RoomTabsComponent
+  ],
+  providers: [
+    RoomsService,
+    RoomImagesService
+  ]
+  // entryComponents: [ModalComponent, RoomTabsComponent]
 })
 export class RoomsModule {
 }

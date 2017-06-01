@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 var rooms_service_1 = require("./rooms.service");
 var roomImages_service_1 = require("./roomImages.service");
 var router_1 = require("@angular/router");
+var modal_component_1 = require("../../common/modal/modal.component");
+var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var RoomsComponent = (function () {
     function RoomsComponent(_roomService, _roomImagesService, _router) {
         this._roomService = _roomService;
@@ -40,14 +42,22 @@ var RoomsComponent = (function () {
         this._router.navigate(['admin/roomImages']);
         return false;
     };
-    RoomsComponent.prototype.displayRoomManagement = function () {
-        console.log("display room management.");
+    RoomsComponent.prototype.editRoom = function () {
+        this.modal.modalTitle = "Room Tabs";
+        this.modal.modalFooter = false;
+        this.modal.modalMessage = true;
+        // this.modal.message = "Here Users Update component will load.";
+        this.modal.open(roomTabs_component_1.RoomTabsComponent);
     };
     RoomsComponent.prototype.counter = function (length) {
         return new Array(length);
     };
     return RoomsComponent;
 }());
+__decorate([
+    core_1.ViewChild(modal_component_1.ModalComponent),
+    __metadata("design:type", modal_component_1.ModalComponent)
+], RoomsComponent.prototype, "modal", void 0);
 RoomsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
