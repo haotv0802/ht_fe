@@ -43,6 +43,10 @@ export class RoomsComponent implements OnInit {
     return false;
   }
 
+  displayRoomManagement() {
+    console.log("display room management.");
+  }
+
   counter(length: number){
     return new Array(length);
   }
