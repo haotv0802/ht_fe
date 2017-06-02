@@ -11,6 +11,7 @@ import {RoomTabsService} from "./tabs/roomTabs.service";
 import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomUpdateComponent} from "./tabs/roomUpdate.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {RoomImageUpdateComponent} from "./tabs/roomImageUpdate.component";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     RoomsComponent,
     RoomImagesComponent,
     RoomTabsComponent,
-    RoomUpdateComponent
+    RoomUpdateComponent,
+    RoomImageUpdateComponent
   ],
   providers: [
     RoomsService,

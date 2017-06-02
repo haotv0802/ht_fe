@@ -27,12 +27,10 @@ var RoomTabsComponent = (function () {
         this._modal.close();
     };
     RoomTabsComponent.prototype.displayEdit = function () {
-        console.log("display Edit");
         this.isActive = true;
         return false;
     };
     RoomTabsComponent.prototype.displayImageUpdate = function () {
-        console.log("display Image Update");
         this.isActive = false;
         return false;
     };

@@ -26,13 +26,11 @@ export class RoomTabsComponent implements OnInit {
   }
 
   displayEdit() {
-    console.log("display Edit");
     this.isActive = true;
     return false;
   }
 
   displayImageUpdate() {
-    console.log("display Image Update");
     this.isActive = false;
     return false;
   }
