@@ -3,8 +3,13 @@
         {{pageTitle}}
     </div>
     <loader [opening]="true"></loader>
-    <button class="btn btn-danger"
-            type="button" (click)="close()">
-        Save
-    </button>
+    <ul class="nav nav-tabs responsive" id="myTab">
+        <li [class.active]="isActive"><a href="#" (click)="displayEdit()">Edit</a></li>
+        <li [class.active]="!isActive"><a href="#" (click)="displayImageUpdate()">Image Update</a></li>
+    </ul>
+
+    <!--<button class="btn btn-danger"-->
+            <!--type="button" (click)="close()">-->
+        <!--Save-->
+    <!--</button>-->
 </div>

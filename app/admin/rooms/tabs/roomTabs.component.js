@@ -18,12 +18,23 @@ var RoomTabsComponent = (function () {
         this._roomTabsService = _roomTabsService;
         this._router = _router;
         this._modal = _modal;
+        this.isActive = true;
         this.pageTitle = 'Room Tabs';
     }
     RoomTabsComponent.prototype.ngOnInit = function () {
     };
     RoomTabsComponent.prototype.close = function () {
         this._modal.close();
+    };
+    RoomTabsComponent.prototype.displayEdit = function () {
+        console.log("display Edit");
+        this.isActive = true;
+        return false;
+    };
+    RoomTabsComponent.prototype.displayImageUpdate = function () {
+        console.log("display Image Update");
+        this.isActive = false;
+        return false;
     };
     return RoomTabsComponent;
 }());

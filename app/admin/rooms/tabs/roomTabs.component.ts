@@ -9,6 +9,8 @@ import {ModalComponent} from "../../../common/modal/modal.component";
 })
 export class RoomTabsComponent implements OnInit {
   pageTitle: string;
+  isActive: boolean = true;
+
   ngOnInit(): void {
   }
   constructor(
@@ -21,5 +23,17 @@ export class RoomTabsComponent implements OnInit {
 
   close(): void {
     this._modal.close();
+  }
+
+  displayEdit() {
+    console.log("display Edit");
+    this.isActive = true;
+    return false;
+  }
+
+  displayImageUpdate() {
+    console.log("display Image Update");
+    this.isActive = false;
+    return false;
   }
 }
