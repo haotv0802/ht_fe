@@ -109,8 +109,9 @@ __decorate([
 ], ModalComponent.prototype, "modalOutput", void 0);
 ModalComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'modal',
-        template: "\n  <div class=\"modal fade\" [open]=\"!isOpen\" id=\"myModal\" [attr.data-keyboard]=\"true\" [attr.data-backdrop]=\"false\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\" [hidden]=!modalHeader>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" (click)='close()' aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n          <h4 class=\"modal-title text-center\" id=\"myModalLabel\">{{modalTitle}}</h4>\n        </div>\n        <div class=\"modal-body\">\n        <div [hidden]=!modalMessage>\n        {{message}}\n        </div>\n          <div #child>\n          </div>\n        </div>\n        <div class=\"modal-footer\" [hidden]=!modalFooter>\n        <span [hidden]=!okButton >\n          <button [hidden]=!okButton class=\"btn btn-primary\" (click)=\"submit()\">{{okButtonText}}</button>\n          </span>\n          <span [hidden]=!cancelButton >\n          <button [hidden]=!cancelButton class=\"btn btn-primary\" (click)=\"close()\">{{cancelButtonText}}</button>\n          </span>\n        </div>\n      </div>\n    </div>\n  </div>\n",
+        templateUrl: 'modal.component.html',
         providers: [],
         encapsulation: core_1.ViewEncapsulation.None
     })

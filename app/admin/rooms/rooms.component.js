@@ -43,7 +43,7 @@ var RoomsComponent = (function () {
         return false;
     };
     RoomsComponent.prototype.editRoom = function () {
-        this.modal.modalTitle = "Room Tabs";
+        // this.modal.modalTitle = "Room Tabs";
         this.modal.modalFooter = false;
         this.modal.modalMessage = true;
         // this.modal.message = "Here Users Update component will load.";

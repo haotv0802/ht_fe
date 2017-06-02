@@ -15,6 +15,8 @@ var roomImages_service_1 = require("./roomImages.service");
 var common_1 = require("@angular/common");
 var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var htCommon_module_1 = require("../../common/htCommon.module");
+var roomTabs_service_1 = require("./tabs/roomTabs.service");
+var modal_component_1 = require("../../common/modal/modal.component");
 var RoomsModule = (function () {
     function RoomsModule() {
     }
@@ -24,9 +26,7 @@ RoomsModule = __decorate([
     core_1.NgModule({
         imports: [
             router_1.RouterModule.forChild([
-                { path: 'admin/rooms', component: rooms_component_1.RoomsComponent }
-            ]),
-            router_1.RouterModule.forChild([
+                { path: 'admin/rooms', component: rooms_component_1.RoomsComponent },
                 { path: 'admin/roomImages', component: roomImages_component_1.RoomImagesComponent }
             ]),
             common_1.CommonModule,
@@ -39,9 +39,10 @@ RoomsModule = __decorate([
         ],
         providers: [
             rooms_service_1.RoomsService,
-            roomImages_service_1.RoomImagesService
-        ]
-        // entryComponents: [ModalComponent, RoomTabsComponent]
+            roomImages_service_1.RoomImagesService,
+            roomTabs_service_1.RoomTabsService
+        ],
+        entryComponents: [modal_component_1.ModalComponent, roomTabs_component_1.RoomTabsComponent]
     })
 ], RoomsModule);
 exports.RoomsModule = RoomsModule;
