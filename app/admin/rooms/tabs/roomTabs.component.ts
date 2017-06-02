@@ -8,6 +8,7 @@ import {ModalComponent} from "../../../common/modal/modal.component";
   templateUrl: 'roomTabs.component.html'
 })
 export class RoomTabsComponent implements OnInit {
+  pageTitle: string;
   ngOnInit(): void {
   }
   constructor(
@@ -15,6 +16,7 @@ export class RoomTabsComponent implements OnInit {
     private _router: Router,
     private _modal: ModalComponent
   ) {
+    this.pageTitle = 'Room Tabs';
   }
 
   close(): void {

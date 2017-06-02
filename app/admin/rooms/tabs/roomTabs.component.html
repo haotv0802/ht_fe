@@ -1,5 +1,8 @@
 <div class='panel panel-primary'>
-    <h1>Room Tabs</h1>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle}}
+    </div>
+    <loader [opening]="true"></loader>
     <button class="btn btn-danger"
             type="button" (click)="close()">
         Save

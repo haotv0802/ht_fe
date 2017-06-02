@@ -18,6 +18,7 @@ var RoomTabsComponent = (function () {
         this._roomTabsService = _roomTabsService;
         this._router = _router;
         this._modal = _modal;
+        this.pageTitle = 'Room Tabs';
     }
     RoomTabsComponent.prototype.ngOnInit = function () {
     };
