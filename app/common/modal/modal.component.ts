@@ -71,6 +71,12 @@ export class ModalComponent {
    * if the value is true modal will be visible or else it will be hidden.
    */
   public isOpen: boolean = false;
+
+  /**
+   * Width of document.
+   * @type {number}
+   */
+  public documentWidth: number = 500;
   /**
    * Emitted when a ok button was clicked
    * or when close method is called.

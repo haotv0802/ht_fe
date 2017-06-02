@@ -4,10 +4,11 @@ import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, Valida
 import "rxjs/add/operator/debounceTime";
 
 @Component({
+  selector: 'room-update',
   moduleId: module.id,
   templateUrl: 'roomUpdate.component.html'
 })
-export class IndividualUpdateComponent implements OnInit {
+export class RoomUpdateComponent implements OnInit {
   pageTitle: string;
   roomForm: FormGroup;
 

@@ -13,13 +13,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
-var IndividualUpdateComponent = (function () {
-    function IndividualUpdateComponent(_router, fb) {
+var RoomUpdateComponent = (function () {
+    function RoomUpdateComponent(_router, fb) {
         this._router = _router;
         this.fb = fb;
         this.pageTitle = 'Individual Update';
     }
-    IndividualUpdateComponent.prototype.ngOnInit = function () {
+    RoomUpdateComponent.prototype.ngOnInit = function () {
         this.roomForm = this.fb.group({
             roomName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(20)]],
             numOfPeople: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
@@ -27,15 +27,16 @@ var IndividualUpdateComponent = (function () {
             typeOfBeds: ['', [forms_1.Validators.required, forms_1.Validators.minLength(20)]]
         });
     };
-    return IndividualUpdateComponent;
+    return RoomUpdateComponent;
 }());
-IndividualUpdateComponent = __decorate([
+RoomUpdateComponent = __decorate([
     core_1.Component({
+        selector: 'room-update',
         moduleId: module.id,
         templateUrl: 'roomUpdate.component.html'
     }),
     __metadata("design:paramtypes", [router_1.Router,
         forms_1.FormBuilder])
-], IndividualUpdateComponent);
-exports.IndividualUpdateComponent = IndividualUpdateComponent;
+], RoomUpdateComponent);
+exports.RoomUpdateComponent = RoomUpdateComponent;
 //# sourceMappingURL=roomUpdate.component.js.map

@@ -52,6 +52,7 @@ export class RoomsComponent implements OnInit {
     this.modal.modalHeader = false;
     this.modal.modalFooter = false;
     this.modal.modalMessage = true;
+    this.modal.documentWidth = 700;
     // this.modal.message = "Here Users Update component will load.";
     this.modal.open(RoomTabsComponent);
   }

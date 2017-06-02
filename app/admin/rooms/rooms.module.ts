@@ -9,6 +9,8 @@ import {RoomTabsComponent} from "./tabs/roomTabs.component";
 import {HTCommonModule} from "../../common/htCommon.module";
 import {RoomTabsService} from "./tabs/roomTabs.service";
 import {ModalComponent} from "../../common/modal/modal.component";
+import {RoomUpdateComponent} from "./tabs/roomUpdate.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -17,12 +19,14 @@ import {ModalComponent} from "../../common/modal/modal.component";
       {path: 'admin/roomImages', component: RoomImagesComponent}
     ]),
     CommonModule,
-    HTCommonModule
+    HTCommonModule,
+    ReactiveFormsModule // for FormBuilder, FormGroup, Form-related items...
   ],
   declarations: [
     RoomsComponent,
     RoomImagesComponent,
-    RoomTabsComponent
+    RoomTabsComponent,
+    RoomUpdateComponent
   ],
   providers: [
     RoomsService,

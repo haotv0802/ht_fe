@@ -17,6 +17,8 @@ var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var htCommon_module_1 = require("../../common/htCommon.module");
 var roomTabs_service_1 = require("./tabs/roomTabs.service");
 var modal_component_1 = require("../../common/modal/modal.component");
+var roomUpdate_component_1 = require("./tabs/roomUpdate.component");
+var forms_1 = require("@angular/forms");
 var RoomsModule = (function () {
     function RoomsModule() {
     }
@@ -30,12 +32,14 @@ RoomsModule = __decorate([
                 { path: 'admin/roomImages', component: roomImages_component_1.RoomImagesComponent }
             ]),
             common_1.CommonModule,
-            htCommon_module_1.HTCommonModule
+            htCommon_module_1.HTCommonModule,
+            forms_1.ReactiveFormsModule // for FormBuilder, FormGroup, Form-related items...
         ],
         declarations: [
             rooms_component_1.RoomsComponent,
             roomImages_component_1.RoomImagesComponent,
-            roomTabs_component_1.RoomTabsComponent
+            roomTabs_component_1.RoomTabsComponent,
+            roomUpdate_component_1.RoomUpdateComponent
         ],
         providers: [
             rooms_service_1.RoomsService,

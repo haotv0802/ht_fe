@@ -47,6 +47,7 @@ var RoomsComponent = (function () {
         this.modal.modalHeader = false;
         this.modal.modalFooter = false;
         this.modal.modalMessage = true;
+        this.modal.documentWidth = 700;
         // this.modal.message = "Here Users Update component will load.";
         this.modal.open(roomTabs_component_1.RoomTabsComponent);
     };

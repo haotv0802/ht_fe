@@ -53,6 +53,11 @@ var ModalComponent = (function () {
          * if the value is true modal will be visible or else it will be hidden.
          */
         this.isOpen = false;
+        /**
+         * Width of document.
+         * @type {number}
+         */
+        this.documentWidth = 500;
         this.modalOutput = new core_1.EventEmitter();
     }
     /**
