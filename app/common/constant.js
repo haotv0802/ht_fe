@@ -25,6 +25,7 @@ var Constants = (function () {
         this.ADMIN_ROLES_KEYVALUE_SERVICE_URL = this.HOST + '/admin/roles/keyValuePair';
         //  Rooms
         this.ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes';
+        this.ADMIN_ROOMS_ROOM_TYPE_UPDATE_SERVICE_URL = this.HOST + '/admin/rooms/roomTypes/update';
         //  Images (for Admin)
         this.ADMIN_IMAGES_SERVICE_URL = this.HOST + '/admin/images';
         this.ADMIN_IMAGE_UPDATE_SERVICE_URL = this.HOST + "/admin/images/updateImageInfo";

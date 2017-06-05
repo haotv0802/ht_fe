@@ -23,6 +23,8 @@ export class Constants {
 
   //  Rooms
   public ADMIN_ROOMS_ROOM_TYPES_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes';
+  public ADMIN_ROOMS_ROOM_TYPE_UPDATE_SERVICE_URL: string = this.HOST + '/admin/rooms/roomTypes/update';
+
   //  Images (for Admin)
   public ADMIN_IMAGES_SERVICE_URL: string = this.HOST + '/admin/images';
   public ADMIN_IMAGE_UPDATE_SERVICE_URL: string = this.HOST + `/admin/images/updateImageInfo`;

@@ -85,6 +85,7 @@ export class UsersComponent implements OnInit {
     this.modal.modalTitle = "User Update";
     this.modal.modalFooter = false;
     this.modal.modalMessage = true;
+    this.modal.documentWidth = 800;
     // this.modal.message = "Here Users Update component will load.";
     this.modal.open(UsersUpdateComponent);
   }

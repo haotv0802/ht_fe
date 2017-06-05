@@ -26,21 +26,39 @@ var RoomUpdateComponent = (function () {
         console.log(this.roomType);
         this.roomForm = this.fb.group({
             roomName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            numOfPeople: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            numOfBeds: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            typeOfBeds: ['', [forms_1.Validators.required, forms_1.Validators.minLength(20)]]
+            numOfPeople: ['', [forms_1.Validators.required]],
+            numOfBeds: ['', [forms_1.Validators.required]],
+            typeOfBeds: ['', [forms_1.Validators.required]]
         });
         this.populateData();
+    };
+    RoomUpdateComponent.prototype.save = function () {
+        // console.log(this.roomForm.value);
+        // return false;
+        this.updateRoomType();
     };
     RoomUpdateComponent.prototype.populateData = function () {
         this.roomForm.patchValue({
             roomName: this.roomType.name,
             numOfPeople: this.roomType.numOfPeople,
-            numOfBeds: this.roomType.numOfBeds
+            numOfBeds: this.roomType.numOfBeds,
+            typeOfBeds: this.roomType.typeOfBed
         });
     };
     RoomUpdateComponent.prototype.counter = function (length) {
         return new Array(length);
+    };
+    RoomUpdateComponent.prototype.updateRoomType = function () {
+        this.roomType.name = this.roomForm.get("roomName").value;
+        this.roomType.numOfBeds = this.roomForm.get("numOfBeds").value;
+        this.roomType.numOfPeople = this.roomForm.get("numOfPeople").value;
+        this.roomType.typeOfBed = this.roomForm.get("typeOfBeds").value;
+        this._roomUpdateService.updateRoomType(this.roomType).subscribe(function (response) {
+            console.log(response);
+        }, function (error) {
+            console.log("Error happens at roomUpdate");
+            console.log(error);
+        });
     };
     return RoomUpdateComponent;
 }());

@@ -36,7 +36,11 @@
                                 id="numOfPeopleId"
                                 formControlName="numOfPeople">
                             <option value="" disabled selected hidden>Select num of people</option>
-                            <option *ngFor="let item of [1,2,3,4]" [value]="item" [selected]="numOfPeople===item">{{item}}</option>
+                            <!--<option *ngFor="let item of [1,2,3,4]" [value]="item" [selected]="numOfPeople===item">{{item}}</option>-->
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
                     </div>
                 </div>
@@ -48,7 +52,19 @@
                                 id="numOfBedsId"
                                 formControlName="numOfBeds">
                             <option value="" disabled selected hidden>Select num of beds</option>
-                            <option *ngFor="let item of [1,2]" [value]="item" [selected]="numOfBeds===item">{{item}}</option>
+                            <!--<option *ngFor="let item of [1,2]" [value]="item" [selected]="numOfBeds===item">{{item}}</option>-->
+                            <option value="1">
+                                1
+                            </option>
+                            <option value="2">
+                                2
+                            </option>
+                            <option value="3">
+                                3
+                            </option>
+                            <option value="4">
+                                4
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -60,9 +76,10 @@
                                 id="typeOfBedsId"
                                 formControlName="typeOfBeds">
                             <option value="" disabled selected hidden>Select type of bed</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Unknown">Unknown</option>
+                            <option value="Double Bed & Single Bed">Double Bed & Single Bed</option>
+                            <option value="Double Bed">Double Bed</option>
+                            <option value="Single Bed">Single Bed</option>
+                            <option value="2 Double Beds">2 Double Beds</option>
                         </select>
                     </div>
                 </div>
