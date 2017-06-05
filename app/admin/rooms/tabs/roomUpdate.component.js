@@ -13,19 +13,34 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
+var roomUpdate_service_1 = require("./roomUpdate.service");
 var RoomUpdateComponent = (function () {
-    function RoomUpdateComponent(_router, fb) {
+    function RoomUpdateComponent(_router, fb, _roomUpdateService) {
         this._router = _router;
         this.fb = fb;
+        this._roomUpdateService = _roomUpdateService;
         this.pageTitle = 'Individual Update';
     }
     RoomUpdateComponent.prototype.ngOnInit = function () {
+        this.roomType = this._roomUpdateService.roomType;
+        console.log(this.roomType);
         this.roomForm = this.fb.group({
-            roomName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(20)]],
+            roomName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             numOfPeople: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             numOfBeds: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             typeOfBeds: ['', [forms_1.Validators.required, forms_1.Validators.minLength(20)]]
         });
+        this.populateData();
+    };
+    RoomUpdateComponent.prototype.populateData = function () {
+        this.roomForm.patchValue({
+            roomName: this.roomType.name,
+            numOfPeople: this.roomType.numOfPeople,
+            numOfBeds: this.roomType.numOfBeds
+        });
+    };
+    RoomUpdateComponent.prototype.counter = function (length) {
+        return new Array(length);
     };
     return RoomUpdateComponent;
 }());
@@ -36,7 +51,8 @@ RoomUpdateComponent = __decorate([
         templateUrl: 'roomUpdate.component.html'
     }),
     __metadata("design:paramtypes", [router_1.Router,
-        forms_1.FormBuilder])
+        forms_1.FormBuilder,
+        roomUpdate_service_1.RoomUpdateService])
 ], RoomUpdateComponent);
 exports.RoomUpdateComponent = RoomUpdateComponent;
 //# sourceMappingURL=roomUpdate.component.js.map

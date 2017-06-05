@@ -6,6 +6,8 @@ import {RoomImagesService} from "./roomImages.service";
 import {Router} from "@angular/router";
 import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomTabsComponent} from "./tabs/roomTabs.component";
+import {RoomTabsService} from "./tabs/roomTabs.service";
+import {RoomUpdateService} from "./tabs/roomUpdate.service";
 
 @Component({
   moduleId: module.id,
@@ -18,8 +20,13 @@ export class RoomsComponent implements OnInit {
   roomTypes: RoomType[];
   @ViewChild(ModalComponent) modal: ModalComponent;
 
-  constructor(private _roomService: RoomsService, private _roomImagesService: RoomImagesService, private _router: Router) {
-    this.pageTitle = 'Room component';
+  constructor(
+    private _roomService: RoomsService,
+    private _roomImagesService: RoomImagesService,
+    private _router: Router,
+    private _roomUpdateService: RoomUpdateService
+  ) {
+    this.pageTitle = 'Room Management';
     this.getRoomTypes();
   }
 
@@ -47,7 +54,7 @@ export class RoomsComponent implements OnInit {
     return false;
   }
 
-  editRoom() {
+  editRoom(roomType: RoomType) {
     // this.modal.modalTitle = "Room Tabs";
     this.modal.modalHeader = false;
     this.modal.modalFooter = false;
@@ -55,6 +62,7 @@ export class RoomsComponent implements OnInit {
     this.modal.documentWidth = 700;
     // this.modal.message = "Here Users Update component will load.";
     this.modal.open(RoomTabsComponent);
+    this._roomUpdateService.roomType = roomType;
   }
 
   counter(length: number){

@@ -15,12 +15,14 @@ var roomImages_service_1 = require("./roomImages.service");
 var router_1 = require("@angular/router");
 var modal_component_1 = require("../../common/modal/modal.component");
 var roomTabs_component_1 = require("./tabs/roomTabs.component");
+var roomUpdate_service_1 = require("./tabs/roomUpdate.service");
 var RoomsComponent = (function () {
-    function RoomsComponent(_roomService, _roomImagesService, _router) {
+    function RoomsComponent(_roomService, _roomImagesService, _router, _roomUpdateService) {
         this._roomService = _roomService;
         this._roomImagesService = _roomImagesService;
         this._router = _router;
-        this.pageTitle = 'Room component';
+        this._roomUpdateService = _roomUpdateService;
+        this.pageTitle = 'Room Management';
         this.getRoomTypes();
     }
     RoomsComponent.prototype.ngOnInit = function () {
@@ -42,7 +44,7 @@ var RoomsComponent = (function () {
         this._router.navigate(['admin/roomImages']);
         return false;
     };
-    RoomsComponent.prototype.editRoom = function () {
+    RoomsComponent.prototype.editRoom = function (roomType) {
         // this.modal.modalTitle = "Room Tabs";
         this.modal.modalHeader = false;
         this.modal.modalFooter = false;
@@ -50,6 +52,7 @@ var RoomsComponent = (function () {
         this.modal.documentWidth = 700;
         // this.modal.message = "Here Users Update component will load.";
         this.modal.open(roomTabs_component_1.RoomTabsComponent);
+        this._roomUpdateService.roomType = roomType;
     };
     RoomsComponent.prototype.counter = function (length) {
         return new Array(length);
@@ -67,7 +70,10 @@ RoomsComponent = __decorate([
         // templateUrl: 'app/admin/rooms/rooms.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [rooms_service_1.RoomsService, roomImages_service_1.RoomImagesService, router_1.Router])
+    __metadata("design:paramtypes", [rooms_service_1.RoomsService,
+        roomImages_service_1.RoomImagesService,
+        router_1.Router,
+        roomUpdate_service_1.RoomUpdateService])
 ], RoomsComponent);
 exports.RoomsComponent = RoomsComponent;
 //# sourceMappingURL=rooms.component.js.map

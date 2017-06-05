@@ -20,6 +20,7 @@ var modal_component_1 = require("../../common/modal/modal.component");
 var roomUpdate_component_1 = require("./tabs/roomUpdate.component");
 var forms_1 = require("@angular/forms");
 var roomImageUpdate_component_1 = require("./tabs/roomImageUpdate.component");
+var roomUpdate_service_1 = require("./tabs/roomUpdate.service");
 var RoomsModule = (function () {
     function RoomsModule() {
     }
@@ -46,7 +47,8 @@ RoomsModule = __decorate([
         providers: [
             rooms_service_1.RoomsService,
             roomImages_service_1.RoomImagesService,
-            roomTabs_service_1.RoomTabsService
+            roomTabs_service_1.RoomTabsService,
+            roomUpdate_service_1.RoomUpdateService
         ],
         entryComponents: [modal_component_1.ModalComponent, roomTabs_component_1.RoomTabsComponent]
     })

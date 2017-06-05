@@ -20,10 +20,10 @@
                                                          roomForm.get('roomName').dirty) &&
                                                          roomForm.get('roomName').errors">
                         <span *ngIf="roomForm.get('roomName').errors.required">
-                            Please enter your first name.
+                            Please enter your room name.
                         </span>
                         <span *ngIf="roomForm.get('roomName').errors.minlength">
-                            The first name must be longer than 3 characters.
+                            The room name must be longer than 3 characters.
                         </span>
                     </span>
                     </div>
@@ -36,9 +36,7 @@
                                 id="numOfPeopleId"
                                 formControlName="numOfPeople">
                             <option value="" disabled selected hidden>Select num of people</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Unknown">Unknown</option>
+                            <option *ngFor="let item of [1,2,3,4]" [value]="item" [selected]="numOfPeople===item">{{item}}</option>
                         </select>
                     </div>
                 </div>
@@ -50,9 +48,7 @@
                                 id="numOfBedsId"
                                 formControlName="numOfBeds">
                             <option value="" disabled selected hidden>Select num of beds</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Unknown">Unknown</option>
+                            <option *ngFor="let item of [1,2]" [value]="item" [selected]="numOfBeds===item">{{item}}</option>
                         </select>
                     </div>
                 </div>
