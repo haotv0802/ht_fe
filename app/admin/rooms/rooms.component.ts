@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild, OnDestroy} from "@angular/core";
 import {RoomType} from "./roomType";
 import {RoomsService} from "./rooms.service";
 import {Image} from "./image";
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomTabsComponent} from "./tabs/roomTabs.component";
 import {RoomUpdateService} from "./tabs/roomUpdate.service";
-import {Observable} from "rxjs/Rx";
+import {Observable, Subscription} from "rxjs/Rx";
 
 @Component({
   moduleId: module.id,
@@ -15,9 +15,11 @@ import {Observable} from "rxjs/Rx";
   // templateUrl: 'app/admin/rooms/rooms.component.html'
   // styleUrls: ['app/products/product-list.component.css']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, OnDestroy {
+
   pageTitle: string;
   roomTypes: RoomType[];
+  private sub: Subscription;
   @ViewChild(ModalComponent) modal: ModalComponent;
 
   constructor(
@@ -32,12 +34,16 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     let timer = Observable.interval(1000);
-    timer.subscribe(
+    this.sub = timer.subscribe(
       () => {
         this.getRoomTypes();
       }
     )
     ;
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   getRoomTypes(): void {

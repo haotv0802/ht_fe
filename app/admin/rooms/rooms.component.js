@@ -29,9 +29,12 @@ var RoomsComponent = (function () {
     RoomsComponent.prototype.ngOnInit = function () {
         var _this = this;
         var timer = Rx_1.Observable.interval(1000);
-        timer.subscribe(function () {
+        this.sub = timer.subscribe(function () {
             _this.getRoomTypes();
         });
+    };
+    RoomsComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
     };
     RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
