@@ -59,6 +59,7 @@ var RoomUpdateComponent = (function () {
             console.log("Error happens at roomUpdate");
             console.log(error);
         });
+        this._roomUpdateService.modal.close();
     };
     return RoomUpdateComponent;
 }());

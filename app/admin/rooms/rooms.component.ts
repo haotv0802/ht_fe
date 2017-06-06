@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild}  from '@angular/core';
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {RoomType} from "./roomType";
 import {RoomsService} from "./rooms.service";
 import {Image} from "./image";
@@ -6,8 +6,8 @@ import {RoomImagesService} from "./roomImages.service";
 import {Router} from "@angular/router";
 import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomTabsComponent} from "./tabs/roomTabs.component";
-import {RoomTabsService} from "./tabs/roomTabs.service";
 import {RoomUpdateService} from "./tabs/roomUpdate.service";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   moduleId: module.id,
@@ -27,15 +27,21 @@ export class RoomsComponent implements OnInit {
     private _roomUpdateService: RoomUpdateService
   ) {
     this.pageTitle = 'Room Management';
-    this.getRoomTypes();
+    // this.getRoomTypes();
   }
 
   ngOnInit(): void {
-    // this.getUsers();
+    let timer = Observable.interval(1000);
+    timer.subscribe(
+      () => {
+        this.getRoomTypes();
+      }
+    )
+    ;
   }
 
   getRoomTypes(): void {
-    // console.log("get room Types");
+    console.log("get room Types");
     this._roomService.getRoomTypes().subscribe(
       (roomTypes) => {
         // console.log("get users: ----");

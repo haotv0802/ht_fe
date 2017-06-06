@@ -63,6 +63,7 @@ var UsersComponent = (function () {
     };
     UsersComponent.prototype.getUsers = function () {
         var _this = this;
+        console.log("get users");
         this._usersService.getUsers().subscribe(function (users) {
             _this.users = users;
             _this.loaderOpen = false;

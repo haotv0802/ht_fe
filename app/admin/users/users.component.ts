@@ -55,16 +55,19 @@ export class UsersComponent implements OnInit {
     this.pageTitle = 'User component';
   }
 
-  ngOnInit(): void {let timer = Observable.interval(1000);
+  ngOnInit(): void {
+    let timer = Observable.interval(1000);
     // subscribing to a observable returns a subscription object
     timer.subscribe(
       () => {
         this.getUsers();
       }
-    );
+    )
+    ;
   }
 
   getUsers(): void {
+    console.log("get users");
     this._usersService.getUsers().subscribe(
       (users) => {
         this.users = users;

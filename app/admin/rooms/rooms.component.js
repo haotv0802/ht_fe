@@ -16,6 +16,7 @@ var router_1 = require("@angular/router");
 var modal_component_1 = require("../../common/modal/modal.component");
 var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var roomUpdate_service_1 = require("./tabs/roomUpdate.service");
+var Rx_1 = require("rxjs/Rx");
 var RoomsComponent = (function () {
     function RoomsComponent(_roomService, _roomImagesService, _router, _roomUpdateService) {
         this._roomService = _roomService;
@@ -23,14 +24,18 @@ var RoomsComponent = (function () {
         this._router = _router;
         this._roomUpdateService = _roomUpdateService;
         this.pageTitle = 'Room Management';
-        this.getRoomTypes();
+        // this.getRoomTypes();
     }
     RoomsComponent.prototype.ngOnInit = function () {
-        // this.getUsers();
+        var _this = this;
+        var timer = Rx_1.Observable.interval(1000);
+        timer.subscribe(function () {
+            _this.getRoomTypes();
+        });
     };
     RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
-        // console.log("get room Types");
+        console.log("get room Types");
         this._roomService.getRoomTypes().subscribe(function (roomTypes) {
             // console.log("get users: ----");
             // console.log(res);

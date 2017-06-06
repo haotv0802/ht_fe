@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, Valida
 import "rxjs/add/operator/debounceTime";
 import {RoomUpdateService} from "./roomUpdate.service";
 import {RoomType} from "../roomType";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'room-update',
@@ -68,5 +69,6 @@ export class RoomUpdateComponent implements OnInit {
       }
     )
     ;
+    this._roomUpdateService.modal.close();
   }
 }

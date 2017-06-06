@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {RoomTabsService} from "./roomTabs.service";
 import {ModalComponent} from "../../../common/modal/modal.component";
+import {RoomUpdateService} from "./roomUpdate.service";
 
 @Component({
   moduleId: module.id,
@@ -15,10 +16,12 @@ export class RoomTabsComponent implements OnInit {
   }
   constructor(
     private _roomTabsService: RoomTabsService,
+    private _roomUpdateService: RoomUpdateService,
     private _router: Router,
     private _modal: ModalComponent
   ) {
     this.pageTitle = 'Room Tabs';
+    this._roomUpdateService.modal = _modal;
   }
 
   close(): void {

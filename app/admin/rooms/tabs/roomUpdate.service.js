@@ -18,9 +18,7 @@ var RoomUpdateService = (function () {
         this._constants = _constants;
     }
     RoomUpdateService.prototype.updateRoomType = function (roomType) {
-        return this._httpService.patch(this._constants.ADMIN_ROOMS_ROOM_TYPE_UPDATE_SERVICE_URL, roomType)
-            .map(function (res) { return res.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); });
+        return this._httpService.patch(this._constants.ADMIN_ROOMS_ROOM_TYPE_UPDATE_SERVICE_URL, roomType);
     };
     return RoomUpdateService;
 }());
