@@ -1,25 +1,33 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {RoomUpdateService} from "./roomUpdate.service";
 import {RoomType} from "../roomType";
 import {ModalComponent} from "../../../common/modal/modal.component";
+import {ToasterService} from "angular2-toaster";
+import {Subscription, Observable} from "rxjs/Rx";
+import {Constants} from "../../../common/constant";
 
 @Component({
   selector: 'room-update',
   moduleId: module.id,
   templateUrl: 'roomUpdate.component.html'
 })
-export class RoomUpdateComponent implements OnInit {
+export class RoomUpdateComponent implements OnInit, OnDestroy {
+
   pageTitle: string;
   roomForm: FormGroup;
   roomType: RoomType;
+  loaderOpen: boolean = false;
+  private sub: Subscription;
 
   constructor(private _router: Router,
               private fb: FormBuilder,
               private _modal: ModalComponent,
-              private _roomUpdateService: RoomUpdateService
+              private _roomUpdateService: RoomUpdateService,
+              private _toasterService: ToasterService,
+              private _constants: Constants
   ) {
     this.pageTitle = 'Individual Update';
   }
@@ -37,9 +45,11 @@ export class RoomUpdateComponent implements OnInit {
     this.populateData();
   }
 
+  ngOnDestroy(): void {
+  }
+
   save() {
-    // console.log(this.roomForm.value);
-    // return false;
+    // setTimeout(this.updateRoomType(), 2000);
     this.updateRoomType();
   }
 
@@ -57,14 +67,17 @@ export class RoomUpdateComponent implements OnInit {
   }
 
   updateRoomType(): void {
+    this.loaderOpen = true;
     this.roomType.name = this.roomForm.get("roomName").value;
     this.roomType.numOfBeds = parseInt(this.roomForm.get("numOfBeds").value);
     this.roomType.numOfPeople = parseInt(this.roomForm.get("numOfPeople").value);
     this.roomType.typeOfBed = this.roomForm.get("typeOfBeds").value;
     this._roomUpdateService.updateRoomType(this.roomType).subscribe(
       (response) => {
-        // console.log(response);
+        this._toasterService.pop(this._constants.TOASTER_SUCCESS, "Room updated successfully");
         this._modal.close("data changed");
+
+        this.loaderOpen = false;
       },
       (error: any) => {
         console.log("Error happens at roomUpdate");
@@ -72,6 +85,5 @@ export class RoomUpdateComponent implements OnInit {
       }
     )
     ;
-
   }
 }

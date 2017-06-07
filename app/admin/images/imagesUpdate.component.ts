@@ -119,7 +119,7 @@ export class ImagesUpdateComponent implements OnInit, OnDestroy {
           console.log(error);
           if (error.status = this._constants.HTTP_STATUS_BAD_REQUEST) {
             // this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
-            this._toasterService.pop("error", error.json().faultMessage);
+            this._toasterService.pop(this._constants.TOASTER_ERROR, error.json().faultMessage);
           }
         }
       )

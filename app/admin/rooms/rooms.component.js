@@ -41,10 +41,7 @@ var RoomsComponent = (function () {
     RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
         this._roomService.getRoomTypes().subscribe(function (roomTypes) {
-            // console.log("get users: ----");
-            // console.log(res);
             _this.roomTypes = roomTypes;
-            console.log(_this.roomTypes);
         }, function (error) {
             console.log(error);
         });

@@ -6,6 +6,10 @@ export class Constants {
   public HOST = 'http://localhost:8880/ht-be/svc';
   public LOGIN_SERVICE_URL: string = this.HOST + '/login';
 
+  // Toaster service
+  public TOASTER_SUCCESS: string = "success";
+  public TOASTER_ERROR: string = "error";
+
   // HTTP Status
   public HTTP_STATUS_OK: number = 200;
   public HTTP_STATUS_NO_CONTENT: number = 204;

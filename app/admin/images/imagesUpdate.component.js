@@ -105,7 +105,7 @@ var ImagesUpdateComponent = (function () {
             console.log(error);
             if (error.status = _this._constants.HTTP_STATUS_BAD_REQUEST) {
                 // this.openAlertWithParams("Error happens when saving", error.json().faultMessage, "Ok");
-                _this._toasterService.pop("error", error.json().faultMessage);
+                _this._toasterService.pop(_this._constants.TOASTER_ERROR, error.json().faultMessage);
             }
         });
     };

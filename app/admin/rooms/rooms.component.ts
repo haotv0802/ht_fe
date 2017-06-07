@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomTabsComponent} from "./tabs/roomTabs.component";
 import {RoomUpdateService} from "./tabs/roomUpdate.service";
-import {Observable, Subscription} from "rxjs/Rx";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   moduleId: module.id,
@@ -50,10 +50,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
   getRoomTypes(): void {
     this._roomService.getRoomTypes().subscribe(
       (roomTypes) => {
-        // console.log("get users: ----");
-        // console.log(res);
         this.roomTypes = roomTypes;
-        console.log(this.roomTypes);
       },
       (error) => {
         console.log(error);

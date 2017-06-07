@@ -11,6 +11,9 @@ var Constants = (function () {
     function Constants() {
         this.HOST = 'http://localhost:8880/ht-be/svc';
         this.LOGIN_SERVICE_URL = this.HOST + '/login';
+        // Toaster service
+        this.TOASTER_SUCCESS = "success";
+        this.TOASTER_ERROR = "error";
         // HTTP Status
         this.HTTP_STATUS_OK = 200;
         this.HTTP_STATUS_NO_CONTENT = 204;

@@ -91,7 +91,7 @@ export class UsersUpdateComponent implements OnInit {
             }
           );
         } else {
-          this._toasterService.pop("error", "Users updated unsuccessfully");
+          this._toasterService.pop(this._constants.TOASTER_ERROR, "Users updated unsuccessfully");
         }
       },
       (error: any) => {

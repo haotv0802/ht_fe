@@ -72,7 +72,7 @@ var UsersUpdateComponent = (function () {
                 });
             }
             else {
-                _this._toasterService.pop("error", "Users updated unsuccessfully");
+                _this._toasterService.pop(_this._constants.TOASTER_ERROR, "Users updated unsuccessfully");
             }
         }, function (error) {
             console.log(error);
