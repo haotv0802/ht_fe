@@ -14,10 +14,12 @@ var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/debounceTime");
 var roomUpdate_service_1 = require("./roomUpdate.service");
+var modal_component_1 = require("../../../common/modal/modal.component");
 var RoomUpdateComponent = (function () {
-    function RoomUpdateComponent(_router, fb, _roomUpdateService) {
+    function RoomUpdateComponent(_router, fb, _modal, _roomUpdateService) {
         this._router = _router;
         this.fb = fb;
+        this._modal = _modal;
         this._roomUpdateService = _roomUpdateService;
         this.pageTitle = 'Individual Update';
     }
@@ -59,7 +61,7 @@ var RoomUpdateComponent = (function () {
             console.log("Error happens at roomUpdate");
             console.log(error);
         });
-        this._roomUpdateService.modal.close();
+        this._modal.close("data changed");
     };
     return RoomUpdateComponent;
 }());
@@ -71,6 +73,7 @@ RoomUpdateComponent = __decorate([
     }),
     __metadata("design:paramtypes", [router_1.Router,
         forms_1.FormBuilder,
+        modal_component_1.ModalComponent,
         roomUpdate_service_1.RoomUpdateService])
 ], RoomUpdateComponent);
 exports.RoomUpdateComponent = RoomUpdateComponent;

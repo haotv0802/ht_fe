@@ -16,12 +16,10 @@ export class RoomTabsComponent implements OnInit {
   }
   constructor(
     private _roomTabsService: RoomTabsService,
-    private _roomUpdateService: RoomUpdateService,
     private _router: Router,
     private _modal: ModalComponent
   ) {
     this.pageTitle = 'Room Tabs';
-    this._roomUpdateService.modal = _modal;
   }
 
   close(): void {

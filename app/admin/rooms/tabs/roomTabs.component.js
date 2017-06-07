@@ -13,16 +13,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var roomTabs_service_1 = require("./roomTabs.service");
 var modal_component_1 = require("../../../common/modal/modal.component");
-var roomUpdate_service_1 = require("./roomUpdate.service");
 var RoomTabsComponent = (function () {
-    function RoomTabsComponent(_roomTabsService, _roomUpdateService, _router, _modal) {
+    function RoomTabsComponent(_roomTabsService, _router, _modal) {
         this._roomTabsService = _roomTabsService;
-        this._roomUpdateService = _roomUpdateService;
         this._router = _router;
         this._modal = _modal;
         this.isActive = true;
         this.pageTitle = 'Room Tabs';
-        this._roomUpdateService.modal = _modal;
     }
     RoomTabsComponent.prototype.ngOnInit = function () {
     };
@@ -45,7 +42,6 @@ RoomTabsComponent = __decorate([
         templateUrl: 'roomTabs.component.html'
     }),
     __metadata("design:paramtypes", [roomTabs_service_1.RoomTabsService,
-        roomUpdate_service_1.RoomUpdateService,
         router_1.Router,
         modal_component_1.ModalComponent])
 ], RoomTabsComponent);

@@ -33,26 +33,27 @@ export class RoomsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    let timer = Observable.interval(1000);
-    this.sub = timer.subscribe(
-      () => {
-        this.getRoomTypes();
-      }
-    )
-    ;
+    // let timer = Observable.interval(1000);
+    // this.sub = timer.subscribe(
+    //   () => {
+    //     this.getRoomTypes();
+    //   }
+    // )
+    // ;
+    this.getRoomTypes();
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   getRoomTypes(): void {
-    console.log("get room Types");
     this._roomService.getRoomTypes().subscribe(
       (roomTypes) => {
         // console.log("get users: ----");
         // console.log(res);
         this.roomTypes = roomTypes;
+        console.log(this.roomTypes);
       },
       (error) => {
         console.log(error);
@@ -79,5 +80,9 @@ export class RoomsComponent implements OnInit, OnDestroy {
 
   counter(length: number){
     return new Array(length);
+  }
+
+  syncData(event: Event) {
+    this.getRoomTypes();
   }
 }

@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ValidatorFn} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {RoomUpdateService} from "./roomUpdate.service";
 import {RoomType} from "../roomType";
-import {Observable} from "rxjs/Rx";
+import {ModalComponent} from "../../../common/modal/modal.component";
 
 @Component({
   selector: 'room-update',
@@ -18,7 +18,9 @@ export class RoomUpdateComponent implements OnInit {
 
   constructor(private _router: Router,
               private fb: FormBuilder,
-              private _roomUpdateService: RoomUpdateService) {
+              private _modal: ModalComponent,
+              private _roomUpdateService: RoomUpdateService
+  ) {
     this.pageTitle = 'Individual Update';
   }
 
@@ -69,6 +71,6 @@ export class RoomUpdateComponent implements OnInit {
       }
     )
     ;
-    this._roomUpdateService.modal.close();
+    this._modal.close("data changed");
   }
 }

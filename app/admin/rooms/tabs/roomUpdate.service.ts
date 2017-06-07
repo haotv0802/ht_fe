@@ -3,12 +3,10 @@ import {HTTPService} from "../../../common/HTTP.service";
 import {Constants} from "../../../common/constant";
 import {RoomType} from "../roomType";
 import {Observable} from "rxjs";
-import {ModalComponent} from "../../../common/modal/modal.component";
 
 @Injectable()
 export class RoomUpdateService {
   public roomType: RoomType;
-  public modal: ModalComponent;
 
   constructor(
     private _httpService: HTTPService,

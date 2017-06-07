@@ -16,7 +16,6 @@ var router_1 = require("@angular/router");
 var modal_component_1 = require("../../common/modal/modal.component");
 var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var roomUpdate_service_1 = require("./tabs/roomUpdate.service");
-var Rx_1 = require("rxjs/Rx");
 var RoomsComponent = (function () {
     function RoomsComponent(_roomService, _roomImagesService, _router, _roomUpdateService) {
         this._roomService = _roomService;
@@ -27,22 +26,25 @@ var RoomsComponent = (function () {
         // this.getRoomTypes();
     }
     RoomsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        var timer = Rx_1.Observable.interval(1000);
-        this.sub = timer.subscribe(function () {
-            _this.getRoomTypes();
-        });
+        // let timer = Observable.interval(1000);
+        // this.sub = timer.subscribe(
+        //   () => {
+        //     this.getRoomTypes();
+        //   }
+        // )
+        // ;
+        this.getRoomTypes();
     };
     RoomsComponent.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
+        // this.sub.unsubscribe();
     };
     RoomsComponent.prototype.getRoomTypes = function () {
         var _this = this;
-        console.log("get room Types");
         this._roomService.getRoomTypes().subscribe(function (roomTypes) {
             // console.log("get users: ----");
             // console.log(res);
             _this.roomTypes = roomTypes;
+            console.log(_this.roomTypes);
         }, function (error) {
             console.log(error);
         });
@@ -64,6 +66,9 @@ var RoomsComponent = (function () {
     };
     RoomsComponent.prototype.counter = function (length) {
         return new Array(length);
+    };
+    RoomsComponent.prototype.syncData = function (event) {
+        this.getRoomTypes();
     };
     return RoomsComponent;
 }());
