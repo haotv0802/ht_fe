@@ -6,7 +6,7 @@ import {RoomUpdateService} from "./roomUpdate.service";
 import {RoomType} from "../roomType";
 import {ModalComponent} from "../../../common/modal/modal.component";
 import {ToasterService} from "angular2-toaster";
-import {Subscription, Observable} from "rxjs/Rx";
+import {Subscription} from "rxjs/Rx";
 import {Constants} from "../../../common/constant";
 
 @Component({
@@ -49,8 +49,9 @@ export class RoomUpdateComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    // setTimeout(this.updateRoomType(), 2000);
-    this.updateRoomType();
+    this.loaderOpen = true;
+    setTimeout(() => {this.updateRoomType()}, 1000);
+    // this.updateRoomType();
   }
 
   populateData(): void {
@@ -67,7 +68,7 @@ export class RoomUpdateComponent implements OnInit, OnDestroy {
   }
 
   updateRoomType(): void {
-    this.loaderOpen = true;
+
     this.roomType.name = this.roomForm.get("roomName").value;
     this.roomType.numOfBeds = parseInt(this.roomForm.get("numOfBeds").value);
     this.roomType.numOfPeople = parseInt(this.roomForm.get("numOfPeople").value);

@@ -81,7 +81,7 @@ export class UsersUpdateComponent implements OnInit {
     this._userUpdateService.updateUsersRoles(this.users).subscribe(
       (res) => {
         if (res.status == this._constants.HTTP_STATUS_OK) {
-          this._toasterService.pop("success", "Users updated successfully");
+          this._toasterService.pop(this._constants.TOASTER_SUCCESS, "Users updated successfully");
           // this._router.navigate(["admin/users"]);
           let timer = Observable.interval(3000);
           timer.subscribe(

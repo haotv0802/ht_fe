@@ -18,7 +18,6 @@ var RoomImageUpdateComponent = (function () {
         this._router = _router;
         this.fb = fb;
         this.pageTitle = 'Individual Image Update';
-        console.log("open room update!");
     }
     RoomImageUpdateComponent.prototype.ngOnInit = function () {
     };

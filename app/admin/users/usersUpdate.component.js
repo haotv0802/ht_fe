@@ -63,7 +63,7 @@ var UsersUpdateComponent = (function () {
         var _this = this;
         this._userUpdateService.updateUsersRoles(this.users).subscribe(function (res) {
             if (res.status == _this._constants.HTTP_STATUS_OK) {
-                _this._toasterService.pop("success", "Users updated successfully");
+                _this._toasterService.pop(_this._constants.TOASTER_SUCCESS, "Users updated successfully");
                 // this._router.navigate(["admin/users"]);
                 var timer = Rx_1.Observable.interval(3000);
                 timer.subscribe(function () {

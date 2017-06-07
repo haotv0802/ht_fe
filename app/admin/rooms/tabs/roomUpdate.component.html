@@ -1,5 +1,6 @@
 <div class='panel panel-primary'>
     <!--<loader-modal [opening]="loaderOpen" (loaderClicked)='onLoaderClicked($event)'></loader-modal>-->
+    <loader [opening]="loaderOpen"></loader>
     <div class="panel-body" style="width: 700px;">
         <form class="form-horizontal" novalidate
               (ngSubmit)="save()"

@@ -42,8 +42,10 @@ var RoomUpdateComponent = (function () {
     RoomUpdateComponent.prototype.ngOnDestroy = function () {
     };
     RoomUpdateComponent.prototype.save = function () {
-        // setTimeout(this.updateRoomType(), 2000);
-        this.updateRoomType();
+        var _this = this;
+        this.loaderOpen = true;
+        setTimeout(function () { _this.updateRoomType(); }, 1000);
+        // this.updateRoomType();
     };
     RoomUpdateComponent.prototype.populateData = function () {
         this.roomForm.patchValue({
@@ -58,7 +60,6 @@ var RoomUpdateComponent = (function () {
     };
     RoomUpdateComponent.prototype.updateRoomType = function () {
         var _this = this;
-        this.loaderOpen = true;
         this.roomType.name = this.roomForm.get("roomName").value;
         this.roomType.numOfBeds = parseInt(this.roomForm.get("numOfBeds").value);
         this.roomType.numOfPeople = parseInt(this.roomForm.get("numOfPeople").value);

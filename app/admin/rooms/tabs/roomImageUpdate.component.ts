@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators, AbstractControl, FormControl, ValidatorFn} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 
 @Component({
@@ -16,7 +16,6 @@ export class RoomImageUpdateComponent implements OnInit {
               private fb: FormBuilder
   ) {
     this.pageTitle = 'Individual Image Update';
-    console.log("open room update!");
   }
 
   ngOnInit(): void {
