@@ -67,8 +67,22 @@ var RoomsComponent = (function () {
     RoomsComponent.prototype.counter = function (length) {
         return new Array(length);
     };
-    RoomsComponent.prototype.syncData = function (event) {
-        this.getRoomTypes();
+    RoomsComponent.prototype.syncData = function (data) {
+        // Observable.forkJoin(
+        //   this._roomUpdateService.updateRoomType(data),
+        //   this._roomService.getRoomTypes()
+        // ).subscribe(
+        //   (data) => {
+        //     console.log(data[0]);
+        //     this.roomTypes = data[1];
+        //   },
+        //   (error) => {
+        //     console.log(error);
+        //   }
+        // )
+        // ;
+        // console.log(event);
+        // this.getRoomTypes();
     };
     return RoomsComponent;
 }());

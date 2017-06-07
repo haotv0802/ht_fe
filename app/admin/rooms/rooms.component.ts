@@ -82,7 +82,21 @@ export class RoomsComponent implements OnInit, OnDestroy {
     return new Array(length);
   }
 
-  syncData(event: Event) {
-    this.getRoomTypes();
+  syncData(data: RoomType) {
+    // Observable.forkJoin(
+    //   this._roomUpdateService.updateRoomType(data),
+    //   this._roomService.getRoomTypes()
+    // ).subscribe(
+    //   (data) => {
+    //     console.log(data[0]);
+    //     this.roomTypes = data[1];
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // )
+    // ;
+    // console.log(event);
+    // this.getRoomTypes();
   }
 }

@@ -26,7 +26,7 @@ export class RoomUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.roomType = this._roomUpdateService.roomType;
-    console.log(this.roomType);
+    // console.log(this.roomType);
     this.roomForm = this.fb.group({
       roomName: ['', [Validators.required, Validators.minLength(3)]],
       numOfPeople: ['', [Validators.required]],
@@ -58,12 +58,13 @@ export class RoomUpdateComponent implements OnInit {
 
   updateRoomType(): void {
     this.roomType.name = this.roomForm.get("roomName").value;
-    this.roomType.numOfBeds = this.roomForm.get("numOfBeds").value;
-    this.roomType.numOfPeople = this.roomForm.get("numOfPeople").value;
+    this.roomType.numOfBeds = parseInt(this.roomForm.get("numOfBeds").value);
+    this.roomType.numOfPeople = parseInt(this.roomForm.get("numOfPeople").value);
     this.roomType.typeOfBed = this.roomForm.get("typeOfBeds").value;
     this._roomUpdateService.updateRoomType(this.roomType).subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
+        this._modal.close("data changed");
       },
       (error: any) => {
         console.log("Error happens at roomUpdate");
@@ -71,6 +72,6 @@ export class RoomUpdateComponent implements OnInit {
       }
     )
     ;
-    this._modal.close("data changed");
+
   }
 }

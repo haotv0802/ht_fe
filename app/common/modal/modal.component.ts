@@ -108,8 +108,6 @@ export class ModalComponent {
    */
   close(data?: any) {
     this.dispose();
-    console.log("going to emit data");
-    console.log(data);
     if (data) {
       this.modalOutput.emit(data);
     }
