@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var users_service_1 = require("./users.service");
 var router_1 = require("@angular/router");
-var Rx_1 = require("rxjs/Rx");
 var modal_component_1 = require("../../common/modal/modal.component");
 var usersUpdate_component_1 = require("./usersUpdate.component");
 var UsersComponent = (function () {
@@ -54,12 +53,15 @@ var UsersComponent = (function () {
         this.pageTitle = 'User component';
     }
     UsersComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        var timer = Rx_1.Observable.interval(1000);
-        // subscribing to a observable returns a subscription object
-        timer.subscribe(function () {
-            _this.getUsers();
-        });
+        // let timer = Observable.interval(1000);
+        // // subscribing to a observable returns a subscription object
+        // timer.subscribe(
+        //   () => {
+        //     this.getUsers();
+        //   }
+        // )
+        // ;
+        this.getUsers();
     };
     UsersComponent.prototype.getUsers = function () {
         var _this = this;

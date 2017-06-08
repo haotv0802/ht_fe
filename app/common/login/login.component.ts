@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Constants} from './../constant';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToasterService} from "angular2-toaster";
+import {MessagesService} from "../messages/messages.service";
 
 @Component({
   templateUrl: 'app/common/login/login.component.html'
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _constants: Constants,
     private fb: FormBuilder,
-    private _toasterService: ToasterService
+    private _toasterService: ToasterService,
+    private _messagesService: MessagesService
   ) {
 
   }
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
         this._authToken = headers.get(this._constants.X_AUTH_TOKEN_HEADER);
         sessionStorage.setItem(this._constants.AUTH_TOKEN, this._authToken);
         if (this._authToken) {
+          this._messagesService.getMessages();
           this._router.navigate(['welcome']);
         }
       },

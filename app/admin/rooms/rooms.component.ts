@@ -8,6 +8,7 @@ import {ModalComponent} from "../../common/modal/modal.component";
 import {RoomTabsComponent} from "./tabs/roomTabs.component";
 import {RoomUpdateService} from "./tabs/roomUpdate.service";
 import {Subscription} from "rxjs/Rx";
+import {MessagesService} from "../../common/messages/messages.service";
 
 @Component({
   moduleId: module.id,
@@ -17,12 +18,14 @@ import {Subscription} from "rxjs/Rx";
 })
 export class RoomsComponent implements OnInit, OnDestroy {
 
+  messages: any;
   pageTitle: string;
   roomTypes: RoomType[];
   private sub: Subscription;
   @ViewChild(ModalComponent) modal: ModalComponent;
 
   constructor(
+    private _messagesService: MessagesService,
     private _roomService: RoomsService,
     private _roomImagesService: RoomImagesService,
     private _router: Router,
@@ -30,6 +33,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
   ) {
     this.pageTitle = 'Room Management';
     // this.getRoomTypes();
+    this.messages = this._messagesService;
   }
 
   ngOnInit(): void {

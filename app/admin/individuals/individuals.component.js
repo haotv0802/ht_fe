@@ -22,8 +22,10 @@ var Rx_1 = require("rxjs/Rx");
 var platform_browser_1 = require("@angular/platform-browser");
 var angular2_modal_1 = require("angular2-modal");
 var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
+var messages_service_1 = require("../../common/messages/messages.service");
 var IndividualsComponent = (function () {
-    function IndividualsComponent(_individualService, _individualDetailsService, _individualUpdateService, _router, overlay, vcRef, modal, document) {
+    function IndividualsComponent(_messagesService, _individualService, _individualDetailsService, _individualUpdateService, _router, overlay, vcRef, modal, document) {
+        this._messagesService = _messagesService;
         this._individualService = _individualService;
         this._individualDetailsService = _individualDetailsService;
         this._individualUpdateService = _individualUpdateService;
@@ -48,15 +50,26 @@ var IndividualsComponent = (function () {
     };
     IndividualsComponent.prototype.getAllIndividuals = function () {
         var _this = this;
-        var timer = Rx_1.Observable.interval(1000);
-        // subscribing to a observable returns a subscription object
-        timer.subscribe(function () {
-            _this._individualService.getIndividuals().subscribe(function (individuals) {
-                _this.individualsALL = individuals;
-                _this.isOpen = false;
-            }, function (error) {
-                console.log(error);
-            });
+        // let timer = Observable.interval(1000);
+        // // subscribing to a observable returns a subscription object
+        // timer.subscribe(
+        //   () => {
+        //     this._individualService.getIndividuals().subscribe(
+        //       (individuals) => {
+        //         this.individualsALL = individuals;
+        //         this.isOpen = false;
+        //       },
+        //       (error) => {
+        //         console.log(error);
+        //       }
+        //     );
+        //   }
+        // );
+        this._individualService.getIndividuals().subscribe(function (individuals) {
+            _this.individualsALL = individuals;
+            _this.isOpen = false;
+        }, function (error) {
+            console.log(error);
         });
     };
     // @HostListener("window:scroll", [])
@@ -105,8 +118,9 @@ IndividualsComponent = __decorate([
         templateUrl: 'individuals.component.html',
         styleUrls: ['individual.bubbling.component.css']
     }),
-    __param(7, core_1.Inject(platform_browser_1.DOCUMENT)),
-    __metadata("design:paramtypes", [individuals_service_1.IndividualsService,
+    __param(8, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [messages_service_1.MessagesService,
+        individuals_service_1.IndividualsService,
         individualDetails_service_1.IndividualDetailsService,
         individualUpdate_service_1.IndividualUpdateService,
         router_1.Router,

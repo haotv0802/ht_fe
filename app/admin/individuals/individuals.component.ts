@@ -9,6 +9,7 @@ import {Observable} from "rxjs/Rx";
 import {DOCUMENT} from "@angular/platform-browser";
 import {Overlay} from "angular2-modal";
 import {Modal} from 'angular2-modal/plugins/bootstrap';
+import {MessagesService} from "../../common/messages/messages.service";
 
 @Component({
   moduleId: module.id,
@@ -24,6 +25,7 @@ export class IndividualsComponent implements OnInit {
   isOpen: boolean = true;
 
   constructor(
+    private _messagesService: MessagesService,
     private _individualService: IndividualsService,
     private _individualDetailsService: IndividualDetailsService,
     private _individualUpdateService: IndividualUpdateService,
@@ -61,19 +63,28 @@ export class IndividualsComponent implements OnInit {
   }
 
   getAllIndividuals(): void {
-    let timer = Observable.interval(1000);
-    // subscribing to a observable returns a subscription object
-    timer.subscribe(
-      () => {
-        this._individualService.getIndividuals().subscribe(
-          (individuals) => {
-            this.individualsALL = individuals;
-            this.isOpen = false;
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
+    // let timer = Observable.interval(1000);
+    // // subscribing to a observable returns a subscription object
+    // timer.subscribe(
+    //   () => {
+    //     this._individualService.getIndividuals().subscribe(
+    //       (individuals) => {
+    //         this.individualsALL = individuals;
+    //         this.isOpen = false;
+    //       },
+    //       (error) => {
+    //         console.log(error);
+    //       }
+    //     );
+    //   }
+    // );
+    this._individualService.getIndividuals().subscribe(
+      (individuals) => {
+        this.individualsALL = individuals;
+        this.isOpen = false;
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }

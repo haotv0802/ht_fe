@@ -16,14 +16,17 @@ var router_1 = require("@angular/router");
 var modal_component_1 = require("../../common/modal/modal.component");
 var roomTabs_component_1 = require("./tabs/roomTabs.component");
 var roomUpdate_service_1 = require("./tabs/roomUpdate.service");
+var messages_service_1 = require("../../common/messages/messages.service");
 var RoomsComponent = (function () {
-    function RoomsComponent(_roomService, _roomImagesService, _router, _roomUpdateService) {
+    function RoomsComponent(_messagesService, _roomService, _roomImagesService, _router, _roomUpdateService) {
+        this._messagesService = _messagesService;
         this._roomService = _roomService;
         this._roomImagesService = _roomImagesService;
         this._router = _router;
         this._roomUpdateService = _roomUpdateService;
         this.pageTitle = 'Room Management';
         // this.getRoomTypes();
+        this.messages = this._messagesService;
     }
     RoomsComponent.prototype.ngOnInit = function () {
         // let timer = Observable.interval(1000);
@@ -94,7 +97,8 @@ RoomsComponent = __decorate([
         // templateUrl: 'app/admin/rooms/rooms.component.html'
         // styleUrls: ['app/products/product-list.component.css']
     }),
-    __metadata("design:paramtypes", [rooms_service_1.RoomsService,
+    __metadata("design:paramtypes", [messages_service_1.MessagesService,
+        rooms_service_1.RoomsService,
         roomImages_service_1.RoomImagesService,
         router_1.Router,
         roomUpdate_service_1.RoomUpdateService])

@@ -56,14 +56,15 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let timer = Observable.interval(1000);
-    // subscribing to a observable returns a subscription object
-    timer.subscribe(
-      () => {
-        this.getUsers();
-      }
-    )
-    ;
+    // let timer = Observable.interval(1000);
+    // // subscribing to a observable returns a subscription object
+    // timer.subscribe(
+    //   () => {
+    //     this.getUsers();
+    //   }
+    // )
+    // ;
+    this.getUsers();
   }
 
   getUsers(): void {

@@ -15,6 +15,7 @@ import {HTCommonModule} from "./common/htCommon.module";
 import {ToasterModule} from "angular2-toaster";
 import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
+import {MessagesService} from "./common/messages/messages.service";
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
   ],
   providers: [
     Constants,
-    HTTPService
+    HTTPService,
+    MessagesService
   ],
   bootstrap: [AppComponent]
 })

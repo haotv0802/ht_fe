@@ -5,11 +5,11 @@
     <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:500px;">
         <table class="table table-hover" style="width: 900px;">
             <thead>
-                <th class="col-sm-2">Name</th>
+                <th class="col-sm-2">{{messages.getMessage('admin.roomList.name')}}</th>
                 <th class="col-sm-1"></th>
-                <th class="col-sm-2">Num of people</th>
-                <th class="col-sm-2">Num of beds</th>
-                <th class="col-sm-2">Type of bed</th>
+                <th class="col-sm-2">{{messages.getMessage('admin.roomList.numOfBeds')}}</th>
+                <th class="col-sm-2">{{messages.getMessage('admin.roomList.numOfPeople')}}</th>
+                <th class="col-sm-2">{{messages.getMessage('admin.roomList.typeOfBed')}}</th>
                 <th class="col-sm-1"></th>
             </thead>
             <tr *ngFor="let roomType of roomTypes">

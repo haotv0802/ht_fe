@@ -16,13 +16,15 @@ var router_1 = require("@angular/router");
 var constant_1 = require("./../constant");
 var forms_1 = require("@angular/forms");
 var angular2_toaster_1 = require("angular2-toaster");
+var messages_service_1 = require("../messages/messages.service");
 var LoginComponent = (function () {
-    function LoginComponent(loginService, _router, _constants, fb, _toasterService) {
+    function LoginComponent(loginService, _router, _constants, fb, _toasterService, _messagesService) {
         this.loginService = loginService;
         this._router = _router;
         this._constants = _constants;
         this.fb = fb;
         this._toasterService = _toasterService;
+        this._messagesService = _messagesService;
         this.pageTitle = "Login";
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -46,6 +48,7 @@ var LoginComponent = (function () {
             _this._authToken = headers.get(_this._constants.X_AUTH_TOKEN_HEADER);
             sessionStorage.setItem(_this._constants.AUTH_TOKEN, _this._authToken);
             if (_this._authToken) {
+                _this._messagesService.getMessages();
                 _this._router.navigate(['welcome']);
             }
         }, function (error) {
@@ -66,7 +69,8 @@ LoginComponent = __decorate([
         router_1.Router,
         constant_1.Constants,
         forms_1.FormBuilder,
-        angular2_toaster_1.ToasterService])
+        angular2_toaster_1.ToasterService,
+        messages_service_1.MessagesService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

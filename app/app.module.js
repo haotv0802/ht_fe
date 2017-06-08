@@ -23,6 +23,7 @@ var htCommon_module_1 = require("./common/htCommon.module");
 var angular2_toaster_1 = require("angular2-toaster");
 var angular2_modal_1 = require("angular2-modal");
 var bootstrap_1 = require("angular2-modal/plugins/bootstrap");
+var messages_service_1 = require("./common/messages/messages.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -56,7 +57,8 @@ AppModule = __decorate([
         ],
         providers: [
             constant_1.Constants,
-            HTTP_service_1.HTTPService
+            HTTP_service_1.HTTPService,
+            messages_service_1.MessagesService
         ],
         bootstrap: [app_component_1.AppComponent]
     })
