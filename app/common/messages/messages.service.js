@@ -16,7 +16,7 @@ var MessagesService = (function () {
     function MessagesService(_constants, _httpService) {
         this._constants = _constants;
         this._httpService = _httpService;
-        console.log("messages");
+        // console.log("messages");
         // this.getMessages().subscribe(
         //   (res) => {
         //     this.keyValuePairs = res;

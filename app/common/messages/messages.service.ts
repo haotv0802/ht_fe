@@ -11,7 +11,7 @@ export class MessagesService {
     private _constants: Constants,
     private _httpService: HTTPService
   ) {
-    console.log("messages");
+    // console.log("messages");
     // this.getMessages().subscribe(
     //   (res) => {
     //     this.keyValuePairs = res;
