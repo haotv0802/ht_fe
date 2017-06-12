@@ -29,13 +29,19 @@ var MessagesService = (function () {
         //   }
         // );
     }
-    MessagesService.prototype.getMessage = function (key) {
+    MessagesService.prototype.getMessagesByName = function (key) {
         try {
-            return this.keyValuePairs[key];
+            var result = this.keyValuePairs[key];
+            if (result == undefined) {
+                return {};
+            }
+            else {
+                return result;
+            }
         }
         catch (err) {
             // console.log(err);
-            return "";
+            return {};
         }
         // let result = this.keyValuePairs[key];
         // if (null == result) {

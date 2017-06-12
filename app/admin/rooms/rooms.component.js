@@ -24,9 +24,10 @@ var RoomsComponent = (function () {
         this._roomImagesService = _roomImagesService;
         this._router = _router;
         this._roomUpdateService = _roomUpdateService;
+        this.ready = false;
         this.pageTitle = 'Room Management';
         // this.getRoomTypes();
-        this.messages = this._messagesService;
+        this.messages = this._messagesService.getMessagesByName("roomsList");
     }
     RoomsComponent.prototype.ngOnInit = function () {
         // let timer = Observable.interval(1000);
@@ -37,6 +38,9 @@ var RoomsComponent = (function () {
         // )
         // ;
         this.getRoomTypes();
+        if (this.messages != null) {
+            this.ready = true;
+        }
     };
     RoomsComponent.prototype.ngOnDestroy = function () {
         // this.sub.unsubscribe();

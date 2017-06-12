@@ -25,13 +25,18 @@ export class MessagesService {
     // );
   }
 
-  getMessage(key: string): string {
+  getMessagesByName(key: string): {} {
     try {
-      return this.keyValuePairs[key];
+      let result = this.keyValuePairs[key];
+      if (result == undefined) {
+        return {};
+      } else {
+        return result;
+      }
     }
     catch (err) {
       // console.log(err);
-      return "";
+      return {};
     }
     // let result = this.keyValuePairs[key];
     // if (null == result) {

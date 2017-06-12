@@ -18,7 +18,8 @@ import {MessagesService} from "../../common/messages/messages.service";
 })
 export class RoomsComponent implements OnInit, OnDestroy {
 
-  messages: any;
+  ready: boolean = false;
+  messages: {};
   pageTitle: string;
   roomTypes: RoomType[];
   private sub: Subscription;
@@ -33,7 +34,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
   ) {
     this.pageTitle = 'Room Management';
     // this.getRoomTypes();
-    this.messages = this._messagesService;
+    this.messages = this._messagesService.getMessagesByName("roomsList");
   }
 
   ngOnInit(): void {
@@ -45,6 +46,9 @@ export class RoomsComponent implements OnInit, OnDestroy {
     // )
     // ;
     this.getRoomTypes();
+    if (this.messages != null) {
+      this.ready = true;
+    }
   }
 
   ngOnDestroy(): void {

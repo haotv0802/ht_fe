@@ -2,14 +2,15 @@
     <div class='panel-heading' style='font-size:large'>
         {{pageTitle}}
     </div>
-    <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:500px;">
+    <loader [opening]="!ready"></loader>
+    <div class="table-responsive" align="center" style="width:100%;overflow:auto; max-height:500px;" *ngIf="messages">
         <table class="table table-hover" style="width: 900px;">
             <thead>
-                <th class="col-sm-2">{{messages.getMessage('admin.roomList.name') || 'Name'}}</th>
+                <th class="col-sm-2">{{messages.name || 'Name123'}}</th>
                 <th class="col-sm-1"></th>
-                <th class="col-sm-2">{{messages.getMessage('admin.roomList.numOfBeds') || 'Num of beds'}}</th>
-                <th class="col-sm-2">{{messages.getMessage('admin.roomList.numOfPeople') || 'Num of people'}}</th>
-                <th class="col-sm-2">{{messages.getMessage('admin.roomList.typeOfBed') || 'Type of bed'}}</th>
+                <th class="col-sm-2">{{messages.numOfBeds || 'Num of beds'}}</th>
+                <th class="col-sm-2">{{messages.numOfPeople || 'Num of people'}}</th>
+                <th class="col-sm-2">{{messages.typeOfBed || 'Type of bed'}}</th>
                 <th class="col-sm-1"></th>
             </thead>
             <tr *ngFor="let roomType of roomTypes">
