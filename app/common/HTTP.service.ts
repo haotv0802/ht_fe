@@ -13,7 +13,7 @@ export class HTTPService {
 
   public post(url: string, data: any): Observable<Response> {
     let headers = new Headers();
-    headers.append("Accept-Language", "en");
+    headers.append("Accept-Language", this.getAcceptLanguage());
     headers.append("Content-Type", "application/json");
     if (url != this._constants.LOGIN_SERVICE_URL) {
       headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -25,7 +25,7 @@ export class HTTPService {
 
   public patch(url: string, data?: any): Observable<Response> {
     let headers = new Headers();
-    headers.append("Accept-Language", "en");
+    headers.append("Accept-Language", this.getAcceptLanguage());
     headers.append("Content-Type", "application/json");
     if (url != this._constants.LOGIN_SERVICE_URL) {
       headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -37,7 +37,7 @@ export class HTTPService {
 
   public postImageFile(url: string, data: any): Observable<Response> {
     let headers = new Headers();
-    headers.append("Accept-Language", "en");
+    headers.append("Accept-Language", this.getAcceptLanguage());
     // headers.append("Content-Type", "multipart/form-data");
     headers.append('Accept', 'application/json');
     if (url != this._constants.LOGIN_SERVICE_URL) {
@@ -51,7 +51,7 @@ export class HTTPService {
 
   public get(url: string, params?: URLSearchParams): Observable<Response> {
     let headers = new Headers();
-    headers.append("Accept-Language", "en");
+    headers.append("Accept-Language", this.getAcceptLanguage());
     headers.append("Content-Type", "application/json");
     if (url != this._constants.LOGIN_SERVICE_URL) {
       headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -68,5 +68,21 @@ export class HTTPService {
     console.error("Error logged in HTTPService: ");
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
+  }
+
+  private getAcceptLanguage() {
+    console.log("language: ");
+    console.log(navigator.language);
+
+    let strings: string[] = navigator.language.split('-');
+    if (strings.length == 2) {
+      console.log("Accept Language: " + strings[0]);
+      return strings[0];
+    } else if (strings.length == 1) {
+      return strings[0];
+    }
+    else {
+      return "";
+    }
   }
 }

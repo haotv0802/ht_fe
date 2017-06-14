@@ -20,7 +20,7 @@ var HTTPService = (function () {
     }
     HTTPService.prototype.post = function (url, data) {
         var headers = new http_1.Headers();
-        headers.append("Accept-Language", "en");
+        headers.append("Accept-Language", this.getAcceptLanguage());
         headers.append("Content-Type", "application/json");
         if (url != this._constants.LOGIN_SERVICE_URL) {
             headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -29,7 +29,7 @@ var HTTPService = (function () {
     };
     HTTPService.prototype.patch = function (url, data) {
         var headers = new http_1.Headers();
-        headers.append("Accept-Language", "en");
+        headers.append("Accept-Language", this.getAcceptLanguage());
         headers.append("Content-Type", "application/json");
         if (url != this._constants.LOGIN_SERVICE_URL) {
             headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -38,7 +38,7 @@ var HTTPService = (function () {
     };
     HTTPService.prototype.postImageFile = function (url, data) {
         var headers = new http_1.Headers();
-        headers.append("Accept-Language", "en");
+        headers.append("Accept-Language", this.getAcceptLanguage());
         // headers.append("Content-Type", "multipart/form-data");
         headers.append('Accept', 'application/json');
         if (url != this._constants.LOGIN_SERVICE_URL) {
@@ -48,7 +48,7 @@ var HTTPService = (function () {
     };
     HTTPService.prototype.get = function (url, params) {
         var headers = new http_1.Headers();
-        headers.append("Accept-Language", "en");
+        headers.append("Accept-Language", this.getAcceptLanguage());
         headers.append("Content-Type", "application/json");
         if (url != this._constants.LOGIN_SERVICE_URL) {
             headers.append(this._constants.X_AUTH_TOKEN_HEADER, sessionStorage.getItem(this._constants.AUTH_TOKEN));
@@ -62,6 +62,21 @@ var HTTPService = (function () {
         console.error("Error logged in HTTPService: ");
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
+    };
+    HTTPService.prototype.getAcceptLanguage = function () {
+        console.log("language: ");
+        console.log(navigator.language);
+        var strings = navigator.language.split('-');
+        if (strings.length == 2) {
+            console.log("Accept Language: " + strings[0]);
+            return strings[0];
+        }
+        else if (strings.length == 1) {
+            return strings[0];
+        }
+        else {
+            return "";
+        }
     };
     return HTTPService;
 }());

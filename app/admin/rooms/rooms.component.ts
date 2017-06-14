@@ -45,6 +45,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
     //   }
     // )
     // ;
+
     this.getRoomTypes();
     if (this.messages != null) {
       this.ready = true;

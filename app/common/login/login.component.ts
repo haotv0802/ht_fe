@@ -12,9 +12,10 @@ import {MessagesService} from "../messages/messages.service";
 })
 export class LoginComponent implements OnInit {
 
-  public pageTitle: string = "Login";
+  public pageTitle: string;
   private _authToken: string;
   loginForm: FormGroup;
+  messages: {};
 
   constructor(
     private loginService: LoginService,
@@ -28,9 +29,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.messages = this._messagesService.getMessagesByName("login");
+    this.pageTitle = this.messages["loginTitle"];
     this.loginForm = this.fb.group({
       username: ['admin', [Validators.required]],
-      password: ['admin', [Validators.required]]
+      password: ['admin', [Validators.required]],
+      language: ['', [Validators.required]]
     });
   }
 

@@ -25,12 +25,14 @@ var LoginComponent = (function () {
         this.fb = fb;
         this._toasterService = _toasterService;
         this._messagesService = _messagesService;
-        this.pageTitle = "Login";
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.messages = this._messagesService.getMessagesByName("login");
+        this.pageTitle = this.messages["loginTitle"];
         this.loginForm = this.fb.group({
             username: ['admin', [forms_1.Validators.required]],
-            password: ['admin', [forms_1.Validators.required]]
+            password: ['admin', [forms_1.Validators.required]],
+            language: ['', [forms_1.Validators.required]]
         });
     };
     LoginComponent.prototype.login = function () {

@@ -11,7 +11,7 @@ export class Constants {
   public TOASTER_ERROR: string = "error";
 
   // Messages services
-  public ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/messages";
+  public ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/admin/messages";
 
   // HTTP Status
   public HTTP_STATUS_OK: number = 200;
