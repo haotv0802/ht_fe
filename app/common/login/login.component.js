@@ -27,12 +27,35 @@ var LoginComponent = (function () {
         this._messagesService = _messagesService;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        this.messages = this._messagesService.getMessagesByName("login");
-        this.pageTitle = this.messages["loginTitle"];
+        this.messages = this._messagesService.getCommonMessagesByName("login");
+        // this.loadMessages();
         this.loginForm = this.fb.group({
             username: ['admin', [forms_1.Validators.required]],
             password: ['admin', [forms_1.Validators.required]],
-            language: ['', [forms_1.Validators.required]]
+            language: [this._constants.LANGUAGE, [forms_1.Validators.required]]
+        });
+    };
+    LoginComponent.prototype.onSelectChange = function (event) {
+        this._constants.LANGUAGE = event.target.value;
+        this.loadMessages();
+        // this._messagesService.getCommonMessages_() // re-load common message with LANGUAGE just set.
+        //   .subscribe(
+        //     () => {
+        //       this.messages = this._messagesService.getCommonMessagesByName("login");
+        //     },
+        //     (error: Error) => {
+        //       console.log(error);
+        //     }
+        //   )
+        // ;
+    };
+    LoginComponent.prototype.loadMessages = function () {
+        var _this = this;
+        this._messagesService.getCommonMessages_() // re-load common message with LANGUAGE just set.
+            .subscribe(function () {
+            _this.messages = _this._messagesService.getCommonMessagesByName("login");
+        }, function (error) {
+            console.log(error);
         });
     };
     LoginComponent.prototype.login = function () {

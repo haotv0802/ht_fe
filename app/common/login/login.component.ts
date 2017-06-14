@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from './login.service';
+import {Component, OnInit} from "@angular/core";
+import {LoginService} from "./login.service";
 import {Credential} from "./credential";
-import {Router} from '@angular/router';
-import {Constants} from './../constant';
+import {Router} from "@angular/router";
+import {Constants} from "./../constant";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToasterService} from "angular2-toaster";
 import {MessagesService} from "../messages/messages.service";
@@ -25,17 +25,46 @@ export class LoginComponent implements OnInit {
     private _toasterService: ToasterService,
     private _messagesService: MessagesService
   ) {
-
   }
 
   ngOnInit(): void {
-    this.messages = this._messagesService.getMessagesByName("login");
-    this.pageTitle = this.messages["loginTitle"];
+    this.messages = this._messagesService.getCommonMessagesByName("login");
+    // this.loadMessages();
+
     this.loginForm = this.fb.group({
       username: ['admin', [Validators.required]],
       password: ['admin', [Validators.required]],
-      language: ['', [Validators.required]]
+      language: [this._constants.LANGUAGE, [Validators.required]]
     });
+  }
+
+  onSelectChange(event: any): void {
+    this._constants.LANGUAGE = event.target.value;
+
+    this.loadMessages();
+    // this._messagesService.getCommonMessages_() // re-load common message with LANGUAGE just set.
+    //   .subscribe(
+    //     () => {
+    //       this.messages = this._messagesService.getCommonMessagesByName("login");
+    //     },
+    //     (error: Error) => {
+    //       console.log(error);
+    //     }
+    //   )
+    // ;
+  }
+
+  loadMessages(): void {
+    this._messagesService.getCommonMessages_() // re-load common message with LANGUAGE just set.
+      .subscribe(
+        () => {
+          this.messages = this._messagesService.getCommonMessagesByName("login");
+        },
+        (error: Error) => {
+          console.log(error);
+        }
+      )
+    ;
   }
 
   login() {

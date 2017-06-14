@@ -1,11 +1,14 @@
 import {Injectable} from "@angular/core";
 import {Constants} from "../constant";
 import {HTTPService} from "../HTTP.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class MessagesService {
 
-  public keyValuePairs: any[];
+  private messages: any[]; // Messages can be for Admin, Staff, Customer.
+  private commonMessages: any[]; // Messages for common pages, like Login, Navigation bar
+
 
   constructor(
     private _constants: Constants,
@@ -27,7 +30,7 @@ export class MessagesService {
 
   getMessagesByName(key: string): {} {
     try {
-      let result = this.keyValuePairs[key];
+      let result = this.messages[key];
       if (result == undefined) {
         return {};
       } else {
@@ -69,7 +72,7 @@ export class MessagesService {
       // )
       .subscribe(
         (res) => {
-          this.keyValuePairs = res;
+          this.messages = res;
           // console.log("key value pairs: ");
           // console.log(this.keyValuePairs);
           // console.log(this.keyValuePairs["admin.roomList.name"]);
@@ -78,6 +81,67 @@ export class MessagesService {
           console.log(error);
         }
       );
+    ;
+  }
+
+  getCommonMessagesByName(key: string): {} {
+    try {
+      let result = this.commonMessages[key];
+      if (result == undefined) {
+        return {};
+      } else {
+        return result;
+      }
+    }
+    catch (err) {
+      return {};
+    }
+  }
+
+  getCommonMessages(): void {
+    this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+      .map(
+        (res) => {
+          return res.json();
+        }
+      )
+      .subscribe(
+        (res) => {
+          this.commonMessages = res;
+        },
+        (error: Error) => {
+          console.log(error);
+        }
+      );
+    ;
+  }
+
+  getCommonMessages_(): Observable<any> {
+    return this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+      .map(
+        (res) => {
+          // this.commonMessages = res.json();
+          // return this.commonMessages;
+          // console.log("mapping");
+          return res.json();
+        }
+      )
+      .do(
+        (data) => {
+          // console.log("do print json");
+          // console.log(JSON.stringify(data));
+          // console.log("doing");
+          this.commonMessages = data;
+        }
+      )
+      // .subscribe(
+      //   (res) => {
+      //     this.commonMessages = res;
+      //   },
+      //   (error: Error) => {
+      //     console.log(error);
+      //   }
+      // );
     ;
   }
 }

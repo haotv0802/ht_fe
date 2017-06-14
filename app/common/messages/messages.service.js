@@ -31,7 +31,7 @@ var MessagesService = (function () {
     }
     MessagesService.prototype.getMessagesByName = function (key) {
         try {
-            var result = this.keyValuePairs[key];
+            var result = this.messages[key];
             if (result == undefined) {
                 return {};
             }
@@ -57,7 +57,7 @@ var MessagesService = (function () {
             return res.json();
         })
             .subscribe(function (res) {
-            _this.keyValuePairs = res;
+            _this.messages = res;
             // console.log("key value pairs: ");
             // console.log(this.keyValuePairs);
             // console.log(this.keyValuePairs["admin.roomList.name"]);
@@ -65,6 +65,49 @@ var MessagesService = (function () {
             console.log(error);
         });
         ;
+    };
+    MessagesService.prototype.getCommonMessagesByName = function (key) {
+        try {
+            var result = this.commonMessages[key];
+            if (result == undefined) {
+                return {};
+            }
+            else {
+                return result;
+            }
+        }
+        catch (err) {
+            return {};
+        }
+    };
+    MessagesService.prototype.getCommonMessages = function () {
+        var _this = this;
+        this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+            .map(function (res) {
+            return res.json();
+        })
+            .subscribe(function (res) {
+            _this.commonMessages = res;
+        }, function (error) {
+            console.log(error);
+        });
+        ;
+    };
+    MessagesService.prototype.getCommonMessages_ = function () {
+        var _this = this;
+        return this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+            .map(function (res) {
+            // this.commonMessages = res.json();
+            // return this.commonMessages;
+            // console.log("mapping");
+            return res.json();
+        })
+            .do(function (data) {
+            // console.log("do print json");
+            // console.log(JSON.stringify(data));
+            // console.log("doing");
+            _this.commonMessages = data;
+        });
     };
     return MessagesService;
 }());

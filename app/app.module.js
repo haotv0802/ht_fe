@@ -57,8 +57,8 @@ AppModule = __decorate([
         ],
         providers: [
             constant_1.Constants,
-            HTTP_service_1.HTTPService,
-            messages_service_1.MessagesService
+            messages_service_1.MessagesService,
+            HTTP_service_1.HTTPService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

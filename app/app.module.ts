@@ -45,8 +45,8 @@ import {MessagesService} from "./common/messages/messages.service";
   ],
   providers: [
     Constants,
-    HTTPService,
-    MessagesService
+    MessagesService,
+    HTTPService
   ],
   bootstrap: [AppComponent]
 })

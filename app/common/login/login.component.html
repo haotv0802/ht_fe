@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        {{pageTitle || 'Login'}}
+        {{messages.loginTitle || 'Login'}}
     </div>
     <div class="panel-body">
         <form class="form-horizontal"
@@ -57,11 +57,12 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label"
-                           for="languageId">Language</label>
+                           for="languageId">{{messages.language || 'Language'}}</label>
                     <div class="col-md-8">
                         <select class="form-control"
                                 id="languageId"
-                                formControlName="language">
+                                formControlName="language"
+                                (change)="onSelectChange($event)">
                             <option value="" disabled selected hidden>Select language</option>
                             <!--<option *ngFor="let item of [1,2,3,4]" [value]="item" [selected]="numOfPeople===item">{{item}}</option>-->
                             <option value="en">English</option>

@@ -64,19 +64,21 @@ var HTTPService = (function () {
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     HTTPService.prototype.getAcceptLanguage = function () {
-        console.log("language: ");
-        console.log(navigator.language);
-        var strings = navigator.language.split('-');
-        if (strings.length == 2) {
-            console.log("Accept Language: " + strings[0]);
-            return strings[0];
-        }
-        else if (strings.length == 1) {
-            return strings[0];
-        }
-        else {
-            return "";
-        }
+        // console.log("language: ");
+        // console.log(navigator.language);
+        //
+        // let strings: string[] = navigator.language.split('-');
+        // if (strings.length == 2) {
+        //   console.log("Accept Language: " + strings[0]);
+        //   return strings[0];
+        // } else if (strings.length == 1) {
+        //   return strings[0];
+        // }
+        // else {
+        //   return "";
+        // }
+        // console.log("this._constants.LANGUAGE: " + this._constants.LANGUAGE);
+        return this._constants.LANGUAGE;
     };
     return HTTPService;
 }());

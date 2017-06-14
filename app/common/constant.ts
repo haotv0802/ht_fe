@@ -3,7 +3,9 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class Constants {
 
-  public HOST = 'http://localhost:8880/ht-be/svc';
+  public LANGUAGE: string = "fr";
+
+  public readonly HOST = 'http://localhost:8880/ht-be/svc';
   public LOGIN_SERVICE_URL: string = this.HOST + '/login';
 
   // Toaster types
@@ -11,6 +13,7 @@ export class Constants {
   public TOASTER_ERROR: string = "error";
 
   // Messages services
+  public ADMIN_COMMON_MESSAGES_SERVICE_URL = this.HOST + "/messages";
   public ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/admin/messages";
 
   // HTTP Status

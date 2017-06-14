@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ToasterService} from "angular2-toaster";
+import {MessagesService} from "./common/messages/messages.service";
 
 @Component({
     selector: 'ht-app',
@@ -23,23 +24,29 @@ import {ToasterService} from "angular2-toaster";
     templateUrl: 'app/app.component.html'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
     // pageTitle: string = 'Acme Product Management';
-    toasterService: ToasterService;
     toastList: Array<any> = new Array();
     toastIndex: number = 0;
 
-    constructor(toasterService: ToasterService) {
-        this.toasterService = toasterService;
+    constructor(
+      private _toasterService: ToasterService,
+      private _messagesService: MessagesService
+    ) {
+    }
+
+    ngOnInit(): void {
+        this._messagesService.getCommonMessages();
     }
 
     popToast() {
-        let toast = this.toasterService.pop('success', 'Args Title', 'Args Body');
+        let toast = this._toasterService.pop('success', 'Args Title', 'Args Body');
         this.toastList.push(toast);
     }
     clearToast() {
         for (let i = 0; i < this.toastList.length; i++) {
-            this.toasterService.clear(this.toastList[i].toastId, this.toastList[i].toastContainerId);
+            this._toasterService.clear(this.toastList[i].toastId, this.toastList[i].toastContainerId);
         }
     }
 }

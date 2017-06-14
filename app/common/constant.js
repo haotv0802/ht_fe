@@ -9,12 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Constants = (function () {
     function Constants() {
+        this.LANGUAGE = "fr";
         this.HOST = 'http://localhost:8880/ht-be/svc';
         this.LOGIN_SERVICE_URL = this.HOST + '/login';
         // Toaster types
         this.TOASTER_SUCCESS = "success";
         this.TOASTER_ERROR = "error";
         // Messages services
+        this.ADMIN_COMMON_MESSAGES_SERVICE_URL = this.HOST + "/messages";
         this.ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/admin/messages";
         // HTTP Status
         this.HTTP_STATUS_OK = 200;
