@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class Constants {
 
-  public LANGUAGE: string = "fr";
+  public LANGUAGE: string = "en";
 
   public readonly HOST = 'http://localhost:8880/ht-be/svc';
   public LOGIN_SERVICE_URL: string = this.HOST + '/login';
@@ -13,8 +13,9 @@ export class Constants {
   public TOASTER_ERROR: string = "error";
 
   // Messages services
-  public ADMIN_COMMON_MESSAGES_SERVICE_URL = this.HOST + "/messages";
+  public COMMON_MESSAGES_SERVICE_URL = this.HOST + "/messages";
   public ADMIN_MESSAGES_SERVICE_URL = this.HOST + "/admin/messages";
+  public CUSTOMER_MESSAGES_SERVICE_URL = this.HOST + "/customer/messages";
 
   // HTTP Status
   public HTTP_STATUS_OK: number = 200;
@@ -53,6 +54,8 @@ export class Constants {
   public X_AUTH_TOKEN_HEADER: string = "X-AUTH-TOKEN";
   public AUTH_TOKEN: string = "AUTH_TOKEN";
   public AUTHORITY: string = "AUTHORITY";
+  public AUTHORITY_ADMIN: string = "ADMIN";
+  public AUTHORITY_CUSTOMER: string = "CUSTOMER";
 
   // Names of Components
   public WELCOME_URL: string = 'welcome';

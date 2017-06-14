@@ -9,7 +9,6 @@ export class MessagesService {
   private messages: any[]; // Messages can be for Admin, Staff, Customer.
   private commonMessages: any[]; // Messages for common pages, like Login, Navigation bar
 
-
   constructor(
     private _constants: Constants,
     private _httpService: HTTPService
@@ -48,7 +47,7 @@ export class MessagesService {
     // return result;
   }
 
-  getMessages(): void {
+  getAdminMessages(): void {
     this._httpService.get(this._constants.ADMIN_MESSAGES_SERVICE_URL)
       .map(
         (res) => {
@@ -73,9 +72,30 @@ export class MessagesService {
       .subscribe(
         (res) => {
           this.messages = res;
-          // console.log("key value pairs: ");
-          // console.log(this.keyValuePairs);
-          // console.log(this.keyValuePairs["admin.roomList.name"]);
+        },
+        (error: Error) => {
+          console.log(error);
+        }
+      );
+    ;
+  }
+
+  getCustomerMessages(): void {
+    this._httpService.get(this._constants.CUSTOMER_MESSAGES_SERVICE_URL)
+      .map(
+        (res) => {
+          return res.json();
+        }
+      )
+      // .do(
+      //   (data) => {
+      //     console.log("do print json");
+      //     console.log(JSON.stringify(data));
+      //   }
+      // )
+      .subscribe(
+        (res) => {
+          this.messages = res;
         },
         (error: Error) => {
           console.log(error);
@@ -99,7 +119,7 @@ export class MessagesService {
   }
 
   getCommonMessages(): void {
-    this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+    this._httpService.get(this._constants.COMMON_MESSAGES_SERVICE_URL)
       .map(
         (res) => {
           return res.json();
@@ -117,7 +137,7 @@ export class MessagesService {
   }
 
   getCommonMessages_(): Observable<any> {
-    return this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+    return this._httpService.get(this._constants.COMMON_MESSAGES_SERVICE_URL)
       .map(
         (res) => {
           // this.commonMessages = res.json();

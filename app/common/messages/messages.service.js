@@ -49,7 +49,7 @@ var MessagesService = (function () {
         // }
         // return result;
     };
-    MessagesService.prototype.getMessages = function () {
+    MessagesService.prototype.getAdminMessages = function () {
         var _this = this;
         this._httpService.get(this._constants.ADMIN_MESSAGES_SERVICE_URL)
             .map(function (res) {
@@ -58,9 +58,19 @@ var MessagesService = (function () {
         })
             .subscribe(function (res) {
             _this.messages = res;
-            // console.log("key value pairs: ");
-            // console.log(this.keyValuePairs);
-            // console.log(this.keyValuePairs["admin.roomList.name"]);
+        }, function (error) {
+            console.log(error);
+        });
+        ;
+    };
+    MessagesService.prototype.getCustomerMessages = function () {
+        var _this = this;
+        this._httpService.get(this._constants.CUSTOMER_MESSAGES_SERVICE_URL)
+            .map(function (res) {
+            return res.json();
+        })
+            .subscribe(function (res) {
+            _this.messages = res;
         }, function (error) {
             console.log(error);
         });
@@ -82,7 +92,7 @@ var MessagesService = (function () {
     };
     MessagesService.prototype.getCommonMessages = function () {
         var _this = this;
-        this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+        this._httpService.get(this._constants.COMMON_MESSAGES_SERVICE_URL)
             .map(function (res) {
             return res.json();
         })
@@ -95,7 +105,7 @@ var MessagesService = (function () {
     };
     MessagesService.prototype.getCommonMessages_ = function () {
         var _this = this;
-        return this._httpService.get(this._constants.ADMIN_COMMON_MESSAGES_SERVICE_URL)
+        return this._httpService.get(this._constants.COMMON_MESSAGES_SERVICE_URL)
             .map(function (res) {
             // this.commonMessages = res.json();
             // return this.commonMessages;

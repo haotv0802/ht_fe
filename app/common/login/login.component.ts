@@ -82,7 +82,11 @@ export class LoginComponent implements OnInit {
         this._authToken = headers.get(this._constants.X_AUTH_TOKEN_HEADER);
         sessionStorage.setItem(this._constants.AUTH_TOKEN, this._authToken);
         if (this._authToken) {
-          this._messagesService.getMessages();
+          if (authority == this._constants.AUTHORITY_ADMIN) {
+            this._messagesService.getAdminMessages();
+          } else if (authority == this._constants.AUTHORITY_CUSTOMER) {
+            this._messagesService.getCustomerMessages();
+          }
           this._router.navigate(['welcome']);
         }
       },
